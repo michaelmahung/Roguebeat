@@ -7,9 +7,9 @@ public class CameraController : MonoBehaviour {
     //Controls the camera's position and smooths movement when following the player.
 
     public Transform player;
-    public float smooth = 0.15f;
+    public float smooth = 0.3f;
 
-    public float height = 15f;
+    public float height = 20f;
 
     private Vector3 velocity = Vector3.zero;
 

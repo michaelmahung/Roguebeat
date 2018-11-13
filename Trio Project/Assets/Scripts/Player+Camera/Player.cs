@@ -33,9 +33,7 @@ public class Player : MonoBehaviour {
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
         }
 
-
-
-        /*if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
         }
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector3.back * movementSpeed * Time.deltaTime);
-        }*/
-
+        }
+       
     }
 }

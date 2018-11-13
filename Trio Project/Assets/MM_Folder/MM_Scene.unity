@@ -812,7 +812,6 @@ GameObject:
   - component: {fileID: 746576280}
   - component: {fileID: 746576279}
   - component: {fileID: 746576282}
-  - component: {fileID: 746576283}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -901,20 +900,6 @@ MonoBehaviour:
   player: {fileID: 1059064173}
   followAhead: 4
   smoothing: 4
---- !u!114 &746576283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746576277}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47eea1699b568034ea9aac6cbca48f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  smooth: 0.3
-  height: 20
 --- !u!1 &749690576
 GameObject:
   m_ObjectHideFlags: 0
