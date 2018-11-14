@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1887100240752668}
+  m_RootGameObject: {fileID: 1620403275424218}
   m_IsPrefabAsset: 1
---- !u!1 &1887100240752668
+--- !u!1 &1620403275424218
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4331403995642542}
-  - component: {fileID: 33445023259728114}
-  - component: {fileID: 23201260145120510}
-  - component: {fileID: 136823421555202716}
-  - component: {fileID: 114452375158363130}
+  - component: {fileID: 4372690261508830}
+  - component: {fileID: 33104901994481304}
+  - component: {fileID: 23122206793041312}
+  - component: {fileID: 135894656048912982}
+  - component: {fileID: 114559746741180030}
+  - component: {fileID: 54645164965061410}
   m_Layer: 0
-  m_Name: EnemyType3
-  m_TagString: Untagged
+  m_Name: Trooper
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4331403995642542
+--- !u!4 &4372690261508830
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887100240752668}
+  m_GameObject: {fileID: 1620403275424218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39, y: 1, z: -11.99}
+  m_LocalPosition: {x: 10.51, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23201260145120510
+--- !u!23 &23122206793041312
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887100240752668}
+  m_GameObject: {fileID: 1620403275424218}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 481884555af045c478e01eecc8aa26c4, type: 2}
+  - {fileID: 2100000, guid: b2fa75a9c6995494d996980534b54ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,37 +79,57 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33445023259728114
+--- !u!33 &33104901994481304
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887100240752668}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114452375158363130
+  m_GameObject: {fileID: 1620403275424218}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54645164965061410
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620403275424218}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 1
+--- !u!114 &114559746741180030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887100240752668}
+  m_GameObject: {fileID: 1620403275424218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8bbc77a880e7e64fb228dbfceb726a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 592c5c60f12f2de47885142cc3a4dddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyFire1: {fileID: 0}
+  EnemyBullet: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb,
+    type: 2}
+  EnemyShotgun2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46,
+    type: 2}
   Hero: {fileID: 0}
   MoveSpeed: 5
---- !u!136 &136823421555202716
-CapsuleCollider:
+  TrooperAttackSpeed: 1
+  BruiserAttackSpeed: 3
+  BoomerAttackSpeed: 6
+--- !u!135 &135894656048912982
+SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887100240752668}
+  m_GameObject: {fileID: 1620403275424218}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
