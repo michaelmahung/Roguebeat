@@ -2,12 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDamageable<float>, IKillable {
 
-    public float attackPower = 10;
+    public float attackDamage = 10;
     public float attackSpeed = 1;
-    public float health = 10;
-    public float movementSpeed = 10;
+    [Range(5, 100)]
+    public float acceleration = 20;
+    public float currentHealth = 10;
+    public float maxHealth = 10;
+    [Range(5, 50)]
+    public float topSpeed = 20;
+    private Rigidbody rb;
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Damage(float damage)
+    {
+        currentHealth -= damage;
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
 
     //Contains logic for the player to move towards the mouse position as well as for the player to be able to move in a forward direction.
 
@@ -30,23 +51,54 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+            //transform.position += new Vector3(0, 0, 1) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
+            //transform.position += new Vector3(-1, 0, 0) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
+            //transform.position += new Vector3(1, 0, 0) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.back * movementSpeed * Time.deltaTime);
+            //transform.position += new Vector3(0, 0, -1) * acceleration * Time.deltaTime;
         }
        
     }
+
+    private void FixedUpdate()
+    {
+        //Debug.Log(rb.velocity.magnitude);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+            rb.AddForce(new Vector3(0, 0, 1) * acceleration);
+            }
+
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+            rb.AddForce(new Vector3(-1, 0, 0) * acceleration);
+            }
+
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+            rb.AddForce(new Vector3(1, 0, 0) * acceleration);
+            }
+
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                rb.AddForce(new Vector3(0, 0, -1) * acceleration);
+            }  
+
+        if (rb.velocity.magnitude > topSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * topSpeed; 
+        }
+    }
+
 }

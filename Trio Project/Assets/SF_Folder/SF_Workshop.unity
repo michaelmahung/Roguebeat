@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45112824, g: 0.50091964, b: 0.57395357, a: 1}
+  m_IndirectSpecularColor: {r: 0.45112807, g: 0.5009189, b: 0.5739523, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1273,7 +1273,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &988897587
 MonoBehaviour:
@@ -1286,10 +1286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b80363dd972f94f98ea32242aa05b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 10
+  attackDamage: 10
   attackSpeed: 1
-  health: 10
-  movementSpeed: 15
+  acceleration: 10
+  currentHealth: 10
+  maxHealth: 10
+  topSpeed: 15
 --- !u!1 &990837581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,11 +1611,11 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1059064173}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e84e06f0bf2bd4a6b8d7b75b4b771187, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.25, y: 1.25, z: 1.25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1059064177
 MeshFilter:
