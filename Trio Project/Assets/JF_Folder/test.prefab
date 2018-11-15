@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33384142021807214}
   - component: {fileID: 65312701266761504}
   - component: {fileID: 23558539838965740}
-  - component: {fileID: 114692084131657714}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -41,10 +40,11 @@ GameObject:
   - component: {fileID: 33344331731364610}
   - component: {fileID: 135511159826005460}
   - component: {fileID: 23437454459643238}
-  - component: {fileID: 114219491865700556}
+  - component: {fileID: 114201256021985946}
+  - component: {fileID: 114446856150554928}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: eProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292139035644396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5465727, y: 0.49999994, z: -0.13599513}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4210879215775606}
@@ -71,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 1870865638193298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.938, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0155306, y: 1.0155306, z: 1.0155306}
   m_Children: []
   m_Father: {fileID: 4115794091234060}
   m_RootOrder: 0
@@ -172,7 +172,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114219491865700556
+--- !u!114 &114201256021985946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870865638193298}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86da7433133e674c83fbbe0c3d95c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114446856150554928
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,20 +191,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1870865638193298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4ef1162c9401643a8da91cea2d52fa, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf39c7157e0b3a4ab8f40a401577fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114692084131657714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1292139035644396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4ef1162c9401643a8da91cea2d52fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxScale: 1.5
 --- !u!135 &135511159826005460
 SphereCollider:
   m_ObjectHideFlags: 1
