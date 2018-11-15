@@ -12,7 +12,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         Invoke("Deactivate", activeTime);
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
     } 

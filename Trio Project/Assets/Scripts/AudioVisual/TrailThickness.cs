@@ -19,7 +19,7 @@ public class TrailThickness : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
     {
         tr.widthMultiplier = (AudioPeer._audioBandBuffer[band] * (maxThickness - minThickness)) + minThickness;
 	}

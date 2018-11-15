@@ -18,11 +18,12 @@ public abstract class BaseWeapon: MonoBehaviour
     public bool canFire = true;
     public GameObject projectile;
     public int projectileSpawnAmount = 50;
-    public Vector3[] projectileSpawnLocations;
+    public List<GameObject> fireLocations = new List<GameObject>();
     public ProjectilePoolManager.ProjectilePool projectileKey;
 
     public virtual void Start()
     {
+        //projectileSpawnLocations = player.fireLocations;
         audioSource = GetComponent<AudioSource>();
         projectileKey.prefab = projectile;
         projectileKey.size = projectileSpawnAmount;
@@ -43,7 +44,6 @@ public abstract class BaseWeapon: MonoBehaviour
             StartCoroutine(WeaponCooldown());
             audioSource.clip = fireSound;
             audioSource.Play();
-            projectileSpawnLocations[0] = player.transform.position;
             ShootWeapon();
         } else
         {

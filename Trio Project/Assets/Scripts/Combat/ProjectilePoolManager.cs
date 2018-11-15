@@ -48,7 +48,7 @@ public class ProjectilePoolManager : MonoBehaviour
         }
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3[] positions, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if(!projectileDictionary.ContainsKey(tag))
         {
@@ -58,21 +58,19 @@ public class ProjectilePoolManager : MonoBehaviour
 
         GameObject objectToSpawn = projectileDictionary[tag].Dequeue();
 
-        for (int i = 0; i < positions.Length; i++)
+
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
+        //Debug.Log(position);
+        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
+
+        if (pooledObj != null)
         {
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = positions[i];
-            objectToSpawn.transform.rotation = rotation;
-            //Debug.Log(positions[i]);
-            IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-
-            if(pooledObj != null)
-            {
-                pooledObj.OnObjectSpawn();
-            }
-
-            projectileDictionary[tag].Enqueue(objectToSpawn);
+            pooledObj.OnObjectSpawn();
         }
+
+        projectileDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }

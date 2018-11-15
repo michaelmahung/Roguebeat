@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponTest : BaseWeapon
 {
+
+
     public override void Update()
     {
         if (Input.GetMouseButton(0))
@@ -14,7 +16,10 @@ public class WeaponTest : BaseWeapon
 
     public override void ShootWeapon()
     {
-        projectileSpawnLocations[0] = player.transform.position + new Vector3 (0, 0, 0.5f);
-        ProjectilePoolManager.Instance.SpawnFromPool(projectileName, projectileSpawnLocations, player.transform.rotation);
+        for (int i = 0; i < fireLocations.Count; i++)
+        {
+            //player.transform.rotation
+            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation);
+        }
     }
 }
