@@ -15,16 +15,13 @@ public float BulletSpeed = 50.0f;
 	// Update is called once per frame
 	void Update ()
 	{
-
 		BulletLife -= Time.deltaTime;
 		if (BulletLife <= 0) {
-		Destroy(gameObject);
-		}
+			Destroy (gameObject);
+			}
 
-		if (BulletLife > 0) {
-			transform.position += transform.forward * BulletSpeed * Time.deltaTime;
-		}
-	}
-}
-
-
+			if (BulletLife > 0) {
+				transform.position += transform.forward * BulletSpeed * Time.deltaTime;
+				}
+				}
+				}

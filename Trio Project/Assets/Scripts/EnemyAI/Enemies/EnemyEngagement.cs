@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEngagement : EnemyDetection {
+public class EnemyEngagement : EnemyDataModel {
 
 [SerializeField]
 private float TrooperAttackSpeed = 1.0f; // Trooper initial and adjustable attack speed
@@ -47,7 +47,7 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 			Instantiate (EnemyShotgun2, transform.position, transform.rotation);
 			BruiserAttackSpeed = SetBruiserAttackSpeed;
 		} else if (BoomerAttackSpeed <= 0 && gameObject.name == "Boomer") {
-			Instantiate (EnemyBullet, transform.position, transform.rotation);
+			Instantiate (BombPrefab, transform.position, transform.rotation);
 			BoomerAttackSpeed = SetBoomerAttackSpeed;
 		}
 	}

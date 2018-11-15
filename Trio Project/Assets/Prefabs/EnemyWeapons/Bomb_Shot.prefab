@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1596928008321874}
+  m_RootGameObject: {fileID: 1120584098789986}
   m_IsPrefabAsset: 1
---- !u!1 &1596928008321874
+--- !u!1 &1120584098789986
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4036184202040922}
-  - component: {fileID: 33071967845526228}
-  - component: {fileID: 23384726536993128}
-  - component: {fileID: 54048503373653832}
-  - component: {fileID: 65144638776971582}
-  - component: {fileID: 114301634553641770}
+  - component: {fileID: 4408394230605360}
+  - component: {fileID: 33665114067600802}
+  - component: {fileID: 23245951887597188}
+  - component: {fileID: 65026137684923876}
+  - component: {fileID: 114692128728692102}
   m_Layer: 0
-  m_Name: Boomer
-  m_TagString: Enemy
+  m_Name: Bomb_Shot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4036184202040922
+--- !u!4 &4408394230605360
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
+  m_GameObject: {fileID: 1120584098789986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.736428, y: 1, z: -0.10639091}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -107.83182, y: -2.9037633, z: -59.59849}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23384726536993128
+--- !u!23 &23245951887597188
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
+  m_GameObject: {fileID: 1120584098789986}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: fe8707770a93fed40b16ad577fb73d75, type: 2}
+  - {fileID: 2100000, guid: 3bc8f9c3bd03c114489d3580893682cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,58 +78,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33071967845526228
+--- !u!33 &33665114067600802
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54048503373653832
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 1
---- !u!65 &65144638776971582
+  m_GameObject: {fileID: 1120584098789986}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65026137684923876
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
+  m_GameObject: {fileID: 1120584098789986}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &114301634553641770
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114692128728692102
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1596928008321874}
+  m_GameObject: {fileID: 1120584098789986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592c5c60f12f2de47885142cc3a4dddf, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a7f57bb97788c46a1064f594b747ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyBullet: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb,
-    type: 2}
-  EnemyShotgun2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46,
-    type: 2}
-  BombPrefab: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
-  Hero: {fileID: 0}
-  MoveSpeed: 5
-  TrooperAttackSpeed: 1
-  BruiserAttackSpeed: 3
-  BoomerAttackSpeed: 1
+  BombLife: 1
+  BombSpeed: 10
+  BigBoom: {fileID: 1519971338207426, guid: dcdd4aa8123ef674bbbfc55ba147186e, type: 2}
