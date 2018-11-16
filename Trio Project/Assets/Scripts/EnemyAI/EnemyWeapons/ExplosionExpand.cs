@@ -31,7 +31,6 @@ private Vector3 targetScale;
 			gameObject.transform.localScale = new Vector3 (Grow, Grow, Grow);
 			maxSize = gameObject.transform.localScale.x;
 			if (Explosion >= 1.0f) {
-			print ("got there");
 				Explosion = 1.0f;
 				Unchanged = false;
 				Changing = true;
@@ -44,7 +43,6 @@ private Vector3 targetScale;
 			float small = Mathf.Lerp (maxSize / 1.5f, maxSize, Explosion);
 			gameObject.transform.localScale = new Vector3 (small, small, small);
 			if (Explosion <= 0.0f) {
-			print(" working");
 				Explosion = 0.0f;
 				Changing = false;
 				Destroy(gameObject);
