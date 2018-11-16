@@ -22,8 +22,6 @@ public float BoomerHP;
 		EnemyBullet = GameObject.Find ("Enemy_Fire_1");
 		EnemyShotgun2 = GameObject.Find ("Enemy_Fire_Shotgun");
 		BombPrefab = GameObject.Find ("Bomb_Shot");
-		if (gameObject.name == "Trooper") {
-		}
 		
 	}
 	
