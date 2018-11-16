@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //This will become a singleton that will hold all logic and variables for the game.
     private static GameManager _instance;
 
+    //Creating a singleton instance
     public static GameManager Instance
     {
         get
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
     private int weaponValue;
     private int matValue;
     private int songValue;
-    private bool gamePaused;
+    public bool gamePaused;
     [Header("Global Script References")]
     [Tooltip("Insert Reference to UIController Script")]
     public UIController UI;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
     {
+        //When "1" is pressed. go to the next material in the playerMaterials array.
 		if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (matValue < playerMaterials.Length - 1)
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
             ChangeMaterial(player, playerMaterials[matValue]);
         }
 
+        //When "2" is pressed, play the next song in the song array.
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (songValue < allPlayableSongs.Length - 1)
@@ -112,6 +115,7 @@ public class GameManager : MonoBehaviour
             currentSong = audioPlayer.clip;
         }
 
+        //When "3" is pressed, equip the next weapon in the weapon array.
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -128,6 +132,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        //When "P" is pressed, pause the game.
         if (Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
@@ -137,6 +142,8 @@ public class GameManager : MonoBehaviour
 
     //Global Functions
 
+
+    //Pause the game
     public void PauseGame()
     {
         if (!gamePaused)
@@ -154,11 +161,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Can change the material on any gameobject
     public static void ChangeMaterial(GameObject go, Material mat)
     {
         go.GetComponent<Renderer>().material = mat;
     }
 
+    //Can change the current song to any song
     public static void ChangeSong (AudioSource source, AudioClip clip)
     {
         source.Stop();

@@ -16,6 +16,8 @@ public class CameraController2 : MonoBehaviour {
         cameraOffset = transform.position - player.transform.position;
     }
 
+
+    //I dont remember 100% how this works, but it does work
     void FixedUpdate()
     {
         if (player.transform.localRotation.y > 90f)

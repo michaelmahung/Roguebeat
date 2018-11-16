@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable<float>, IKillable {
+public class Player : MonoBehaviour, IDamageable<float>, IKillable
+//Take on the damage and killable interfaces for the player
+{
 
     public float attackDamage = 10;
     public float attackSpeed = 1;
@@ -29,12 +31,8 @@ public class Player : MonoBehaviour, IDamageable<float>, IKillable {
         rb = GetComponent<Rigidbody>();
     }
 
-
-    //Contains logic for the player to move towards the mouse position as well as for the player to be able to move in a forward direction.
-
     void Update()
     {
-
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitDist = 0.0f;
@@ -49,30 +47,32 @@ public class Player : MonoBehaviour, IDamageable<float>, IKillable {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 7f * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        /*if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            //transform.position += new Vector3(0, 0, 1) * acceleration * Time.deltaTime;
+            transform.position += new Vector3(0, 0, 1) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            //transform.position += new Vector3(-1, 0, 0) * acceleration * Time.deltaTime;
+            transform.position += new Vector3(-1, 0, 0) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            //transform.position += new Vector3(1, 0, 0) * acceleration * Time.deltaTime;
+            transform.position += new Vector3(1, 0, 0) * acceleration * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            //transform.position += new Vector3(0, 0, -1) * acceleration * Time.deltaTime;
-        }
+            transform.position += new Vector3(0, 0, -1) * acceleration * Time.deltaTime;
+        }*/
        
     }
 
     private void FixedUpdate()
     {
+        //Physics based movement for the player, Rigidbody.AddForce moves the player regardless of their rotation.
+
         //Debug.Log(rb.velocity.magnitude);
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -97,6 +97,8 @@ public class Player : MonoBehaviour, IDamageable<float>, IKillable {
 
         if (rb.velocity.magnitude > topSpeed)
         {
+            //rb.velocity.magnitude is the current speed of the player
+            //All this does is say, "If the player is moving past my topspeed, slow it down".
             rb.velocity = rb.velocity.normalized * topSpeed; 
         }
     }

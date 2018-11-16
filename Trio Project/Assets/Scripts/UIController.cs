@@ -10,12 +10,14 @@ public class UIController : MonoBehaviour {
 
 	void Start ()
     {
+        //Set the pause screen to be false just in case
         pauseScreen.SetActive(false);
         debugText = GetComponentInChildren<Text>();
 	}
 	
 	void Update ()
     {
+        //Set debug text here: \n will create a new line.
         debugText.text =  "Left Click to Fire \n";
         debugText.text += "Current Song: " + GameManager.Instance.currentSong.name + "\n";
         debugText.text += "Use 'W' and Mouse to move \nPress '1' to change colors \nPress '2' to change songs\n";

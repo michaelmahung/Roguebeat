@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Light))]
 public class LightIntensity : MonoBehaviour {
 
+
+    //This is an old script and can probably be safely deleted.
+
     Light pulseLight;
     float intensityChange = 0.05f;
 
