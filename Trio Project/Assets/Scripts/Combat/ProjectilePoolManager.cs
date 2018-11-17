@@ -39,14 +39,19 @@ public class ProjectilePoolManager : MonoBehaviour
     //Need to change this so projectile will only be loaded in once a weapon is equipped
     void Start()
     {
+        Debug.Log("Creating Dictionary...");
         //Initialize our dictionary.
         projectileDictionary = new Dictionary<string, Queue<GameObject>>();
+        Debug.Log("Dictionary Created");
 
+        Debug.Log("Attempting to create weapon queues");
         foreach (ProjectilePool uniqueProjectile in ProjectileTypes) //For every unique projectile type in the lsit of projectile types...
         {
+            Debug.Log("Generating Queues...");
             Queue<GameObject> objectPool = new Queue<GameObject>(); //We need to create a queue of gameobjects that the prefabs will cycle through.
             GameObject parent = new GameObject(uniqueProjectile.tag + " Holder"); //To make the inspector cleaner, we'll make an empty gameobject to hold all the spawned prefabs.
 
+            Debug.Log("Instantiating and parenting prefabs...");
             for (int i = 0; i < uniqueProjectile.size; i++) //For the total amount of projectiles to be spawned (set in the BaseWeapon class).
             {
                 GameObject obj = Instantiate(uniqueProjectile.prefab); //Instantiate an instance of the projectile prefab.
@@ -61,6 +66,7 @@ public class ProjectilePoolManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("Adding " + uniqueProjectile.tag + " to dictionary.");
                 projectileDictionary.Add(uniqueProjectile.tag, objectPool); //Otherwise, add the unique projectile to the projectile dictionary.
             }
         }
@@ -68,6 +74,7 @@ public class ProjectilePoolManager : MonoBehaviour
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) //Function to "spawn" the prefab from the queue.
     {
+        //Debug.Log("Searching dictionary for key: " + tag);
         if(!projectileDictionary.ContainsKey(tag)) //If the projectile dictionary doesnt have the tag we request.
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist."); //Dont do this to me
@@ -76,7 +83,7 @@ public class ProjectilePoolManager : MonoBehaviour
 
         GameObject objectToSpawn = projectileDictionary[tag].Dequeue(); //The object we want to spawn is found by comparing the tag attached to the unique projectile.
 
-
+        //Debug.Log("Setting " + tag + " to be spawned");
         objectToSpawn.SetActive(true); //Activate the object.
         objectToSpawn.transform.position = position; //Set the object position to the one we set when calling the function.
         objectToSpawn.transform.rotation = rotation; //Set the objects rotation to the one we set when calling the function.

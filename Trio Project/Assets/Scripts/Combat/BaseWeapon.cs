@@ -43,7 +43,7 @@ public abstract class BaseWeapon: MonoBehaviour
 
 
     //By making Start(), Update(), and Fire() virtual, the children of this object will have the option of overriding the respective functions. 
-    public virtual void Start()
+    public virtual void Awake()
     {
         //projectileSpawnLocations = player.fireLocations;
         audioSource = GetComponent<AudioSource>();
@@ -51,10 +51,19 @@ public abstract class BaseWeapon: MonoBehaviour
         projectileKey.prefab = projectile;
         projectileKey.size = projectileSpawnAmount;
         projectileKey.tag = projectileName;
-        ProjectilePoolManager.Instance.ProjectileTypes.Add(projectileKey);
+        try
+        {
+            Debug.Log("Feeding " + projectileName + " information to ProjectilePoolManager");
+            ProjectilePoolManager.Instance.ProjectileTypes.Add(projectileKey);
+        }
+        catch
+        {
+            Debug.LogWarning("No ProjectilePoolManager found in scene, please add one.");
+        }
+
     }
 
-    public virtual void Awake()
+    public virtual void Start()
     {
 
     }
