@@ -40,7 +40,7 @@ public class Beat : MonoBehaviour {
                 sCube[i].transform.localScale = new Vector3(10, (AudioTracker._samples[i] * maxScale) + 2, 10);
             }
         }*/
-        for (int i = 0; i<512; i++)
+        for (int i = 0; i<eShots.Length; i++)
         {
             if(eShots!= null)
             {

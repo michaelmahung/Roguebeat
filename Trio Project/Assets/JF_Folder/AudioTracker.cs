@@ -104,6 +104,7 @@ public class AudioTracker : MonoBehaviour {
         {
             songList.Add(s2);
             twoAdded = true;
+           
         }
         if (song3 == true && threeAdded)
         {
