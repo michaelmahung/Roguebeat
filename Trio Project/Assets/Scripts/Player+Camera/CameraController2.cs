@@ -13,13 +13,24 @@ public class CameraController2 : MonoBehaviour {
 
     void Start()
     {
-        cameraOffset = transform.position - player.transform.position;
+        try
+        {
+            //Attempt to find a gameobject tagged as the player.
+            player = GameObject.FindGameObjectWithTag("Player");
+            cameraOffset = transform.position - player.transform.position;
+        }
+        catch
+        {
+            //If there is no gameobject found with the tag, throw an error.
+            Debug.LogError("No GameObject tagged 'Player' found, please assign one");
+        }
     }
 
 
     //I dont remember 100% how this works, but it does work
     void FixedUpdate()
     {
+        //Stuff and things.
         if (player.transform.localRotation.y > 90f)
         {
             targetPosition = (player.transform.position + (player.transform.forward * followAhead)) + cameraOffset;

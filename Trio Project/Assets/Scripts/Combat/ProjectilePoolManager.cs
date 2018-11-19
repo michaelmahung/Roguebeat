@@ -18,13 +18,15 @@ public class ProjectilePoolManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        projectileDictionary = new Dictionary<string, Queue<GameObject>>();
     }
 
 
     [System.Serializable]
-    public class ProjectilePool
+    public class ProjectileVariables
     {
         //We will create a ProjectilePool class that will always contain descriptive variables.
+        //We will use these variables to create unique projectile types from our BaseWeapon class.
         public string tag;
         public GameObject prefab;
         public int size;
@@ -32,45 +34,41 @@ public class ProjectilePoolManager : MonoBehaviour
 
     [SerializeField]
     //Next we will create a list of those pools for the purpose of keeping track of individual projectile types.
-    public List<ProjectilePool> ProjectileTypes;
+    public List<ProjectileVariables> ProjectileTypes;
 
 
-
-    //Need to change this so projectile will only be loaded in once a weapon is equipped
-    void Start()
+    //New function will take in variables to create ProjectileVariables later storage
+    //One benefit of this function is that new projectiles can be stores when theyre activated instead of when the game starts.
+    //Will reduce overhead if certain weapons are never used.
+    public void AddProjectileToDictionary(string _tag, GameObject _prefab, int _size)
     {
-        Debug.Log("Creating Dictionary...");
-        //Initialize our dictionary.
-        projectileDictionary = new Dictionary<string, Queue<GameObject>>();
-        Debug.Log("Dictionary Created");
+        ProjectileVariables uniqueProjectile = new ProjectileVariables();
+        uniqueProjectile.tag = _tag;
+        uniqueProjectile.prefab = _prefab;
+        uniqueProjectile.size = _size;
 
-        Debug.Log("Attempting to create weapon queues");
-        foreach (ProjectilePool uniqueProjectile in ProjectileTypes) //For every unique projectile type in the lsit of projectile types...
+        Queue<GameObject> objectPool = new Queue<GameObject>(); //We need to create a queue of gameobjects that the prefabs will cycle through.
+        GameObject parent = new GameObject(uniqueProjectile.tag + " Holder"); //To make the inspector cleaner, we'll make an empty gameobject to hold all the spawned prefabs.
+
+        for (int i = 0; i < uniqueProjectile.size; i++) //For the total amount of projectiles to be spawned (set in the BaseWeapon class).
         {
-            Debug.Log("Generating Queues...");
-            Queue<GameObject> objectPool = new Queue<GameObject>(); //We need to create a queue of gameobjects that the prefabs will cycle through.
-            GameObject parent = new GameObject(uniqueProjectile.tag + " Holder"); //To make the inspector cleaner, we'll make an empty gameobject to hold all the spawned prefabs.
-
-            Debug.Log("Instantiating and parenting prefabs...");
-            for (int i = 0; i < uniqueProjectile.size; i++) //For the total amount of projectiles to be spawned (set in the BaseWeapon class).
-            {
-                GameObject obj = Instantiate(uniqueProjectile.prefab); //Instantiate an instance of the projectile prefab.
-                obj.SetActive(false); //Set the projectile prefab to be inactive in the scene.
-                obj.transform.parent = parent.transform; //Make the prefab a child of our empty parent gameobject.
-                objectPool.Enqueue(obj); //Add the new prefab to the queue.
-            }
-            if (projectileDictionary.ContainsKey(uniqueProjectile.tag)) //If there is already an existing key (name) for a unique projectile.
-            {
-                Debug.LogError("Duplicate Projectile Name: Check WeaponTest - Projectile Name"); //Dont do this to me
-                return;
-            }
-            else
-            {
-                Debug.Log("Adding " + uniqueProjectile.tag + " to dictionary.");
-                projectileDictionary.Add(uniqueProjectile.tag, objectPool); //Otherwise, add the unique projectile to the projectile dictionary.
-            }
+            GameObject obj = Instantiate(uniqueProjectile.prefab); //Instantiate an instance of the projectile prefab.
+            obj.SetActive(false); //Set the projectile prefab to be inactive in the scene.
+            obj.transform.parent = parent.transform; //Make the prefab a child of our empty parent gameobject.
+            objectPool.Enqueue(obj); //Add the new prefab to the queue.
+        }
+        if (projectileDictionary.ContainsKey(uniqueProjectile.tag)) //If there is already an existing key (name) for a unique projectile.
+        {
+            Debug.LogError("Duplicate Projectile Name: Check WeaponTest - Projectile Name"); //Dont do this to me
+            return;
+        }
+        else
+        {
+            //Debug.Log("Adding " + uniqueProjectile.tag + " to dictionary.");
+            projectileDictionary.Add(uniqueProjectile.tag, objectPool); //Otherwise, add the unique projectile to the projectile dictionary.
         }
     }
+
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) //Function to "spawn" the prefab from the queue.
     {

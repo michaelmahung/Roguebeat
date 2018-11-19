@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     //This will become a singleton that will hold all logic and variables for the game.
@@ -15,11 +16,14 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
+            if (_instance == null) //If there is no prexisting gamemanager in the scene
             {
-                Debug.Log("Creating GameManager Instance");
+                //Create a gamemanager and add base components to it. Doing this will allow for minimal gameplay with little effort.
+                Debug.Log("No GameManager Instance Found, Creating Temporary GameManager Instance");
+                Debug.LogError("CREATING A GAMEMANAGER FROM SCRATCH WILL CAUSE ERRORS, PLEASE ONLY USE FOR TESTING!");
                 GameObject gm = new GameObject("GameManager");
                 gm.AddComponent<GameManager>();
+                gm.AddComponent<AudioPeer>();
             }
             return _instance;
         }
@@ -36,11 +40,6 @@ public class GameManager : MonoBehaviour
     public AudioClip currentSong;
     [Tooltip("The audio player we want to manipulate")]
     public AudioSource audioPlayer;
-    [Header("Weapons")]
-    [Tooltip("Array of usable weapons")]
-    public GameObject[] allWeapons;
-    [Tooltip("The players current weapon")]
-    public GameObject currentWeapon;
     [Header("Housekeeping")]
     [Tooltip("The current level score")]
     public float levelScore;
@@ -48,6 +47,7 @@ public class GameManager : MonoBehaviour
     public float musicMultipier;
     [Tooltip("The enemy base multiplier")]
     public float enemyBaseMultiplier;
+    public bool gamePaused;
     [Header("High Score List")]
     [Tooltip("A list of high scores")]
     public List<float> highScores = new List<float>();
@@ -55,19 +55,29 @@ public class GameManager : MonoBehaviour
     [Tooltip("An array of materials that can be picked from")]
     public Material [] playerMaterials;
     private GameObject player;
-    private int weaponValue;
     private int matValue;
     private int songValue;
-    public bool gamePaused;
     [Header("Global Script References")]
     [Tooltip("Insert Reference to UIController Script")]
     public UIController UI;
 
     private void Awake()
     {
-        player = GameObject.Find("Player");
-        _instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        _instance = this; //Make sure that this is the only active instance of the gamemanager
+        playerMaterials = Resources.LoadAll<Material>("Materials"); //Load materials form our folder
+        allPlayableSongs = Resources.LoadAll<AudioClip>("Music"); //Load audioclips from our folder
+        player = GameObject.FindGameObjectWithTag("Player"); //Assign the gameobject based on the player tag
+        DontDestroyOnLoad(this.gameObject); //Keep this object between scenes
+
+        if (audioPlayer == null) //If there is no assigned to this gamemanager
+        {
+            audioPlayer = GetComponent<AudioSource>(); //Use the audiosource created by this gamemanager
+            audioPlayer.clip = allPlayableSongs[0]; //Set the current clip to the first one loaded
+            audioPlayer.loop = true; //Make sure we are looping tracks
+            audioPlayer.Play(); //And play it
+        }
+
+        currentSong = audioPlayer.clip; //Set the current song to the one attached to the audioPlayer
 
         if (PlayerPrefs.HasKey("HighScores"))
         {
@@ -77,13 +87,27 @@ public class GameManager : MonoBehaviour
 
     void Start ()
     {
-        allWeapons = Resources.LoadAll<GameObject>("Weapons");
-        playerMaterials = Resources.LoadAll<Material>("Materials");
-        allPlayableSongs = Resources.LoadAll<AudioClip>("Music");
-        currentWeapon = allWeapons[0];
+        if (WeaponSwitching.Instance == null) //If there is no weaponswitching instance found
+        {
+            //Throw a warning
+            Debug.LogWarning("Could not find an instance of WeaponSwitching class on the Player's WeaponHolder, adding one...");
+            try
+            {
+                //Check if there is a weaponHolder in the scene
+                GameObject weaponHolder = GameObject.Find("WeaponHolder");
+                //If there is, add a weaponswitching component to it
+                weaponHolder.AddComponent<WeaponSwitching>();
+            }
+            catch
+            {
+                //If no weaponholder is found in the scene, throw an error
+                Debug.LogError("Could not find a WeaponHolder gameobject, please make sure a player ---> WeaponHolder is in the scene.");
+            }
+
+        }
+
         songValue = 0;
         matValue = 0;
-        currentSong = audioPlayer.clip;
     }
 
 	void Update ()
@@ -115,23 +139,6 @@ public class GameManager : MonoBehaviour
             currentSong = audioPlayer.clip;
         }
 
-        //When "3" is pressed, equip the next weapon in the weapon array.
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                if (weaponValue < allWeapons.Length - 1)
-                {
-                    weaponValue++;
-                }
-                else
-                {
-                    weaponValue = 0;
-                }
-                currentWeapon = allWeapons[weaponValue];
-            }
-        }
-
         //When "P" is pressed, pause the game.
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -140,25 +147,38 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //Global Functions
+    //**Global Functions**
 
 
     //Pause the game
     public void PauseGame()
     {
-        if (!gamePaused)
+        //Attempt to pause the game
+        try
         {
-            gamePaused = true;
-            UI.pauseScreen.SetActive(true);
-            Time.timeScale = 0;
-            audioPlayer.GetComponent<AudioLowPassFilter>().enabled = true;
-        } else 
-        {
-            UI.pauseScreen.SetActive(false);
-            gamePaused = false;
-            Time.timeScale = 1;
-            audioPlayer.GetComponent<AudioLowPassFilter>().enabled = false;
+            if (!gamePaused) //f the game isnt already paused, pause it
+            {
+                gamePaused = true;
+                UI.pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+                audioPlayer.GetComponent<AudioLowPassFilter>().enabled = true; //Enable our low pass filter
+                //If no filter is attached, this will throw an error.
+            }
+            else
+            {   //If the game is already paused, do the opposite.
+                UI.pauseScreen.SetActive(false);
+                gamePaused = false;
+                Time.timeScale = 1;
+                audioPlayer.GetComponent<AudioLowPassFilter>().enabled = false;
+            }
         }
+        catch
+        {
+            //Pausing will not work without a full set GameManager, throw a warning.
+            gamePaused = false;
+            Debug.LogWarning("Cannot pause with a temporary GameManager.");
+        }
+
     }
 
     //Can change the material on any gameobject
