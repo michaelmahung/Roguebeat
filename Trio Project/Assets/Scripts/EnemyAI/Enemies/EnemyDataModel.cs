@@ -28,6 +28,16 @@ public float BoomerHP;
 	// Update is called once per frame
 	void Update ()
 	{
-		
 	}
-}
+
+	void OnCollisionEnter (Collision other)
+	{
+		if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Boomer") {
+			BoomerHP -= 2.0f;
+		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
+			TrooperHP -= 2.0f;
+		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
+			BruiserHP -= 2.0f;
+		}
+	}
+	}

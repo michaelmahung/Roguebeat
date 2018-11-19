@@ -131,6 +131,9 @@ MonoBehaviour:
   BombPrefab: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
   Hero: {fileID: 0}
   MoveSpeed: 5
+  TrooperHP: 10
+  BruiserHP: 16
+  BoomerHP: 20
   TrooperAttackSpeed: 1
   BruiserAttackSpeed: 3
   BoomerAttackSpeed: 1

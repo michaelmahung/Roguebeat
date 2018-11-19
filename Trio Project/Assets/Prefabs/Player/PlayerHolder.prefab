@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 23823991876151648}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1946044006186246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -0.010898615, y: 0.5, z: 0.04024366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4677534872460480}
@@ -1444,24 +1444,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114679470688726644}
-  weaponName: Base Weapon
-  projectileName: Base Projectile
-  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
-  fireRate: 0.1
-  damage: 1
-  projectileSpeed: 1
-  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
-  canFire: 1
-  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
-  projectileSpawnAmount: 200
   fireLocations:
   - {fileID: 1460699809084292}
   - {fileID: 1773847001200000}
   - {fileID: 1508894418329238}
-  projectileKey:
-    tag: 
-    prefab: {fileID: 0}
-    size: 0
+  weaponName: Base Weapon
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  damage: 1
+  fireRate: 0.1
+  swapTime: 0.5
+  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
+  projectileName: Base Projectile
+  projectileSpawnAmount: 200
+  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
+  projectileSpeed: 1
 --- !u!136 &136049863988417650
 CapsuleCollider:
   m_ObjectHideFlags: 1

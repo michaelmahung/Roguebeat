@@ -50,5 +50,15 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 			Instantiate (BombPrefab, transform.position, transform.rotation);
 			BoomerAttackSpeed = SetBoomerAttackSpeed;
 		}
+
+		if (BoomerHP <= 0) {
+		Destroy(gameObject);
+		}
+		if (TrooperHP <= 0) {
+		Destroy(gameObject);
+		}
+		if (BruiserHP <= 0) {
+		Destroy(gameObject);
+		}
 	}
 	}

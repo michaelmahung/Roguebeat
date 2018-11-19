@@ -128,8 +128,12 @@ MonoBehaviour:
     type: 2}
   EnemyShotgun2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46,
     type: 2}
+  BombPrefab: {fileID: 0}
   Hero: {fileID: 0}
   MoveSpeed: 5
+  TrooperHP: 10
+  BruiserHP: 16
+  BoomerHP: 20
   TrooperAttackSpeed: 1
   BruiserAttackSpeed: 3
   BoomerAttackSpeed: 6

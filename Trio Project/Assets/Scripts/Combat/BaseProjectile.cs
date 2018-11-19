@@ -6,6 +6,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
 {
     public float projectileSpeed;
     public float activeTime;
+    public bool HitEnemy;
+    public bool HitWall;
 
     public void OnObjectSpawn()
     {
@@ -24,4 +26,11 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
         //Set the gameobject to be deactive
         gameObject.SetActive(false);
     }
-}
+
+    void OnCollisionEnter (Collision other)
+	{
+	if (other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Wall"){
+	gameObject.SetActive(false);
+	}
+	}
+	}
