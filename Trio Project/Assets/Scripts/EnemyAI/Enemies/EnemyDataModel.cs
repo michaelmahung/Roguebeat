@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class EnemyDataModel : MonoBehaviour {
 
-
-public GameObject EnemyBullet;
-public GameObject EnemyShotgun2;
-public GameObject BombPrefab;
-public Transform Hero;
-public float MoveSpeed = 5.0f;
-public float TrooperHP;
-public float BruiserHP;
-public float BoomerHP;
+public GameObject[] EnemyWeapons;
+protected GameObject EnemyShotgun2;
+protected GameObject BombPrefab;
+protected Transform Hero;
+protected float MoveSpeed = 5.0f;
+protected int TrooperHP = 10;
+protected int BruiserHP = 16;
+protected int BoomerHP = 20;
 
 
 
 	// Use this for initialization
 	void Start ()
 	{
-		EnemyBullet = GameObject.Find ("Enemy_Fire_1");
+	//EnemyWeapons = new GameObject[2];
+	EnemyWeapons = Resources.LoadAll ("/Prefabs/EnemyWeapons") as GameObject[];
 		EnemyShotgun2 = GameObject.Find ("Enemy_Fire_Shotgun");
 		BombPrefab = GameObject.Find ("Bomb_Shot");
 		
@@ -28,16 +28,6 @@ public float BoomerHP;
 	// Update is called once per frame
 	void Update ()
 	{
-	}
 
-	void OnCollisionEnter (Collision other)
-	{
-		if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Boomer") {
-			BoomerHP -= 2.0f;
-		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
-			TrooperHP -= 2.0f;
-		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
-			BruiserHP -= 2.0f;
-		}
 	}
 	}

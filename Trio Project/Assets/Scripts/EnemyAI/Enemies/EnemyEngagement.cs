@@ -41,13 +41,13 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 		BoomerAttackSpeed -= Time.deltaTime; // timer on Boomer attack speed
 
 		if (TrooperAttackSpeed <= 0 && gameObject.name == "Trooper") {
-			Instantiate (EnemyBullet, transform.position, transform.rotation);
+			Instantiate (EnemyWeapons[0], transform.position, transform.rotation);
 			TrooperAttackSpeed = SetTrooperAttackSpeed;
 		} else if (BruiserAttackSpeed <= 0 && gameObject.name == "Bruiser") {
-			Instantiate (EnemyShotgun2, transform.position, transform.rotation);
+			Instantiate (EnemyWeapons[1], transform.position, transform.rotation);
 			BruiserAttackSpeed = SetBruiserAttackSpeed;
 		} else if (BoomerAttackSpeed <= 0 && gameObject.name == "Boomer") {
-			Instantiate (BombPrefab, transform.position, transform.rotation);
+			Instantiate (EnemyWeapons[2], transform.position, transform.rotation);
 			BoomerAttackSpeed = SetBoomerAttackSpeed;
 		}
 
@@ -59,6 +59,17 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 		}
 		if (BruiserHP <= 0) {
 		Destroy(gameObject);
+		}
+	}
+
+	void OnCollisionEnter (Collision other)
+	{
+		if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Boomer") {
+			BoomerHP -= 2;
+		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
+			TrooperHP -= 2;
+		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
+			BruiserHP -= 2;
 		}
 	}
 	}

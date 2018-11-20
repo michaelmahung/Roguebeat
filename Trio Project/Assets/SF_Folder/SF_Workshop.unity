@@ -846,6 +846,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!1 &725947463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620403275424218, guid: e5df3f33ccf6ccc4780b2086114eeb1b,
+    type: 2}
+  m_PrefabInternal: {fileID: 850551640}
+--- !u!114 &725947465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725947463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592c5c60f12f2de47885142cc3a4dddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyWeapons:
+  - {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
+  - {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
+  - {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
+  TrooperAttackSpeed: 1
+  BruiserAttackSpeed: 3
+  BoomerAttackSpeed: 1
 --- !u!1 &746576277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1189,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114559746741180030, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &918646239
