@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour {
         debugText.text = "Left Click to Fire\n";
         debugText.text += "Current Song: " + GameManager.Instance.currentSong.name + "\n";
         debugText.text += "Press '1' to change colors \nPress '2' to change songs\nPress '3' to swap weapons\n";
+        debugText.text += "Tap 'Shift' to dash.\n";
         debugText.text += "Press 'P' to pause the game.";
 	}
 }
