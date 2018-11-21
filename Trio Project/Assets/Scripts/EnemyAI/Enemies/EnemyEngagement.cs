@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class EnemyEngagement : EnemyDataModel {
 
-[SerializeField]
-private float TrooperAttackSpeed = 1.0f; // Trooper initial and adjustable attack speed
+protected float TrooperAttackSpeed = 1.0f; // Trooper initial and adjustable attack speed
 
-[SerializeField]
-private float BruiserAttackSpeed = 3.0f; // Bruiser initial and adjustable attack speed
+protected float BruiserAttackSpeed = 3.0f; // Bruiser initial and adjustable attack speed
 
-[SerializeField]
-private float BoomerAttackSpeed = 1.0f; // Boomer initial and adjustable attack speed
+protected float BoomerAttackSpeed = 1.0f; // Boomer initial and adjustable attack speed
 
-private float SetTrooperAttackSpeed; // float to reset Trooper attack speed
-private float SetBruiserAttackSpeed; // float to reset Bruiser attack speed
-private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
+protected float SetTrooperAttackSpeed; // float to reset Trooper attack speed
+protected float SetBruiserAttackSpeed; // float to reset Bruiser attack speed
+protected float SetBoomerAttackSpeed; // float to reset Boomer attack speed
+
+	public Transform HeroPlayer;
 
 
 	// Use this for initialization
-	void Start () {
-
-		Hero = GameObject.FindGameObjectWithTag("Player").transform; // Locate player via tag to look at and chase
+	public void Start2 () {
+	base.Start();
+	Debug.Log("EnemyEngagement");
+		HeroPlayer = GameObject.FindGameObjectWithTag("Player").transform; // Locate player via tag to look at and chase
 		SetTrooperAttackSpeed = TrooperAttackSpeed; // assigns reset for Trooper as initial time
 		SetBruiserAttackSpeed = BruiserAttackSpeed; // assigns reset for Bruiser as initial time
 		SetBoomerAttackSpeed = BoomerAttackSpeed; // assigns reset for Boomer as initial time
+		print("Timely");
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.LookAt (Hero); // cause enemies to look at Player
+		transform.LookAt (Hero);
+	SeePlayer();
+		//transform.LookAt (Hero); // cause enemies to look at Player
 		if (gameObject.name != "Boomer") {
 			transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 			//Tells all enemies EXCEPT Boomer type to move forward, which should be facing Player
@@ -54,7 +57,7 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 		if (BoomerHP <= 0) {
 		Destroy(gameObject);
 		}
-		if (TrooperHP <= 0) {
+		if (EnemyHealth <= 0) {
 		Destroy(gameObject);
 		}
 		if (BruiserHP <= 0) {
@@ -66,10 +69,20 @@ private float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 	{
 		if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Boomer") {
 			BoomerHP -= 2;
-		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
+		} 
+		/*else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
 			TrooperHP -= 2;
-		} else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
+
+		} 
+		*/
+		else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
 			BruiserHP -= 2;
 		}
 	}
+
+	public void SeePlayer ()
+	{
+		transform.LookAt (HeroPlayer); // cause enemies to look at Player
 	}
+}
+
