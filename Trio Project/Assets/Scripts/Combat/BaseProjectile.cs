@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPooledObject interface because it contains logic for when an object is activated from the object pool.
 {
+    public float projectileDamage;
     public float projectileSpeed;
     public float activeTime;
     public bool HitEnemy;
@@ -29,8 +30,9 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
 
     void OnCollisionEnter (Collision other)
 	{
-	if (other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Wall"){
-	gameObject.SetActive(false);
+	    if (other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Wall")
+        {
+	        gameObject.SetActive(false);
+	    }
 	}
-	}
-	}
+}

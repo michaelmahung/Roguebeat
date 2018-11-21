@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Use space here to declare variables.
-    //public enum Weapons {Laser, Blaster, MerryGoRound, Hammer, Flamethrower, Last };
+    //Tooltips and Headers make my eyes bleed to look at but will be helpful in th editor
     [Tooltip("Is the player dead?")]
     public bool isDead;
     [Header("Global Audio Information")]
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public float musicMultipier;
     [Tooltip("The enemy base multiplier")]
     public float enemyBaseMultiplier;
+    [Tooltip("Is the game paused or not?")]
     public bool gamePaused;
     [Header("High Score List")]
     [Tooltip("A list of high scores")]
@@ -54,18 +55,21 @@ public class GameManager : MonoBehaviour
     [Header("Materials Array")]
     [Tooltip("An array of materials that can be picked from")]
     public Material [] playerMaterials;
-    private GameObject player;
-    private int matValue;
-    private int songValue;
     [Header("Global Script References")]
     [Tooltip("Insert Reference to UIController Script")]
     public UIController UI;
+    private GameObject player;
+    private int matValue;
+    private int songValue;
+
 
     private void Awake()
     {
         _instance = this; //Make sure that this is the only active instance of the gamemanager
+
         playerMaterials = Resources.LoadAll<Material>("Materials"); //Load materials form our folder
         allPlayableSongs = Resources.LoadAll<AudioClip>("Music"); //Load audioclips from our folder
+
         player = GameObject.FindGameObjectWithTag("Player"); //Assign the gameobject based on the player tag
         DontDestroyOnLoad(this.gameObject); //Keep this object between scenes
 
@@ -174,21 +178,21 @@ public class GameManager : MonoBehaviour
         }
         catch
         {
-            //Pausing will not work without a full set GameManager, throw a warning.
+            //Pausing will not work without a fully set GameManager, throw a warning.
             gamePaused = false;
-            Debug.LogWarning("Cannot pause with a temporary GameManager.");
+            Debug.LogWarning("Add a reference to the UIController in the GameManager to pause.");
         }
 
     }
 
     //Can change the material on any gameobject
-    public static void ChangeMaterial(GameObject go, Material mat)
+    public void ChangeMaterial(GameObject go, Material mat)
     {
         go.GetComponent<Renderer>().material = mat;
     }
 
     //Can change the current song to any song
-    public static void ChangeSong (AudioSource source, AudioClip clip)
+    public void ChangeSong (AudioSource source, AudioClip clip)
     {
         source.Stop();
         source.clip = clip;
