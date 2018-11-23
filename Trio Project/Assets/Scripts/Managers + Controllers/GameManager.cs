@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     //Tooltips and Headers make my eyes bleed to look at but will be helpful in th editor
     [Tooltip("Is the player dead?")]
     public bool isDead;
+
     [Header("Global Audio Information")]
     [Tooltip("Array of songs that can be played")]
     public AudioClip[] allPlayableSongs;
@@ -40,38 +41,35 @@ public class GameManager : MonoBehaviour
     public AudioClip currentSong;
     [Tooltip("The audio player we want to manipulate")]
     public AudioSource audioPlayer;
+
     [Header("Housekeeping")]
-    [Tooltip("The current level score")]
-    public float levelScore;
-    [Tooltip("The current music multiplier")]
-    public float musicMultipier;
-    [Tooltip("The enemy base multiplier")]
-    public float enemyBaseMultiplier;
     [Tooltip("Is the game paused or not?")]
     public bool gamePaused;
+
     [Header("High Score List")]
     [Tooltip("A list of high scores")]
     public List<float> highScores = new List<float>();
-    [Header("Materials Array")]
-    [Tooltip("An array of materials that can be picked from")]
-    public Material [] playerMaterials;
+
     [Header("Global Script References")]
     [Tooltip("Insert Reference to UIController Script")]
     public UIController UI;
-    private GameObject player;
-    private int matValue;
-    private int songValue;
+    public GameObject player;
+
+    private Material[] playerMaterials;
+    Renderer playerRenderer;
+    int matValue;
+    int songValue;
 
 
     private void Awake()
     {
         _instance = this; //Make sure that this is the only active instance of the gamemanager
 
-        playerMaterials = Resources.LoadAll<Material>("Materials"); //Load materials form our folder
+        playerMaterials = Resources.LoadAll<Material>("Materials"); //Load materials from our folder
         allPlayableSongs = Resources.LoadAll<AudioClip>("Music"); //Load audioclips from our folder
 
         player = GameObject.FindGameObjectWithTag("Player"); //Assign the gameobject based on the player tag
-        DontDestroyOnLoad(this.gameObject); //Keep this object between scenes
+        DontDestroyOnLoad(gameObject); //Keep this object between scenes
 
         if (audioPlayer == null) //If there is no assigned to this gamemanager
         {
@@ -94,7 +92,7 @@ public class GameManager : MonoBehaviour
         if (WeaponSwitching.Instance == null) //If there is no weaponswitching instance found
         {
             //Throw a warning
-            Debug.LogWarning("Could not find an instance of WeaponSwitching class on the Player's WeaponHolder, adding one...");
+            //Debug.LogWarning("Could not find an instance of WeaponSwitching class on the Player's WeaponHolder, adding one...");
             try
             {
                 //Check if there is a weaponHolder in the scene
@@ -110,6 +108,7 @@ public class GameManager : MonoBehaviour
 
         }
 
+        playerRenderer = player.GetComponentInChildren<Renderer>();
         songValue = 0;
         matValue = 0;
     }
@@ -126,7 +125,7 @@ public class GameManager : MonoBehaviour
             {
                 matValue = 0;
             }
-            ChangeMaterial(player, playerMaterials[matValue]);
+            ChangeMaterial(playerRenderer, playerMaterials[matValue]);
         }
 
         //When "2" is pressed, play the next song in the song array.
@@ -141,6 +140,8 @@ public class GameManager : MonoBehaviour
             }
             ChangeSong(audioPlayer, allPlayableSongs[songValue]);
             currentSong = audioPlayer.clip;
+            IChangeSong changeSong = UI.GetComponent<IChangeSong>();
+            changeSong.SongChanged();
         }
 
         //When "P" is pressed, pause the game.
@@ -186,9 +187,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Can change the material on any gameobject
-    public void ChangeMaterial(GameObject go, Material mat)
+    public void ChangeMaterial(Renderer renderer, Material mat)
     {
-        go.GetComponent<Renderer>().material = mat;
+        renderer.material = mat;
     }
 
     //Can change the current song to any song
