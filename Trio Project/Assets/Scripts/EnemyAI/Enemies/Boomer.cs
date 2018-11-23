@@ -9,13 +9,13 @@ public class Boomer : EnemyEngagement {
 	base.Start2();
 	MoveSpeed = 3.0f;
 	EnemyHealth = 25.0f;
-		
+	EnemyAttackSpeed = 2.0f;
+	WeaponValue = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	SeePlayer();
-		
 	}
 
 	private void FixedUpdate(){
