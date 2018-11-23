@@ -1554,8 +1554,8 @@ MonoBehaviour:
   swapTime: 0.5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 50
+  projectileSpeed: 30
   fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
-  projectileSpeed: 25
 --- !u!114 &114354427017110496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1573,8 +1573,8 @@ MonoBehaviour:
   swapTime: 0.5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 20
-  fireSound: {fileID: 0}
-  projectileSpeed: 20
+  projectileSpeed: 30
+  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
 --- !u!114 &114593336638435324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1623,8 +1623,8 @@ MonoBehaviour:
   swapTime: 0.5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 10
+  projectileSpeed: 30
   fireSound: {fileID: 8300000, guid: fa55d44d82698224eb75dc4c857014ad, type: 3}
-  projectileSpeed: 80
 --- !u!114 &114975826414820422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1642,5 +1642,5 @@ MonoBehaviour:
   swapTime: 0.5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 150
-  fireSound: {fileID: 0}
   projectileSpeed: 30
+  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Use space here to declare variables.
-    //Tooltips and Headers make my eyes bleed to look at but will be helpful in th editor
+    //Tooltips and Headers make my eyes bleed to look at but will be helpful in the editor
     [Tooltip("Is the player dead?")]
     public bool isDead;
 

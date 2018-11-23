@@ -15,12 +15,10 @@ public abstract class BaseWeapon: MonoBehaviour
     protected string weaponName;
 
     [Header("Weapon Information")]
-    [Tooltip("The icon associated with this weapon")]
+
     public Texture2D icon;
-    [Tooltip("How much damage this weapon will deal")]
     [Range(0.1f, 10)]
     public float weaponDamage = 1;
-    [Tooltip("How often this weapon can fire")]
     [Range(0.05f, 3)]
     public float fireRate = 0.5f;
     [Tooltip("How long you have to wait after switching to this weapon to fire")]
@@ -28,19 +26,16 @@ public abstract class BaseWeapon: MonoBehaviour
     public float swapTime = 0.5f;
 
     [Header("Projectile Information")]
-    [Tooltip("The projectile to be fired")]
+
     public GameObject projectile;
-    [Tooltip("Name of the weapon projectile, this does not need to be configured \n ***WILL THROW AN ERROR IF THERE ARE DUPLICATE NAMES***")]
-    protected string projectileName;
     [Tooltip("How many of this projectile should be spawned into it's respectile object pool")]
     [Range(5, 200)]
     public int projectileSpawnAmount = 50;
-    [Tooltip("The sound the projectile makes when firing")]
+    [Range(1, 100)]
+    public int projectileSpeed = 30;
     public AudioClip fireSound;
-    [Tooltip("The speed at which this weapon's projectile(s) will move")]
-    [Range(1, 150)]
-    public float projectileSpeed = 30;
 
+    string projectileName;
     bool canFire = true;
     AudioSource audioSource;
 

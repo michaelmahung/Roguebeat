@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is messy and needs to be restructured, works for now though.
+/// </summary>
+
 public class ProjectilePoolManager : MonoBehaviour
 {
     //Object pooling courtesy of brackeys.
