@@ -9,17 +9,16 @@ public class Bruiser : EnemyEngagement {
 	base.Start2();
 	MoveSpeed = 7.0f;
 	EnemyHealth = 15.0f;
-		
+	EnemyAttackSpeed = 3.0f;
+	WeaponValue = 2;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	SeePlayer();
-		
 	}
 
 	private void FixedUpdate(){
 		ChasePlayer();
-
 	}
 }
