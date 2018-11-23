@@ -512,14 +512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec885d82d5fd40518d030655e83decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireLocations: []
-  weaponName: Shotgun
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
-  weaponDamage: 1
+  weaponDamage: 1.2
   fireRate: 1
   swapTime: 0.5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
-  projectileName: 
   projectileSpawnAmount: 50
-  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
   projectileSpeed: 1
+  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}

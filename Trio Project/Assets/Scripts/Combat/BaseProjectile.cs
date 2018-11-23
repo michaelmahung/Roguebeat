@@ -28,18 +28,23 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
         gameObject.SetActive(false);
     }
 
-    void OnCollisionEnter (Collision other)
+    void OnTriggerEnter (Collider other)
 	{
+
+        //Debug.Log(other.gameObject.name);
+
 		if (other.gameObject.tag == "Enemy") 
         {
             Debug.LogFormat("Hit {0} for {1} damage.", other.gameObject.name, projectileDamage);
             try
             {
-                other.gameObject.GetComponent<EnemyDataModel>().Damage(projectileDamage);
+                IDamageable<float> enemyHit = other.gameObject.GetComponent<IDamageable<float>>();
+                enemyHit.Damage(projectileDamage);
+                //other.gameObject.GetComponent<EnemyDataModel>().Damage(projectileDamage);
             }
             catch
             {
-                Debug.LogError("Object tagged enemy does not have EnemyDataModel attached to it");
+                Debug.LogError("Object tagged enemy does not have IDamageable interface attached.");
             }
             Deactivate();
 		}

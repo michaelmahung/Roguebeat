@@ -86,14 +86,14 @@ public class ProjectilePoolManager : MonoBehaviour
         GameObject objectToSpawn = projectileDictionary[tag].Dequeue(); //The object we want to spawn is found by comparing the tag attached to the unique projectile.
 
         BaseProjectile baseProjectile = objectToSpawn.GetComponent<BaseProjectile>();
-        BaseProjectile baseChild = baseProjectile.GetComponentInChildren<BaseProjectile>();
+        //BaseProjectile baseChild = baseProjectile.GetComponentInChildren<BaseProjectile>();
 
         if (baseProjectile != null)
         {
             baseProjectile.projectileDamage = damage;
             baseProjectile.projectileSpeed = speed;
-            baseChild.projectileDamage = damage;
-            baseChild.projectileSpeed = speed;
+            //baseChild.projectileDamage = damage;
+            //baseChild.projectileSpeed = speed;
         }else
         {
             Debug.LogError("BaseProjectile class not found on projectile");
