@@ -17,10 +17,5 @@ public class WeaponTest : BaseWeapon
     {
         //We also need to create a function for the abstract ShootWeapon function, so we do that here.
         //The logic says that for every location assigned to fire projectiles from, grab a projectile from the pool and fire it.
-        for (int i = 0; i < fireLocations.Count; i++)
-        {
-            //player.transform.rotation
-            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation);
-        }
     }
 }

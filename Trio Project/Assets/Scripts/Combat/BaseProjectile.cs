@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPooledObject interface because it contains logic for when an object is activated from the object pool.
 {
+    public float projectileDamage;
     public float projectileSpeed;
     public float activeTime;
     public bool HitEnemy;
     public bool HitWall;
-    public Trooper enemydamage;
 
     public void OnObjectSpawn()
     {
@@ -30,14 +30,22 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
 
     void OnCollisionEnter (Collision other)
 	{
-
-		if (other.gameObject.tag == "Enemy") {
-		print ("Hitting enemy");
-		other.gameObject.GetComponent<EnemyDataModel>().Damage(5.0f);
-			gameObject.SetActive (false);
+		if (other.gameObject.tag == "Enemy") 
+        {
+            Debug.LogFormat("Hit {0} for {1} damage.", other.gameObject.name, projectileDamage);
+            try
+            {
+                other.gameObject.GetComponent<EnemyDataModel>().Damage(projectileDamage);
+            }
+            catch
+            {
+                Debug.LogError("Object tagged enemy does not have EnemyDataModel attached to it");
+            }
+            Deactivate();
 		}
-		else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall") {
-			gameObject.SetActive (false);
+		else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall") 
+        {
+            Deactivate();
 		}
 	}
 }

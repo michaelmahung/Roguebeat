@@ -5,18 +5,32 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable<float>, IKillable
 //Take on the damage and killable interfaces for the player
 {
-
-    public float attackDamage = 10;
-    public float attackSpeed = 1;
     [Range(5, 100)]
     public float acceleration = 20;
-    public float currentHealth = 10;
-    public float maxHealth = 10;
+
     [Range(5, 50)]
     public float topSpeed = 20;
+
+    private float _currentHealth;
+    public float currentHealth
+    {
+        get
+        {
+            return _currentHealth;
+        }
+
+        set
+        {
+            _currentHealth = value;
+        }
+    }
+    public float maxHealth = 10;
+
     [Range(1, 15)]
     public int maxDashDistance = 5;
-    private int dashDistance;
+    public GameObject playerWeapon;
+    public int dashDistance;
+
     private Rigidbody rb;
     private Vector3
     dashDirection,
@@ -25,16 +39,21 @@ public class Player : MonoBehaviour, IDamageable<float>, IKillable
     East = new Vector3(1, 0, 0),
     West = new Vector3 (-1, 0, 0);
 
-    public void Kill()
-    {
-        //Since the player uses the killable interface, we need to assign a kill function
-        Destroy(gameObject);
-    }
 
     public void Damage(float damage)
     {
         //Since the player uses the damageable interface, we need to assign a damage function
         currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        //Since the player uses the killable interface, we need to assign a kill function
+        Destroy(gameObject);
     }
 
     void Start()
@@ -44,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable<float>, IKillable
         {
             Debug.LogWarning("Player will have limited functionality without a GameManager script in the scene.");
         }
+
         rb = GetComponent<Rigidbody>();
     }
 

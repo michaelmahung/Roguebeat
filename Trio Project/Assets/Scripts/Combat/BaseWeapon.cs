@@ -8,46 +8,68 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public abstract class BaseWeapon: MonoBehaviour
 {
-    [Header("Player Reference")]
-    [Tooltip("Reference to the Player")]
-    public Player player;
-    [Tooltip("Where the weapon can fire projectiles from. By default, each weapon is set to fire from all locations simultaneously")]
-    public List<GameObject> fireLocations = new List<GameObject>();
+    protected Player player;
+
+    protected List<GameObject> fireLocations = new List<GameObject>();
+
+    protected string weaponName;
+
     [Header("Weapon Information")]
-    [Tooltip("Name of the weapon")]
-    public string weaponName = "Base Weapon";
     [Tooltip("The icon associated with this weapon")]
     public Texture2D icon;
     [Tooltip("How much damage this weapon will deal")]
-    public float damage = 1;
+    [Range(0.1f, 10)]
+    public float weaponDamage = 1;
     [Tooltip("How often this weapon can fire")]
-    [Range(0, 3)]
+    [Range(0.05f, 3)]
     public float fireRate = 0.5f;
     [Tooltip("How long you have to wait after switching to this weapon to fire")]
-    [Range(0, 1)]
+    [Range(0.01f, 1)]
     public float swapTime = 0.5f;
+
     [Header("Projectile Information")]
     [Tooltip("The projectile to be fired")]
     public GameObject projectile;
     [Tooltip("Name of the weapon projectile, this does not need to be configured \n ***WILL THROW AN ERROR IF THERE ARE DUPLICATE NAMES***")]
-    public string projectileName;
+    protected string projectileName;
     [Tooltip("How many of this projectile should be spawned into it's respectile object pool")]
-    [Range(20, 300)]
-    public int projectileSpawnAmount = 100;
+    [Range(5, 200)]
+    public int projectileSpawnAmount = 50;
     [Tooltip("The sound the projectile makes when firing")]
     public AudioClip fireSound;
     [Tooltip("The speed at which this weapon's projectile(s) will move")]
-    [Range(10, 75)]
-    public float projectileSpeed = 1;
-    private bool canFire = true;
-    private AudioSource audioSource;
+    [Range(1, 150)]
+    public float projectileSpeed = 30;
+
+    bool canFire = true;
+    AudioSource audioSource;
 
 
     //By making Start(), Update(), and Fire() virtual, the children of this object will have the option of overriding the respective functions. 
     public virtual void Awake()
     {
+        weaponName = gameObject.name;
         audioSource = GetComponent<AudioSource>(); //Get the attached AudioSource
+        audioSource.volume = 0.20f;
         projectileName = weaponName + " Projectile"; //Just adds projetile to the end of the weapon name
+
+        if (icon == null)
+        {
+            icon = Resources.Load<Texture2D>("Icons/DefaultIcon");
+        }
+
+        if (fireSound == null)
+        {
+            fireSound = Resources.Load<AudioClip>("ProjectileSounds/DefaultSound");
+        }
+
+        foreach (Transform firelocation in transform)
+        {
+            if (firelocation.name.Contains("FireLocation"))
+            {
+                fireLocations.Add(firelocation.gameObject);
+            }
+        }
     }
 
     public virtual void Start()
@@ -66,7 +88,7 @@ public abstract class BaseWeapon: MonoBehaviour
         catch
         {
             //If the ProjectilePoolManager isn't found, create an empty game object and attach one to it.
-            Debug.LogWarning("No ProjectilePoolManager found in scene, Creating one now...");
+            //Debug.LogWarning("No ProjectilePoolManager found in scene, Creating one now...");
             if (ProjectilePoolManager.Instance == null)
             {
                 GameObject go = new GameObject("ProjectilePoolManager");
@@ -79,7 +101,10 @@ public abstract class BaseWeapon: MonoBehaviour
 
     public virtual void Update()
     {
-
+        if (Input.GetMouseButton(0))
+        {
+            Fire();
+        }
     }
 
     public virtual void Fire()
@@ -102,7 +127,13 @@ public abstract class BaseWeapon: MonoBehaviour
 
     //By making this function abstract, we ensure that every script that inherits from this base class will have to assign a unique shootweapon function.
     //If the function is not assigned, the script will throw an error and will not compile. 
-    public abstract void ShootWeapon();
+    public virtual void ShootWeapon()
+    {
+        for (int i = 0; i < fireLocations.Count; i++)
+        {
+            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed);
+        }
+    }
 
 
     //Coroutine that handles the weapon cooldown

@@ -7,14 +7,17 @@ public class WeaponSwitching : MonoBehaviour
     public int currentWeapon;
     public List<GameObject> weaponList = new List<GameObject>();
     bool weaponsAdded;
+    public Player player;
 
     public static WeaponSwitching Instance; //For the sake of error handling, well make an instance of this.
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Instance = this;
         SelectWeapon(); //Running this once at the beginning will deactive all but the first weapon.
         weaponsAdded = true; //The weapons have been added to the list.
+        UpdateWeapon();
     }
 
     // Update is called once per frame
@@ -31,11 +34,27 @@ public class WeaponSwitching : MonoBehaviour
             {
                 currentWeapon++; //Otherwise, increment the current weapon value by 1.
             }
+            UpdateWeapon();
         }
 
         if (previousWeapon != currentWeapon) //If we are actually switching to a new weapon
         {
             SelectWeapon(); //Do this
+        }
+    }
+
+    public void UpdateWeapon()
+    {
+        player.playerWeapon = weaponList[currentWeapon];
+
+        try
+        {
+            IWeaponSwap weaponSwap = GameManager.Instance.UI.GetComponent<IWeaponSwap>();
+            weaponSwap.WeaponSwapped();
+        }
+        catch
+        {
+            Debug.LogError("No UIController script found in scene");
         }
     }
 

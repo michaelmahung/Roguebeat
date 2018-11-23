@@ -70,7 +70,7 @@ public class ProjectilePoolManager : MonoBehaviour
     }
 
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation) //Function to "spawn" the prefab from the queue.
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, float damage, float speed) //Function to "spawn" the prefab from the queue.
     {
         //Debug.Log("Searching dictionary for key: " + tag);
         if(!projectileDictionary.ContainsKey(tag)) //If the projectile dictionary doesnt have the tag we request.
@@ -81,10 +81,23 @@ public class ProjectilePoolManager : MonoBehaviour
 
         GameObject objectToSpawn = projectileDictionary[tag].Dequeue(); //The object we want to spawn is found by comparing the tag attached to the unique projectile.
 
-        //Debug.Log("Setting " + tag + " to be spawned");
-        objectToSpawn.SetActive(true); //Activate the object.
+        BaseProjectile baseProjectile = objectToSpawn.GetComponent<BaseProjectile>();
+        BaseProjectile baseChild = baseProjectile.GetComponentInChildren<BaseProjectile>();
+
+        if (baseProjectile != null)
+        {
+            baseProjectile.projectileDamage = damage;
+            baseProjectile.projectileSpeed = speed;
+            baseChild.projectileDamage = damage;
+            baseChild.projectileSpeed = speed;
+        }else
+        {
+            Debug.LogError("BaseProjectile class not found on projectile");
+        }
+
         objectToSpawn.transform.position = position; //Set the object position to the one we set when calling the function.
         objectToSpawn.transform.rotation = rotation; //Set the objects rotation to the one we set when calling the function.
+        objectToSpawn.SetActive(true); //Activate the object.
         IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>(); //Grab a reference to the IPooledObject interface.
 
         if (pooledObj != null) //If the interface does exist on the object were spawning

@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4903953405936836}
-  - component: {fileID: 114769427435897410}
   m_Layer: 0
   m_Name: Laser Rifle Projectile
   m_TagString: Untagged
@@ -38,6 +37,8 @@ GameObject:
   - component: {fileID: 33899756429710638}
   - component: {fileID: 23386044239831846}
   - component: {fileID: 65897192444539692}
+  - component: {fileID: 54100626126300190}
+  - component: {fileID: 114865768563520860}
   m_Layer: 0
   m_Name: Laser Rifle Projectile_1
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362946618971270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.361}
+  m_LocalPosition: {x: 0, y: 0, z: 0.35}
   m_LocalScale: {x: 0.15, y: 0.1, z: 0.75}
   m_Children: []
   m_Father: {fileID: 4903953405936836}
@@ -65,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109760242109874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7693332, y: 1.8970433, z: 1.1194031}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4615260505753548}
@@ -114,6 +115,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362946618971270}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54100626126300190
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362946618971270}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 2
 --- !u!65 &65897192444539692
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -122,20 +138,23 @@ BoxCollider:
   m_GameObject: {fileID: 1362946618971270}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114769427435897410
+--- !u!114 &114865768563520860
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1109760242109874}
+  m_GameObject: {fileID: 1362946618971270}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cc7f83585dcd114b8c9795e25b6e476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileDamage: 3
   projectileSpeed: 50
   activeTime: 3
+  HitEnemy: 0
+  HitWall: 0

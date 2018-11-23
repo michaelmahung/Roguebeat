@@ -18,3 +18,13 @@ public interface IPooledObject
 {
     void OnObjectSpawn();
 }
+
+public interface IWeaponSwap
+{
+    void WeaponSwapped();
+}
+
+public interface IChangeSong
+{
+    void SongChanged();
+}
