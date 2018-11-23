@@ -418,7 +418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1596928008321874, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114301634553641770, guid: bdadb0bc08317a24b92b13a24f28b027,
         type: 2}
@@ -430,7 +430,8 @@ Prefab:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114301634553641770, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &317788694
@@ -651,6 +652,29 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437644514}
   m_CullTransparentMesh: 0
+--- !u!1 &439568394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1887100240752668, guid: ca46b6aa2959f64439ab517c2d922564,
+    type: 2}
+  m_PrefabInternal: {fileID: 803547010}
+--- !u!114 &439568395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439568394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5516cea949091944809c2d994a455ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hero: {fileID: 0}
+  MoveSpeed: 5
+  EnemyHealth: 0
+  EnemyAttackSpeed: 0
+  EnemyWeaponTypes: []
+  EnemyBody: {fileID: 0}
+  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &480823001
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,13 +954,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2978edc956f0ef54d9ff2c3cec338941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyWeapons:
-  - {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
+<<<<<<< HEAD
   HeroPlayer: {fileID: 0}
   Player: {fileID: 0}
+=======
+  EnemyAttackSpeed: 0
+  EnemyWeaponTypes:
+  - name: Weapon
+    Weapon: {fileID: 0}
+  EnemyBody: {fileID: 0}
+  PlayerLocation: {x: 0, y: 0, z: 0}
+>>>>>>> 2d746c2c118b9ee5add626a4bcb25b8fef7e30c4
 --- !u!1 &746576277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1225,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1887100240752668, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114954325270956516, guid: ca46b6aa2959f64439ab517c2d922564,
         type: 2}
@@ -1211,7 +1242,8 @@ Prefab:
       propertyPath: BruiserHP
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114954325270956516, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &850551640
@@ -1662,6 +1694,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
+--- !u!1 &1201410424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1596928008321874, guid: bdadb0bc08317a24b92b13a24f28b027,
+    type: 2}
+  m_PrefabInternal: {fileID: 308992501}
+--- !u!114 &1201410425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1201410424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ad32655d2297a4bb22708506e396e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hero: {fileID: 0}
+  MoveSpeed: 5
+  EnemyHealth: 0
+  EnemyAttackSpeed: 0
+  EnemyWeaponTypes: []
+  EnemyBody: {fileID: 0}
+  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1213487802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506234466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0071c29d02e89554fb8c810ae5192956, type: 3}
+  m_Script: {fileID: 11500000, guid: b8e3563efce9546bb9763b0bbd012b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1506234468
@@ -1991,11 +2046,22 @@ MonoBehaviour:
   isDead: 0
   allPlayableSongs: []
   currentSong: {fileID: 0}
+<<<<<<< HEAD
   audioPlayer: {fileID: 990837582}
   gamePaused: 0
   highScores: []
   UI: {fileID: 0}
   player: {fileID: 0}
+=======
+  audioPlayer: {fileID: 0}
+  levelScore: 0
+  musicMultipier: 0
+  enemyBaseMultiplier: 0
+  gamePaused: 0
+  highScores: []
+  playerMaterials: []
+  UI: {fileID: 0}
+>>>>>>> 2d746c2c118b9ee5add626a4bcb25b8fef7e30c4
 --- !u!4 &1937818526
 Transform:
   m_ObjectHideFlags: 0

@@ -2,24 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trooper : EnemyEngagement{
-
+public class Bruiser : EnemyEngagement {
 
 	// Use this for initialization
 	new void Start () {
-
 	base.Start2();
-	MoveSpeed = 10.0f;
-
-	//EnemyWeapons = EnemyWeapons[0];
-
-	EnemyHealth = 10.0f;
+	MoveSpeed = 7.0f;
+	EnemyHealth = 15.0f;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	SeePlayer();
-	ChasePlayer();
+		
 	}
 }

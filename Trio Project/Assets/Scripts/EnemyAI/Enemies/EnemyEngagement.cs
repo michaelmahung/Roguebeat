@@ -14,30 +14,17 @@ protected float SetTrooperAttackSpeed; // float to reset Trooper attack speed
 protected float SetBruiserAttackSpeed; // float to reset Bruiser attack speed
 protected float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 
-	public Transform HeroPlayer;
-
-
 	// Use this for initialization
 	public void Start2 () {
 	base.Start();
-	Debug.Log("EnemyEngagement");
-		HeroPlayer = GameObject.FindGameObjectWithTag("Player").transform; // Locate player via tag to look at and chase
 		SetTrooperAttackSpeed = TrooperAttackSpeed; // assigns reset for Trooper as initial time
 		SetBruiserAttackSpeed = BruiserAttackSpeed; // assigns reset for Bruiser as initial time
 		SetBoomerAttackSpeed = BoomerAttackSpeed; // assigns reset for Boomer as initial time
-		print("Timely");
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.LookAt (Hero);
-	SeePlayer();
-		//transform.LookAt (Hero); // cause enemies to look at Player
-		if (gameObject.name != "Boomer") {
-			transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-			//Tells all enemies EXCEPT Boomer type to move forward, which should be facing Player
-		}
 
 		TrooperAttackSpeed -= Time.deltaTime; // timer on Trooper attack speed
 		BruiserAttackSpeed -= Time.deltaTime; // timer on Bruiser attack speed
@@ -53,36 +40,17 @@ protected float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 			Instantiate (EnemyWeapons[2], transform.position, transform.rotation);
 			BoomerAttackSpeed = SetBoomerAttackSpeed;
 		}
-
-		if (BoomerHP <= 0) {
-		Destroy(gameObject);
-		}
-		if (EnemyHealth <= 0) {
-		Destroy(gameObject);
-		}
-		if (BruiserHP <= 0) {
-		Destroy(gameObject);
-		}
-	}
-
-	void OnCollisionEnter (Collision other)
-	{
-		if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Boomer") {
-			BoomerHP -= 2;
-		} 
-		/*else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Trooper") {
-			TrooperHP -= 2;
-
-		} 
-		*/
-		else if (other.gameObject.tag == "PlayerBaseShot" && gameObject.name == "Bruiser") {
-			BruiserHP -= 2;
-		}
 	}
 
 	public void SeePlayer ()
 	{
-		transform.LookAt (HeroPlayer); // cause enemies to look at Player
+		transform.LookAt (Hero); // cause enemies to look at Player
+	}
+
+	public void ChasePlayer ()
+	{
+	//EnemyBody.AddForce(PlayerLocation, MoveSpeed);
+	//transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 	}
 }
 
