@@ -17,4 +17,9 @@ public class Boomer : EnemyEngagement {
 	SeePlayer();
 		
 	}
+
+	private void FixedUpdate(){
+		ChasePlayer();
+
+	}
 }

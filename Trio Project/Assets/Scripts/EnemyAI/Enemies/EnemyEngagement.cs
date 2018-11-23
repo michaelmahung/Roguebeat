@@ -49,8 +49,7 @@ protected float SetBoomerAttackSpeed; // float to reset Boomer attack speed
 
 	public void ChasePlayer ()
 	{
-	//EnemyBody.AddForce(PlayerLocation, MoveSpeed);
-	//transform.position += transform.forward*MoveSpeed*Time.deltaTime;
+	transform.position += transform.forward*MoveSpeed*Time.deltaTime;
 	}
 }
 

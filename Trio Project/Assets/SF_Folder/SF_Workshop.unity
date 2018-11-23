@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45112777, g: 0.500919, b: 0.5739524, a: 1}
+  m_IndirectSpecularColor: {r: 0.45112824, g: 0.50091964, b: 0.57395357, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,7 +375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &308992501
 Prefab:
@@ -414,7 +414,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4036184202040922, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1596928008321874, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
       propertyPath: m_IsActive
@@ -509,74 +509,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317788694}
   m_CullTransparentMesh: 0
---- !u!1001 &338594314
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602020449668322, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732238564320460, guid: 73070f516bd694a8c8953abf7674f710,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114975826414820422, guid: 73070f516bd694a8c8953abf7674f710,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114354427017110496, guid: 73070f516bd694a8c8953abf7674f710,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114102940638368926, guid: 73070f516bd694a8c8953abf7674f710,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732238564320460, guid: 73070f516bd694a8c8953abf7674f710,
-        type: 2}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728,
-        type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 73070f516bd694a8c8953abf7674f710, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &437644514
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,13 +600,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5516cea949091944809c2d994a455ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes: []
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &480823001
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +747,7 @@ Transform:
   m_Children:
   - {fileID: 918646240}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &506647086
 MonoBehaviour:
@@ -837,6 +767,61 @@ MonoBehaviour:
   orbitProgress: 0
   orbitPeriod: 1.5
   orbitActive: 1
+--- !u!1001 &580569631
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.0663854
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.58533347
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602020449668322, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82033048860460114, guid: 716dd9ab41b397b419b4e0c1169aedf1,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365858393240964, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262148073288292, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 716dd9ab41b397b419b4e0c1169aedf1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &715504400
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,20 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2978edc956f0ef54d9ff2c3cec338941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
-<<<<<<< HEAD
-  HeroPlayer: {fileID: 0}
-  Player: {fileID: 0}
-=======
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes:
-  - name: Weapon
-    Weapon: {fileID: 0}
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
->>>>>>> 2d746c2c118b9ee5add626a4bcb25b8fef7e30c4
 --- !u!1 &746576277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1197,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4331403995642542, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1887100240752668, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
       propertyPath: m_IsActive
@@ -1283,7 +1259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4372690261508830, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1620403275424218, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
       propertyPath: m_IsActive
@@ -1293,6 +1269,11 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 54645164965061410, guid: e5df3f33ccf6ccc4780b2086114eeb1b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114559746741180030, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
@@ -1405,7 +1386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 33, y: -30, z: 0}
 --- !u!114 &920739050
 MonoBehaviour:
@@ -1556,7 +1537,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &990837584
 MonoBehaviour:
@@ -1710,13 +1691,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ad32655d2297a4bb22708506e396e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes: []
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1213487802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e3563efce9546bb9763b0bbd012b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 1213487802}
 --- !u!114 &1506234468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,7 +1827,7 @@ RectTransform:
   - {fileID: 317788695}
   - {fileID: 1213487803}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1943,7 +1923,7 @@ Transform:
   - {fileID: 715504401}
   - {fileID: 480823002}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1736910513
 GameObject:
@@ -2046,13 +2026,6 @@ MonoBehaviour:
   isDead: 0
   allPlayableSongs: []
   currentSong: {fileID: 0}
-<<<<<<< HEAD
-  audioPlayer: {fileID: 990837582}
-  gamePaused: 0
-  highScores: []
-  UI: {fileID: 0}
-  player: {fileID: 0}
-=======
   audioPlayer: {fileID: 0}
   levelScore: 0
   musicMultipier: 0
@@ -2061,7 +2034,6 @@ MonoBehaviour:
   highScores: []
   playerMaterials: []
   UI: {fileID: 0}
->>>>>>> 2d746c2c118b9ee5add626a4bcb25b8fef7e30c4
 --- !u!4 &1937818526
 Transform:
   m_ObjectHideFlags: 0
@@ -2073,7 +2045,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1937818527
 MonoBehaviour:
