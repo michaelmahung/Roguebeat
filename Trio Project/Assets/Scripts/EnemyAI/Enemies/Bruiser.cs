@@ -17,4 +17,9 @@ public class Bruiser : EnemyEngagement {
 	SeePlayer();
 		
 	}
+
+	private void FixedUpdate(){
+		ChasePlayer();
+
+	}
 }

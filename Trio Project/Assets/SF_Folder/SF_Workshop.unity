@@ -600,13 +600,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5516cea949091944809c2d994a455ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes: []
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &480823001
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,15 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2978edc956f0ef54d9ff2c3cec338941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes:
-  - name: Weapon
-    Weapon: {fileID: 0}
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &746576277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1269,11 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 54645164965061410, guid: e5df3f33ccf6ccc4780b2086114eeb1b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114559746741180030, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
@@ -1692,13 +1691,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ad32655d2297a4bb22708506e396e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyWeapons: []
   Hero: {fileID: 0}
   MoveSpeed: 5
   EnemyHealth: 0
   EnemyAttackSpeed: 0
-  EnemyWeaponTypes: []
-  EnemyBody: {fileID: 0}
-  PlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1213487802
 GameObject:
   m_ObjectHideFlags: 0

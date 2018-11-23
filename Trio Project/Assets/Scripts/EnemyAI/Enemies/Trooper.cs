@@ -10,9 +10,6 @@ public class Trooper : EnemyEngagement{
 
 	base.Start2();
 	MoveSpeed = 10.0f;
-
-	//EnemyWeapons = EnemyWeapons[0];
-
 	EnemyHealth = 10.0f;
 		
 	}
@@ -20,6 +17,9 @@ public class Trooper : EnemyEngagement{
 	// Update is called once per frame
 	void Update () {
 	SeePlayer();
-	ChasePlayer();
+	}
+
+	private void FixedUpdate(){
+		ChasePlayer();
 	}
 }
