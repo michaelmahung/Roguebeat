@@ -54,8 +54,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4648509434492160}
   - component: {fileID: 54194802558377004}
-  - component: {fileID: 114482146339804012}
   - component: {fileID: 65367419578433412}
+  - component: {fileID: 114009152900202412}
+  - component: {fileID: 114134030324836052}
+  - component: {fileID: 114867912818294176}
+  - component: {fileID: 114335031769154470}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Player
@@ -113,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1450978787416338
 GameObject:
   m_ObjectHideFlags: 1
@@ -363,7 +366,7 @@ Transform:
   m_Children:
   - {fileID: 4720825350680702}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4122774515125414
 Transform:
@@ -443,7 +446,7 @@ Transform:
   m_Children:
   - {fileID: 4972208085236360}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4533784098106328
 Transform:
@@ -483,7 +486,7 @@ Transform:
   m_Children:
   - {fileID: 4137241892076260}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4648509434492160
 Transform:
@@ -536,11 +539,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4110144806575366}
   - {fileID: 4995969805687120}
   - {fileID: 4385448352095506}
   - {fileID: 4601170907560838}
   - {fileID: 4927055595583240}
-  - {fileID: 4110144806575366}
   m_Father: {fileID: 4122774515125414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -586,7 +589,7 @@ Transform:
   - {fileID: 4967720305156982}
   - {fileID: 4847296626481336}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4967720305156982
 Transform:
@@ -628,7 +631,7 @@ Transform:
   - {fileID: 4800651011696302}
   - {fileID: 4196320736457908}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23188316954563128
 MeshRenderer:
@@ -1281,7 +1284,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1749,6 +1752,18 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114009152900202412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260481718491756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e782e1c2bfba402c8792a30a4726e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!114 &114075020785020660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1760,14 +1775,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  weaponDamage: 0.1
+  weaponDamage: 1.5
   fireRate: 0.05
   swapTime: 0.25
-  projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}
-  projectileSpawnAmount: 200
+  projectileSpawnAmount: 100
   projectileSpeed: 15
-  fireSound: {fileID: 0}
+  projectileLife: 0.75
+  projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}
+  fireSound: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
+  icon: {fileID: 0}
+--- !u!114 &114134030324836052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260481718491756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a4fc5cffcf346ad9c5c27155e6bc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeapon: {fileID: 0}
+--- !u!114 &114335031769154470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260481718491756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9427969adaf7443d0ac228cebfd4a8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 20
+  topSpeed: 20
+  maxDashDistance: 5
 --- !u!114 &114367809422015438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1793,31 +1835,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965ae6db344bc4d22bdefd0beeeb923d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
   weaponDamage: 2
   fireRate: 0.25
   swapTime: 0.5
-  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 20
   projectileSpeed: 30
-  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
---- !u!114 &114482146339804012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1260481718491756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b80363dd972f94f98ea32242aa05b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 20
-  topSpeed: 20
-  maxHealth: 10
-  maxDashDistance: 5
-  playerWeapon: {fileID: 0}
-  dashDistance: 0
+  projectileLife: 5
+  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
+  fireSound: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
+  icon: {fileID: 0}
 --- !u!114 &114505403501578842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1829,14 +1855,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e38d31a3d3845cf8819802abf0d525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponDamage: 5
-  fireRate: 1
+  fireRate: 0.35
   swapTime: 0.5
-  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 10
   projectileSpeed: 70
-  fireSound: {fileID: 8300000, guid: fa55d44d82698224eb75dc4c857014ad, type: 3}
+  projectileLife: 3
+  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
+  fireSound: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
 --- !u!114 &114598444720080750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1848,14 +1875,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b8632c42e1d4c999082a72f2fa6c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
   weaponDamage: 1
   fireRate: 0.1
   swapTime: 0.5
-  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 150
   projectileSpeed: 30
+  projectileLife: 5
+  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
+  icon: {fileID: 0}
+--- !u!114 &114867912818294176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260481718491756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18590d9555bd4d2888852d41560c33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114931861658291242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1867,11 +1906,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec885d82d5fd40518d030655e83decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponDamage: 1
   fireRate: 1
   swapTime: 0.5
-  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   projectileSpawnAmount: 50
   projectileSpeed: 30
+  projectileLife: 5
+  projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}

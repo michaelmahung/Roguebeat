@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
     public void WeaponSwapped()
     {
-        weaponName = GameManager.Instance.player.GetComponent<Player>().playerWeapon.name;
+        weaponName = GameManager.Instance.player.GetComponent<PlayerWeapon>().playerWeapon.name;
         UpdateUIText();
     }
 

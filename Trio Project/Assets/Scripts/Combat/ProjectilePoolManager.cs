@@ -8,6 +8,15 @@ using UnityEngine;
 
 public class ProjectilePoolManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class ProjectileVariables
+    {
+        //We will create a ProjectilePool class that will always contain descriptive variables.
+        //We will use these variables to create unique projectile types from our BaseWeapon class.
+        public string tag;
+        public GameObject prefab;
+        public int size;
+    }
     //Object pooling courtesy of brackeys.
 
 
@@ -23,17 +32,6 @@ public class ProjectilePoolManager : MonoBehaviour
     {
         Instance = this;
         projectileDictionary = new Dictionary<string, Queue<GameObject>>();
-    }
-
-
-    [System.Serializable]
-    public class ProjectileVariables
-    {
-        //We will create a ProjectilePool class that will always contain descriptive variables.
-        //We will use these variables to create unique projectile types from our BaseWeapon class.
-        public string tag;
-        public GameObject prefab;
-        public int size;
     }
 
     [SerializeField]
@@ -74,7 +72,7 @@ public class ProjectilePoolManager : MonoBehaviour
     }
 
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, float damage, float speed) //Function to "spawn" the prefab from the queue.
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, float damage, float speed, float life) //Function to "spawn" the prefab from the queue.
     {
         //Debug.Log("Searching dictionary for key: " + tag);
         if(!projectileDictionary.ContainsKey(tag)) //If the projectile dictionary doesnt have the tag we request.
@@ -92,6 +90,7 @@ public class ProjectilePoolManager : MonoBehaviour
         {
             baseProjectile.projectileDamage = damage;
             baseProjectile.projectileSpeed = speed;
+            baseProjectile.activeTime = life;
             //baseChild.projectileDamage = damage;
             //baseChild.projectileSpeed = speed;
         }else

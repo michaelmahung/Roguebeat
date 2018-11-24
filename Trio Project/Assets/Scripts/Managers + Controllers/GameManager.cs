@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
             if (_instance == null) //If there is no prexisting gamemanager in the scene
             {
                 //Create a gamemanager and add base components to it. Doing this will allow for minimal gameplay with little effort.
-                Debug.Log("No GameManager Instance Found, Creating Temporary GameManager Instance");
-                Debug.LogError("CREATING A GAMEMANAGER FROM SCRATCH WILL CAUSE ERRORS, PLEASE ONLY USE FOR TESTING!");
+                Debug.LogError("Creating a GameManager instance from scratch, this is not ideal.\nPlease add a GameManager component to the scene");
                 GameObject gm = new GameObject("GameManager");
                 gm.AddComponent<GameManager>();
                 gm.AddComponent<AudioPeer>();

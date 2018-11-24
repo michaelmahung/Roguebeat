@@ -473,20 +473,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114075020785020660, guid: 3c6466c8494909a4e8371bc27df18e48,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1427814682980190, guid: 3c6466c8494909a4e8371bc27df18e48, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114466940198253686, guid: 3c6466c8494909a4e8371bc27df18e48,
-        type: 2}
-      propertyPath: weaponDamage
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6466c8494909a4e8371bc27df18e48, type: 2}
   m_IsPrefabAsset: 0

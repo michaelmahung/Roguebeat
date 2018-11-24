@@ -101,8 +101,6 @@ MonoBehaviour:
   projectileDamage: 0
   projectileSpeed: 0
   activeTime: 5
-  HitEnemy: 0
-  HitWall: 0
 --- !u!135 &135809501001873908
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -301,7 +299,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.9622642, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

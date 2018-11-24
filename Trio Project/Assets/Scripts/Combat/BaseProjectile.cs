@@ -7,8 +7,9 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
     public float projectileDamage;
     public float projectileSpeed;
     public float activeTime;
-    public bool HitEnemy;
-    public bool HitWall;
+
+    bool HitEnemy;
+    bool HitWall;
 
     public void OnObjectSpawn()
     {
@@ -28,7 +29,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
         gameObject.SetActive(false);
     }
 
-    void OnTriggerEnter (Collider other)
+    virtual public void OnTriggerEnter (Collider other)
 	{
 
         //Debug.Log(other.gameObject.name);

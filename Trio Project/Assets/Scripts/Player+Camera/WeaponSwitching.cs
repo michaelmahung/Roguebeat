@@ -3,21 +3,19 @@ using System.Collections.Generic;
 
 public class WeaponSwitching : MonoBehaviour
 {
-
-    public int currentWeapon;
-    public List<GameObject> weaponList = new List<GameObject>();
+    private PlayerWeapon playerWeapon;
+    private List<GameObject> weaponList = new List<GameObject>();
+    private int currentWeapon;
     bool weaponsAdded;
-    public Player player;
 
     public static WeaponSwitching Instance; //For the sake of error handling, well make an instance of this.
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Instance = this;
+        playerWeapon = GameManager.Instance.player.GetComponent<PlayerWeapon>();
         SelectWeapon(); //Running this once at the beginning will deactive all but the first weapon.
-        weaponsAdded = true; //The weapons have been added to the list.
-        UpdateWeapon();
+        UpdateWeapon(); //Tell the gamemanager what the current weapon is.
     }
 
     // Update is called once per frame
@@ -45,7 +43,7 @@ public class WeaponSwitching : MonoBehaviour
 
     public void UpdateWeapon()
     {
-        player.playerWeapon = weaponList[currentWeapon];
+        playerWeapon.playerWeapon = weaponList[currentWeapon];
 
         try
         {
@@ -54,7 +52,7 @@ public class WeaponSwitching : MonoBehaviour
         }
         catch
         {
-            Debug.LogError("No UIController script found in scene");
+            //Debug.LogError("No UIController script found in scene");
         }
     }
 
