@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33104901994481304}
   - component: {fileID: 23122206793041312}
   - component: {fileID: 135894656048912982}
-  - component: {fileID: 114559746741180030}
   - component: {fileID: 54645164965061410}
+  - component: {fileID: 114389904460639454}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Enemy
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620403275424218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.51, y: 0.98, z: 0}
+  m_LocalPosition: {x: 9.5, y: 0.5, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,12 +96,12 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &114559746741180030
+--- !u!114 &114389904460639454
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,16 +109,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620403275424218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592c5c60f12f2de47885142cc3a4dddf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2978edc956f0ef54d9ff2c3cec338941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyWeapons:
-  - {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  TrooperAttackSpeed: 1
-  BruiserAttackSpeed: 3
-  BoomerAttackSpeed: 6
+  EnemyWeapons: []
+  Hero: {fileID: 0}
+  MoveSpeed: 5
+  EnemyHealth: 0
+  EnemyAttackSpeed: 5
+  IsFiring: 0
+  WeaponValue: 0
 --- !u!135 &135894656048912982
 SphereCollider:
   m_ObjectHideFlags: 1

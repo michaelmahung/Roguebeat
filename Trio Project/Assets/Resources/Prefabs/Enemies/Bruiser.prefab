@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23201260145120510}
   - component: {fileID: 54519486845695632}
   - component: {fileID: 65737887893849484}
-  - component: {fileID: 114954325270956516}
+  - component: {fileID: 114131097830520064}
   m_Layer: 0
   m_Name: Bruiser
   m_TagString: Enemy
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114954325270956516
+--- !u!114 &114131097830520064
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,13 +121,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887100240752668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592c5c60f12f2de47885142cc3a4dddf, type: 3}
+  m_Script: {fileID: 11500000, guid: e5516cea949091944809c2d994a455ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyWeapons:
-  - {fileID: 0}
-  - {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
-  - {fileID: 0}
-  TrooperAttackSpeed: 1
-  BruiserAttackSpeed: 3
-  BoomerAttackSpeed: 6
+  EnemyWeapons: []
+  Hero: {fileID: 0}
+  MoveSpeed: 5
+  EnemyHealth: 0
+  EnemyAttackSpeed: 0
+  IsFiring: 0
+  WeaponValue: 0
