@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Engagement Class for enemies. Reads base variable data stored in parent class EnemyDataModel. Stores functions to be called in specific enemy classes.
+/// </summary>
 public class EnemyEngagement : EnemyDataModel {
 
 
-	// Use this for initialization
+	// Not a REAL start function, serves as typical function to be called from specific enemy classes. 
 	public void Start2 () {
-	base.Start();
+	base.Start(); // call to its parent class, EnemyDataModel, to ensure it runs it's full Start function first, to ensure it's Start calls reach the unique enemy classes.
 	}
 	
 	// Update is called once per frame
@@ -15,7 +18,7 @@ public class EnemyEngagement : EnemyDataModel {
 	{
 	}
 
-	IEnumerator FireWeapon ()
+	IEnumerator FireWeapon () // 
 	{
 		yield return new WaitForSeconds(EnemyAttackSpeed);
 		Instantiate (EnemyWeapons[WeaponValue], transform.position, transform.rotation);

@@ -5,83 +5,85 @@ using UnityEngine;
 [RequireComponent (typeof (AudioSource))]
 public class AudioTracker : MonoBehaviour {
     AudioSource _AS;
-    //AudioSource audioData;
-    //List <AudioClip> songList = new List<AudioClip>(6);
-    //public List<int> songNumber;
-    List<AudioClip> songList;
-   // public int selectionNumber;
-    //public AudioClip[] songList;
-    //public AudioClip music;
-    public AudioClip s1;
-    public AudioClip s2;
-    public AudioClip s3;
-    public AudioClip s4;
-    public AudioClip s5;
-    public AudioClip s6;
-    public bool song1 = true;
-    public bool song2 = false;
-    public bool song3 = false;
-    public bool song4 = false;
-    public bool song5 = false;
-    public bool song6 = false;
-    bool oneAdded;
-    bool twoAdded;
-    bool threeAdded;
-    bool fourAdded;
-    bool fiveAdded;
-    bool sixAdded;
-    public int songNumber;
+    //List<AudioClip> songList;
     public static float[] _samples = new float[512];
-    
+    public AudioClip[] levelOne;
+    public AudioClip[] levelTwo;
+    public AudioClip[] levelThree;
+    public AudioClip[] levelFour;
+    public AudioClip[] levelFive;
+    public AudioClip[] levelSix;
+    //public AudioClip[] levelList;
+    //[SerializeField]
+    private ArrayList currentArray;
+    [SerializeField]
+    private int level = 1;
+    [SerializeField]
+    int TotalLevels = 6;
 
 	// Use this for initialization
 	void Start () {
         AudioSource();
-        List<AudioClip> songList = new List<AudioClip>(6);
-        songList.Add(s1);
+        ArrayList currentArray = new ArrayList { levelOne, levelTwo, levelThree, levelFour, levelFive, levelSix };
+        int songArrays = currentArray.Count;
+        for (int i = 0; i < songArrays; i++)
+        {
+            int[] songs = currentArray[i] as int[];
+            int items = songs.Length;
+            for (int j = 0; j < items; j++)
+            {
+                int song = songs[j];
+                print(song);
+            }
+        }
+        print(currentArray);
+        //List<AudioClip> songList = new List<AudioClip>(6);
+        //songList.Add(s1);
         //selectionNumber = 
         _AS = GetComponent<AudioSource>();
-        _AS.clip = s1;
+        //_AS.clip = s1;
+        //UNCOMMENT ME WHEN START WORK AGAIN!!! _AS.clip = songArrays(0)[0];
         _AS.Play(0);
-       // songNumber = new List<int>(songList.Count);
-        //for (int i = 0; i<songList.Count; i++)
-      //  {
-       //     songNumber.Add(1);
-       // }
-        //songNumber = 1;
-        //songList = s1;
-        //_AS.clip = s1;// songList[songNumber];
-        //_AS.Play(0);
+        print("current level is " + level);
 
-       
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {
         GetSpectrumAudiosSource();
         //AudioSource();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            level++;
+            
+            if (level > 6)
+            {
+                level = 6;
+            }
+            print("current level is " + level);
+        }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            songNumber++;
+           /* songNumber++;
             if (songNumber > songList.Count)
             {
                 songNumber = 1;
             }
             //audioData(songList[songNumber]).Play;
             _AS.clip = songList[songNumber];
-            _AS.Play(0);
+            _AS.Play(0);*/
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            songNumber--;
+            /*songNumber--;
             if (songNumber < 1)
             {
                 songNumber = songList.Count;
             }
             _AS.clip = songList[songNumber];
-            _AS.Play(0);
+            _AS.Play(0);*/
         }
     }
 
@@ -100,7 +102,7 @@ public class AudioTracker : MonoBehaviour {
             
             oneAdded = true;
         }*/
-        if (song2 == true && twoAdded == false)
+        /*if (song2 == true && twoAdded == false)
         {
             songList.Add(s2);
             twoAdded = true;
@@ -125,7 +127,7 @@ public class AudioTracker : MonoBehaviour {
         {
             songList.Add(s6);
             sixAdded = true;
-        }
+        }*/
     }
 
     void addToArray(AudioClip song)

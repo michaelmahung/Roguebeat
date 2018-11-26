@@ -194,19 +194,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86da7433133e674c83fbbe0c3d95c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1: {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
-  s2: {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
-  s3: {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
-  s4: {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
-  s5: {fileID: 8300000, guid: dee5a6f45638d1f4eaece2e9328d04fc, type: 3}
-  s6: {fileID: 8300000, guid: 9b2b719888325f442b9a9edb0578564b, type: 3}
-  song1: 1
-  song2: 0
-  song3: 0
-  song4: 0
-  song5: 0
-  song6: 0
-  songNumber: 0
+  levelOne:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  levelTwo:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+  levelThree:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+  - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+  levelFour:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+  - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+  - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
+  levelFive:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+  - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+  - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
+  - {fileID: 8300000, guid: dee5a6f45638d1f4eaece2e9328d04fc, type: 3}
+  levelSix:
+  - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+  - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+  - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+  - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
+  - {fileID: 8300000, guid: dee5a6f45638d1f4eaece2e9328d04fc, type: 3}
+  - {fileID: 8300000, guid: 9b2b719888325f442b9a9edb0578564b, type: 3}
+  level: 1
 --- !u!82 &874221398
 AudioSource:
   m_ObjectHideFlags: 0
@@ -518,19 +533,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86da7433133e674c83fbbe0c3d95c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1: {fileID: 0}
-  s2: {fileID: 0}
-  s3: {fileID: 0}
-  s4: {fileID: 0}
-  s5: {fileID: 0}
-  s6: {fileID: 0}
-  song1: 1
-  song2: 0
-  song3: 0
-  song4: 0
-  song5: 0
-  song6: 0
-  songNumber: 0
+  levelOne: []
+  levelTwo: []
+  levelThree: []
+  levelFour: []
+  levelFive: []
+  levelSix: []
+  level: 1
 --- !u!82 &1647902730
 AudioSource:
   m_ObjectHideFlags: 0
