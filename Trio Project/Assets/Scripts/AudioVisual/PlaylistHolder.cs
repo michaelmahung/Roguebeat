@@ -21,12 +21,30 @@ public class PlaylistHolder : MonoBehaviour
     [SerializeField]
     private int currentLevel; //Create an int to represent what our current level is
 
+    private int songValue; //Variable to track our current song
+    private MusicTest currentStruct; //Variable to track our current struct
+
 
     private void Start()
     {
+        songValue = 1;
         currentLevel = 1;
         audioSource = GetComponent<AudioSource>(); //Grab a referene to the audiosource
         StartCoroutine(Test()); //Start our test coroutine
+    }
+
+    private void Update()
+    {
+        //Listen for input
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PreviousSong();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NextSong();
+        }
     }
 
     //This function will append our audioclip list depending on the level we feed to it.
@@ -35,6 +53,7 @@ public class PlaylistHolder : MonoBehaviour
         int trueLevel = level - 1;
         try //Attempt to do all of this, if there is an error at any point, go to the catch section
         {
+            currentStruct = music[trueLevel]; //Current struct is the struct we assigned for the current level.
             audioClips.Clear(); //Clear our list
 
             //Heres what this loop does:
@@ -50,7 +69,7 @@ public class PlaylistHolder : MonoBehaviour
                 audioClips.Add(music[trueLevel].songs[i]);
             }
 
-            audioSource.clip = music[trueLevel].songs[0];
+            audioSource.clip = music[trueLevel].songs[songValue];
             audioSource.Play();
         }
         catch
@@ -64,12 +83,12 @@ public class PlaylistHolder : MonoBehaviour
 
     IEnumerator Test() //This coroutine will run at the start
     {
-        yield return new WaitForSeconds(5); //Wait for 5 seconds
         if (!stop)
         {
             //If we havent been flagged with any errors, continue with the coroutine.
             Debug.LogFormat("Making music list for level {0}.", currentLevel);
-            AppendList(currentLevel);
+            AppendList(currentLevel); //Run this function for whatever the current level is.
+            yield return new WaitForSeconds(5); //Wait for 5 seconds
             currentLevel += 1;
             StartCoroutine("Test");
         } else
@@ -79,4 +98,39 @@ public class PlaylistHolder : MonoBehaviour
             Debug.Log("Stopping loop");
         }
     }
+
+    private void NextSong()
+    {
+        if (songValue < currentStruct.songs.Length - 1)
+        {
+            songValue++;
+        } else
+        {
+            songValue = 0;
+        }
+
+        ChangeSong();
+    }
+
+    private void PreviousSong()
+    {
+        if (songValue > 0)
+        {
+            songValue--;
+        } else
+        {
+            songValue = currentStruct.songs.Length - 1;
+        }
+
+        ChangeSong();
+    }
+
+    private void ChangeSong()
+    {
+        audioSource.Stop();
+        audioSource.clip = currentStruct.songs[songValue];
+        audioSource.Play();
+    }
+
+
 }
