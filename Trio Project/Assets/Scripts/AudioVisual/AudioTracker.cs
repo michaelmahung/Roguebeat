@@ -132,7 +132,7 @@ public class AudioTracker : MonoBehaviour {
 
     void addToArray(AudioClip song)
     {
-        songList.Add(song);
+        //songList.Add(song);
     }
 
     public void PlayMusic()
