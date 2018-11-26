@@ -16,13 +16,13 @@ public class CameraController2 : MonoBehaviour {
         try
         {
             //Attempt to find a gameobject tagged as the player.
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameManager.Instance.player;
             cameraOffset = transform.position - player.transform.position;
         }
         catch
         {
             //If there is no gameobject found with the tag, throw an error.
-            Debug.LogError("No GameObject tagged 'Player' found, please assign one");
+            Debug.LogError("No GameObject with PlayerHealth component found, please assign one");
         }
     }
 

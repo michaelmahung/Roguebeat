@@ -14,13 +14,13 @@ public class PlayerLock : MonoBehaviour {
         try
         {
             //Check to see if there is a gameobject tagged as the player
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.player.transform;
             playerInScene = true;
         }
         catch
         {
             //If there isnt, flag a warning
-            Debug.LogError("No Transform tagged 'Player' found, please assign one.");
+            Debug.LogError("No PlayerHealth component found, please assign one.");
             playerInScene = false;
         }
 	}

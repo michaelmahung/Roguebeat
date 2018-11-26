@@ -1763,6 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e782e1c2bfba402c8792a30a4726e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   maxHealth: 10
 --- !u!114 &114075020785020660
 MonoBehaviour:
@@ -1778,7 +1779,7 @@ MonoBehaviour:
   weaponDamage: 1.5
   fireRate: 0.05
   swapTime: 0.25
-  projectileSpawnAmount: 100
+  projectileSpawnAmount: 50
   projectileSpeed: 15
   projectileLife: 0.75
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}

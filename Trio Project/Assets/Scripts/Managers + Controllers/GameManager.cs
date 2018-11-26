@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         playerMaterials = Resources.LoadAll<Material>("Materials"); //Load materials from our folder
         allPlayableSongs = Resources.LoadAll<AudioClip>("Music"); //Load audioclips from our folder
 
-        player = GameObject.FindGameObjectWithTag("Player"); //Assign the gameobject based on the player tag
+        player = FindObjectOfType<PlayerHealth>().gameObject; //Assign the gameobject based on the player tag
         DontDestroyOnLoad(gameObject); //Keep this object between scenes
 
         if (audioPlayer == null) //If there is no assigned to this gamemanager
