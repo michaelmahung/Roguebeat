@@ -24,13 +24,15 @@ public class PlaylistHolder : MonoBehaviour
     private int songValue; //Variable to track our current song
     private MusicTest currentStruct; //Variable to track our current struct
 
+    public static float[] _samples = new float[512];
 
     private void Start()
     {
-        songValue = 1;
+        songValue = 0;
         currentLevel = 1;
         audioSource = GetComponent<AudioSource>(); //Grab a referene to the audiosource
-        StartCoroutine(Test()); //Start our test coroutine
+        //StartCoroutine(Test()); //Start our test coroutine
+        AppendList(currentLevel);
     }
 
     private void Update()
@@ -45,6 +47,12 @@ public class PlaylistHolder : MonoBehaviour
         {
             NextSong();
         }
+
+        GetSpectrumAudioSource();
+        if (Input.GetKeyDown(KeyCode.P))
+            {
+                ChangeLevel();
+            }
     }
 
     //This function will append our audioclip list depending on the level we feed to it.
@@ -81,7 +89,7 @@ public class PlaylistHolder : MonoBehaviour
         return level;
     }
 
-    IEnumerator Test() //This coroutine will run at the start
+    /*IEnumerator Test() //This coroutine will run at the start
     {
         if (!stop)
         {
@@ -97,6 +105,19 @@ public class PlaylistHolder : MonoBehaviour
             StopAllCoroutines();
             Debug.Log("Stopping loop");
         }
+    }*/
+
+     private void ChangeLevel()
+    {
+            currentLevel++;
+
+            if (currentLevel > 6)
+            {
+                currentLevel = 6;
+            }
+            print("current level is " + currentLevel);
+        AppendList(currentLevel);
+        
     }
 
     private void NextSong()
@@ -132,5 +153,8 @@ public class PlaylistHolder : MonoBehaviour
         audioSource.Play();
     }
 
-
+    private void GetSpectrumAudioSource()
+    {
+        audioSource.GetSpectrumData(_samples, 0, FFTWindow.Blackman);
+    }
 }

@@ -44,7 +44,7 @@ public class Beat : MonoBehaviour {
         {
             if(eShots!= null)
             {
-                eShots[i].transform.localScale = new Vector3((AudioTracker._samples[i] * maxScale) + 1, (AudioTracker._samples[i] * maxScale) +1, (AudioTracker._samples[i] * maxScale)+1);
+                eShots[i].transform.localScale = new Vector3((PlaylistHolder._samples[i] * maxScale) + 1, (PlaylistHolder._samples[i] * maxScale) +1, (PlaylistHolder._samples[i] * maxScale)+1);
                // print("there are" + i + "shots on the field");
             }
         }

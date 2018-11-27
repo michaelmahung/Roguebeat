@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4947109295782302}
   - component: {fileID: 82375486497288538}
   - component: {fileID: 114514155911177162}
+  - component: {fileID: 114828603315520600}
   m_Layer: 0
   m_Name: MusicTest
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889053093061470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.9630847, y: 0.7842207, z: -0.4123659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,17 +152,47 @@ MonoBehaviour:
   - level: 1
     songs:
     - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
-    - {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
   - level: 2
     songs:
-    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
-    - {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
     - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
   - level: 3
     songs:
+    - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+    - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+  - level: 4
+    songs:
+    - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+    - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+    - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
+  - level: 5
+    songs:
+    - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
+    - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
+    - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
+    - {fileID: 8300000, guid: dee5a6f45638d1f4eaece2e9328d04fc, type: 3}
+  - level: 6
+    songs:
+    - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: cff84bb43224cca41a921f18121c90ff, type: 3}
     - {fileID: 8300000, guid: 43e81705de657c849b94ba207dd64ed9, type: 3}
     - {fileID: 8300000, guid: 70d964ebfe94cf240977b8727437598a, type: 3}
     - {fileID: 8300000, guid: dee5a6f45638d1f4eaece2e9328d04fc, type: 3}
     - {fileID: 8300000, guid: 9b2b719888325f442b9a9edb0578564b, type: 3}
   audioClips: []
   currentLevel: 1
+--- !u!114 &114828603315520600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889053093061470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf39c7157e0b3a4ab8f40a401577fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScale: 1.5
