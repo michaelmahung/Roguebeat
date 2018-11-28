@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+[RequireComponent(typeof(Rigidbody), (typeof(Collider)))]
 public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageable<float>, IKillable
 {
     private float _damageTaken { get; set; }
