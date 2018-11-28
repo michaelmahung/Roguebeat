@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45112807, g: 0.5009189, b: 0.5739523, a: 1}
+  m_IndirectSpecularColor: {r: 0.45112777, g: 0.500919, b: 0.5739524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1042,7 +1042,6 @@ GameObject:
   - component: {fileID: 920739049}
   - component: {fileID: 920739048}
   - component: {fileID: 920739051}
-  - component: {fileID: 920739050}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1100,17 +1099,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 33, y: -30, z: 0}
---- !u!114 &920739050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 920739047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 342d157a7b1f5f6488e0bd68b6a974e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &920739051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,7 +1442,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648509434492160, guid: 3c6466c8494909a4e8371bc27df18e48, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6466c8494909a4e8371bc27df18e48, type: 2}
@@ -1560,7 +1548,7 @@ RectTransform:
   - {fileID: 317788695}
   - {fileID: 1213487803}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1599,7 +1587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 50
-  Armor: 0
+  Armor: 1
 --- !u!136 &1614907593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1628,7 +1616,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: fe8707770a93fed40b16ad577fb73d75, type: 2}
+  - {fileID: 2100000, guid: b2fa75a9c6995494d996980534b54ffd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

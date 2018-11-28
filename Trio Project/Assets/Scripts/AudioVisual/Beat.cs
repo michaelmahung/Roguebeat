@@ -6,12 +6,14 @@ public class Beat : MonoBehaviour {
     //public GameObject _cubePrefab;
     GameObject[] eShots = new GameObject[512];
     public float maxScale;
+    private PlaylistHolder playlistHolder;
     //public GameObject eShot;
     //GameObject[] eFire = new GameObject[512];
 
 	// Use this for initialization
 	void Start () {
 
+        playlistHolder = GetComponent<PlaylistHolder>();
         //GameObject[] eShots;
         eShots = GameObject.FindGameObjectsWithTag("eProjectile");
 
@@ -44,7 +46,7 @@ public class Beat : MonoBehaviour {
         {
             if(eShots!= null)
             {
-                eShots[i].transform.localScale = new Vector3((PlaylistHolder._samples[i] * maxScale) + 1, (PlaylistHolder._samples[i] * maxScale) +1, (PlaylistHolder._samples[i] * maxScale)+1);
+                eShots[i].transform.localScale = new Vector3((playlistHolder._samples[i] * maxScale) + 1, (playlistHolder._samples[i] * maxScale) +1, (playlistHolder._samples[i] * maxScale)+1);
                // print("there are" + i + "shots on the field");
             }
         }

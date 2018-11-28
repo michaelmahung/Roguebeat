@@ -19,7 +19,7 @@ public class AudioTracker : MonoBehaviour {
     [SerializeField]
     private int level = 1;
     [SerializeField]
-    int TotalLevels = 6;
+    //int TotalLevels = 6;
 
 	// Use this for initialization
 	void Start () {

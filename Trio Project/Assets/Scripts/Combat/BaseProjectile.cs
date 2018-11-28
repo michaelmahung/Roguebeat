@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour, IPooledObject
 {
+    [HideInInspector]
     public float projectileDamage;
+    [HideInInspector]
     public float projectileSpeed;
+    [HideInInspector]
     public float activeTime;
 
     bool HitEnemy;
