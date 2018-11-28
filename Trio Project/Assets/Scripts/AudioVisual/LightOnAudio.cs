@@ -8,13 +8,12 @@ public class LightOnAudio : MonoBehaviour
     public int _band;
     public float _minIntensity, _maxIntensity;
     Light _light;
-    // Use this for initialization
+
     void Start()
     {
         _light = GetComponent<Light>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Read the intensity of the selected audio band, do stuff.

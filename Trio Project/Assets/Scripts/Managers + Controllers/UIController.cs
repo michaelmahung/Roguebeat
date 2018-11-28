@@ -12,7 +12,6 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
 	void Start ()
     {
-        //Set the pause screen to be false just in case
         pauseScreen.SetActive(false);
         debugText = GetComponentInChildren<Text>();
         songName = GameManager.Instance.currentSong.name;
@@ -40,8 +39,6 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
         debugText.text += "Press 'P' to pause the game.";
     }
 
-
-    //I was able to eliminate the need to use update by using interfaces
 	void Update ()
     {
 

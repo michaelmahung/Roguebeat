@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     void Start()
     {
         currentHealth = maxHealth;
-        //If theres a player in the scene but no GameManager for some reason, throw a warning
+
         if (GameManager.Instance == null)
         {
             Debug.LogWarning("Player will have limited functionality without a GameManager script in the scene.");
@@ -18,7 +18,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     public void Damage(float damage)
     {
-        //Since the player uses the damageable interface, we need to assign a damage function
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
@@ -28,7 +27,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     public void Kill()
     {
-        //Since the player uses the killable interface, we need to assign a kill function
         Destroy(gameObject);
     }
 }

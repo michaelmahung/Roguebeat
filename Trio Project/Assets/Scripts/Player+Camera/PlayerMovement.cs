@@ -31,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
         //Physics based movement for the player, Rigidbody.AddForce moves the player regardless of their rotation.
         if (rb.velocity.magnitude > topSpeed)
         {
-            //rb.velocity.magnitude is the current speed of the player
-            //All this does is say, "If the player is moving past my topspeed, slow it down".
             rb.velocity = rb.velocity.normalized * topSpeed;
         }
 
@@ -72,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.collider.tag == "Wall")
             {
-                //Debug.Log("Hit a wall");
                 dashDistance = (int)hit.distance;
             }
         }

@@ -1781,7 +1781,7 @@ MonoBehaviour:
   swapTime: 0.25
   projectileSpawnAmount: 50
   projectileSpeed: 15
-  projectileLife: 0.75
+  projectileLife: 1
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}
   fireSound: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
   icon: {fileID: 0}
@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 2
   fireRate: 0.25
-  swapTime: 0.5
+  swapTime: 0.25
   projectileSpawnAmount: 20
   projectileSpeed: 30
   projectileLife: 5
@@ -1858,9 +1858,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 5
   fireRate: 0.35
-  swapTime: 0.5
+  swapTime: 0.35
   projectileSpawnAmount: 10
-  projectileSpeed: 70
+  projectileSpeed: 60
   projectileLife: 3
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 1
   fireRate: 0.1
-  swapTime: 0.5
+  swapTime: 0.25
   projectileSpawnAmount: 150
   projectileSpeed: 30
   projectileLife: 5
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponDamage: 1
   fireRate: 1
-  swapTime: 0.5
+  swapTime: 0.25
   projectileSpawnAmount: 50
   projectileSpeed: 30
   projectileLife: 5

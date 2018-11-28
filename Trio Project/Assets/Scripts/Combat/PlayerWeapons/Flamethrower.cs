@@ -31,7 +31,6 @@ public class Flamethrower : BaseWeapon
     {
         if (canFire && !GameManager.Instance.gamePaused)
         {
-            //On fire, set fire to false, start the cooldown and play the fire sound, afterwards, run the shoot weapon function.
             canFire = false;
             StartCoroutine(WeaponCooldown());
             audioSource.clip = fireSound;
@@ -42,6 +41,14 @@ public class Flamethrower : BaseWeapon
             }
             ShootWeapon();
         } 
+    }
+
+    public override void ShootWeapon()
+    {
+        for (int i = 0; i < fireLocations.Count; i++)
+        {
+            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
+        }
     }
 
     public override void OnEnable()

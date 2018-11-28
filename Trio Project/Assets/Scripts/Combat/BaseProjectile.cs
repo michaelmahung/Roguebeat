@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPooledObject interface because it contains logic for when an object is activated from the object pool.
+public class BaseProjectile : MonoBehaviour, IPooledObject
 {
+    [HideInInspector]
     public float projectileDamage;
+    [HideInInspector]
     public float projectileSpeed;
+    [HideInInspector]
     public float activeTime;
 
     bool HitEnemy;
@@ -13,45 +16,42 @@ public class BaseProjectile : MonoBehaviour, IPooledObject //Must take the IPool
 
     public void OnObjectSpawn()
     {
-        Invoke("Deactivate", activeTime); //Invoke will simply call a method after a certain amount of time, here it will deactivate old objects after a set time.
+        Invoke("Deactivate", activeTime);
     }
 
     public void FixedUpdate()
     {
-        //Projectile should move forwards over time - Using fixedupdate because movement is jittery without it
-        //HOWEVER, with FixedUpdate, I should make the movement physics based instead of using Time.deltaTime
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
     } 
 
     public void Deactivate()
     {
-        //Set the gameobject to be deactive
         gameObject.SetActive(false);
     }
 
     virtual public void OnTriggerEnter (Collider other)
 	{
 
-        //Debug.Log(other.gameObject.name);
+        string hitTag = other.gameObject.tag;
+        IDamageable <float> thingHit = other.gameObject.GetComponent < IDamageable<float>>();
 
-		if (other.gameObject.tag == "Enemy") 
+        if (thingHit != null && hitTag != "Player")
         {
-            Debug.LogFormat("Hit {0} for {1} damage.", other.gameObject.name, projectileDamage);
             try
             {
-                IDamageable<float> enemyHit = other.gameObject.GetComponent<IDamageable<float>>();
-                enemyHit.Damage(projectileDamage);
-                //other.gameObject.GetComponent<EnemyDataModel>().Damage(projectileDamage);
+                thingHit.Damage(projectileDamage);
+                //Debug.LogFormat("Hit {0} for {1} damage.", other.gameObject.name, projectileDamage);
             }
             catch
             {
-                Debug.LogError("Object tagged enemy does not have IDamageable interface attached.");
+                Debug.LogErrorFormat("{0} does not have IDamageable interface attached.", hitTag);
             }
             Deactivate();
-		}
-		else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall") 
+        }
+
+        else if (hitTag == "Wall")
         {
             Deactivate();
-		}
-	}
+        }
+    }
 }

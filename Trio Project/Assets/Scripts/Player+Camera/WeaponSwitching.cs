@@ -8,36 +8,36 @@ public class WeaponSwitching : MonoBehaviour
     private int currentWeapon;
     bool weaponsAdded;
 
-    public static WeaponSwitching Instance; //For the sake of error handling, well make an instance of this.
+    public static WeaponSwitching Instance;
 
     void Start()
     {
         Instance = this;
         playerWeapon = GameManager.Instance.player.GetComponent<PlayerWeapon>();
-        SelectWeapon(); //Running this once at the beginning will deactive all but the first weapon.
-        UpdateWeapon(); //Tell the gamemanager what the current weapon is.
+        SelectWeapon();
+        UpdateWeapon();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        int previousWeapon = currentWeapon; //After switching weapons, we need to keep track of what the last weapon is.
+        int previousWeapon = currentWeapon;
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) //When 3 is pressed
+        if (Input.GetKeyDown(KeyCode.Alpha3)) 
         {
             if (currentWeapon >= transform.childCount -1)
             {
-                currentWeapon = 0; //If we are at the last item of the list, reset it.
+                currentWeapon = 0;
             }else
             {
-                currentWeapon++; //Otherwise, increment the current weapon value by 1.
+                currentWeapon++;
             }
             UpdateWeapon();
         }
 
-        if (previousWeapon != currentWeapon) //If we are actually switching to a new weapon
+        if (previousWeapon != currentWeapon)
         {
-            SelectWeapon(); //Do this
+            SelectWeapon();
         }
     }
 
@@ -52,6 +52,7 @@ public class WeaponSwitching : MonoBehaviour
         }
         catch
         {
+            return;
             //Debug.LogError("No UIController script found in scene");
         }
     }
@@ -59,18 +60,18 @@ public class WeaponSwitching : MonoBehaviour
     public void SelectWeapon()
     {
         int i = 0;
-        foreach(Transform weapon in transform) //For each child object attached to this gameobject.
+        foreach(Transform weapon in transform)
         {
-            if (!weaponsAdded) //If we havent added the current weapon to our weapon list
+            if (!weaponsAdded)
             {
-                weaponList.Add(weapon.gameObject); //Add the current weapon to our weapon list. 
+                weaponList.Add(weapon.gameObject);
             }
-            if (i == currentWeapon) //If the current weapon index matches our weapon.
+            if (i == currentWeapon)
             {
-                weapon.gameObject.SetActive(true); //Activate the weapon
+                weapon.gameObject.SetActive(true);
             }else
             {
-                weapon.gameObject.SetActive(false); //Otherwise deactivate the weapon
+                weapon.gameObject.SetActive(false);
             }
 
             i++;
