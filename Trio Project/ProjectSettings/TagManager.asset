@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - PlayerBaseShot
   - Wall
+  - Damageable
   layers:
   - Default
   - TransparentFX
