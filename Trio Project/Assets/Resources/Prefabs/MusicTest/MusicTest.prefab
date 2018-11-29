@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113c0c9d2407ec84790f5aa702b1a800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleNumber: 3
-  sampleRange: 0.15
+  sampleNumber: 292
+  sampleRange: 0.00001
   colors:
   - {r: 0.9811321, g: 0.041651815, b: 0.041651815, a: 0}
   - {r: 0.990566, g: 0.76312935, b: 0.032707386, a: 0}
@@ -162,7 +162,8 @@ MonoBehaviour:
   - {r: 1, g: 0.023584902, b: 0.83805114, a: 0}
   currentIndex: 0
   nextIndex: 0
-  changeColorTime: 2
+  changeColorTime: 1
+  isDone: 1
 --- !u!114 &114514155911177162
 MonoBehaviour:
   m_ObjectHideFlags: 1
