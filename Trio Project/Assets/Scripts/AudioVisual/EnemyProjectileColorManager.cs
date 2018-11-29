@@ -71,13 +71,13 @@ public class EnemyProjectileColorManager : MonoBehaviour {
         //timer = Time.deltaTime;
         //access the samples from the music script and check to see if the sample number 
         //is equal to or greater than the set range and that the last color change is completed
-		if(playlistHolder._samples[sampleNumber] >= sampleRange && isDone == true)
+		if(playlistHolder._samples[sampleNumber] >= sampleRange)// && isDone == true)
         {
             //if so, add 1 to both current and next index
             currentIndex = (currentIndex + 1) % colors.Length;
             nextIndex = (currentIndex + 1) % colors.Length;
             //set isdone to false
-            isDone = false;
+            //isDone = false;
             //call the function to change the color
             ColorChange();
         }
@@ -102,7 +102,7 @@ public class EnemyProjectileColorManager : MonoBehaviour {
                         //Lerp from currentIndex color to nextIndex Color in the specified time
                         m.color = Color.Lerp(colors[currentIndex], colors[nextIndex], changeColorTime);
                     //set isDone to true
-                    isDone = true;
+                    //isDone = true;
                 }
             }
         }
