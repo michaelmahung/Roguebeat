@@ -7,16 +7,18 @@ public class SpawnEnemies : MonoBehaviour {
 public float SpawnTimer = 3.0f;
 public bool IsSpawning;
 public bool SpawnerTransition;
-public float SpawnMovementSpeed =0.05f;
+public float SpawnMovementSpeed;
 public bool SpawnMover;
 public Transform StartPosition;
 public Transform EndPosition;
 public GameObject[] EnemyTypes;
+private int RandomChance;
 
 
 	// Use this for initialization
 	void Start ()
 	{
+
 	SpawnMover = false;
 		IsSpawning = true;
 		EnemyTypes = Resources.LoadAll<GameObject> ("Prefabs/Enemies");
@@ -48,9 +50,22 @@ public GameObject[] EnemyTypes;
 
 	IEnumerator BeginSpawning ()
 	{
-	yield return new WaitForSeconds(SpawnTimer);
-	Instantiate (EnemyTypes[Random.Range(0,3)], transform.position, transform.rotation);
-	StartCoroutine(BeginSpawning());
+		yield return new WaitForSeconds (SpawnTimer);
+		RandomChance = Random.Range (1, 100);
+		print (RandomChance);
+		if (RandomChance <= 40) {
+			Instantiate (EnemyTypes [2], transform.position, transform.rotation);
+		}
 
+		if (RandomChance > 40 && RandomChance < 80) {
+			Instantiate (EnemyTypes [1], transform.position, transform.rotation);
+		}
+
+		if (RandomChance >= 80) {
+			Instantiate (EnemyTypes [0], transform.position, transform.rotation);
+		}
+
+
+		StartCoroutine (BeginSpawning ());
 	}
 	}
