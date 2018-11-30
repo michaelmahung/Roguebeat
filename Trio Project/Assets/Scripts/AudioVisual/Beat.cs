@@ -6,6 +6,8 @@ public class Beat : MonoBehaviour {
     //public GameObject _cubePrefab;
     GameObject[] eShots = new GameObject[512];
     public float maxScale;
+    public bool isBroke = false;
+    //private int i;
     private PlaylistHolder playlistHolder;
     //public GameObject eShot;
     //GameObject[] eFire = new GameObject[512];
@@ -34,6 +36,10 @@ public class Beat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        eShots = GameObject.FindGameObjectsWithTag("eProjectile");
+        Beats();
+        //int number = i;
+        //if(Beats.i )
         //var eShot = GameObject.FindWithTag("eProjectile");
         /*for (int i = 0; i < 512; i++)
         {
@@ -42,14 +48,50 @@ public class Beat : MonoBehaviour {
                 sCube[i].transform.localScale = new Vector3(10, (AudioTracker._samples[i] * maxScale) + 2, 10);
             }
         }*/
-        for (int i = 0; i<eShots.Length; i++)
+        /*for (int i = 0; i<eShots.Length; i++)
         {
-            if(eShots!= null)
+            if (i > eShots.Length)
+            {
+                i = 1;
+            }
+            if (eShots!= null)
             {
                 eShots[i].transform.localScale = new Vector3((playlistHolder._samples[i] * maxScale) + 1, (playlistHolder._samples[i] * maxScale) +1, (playlistHolder._samples[i] * maxScale)+1);
-               // print("there are" + i + "shots on the field");
+                // print("there are" + i + "shots on the field");
+                
             }
+            
+        }*/
+        
+        {
+
         }
         
 	}
+
+    void Beats()
+
+    {
+        for (int i = 0; i < eShots.Length; i++)
+        {
+           if (i > eShots.Length)
+            {
+                isBroke = true;
+                break;
+                
+            }
+            if (eShots != null)
+            {
+                eShots[i].transform.localScale = new Vector3((playlistHolder._samples[i] * maxScale) + 1, (playlistHolder._samples[i] * maxScale) + 1, (playlistHolder._samples[i] * maxScale) + 1);
+                // print("there are" + i + "shots on the field");
+
+            }
+
+        }
+        if(isBroke == true)
+        {
+            isBroke = false;
+            Beats();
+        }
+    }
 }
