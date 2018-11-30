@@ -57,7 +57,7 @@ public class EnemyProjectileColorManager : MonoBehaviour {
                 foreach (Material m in r.materials)
                 {
                     //check to make sure it can use colors
-                    if (m.HasProperty("_Color"))
+                   // if (m.HasProperty("_Color"))
                         //set the color 
                         m.color = colors[currentIndex]; 
                 }
@@ -67,11 +67,13 @@ public class EnemyProjectileColorManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //ColorChange();
+        AlleShots = GameObject.FindGameObjectsWithTag("eProjectile");
         //make the timer count
         //timer = Time.deltaTime;
         //access the samples from the music script and check to see if the sample number 
         //is equal to or greater than the set range and that the last color change is completed
-		if(playlistHolder._samples[sampleNumber] >= sampleRange)// && isDone == true)
+        if (playlistHolder._samples[sampleNumber] >= sampleRange)// && isDone == true)
         {
             //if so, add 1 to both current and next index
             currentIndex = (currentIndex + 1) % colors.Length;
@@ -79,9 +81,13 @@ public class EnemyProjectileColorManager : MonoBehaviour {
             //set isdone to false
             //isDone = false;
             //call the function to change the color
-            ColorChange();
+            //ColorChange();
         }
-        
+        ColorChange();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("there are " + AlleShots.Length + " eProjectile tags in play");
+        }
     }
 
     void ColorChange()
@@ -92,15 +98,15 @@ public class EnemyProjectileColorManager : MonoBehaviour {
             //create an array of the renderers for each of those objects
             MeshRenderer[] renderers = go.GetComponentsInChildren<MeshRenderer>();
             //get access to each meshrenderer
-            foreach (MeshRenderer r in renderers)
+             foreach (MeshRenderer r in renderers)
             {
-                //get access to each material
-                foreach (Material m in r.materials)
-                {
-                    //check to make sure it can use colors
-                    if (m.HasProperty("_Color"))
-                        //Lerp from currentIndex color to nextIndex Color in the specified time
-                        m.color = Color.Lerp(colors[currentIndex], colors[nextIndex], changeColorTime);
+            //get access to each material
+            foreach (Material m in r.materials)
+            {
+            //check to make sure it can use colors
+            //if (m.HasProperty("_Color"))
+            //Lerp from currentIndex color to nextIndex Color in the specified time
+            m.color = Color.Lerp(colors[currentIndex], colors[nextIndex], changeColorTime);
                     //set isDone to true
                     //isDone = true;
                 }
