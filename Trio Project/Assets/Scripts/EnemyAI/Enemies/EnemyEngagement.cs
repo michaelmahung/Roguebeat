@@ -7,11 +7,27 @@ using UnityEngine;
 /// </summary>
 public class EnemyEngagement : EnemyDataModel {
 
+    /*//Josh's shit
+    private EnemyProjectileColorManager eColor;
+    private int colorIndex;
+    private Color[] getColor;
+    private Color startColor = Color.red;*/
 
-	// Not a REAL start function, serves as typical function to be called from specific enemy classes. 
-	public void Start2 () {
+   /* //added by Josh
+    private new void Start()
+    {
+        //also Josh's shit
+        eColor = GetComponent<EnemyProjectileColorManager>();
+        colorIndex = eColor.currentIndex;
+        getColor = eColor.colors;
+    }*/
+
+    // Not a REAL start function, serves as typical function to be called from specific enemy classes. 
+    public void Start2 () {
 	base.Start(); // call to its parent class, EnemyDataModel, to ensure it runs it's full Start function first, to ensure it's Start calls reach the unique enemy classes.
-	}
+        
+        
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -21,7 +37,11 @@ public class EnemyEngagement : EnemyDataModel {
 	IEnumerator FireWeapon () // 
 	{
 		yield return new WaitForSeconds(EnemyAttackSpeed);
-		Instantiate (EnemyWeapons[WeaponValue], transform.position, transform.rotation);
+        Instantiate (EnemyWeapons[WeaponValue], transform.position, transform.rotation);
+        //start Josh's addition
+        //Renderer rend = GetComponent<Renderer>();
+        //EnemyWeapons[WeaponValue].GetComponent<Renderer>().sharedMaterial.color = Color.Lerp(startColor, getColor[colorIndex], Time.deltaTime); 
+        //end Josh's addition
 		StartCoroutine(FireWeapon());
 	}
 

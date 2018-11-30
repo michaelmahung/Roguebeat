@@ -22,11 +22,11 @@ public class EnemyProjectileColorManager : MonoBehaviour {
     //array of what colors to transition through
     public Color[] colors;
     //current color number
-    [SerializeField]
-    private int currentIndex = 0;
+    //[SerializeField]
+    public int currentIndex = 0;
     //next color number
-    [SerializeField]
-    private int nextIndex;
+    //[SerializeField]
+    public int nextIndex;
     //how fast should the color change happen
     [SerializeField]
     [Range(.1f, 2.0f)]

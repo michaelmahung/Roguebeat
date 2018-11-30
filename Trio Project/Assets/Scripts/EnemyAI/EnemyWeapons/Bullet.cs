@@ -6,10 +6,21 @@ public class Bullet : MonoBehaviour {
 
 public float BulletLife = 6.0f;
 public float BulletSpeed = 50.0f;
+
+    /*Josh's shit
+    private EnemyProjectileColorManager eColor;
+    private int colorIndex;
+    private Color[] getColor;
+    private Color startColor = Color.red;*/
  
 	// Use this for initialization
 	void Start () {
-		
+        //also Josh's shit
+       /* eColor = GetComponent<EnemyProjectileColorManager>();
+        colorIndex = eColor.currentIndex;
+        getColor = eColor.colors;
+        Renderer rend = GetComponent<Renderer>();
+        rend.material.color = Color.Lerp(startColor, getColor[colorIndex], Time.deltaTime);*/
 	}
 	
 	// Update is called once per frame
