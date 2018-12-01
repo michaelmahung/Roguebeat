@@ -23,7 +23,8 @@ public class PlaylistHolder : MonoBehaviour
 
     private int songValue;
     private MusicTest currentStruct;
-    public float[] _samples = new float[512];
+    public float[] _samples = new float[1024];
+    //public Queue<int> _samples;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class PlaylistHolder : MonoBehaviour
         currentLevel = 1;
         audioSource = GetComponent<AudioSource>();
         AppendList(currentLevel);
+        //_samples = new Queue<int>();
     }
 
     private void Update()
