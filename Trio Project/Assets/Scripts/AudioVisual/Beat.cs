@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour {
     //public GameObject _cubePrefab;
-    GameObject[] eShots;
+    GameObject[] eShots = new GameObject[512];
     public float maxScale;
     public bool isBroke = false;
     //private int i;
@@ -36,10 +36,8 @@ public class Beat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         eShots = GameObject.FindGameObjectsWithTag("eProjectile");
-
-        Beats();
+        //Beats();
         //int number = i;
         //if(Beats.i )
         //var eShot = GameObject.FindWithTag("eProjectile");
@@ -50,7 +48,7 @@ public class Beat : MonoBehaviour {
                 sCube[i].transform.localScale = new Vector3(10, (AudioTracker._samples[i] * maxScale) + 2, 10);
             }
         }*/
-        /*for (int i = 0; i<eShots.Length; i++)
+        for (int i = 0; i<eShots.Length; i++)
         {
             if (i > eShots.Length)
             {
@@ -63,7 +61,7 @@ public class Beat : MonoBehaviour {
                 
             }
             
-        }*/
+        }
         
         {
 
@@ -71,7 +69,7 @@ public class Beat : MonoBehaviour {
         
 	}
 
-    void Beats()
+    /*void Beats()
 
     {
         for (int i = 0; i < eShots.Length; i++)
@@ -95,5 +93,5 @@ public class Beat : MonoBehaviour {
             isBroke = false;
             Beats();
         }
-    }
+    }*/
 }
