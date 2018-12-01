@@ -63,7 +63,10 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     public virtual void Start()
     {
         reactDuration = 1;
-        gameObject.tag = "Damageable";
+        if (gameObject.tag == null)
+        {
+            gameObject.tag = "Damageable";
+        }
         objectRenderer = gameObject.GetComponent<Renderer>();
         startColor = objectRenderer.material.color;
     }

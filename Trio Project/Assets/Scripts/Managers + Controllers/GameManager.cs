@@ -165,7 +165,8 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerHealth>().gameObject;
         playerRenderer = player.GetComponentInChildren<Renderer>();
 
-        filter = GetComponent<AudioLowPassFilter>();
+        filter = audioPlayer.GetComponent<AudioLowPassFilter>();
+        filter.lowpassResonanceQ = 400;
         currentSong = audioPlayer.clip;
 
         songValue = 0;

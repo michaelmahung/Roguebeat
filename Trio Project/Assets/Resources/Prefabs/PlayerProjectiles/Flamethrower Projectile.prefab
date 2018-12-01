@@ -37,9 +37,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4573997974319174}
   - component: {fileID: 135809501001873908}
-  - component: {fileID: 114811223412025172}
   - component: {fileID: 199394285943583924}
   - component: {fileID: 198105145962790624}
+  - component: {fileID: 114278746535124250}
   m_Layer: 0
   m_Name: Flamethrower Projectile
   m_TagString: Untagged
@@ -116,7 +116,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161497429632604}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114811223412025172
+--- !u!114 &114278746535124250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,12 +124,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328958666017412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc7f83585dcd114b8c9795e25b6e476, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e023f990ad6cad4baac74ce0aaa01b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 0
   projectileSpeed: 0
-  activeTime: 5
+  activeTime: 0
 --- !u!135 &135809501001873908
 SphereCollider:
   m_ObjectHideFlags: 1

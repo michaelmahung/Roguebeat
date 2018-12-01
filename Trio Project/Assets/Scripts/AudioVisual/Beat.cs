@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour {
     //public GameObject _cubePrefab;
-    GameObject[] eShots = new GameObject[512];
+    GameObject[] eShots;
     public float maxScale;
     public bool isBroke = false;
     //private int i;
@@ -36,7 +36,9 @@ public class Beat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         eShots = GameObject.FindGameObjectsWithTag("eProjectile");
+
         Beats();
         //int number = i;
         //if(Beats.i )
