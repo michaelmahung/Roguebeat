@@ -23,7 +23,7 @@ public class WeaponSwitching : MonoBehaviour
     {
         int previousWeapon = currentWeapon;
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) 
+        if (Input.GetKeyDown(KeyCode.Alpha2)) 
         {
             if (currentWeapon >= transform.childCount -1)
             {

@@ -55,7 +55,6 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     [SerializeField]
     protected int Armor;
 
-    protected float maxHealth;
     protected Color startColor;
     protected Color currentColor;
     protected Renderer objectRenderer;

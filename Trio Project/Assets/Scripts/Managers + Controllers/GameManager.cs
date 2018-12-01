@@ -28,8 +28,6 @@ public class GameManager : MonoBehaviour
     public bool isDead;
 
     [Header("Global Audio Information")]
-    [Tooltip("Array of songs that can be played")]
-    public AudioClip[] allPlayableSongs;
     [Tooltip("The current song being played")]
     public AudioClip currentSong;
     [Tooltip("The audio player we want to manipulate")]
@@ -50,7 +48,6 @@ public class GameManager : MonoBehaviour
     private Material[] playerMaterials;
     Renderer playerRenderer;
     int matValue;
-    int songValue;
 
 
     private void Awake()
@@ -97,22 +94,7 @@ public class GameManager : MonoBehaviour
             ChangeMaterial(playerRenderer, playerMaterials[matValue]);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (songValue < allPlayableSongs.Length - 1)
-            {
-                songValue++;
-            }else
-            {
-                songValue = 0;
-            }
-            ChangeSong(audioPlayer, allPlayableSongs[songValue]);
-            currentSong = audioPlayer.clip;
-            IChangeSong changeSong = UI.GetComponent<IChangeSong>();
-            changeSong.SongChanged();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             PauseGame();
         }
@@ -150,26 +132,17 @@ public class GameManager : MonoBehaviour
         renderer.material = mat;
     }
 
-    public void ChangeSong (AudioSource source, AudioClip clip)
-    {
-        source.Stop();
-        source.clip = clip;
-        source.Play();
-    }
-
     private void SetComponents()
     {
         playerMaterials = Resources.LoadAll<Material>("Materials");
-        allPlayableSongs = Resources.LoadAll<AudioClip>("Music");
 
         player = FindObjectOfType<PlayerHealth>().gameObject;
         playerRenderer = player.GetComponentInChildren<Renderer>();
 
         filter = audioPlayer.GetComponent<AudioLowPassFilter>();
-        filter.lowpassResonanceQ = 400;
+        filter.cutoffFrequency = 400;
         currentSong = audioPlayer.clip;
 
-        songValue = 0;
         matValue = 0;
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
+    public bool ShowText;
     public GameObject pauseScreen;
     private Text debugText;
     private string weaponName;
@@ -14,7 +15,7 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
     {
         pauseScreen.SetActive(false);
         debugText = GetComponentInChildren<Text>();
-        songName = GameManager.Instance.currentSong.name;
+        UpdateUIText();
 	}
 
     public void WeaponSwapped()
@@ -25,18 +26,22 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
     public void SongChanged()
     {
-        songName = GameManager.Instance.currentSong.name;
         UpdateUIText();
-
     }
 
 	public void UpdateUIText()
     {
-        debugText.text = "Left Click to Fire\n" + "Current weapon: " + weaponName + "\n";
-        debugText.text += "Current Song: " + songName + "\n";
-        debugText.text += "Press '1' to change colors \nPress '2' to change songs\nPress '3' to swap weapons\n";
-        debugText.text += "Tap 'Shift' to dash.\n";
-        debugText.text += "Press 'P' to pause the game.";
+        if (ShowText)
+        {
+            debugText.text = "Left Click to Fire\n" + "Current weapon: " + weaponName + "\n";
+            debugText.text += "Press '1' to change colors \nPress '2' to swap weapons\n";
+            debugText.text += "Tap 'Shift' to dash.\n";
+            debugText.text += "Press 'Z' to pause the game.";
+        } else
+        {
+            debugText.text = "";
+        }
+
     }
 
 	void Update ()
