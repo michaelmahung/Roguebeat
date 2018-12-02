@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114514155911177162}
   - component: {fileID: 114828603315520600}
   - component: {fileID: 114301517623602672}
+  - component: {fileID: 169051061838462386}
   m_Layer: 0
   m_Name: MusicTest
   m_TagString: Untagged
@@ -178,7 +179,7 @@ MonoBehaviour:
   music:
   - level: 1
     songs:
-    - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
+    - {fileID: 8300000, guid: 147c5858f7ad21249978af12ef9ecaa5, type: 3}
   - level: 2
     songs:
     - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
@@ -736,3 +737,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScale: 3.5
+  isBroke: 0
+--- !u!169 &169051061838462386
+AudioLowPassFilter:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889053093061470}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.018181818
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
