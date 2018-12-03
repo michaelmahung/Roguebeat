@@ -17,8 +17,29 @@ public class Trooper : EnemyEngagement{
 	}
 
 	// Update is called once per frame
-	void Update () {
-	SeePlayer(); // calls SeePlayer function in parent class
+	void Update ()
+	{
+		SeePlayer (); // calls SeePlayer function in parent class
+		float closestDistance = Mathf.Infinity;
+		GameObject closestPlayerShot = null;
+		GameObject[] AllPlayerBullets = (GameObject[])GameObject.FindGameObjectsWithTag ("PlayerBaseShot");
+		foreach (GameObject s in AllPlayerBullets) {
+
+			if (s.name != this.name) {
+
+				float distance = (s.transform.position - this.transform.position).sqrMagnitude;
+				if (distance < closestDistance) {
+					closestDistance = distance;
+					closestPlayerShot = s;
+				}
+			}
+		}
+
+		if (AllPlayerBullets.Length > 0) { 
+			Debug.DrawLine (this.transform.position, closestPlayerShot.transform.position);
+		} else if (closestPlayerShot.transform.position == null) {
+			return;
+		}
 	}
 
 	private void FixedUpdate(){
