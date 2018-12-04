@@ -29,10 +29,16 @@ public float BulletSpeed = 50.0f;
 		BulletLife -= Time.deltaTime;
 		if (BulletLife <= 0) {
 			Destroy (gameObject);
-			}
+		}
+		if (BulletLife > 0) {
+			transform.position += transform.forward * BulletSpeed * Time.deltaTime;
+		}
+	}
 
-			if (BulletLife > 0) {
-				transform.position += transform.forward * BulletSpeed * Time.deltaTime;
-				}
-				}
-				}
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "Wall" || other.tag == "Player") {
+			Destroy (gameObject);
+		}
+	}
+	}

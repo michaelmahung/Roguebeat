@@ -17,12 +17,24 @@ public GameObject BigBoom;
 	{
 		BombLife -= Time.deltaTime;
 		if (BombLife <= 0) {
-			Instantiate (BigBoom, transform.position, transform.rotation);
-			Destroy (gameObject);
+		callExplosion();
 		}
 
 		if (BombLife > 0) {
 			transform.position += transform.forward * BombSpeed * Time.deltaTime;
 		}
 	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "Player" || other.tag == "Wall") {
+			callExplosion ();
+		}
 	}
+
+	void callExplosion ()
+	{
+		Instantiate (BigBoom, transform.position, transform.rotation);
+			Destroy (gameObject);
+			}
+			}
