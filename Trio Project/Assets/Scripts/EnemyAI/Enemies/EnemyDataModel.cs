@@ -34,8 +34,9 @@ public float TimeToDie;
 	{
 		Hero = GameObject.FindGameObjectWithTag ("Player").transform; // Finds the player via Player tag 
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-		//for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
-		//}
+                                                                               //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
+                                                                               //}
+        KillingForDoors = GameObject.FindObjectOfType<LevelDoors>();
 	}
 	
 	// Update is called once per frame
