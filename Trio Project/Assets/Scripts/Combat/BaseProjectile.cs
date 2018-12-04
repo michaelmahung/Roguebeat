@@ -37,15 +37,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
         if (thingHit != null && hitTag != "Player")
         {
-            try
-            {
-                thingHit.Damage(projectileDamage);
-                //Debug.LogFormat("Hit {0} for {1} damage.", other.gameObject.name, projectileDamage);
-            }
-            catch
-            {
-                Debug.LogErrorFormat("{0} does not have IDamageable interface attached.", hitTag);
-            }
+            thingHit.Damage(projectileDamage);
             Deactivate();
         }
 
