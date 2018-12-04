@@ -7,6 +7,7 @@ public class CameraController2 : MonoBehaviour {
     public GameObject player;
     public float followAhead;
     public float smoothing;
+    public float cameraHeight;
 
     private Vector3 targetPosition;
     private Vector3 cameraOffset;
@@ -17,6 +18,7 @@ public class CameraController2 : MonoBehaviour {
         {
             //Attempt to find a gameobject tagged as the player.
             player = GameManager.Instance.player;
+            gameObject.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
             cameraOffset = transform.position - player.transform.position;
         }
         catch
