@@ -2,36 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelDoors : MonoBehaviour, IDamageable<float>{
+public class LevelDoors : MonoBehaviour{
 
-public int enemiesRequired;
-public EnemyDataModel CountEnemyDeaths;
+    private int enemiesKilled;
+    public int enemiesRequired;
+    public SpawnEnemies[] spawners;
+    bool moved;
 
+    private void Start()
+    {
+        spawners = GameObject.FindObjectsOfType<SpawnEnemies>();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    void Update ()
 	{
-
-		if (enemiesRequired == 10) {
+		if (enemiesKilled == enemiesRequired && !moved) {
+            moved = true;
 			transform.Translate (10, 0, 0);
+            foreach (SpawnEnemies enemySpawner in spawners)
+            {
+                enemySpawner.gameObject.SetActive(false);
+            }
 			print ("moved");
 		}
 	}
 
 	public void AddKills ()
 	{
-	enemiesRequired++;
-	print(enemiesRequired);
+	    enemiesKilled++;
+	    Debug.LogFormat("{0} enemies left", (enemiesRequired - enemiesKilled));
 	}
-
-	public void Damage (float damage)
-	{
-
-	}
-
 }

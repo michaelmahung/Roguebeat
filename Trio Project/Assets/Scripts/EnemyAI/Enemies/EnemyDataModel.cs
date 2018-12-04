@@ -54,8 +54,10 @@ public float TimeToDie;
 
 	public void enemyDeath ()
 	{
-	KillingForDoors.AddKills();
-	Destroy (gameObject);
-
-	}
+        if (KillingForDoors != null)
+        {
+            KillingForDoors.AddKills();
+        }
+        Destroy(gameObject);
+    }
 }

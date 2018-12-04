@@ -27,9 +27,10 @@ GameObject:
   - component: {fileID: 114044536486155298}
   - component: {fileID: 114697496711829250}
   - component: {fileID: 114906591171032878}
+  - component: {fileID: 114227626512808524}
   m_Layer: 0
   m_Name: Randocube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 1267490387490262}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -20.9, y: 0, z: 21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -138,8 +139,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4b33aae0986e4ebd19d2e618b361c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 5
+  Health: 10
   Armor: 0
+--- !u!114 &114227626512808524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267490387490262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781e39530b4b87d4f8b8b1dd89fab897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: 1
+  maxScale: 6
 --- !u!114 &114697496711829250
 MonoBehaviour:
   m_ObjectHideFlags: 1
