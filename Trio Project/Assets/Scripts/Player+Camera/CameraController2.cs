@@ -18,6 +18,7 @@ public class CameraController2 : MonoBehaviour {
         {
             //Attempt to find a gameobject tagged as the player.
             player = GameManager.Instance.player;
+            if(cameraHeight==0){ cameraHeight = 40; }
             gameObject.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
             cameraOffset = transform.position - player.transform.position;
         }
