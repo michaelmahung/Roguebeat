@@ -37,9 +37,7 @@ public class Trooper : EnemyEngagement{
 
 		if (AllPlayerBullets.Length > 0) { 
 			Debug.DrawLine (this.transform.position, closestPlayerShot.transform.position);
-		} else if (closestPlayerShot.transform.position == null) {
-			return;
-		}
+		} 
 	}
 
 	private void FixedUpdate(){
