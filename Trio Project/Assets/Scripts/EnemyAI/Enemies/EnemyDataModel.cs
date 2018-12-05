@@ -16,7 +16,7 @@ public float EnemyHealth; // base variable for all enemy health; is uniquely set
 public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is uniquely set on specific enemy class
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
-public LevelDoors KillingForDoors;
+public KillDoor KillingForDoors;
 
 /*public MyStruct[] EnemyWeaponTypes; ****************************Struct Usage(Mike)
 [System.Serializable]
@@ -36,7 +36,7 @@ public float TimeToDie;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
                                                                                //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
                                                                                //}
-        KillingForDoors = GameObject.FindObjectOfType<LevelDoors>();
+        KillingForDoors = GameObject.FindObjectOfType<KillDoor>();
 	}
 	
 	// Update is called once per frame
