@@ -17,6 +17,9 @@ public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is 
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 public string CurrentRoom { get; set; }
+private Color EnemyBaseColor;
+private float hurtDuration = 3.0f;
+private float countTime;
 
 /*public MyStruct[] EnemyWeaponTypes; ****************************Struct Usage(Mike)
 [System.Serializable]
@@ -34,7 +37,8 @@ public float TimeToDie;
 	{
 		Hero = GameObject.FindGameObjectWithTag ("Player").transform; // Finds the player via Player tag 
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-                                                                               //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
+        EnemyBaseColor = GetComponent<Renderer>().material.color;      
+        print (GetComponent<Renderer>().material.color);                                                             //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
                                                                                //}
 	}
 	
@@ -46,6 +50,11 @@ public float TimeToDie;
 	public void Damage (float damage) // function on enemies to read damage from fire from player, reads Damage from Interfaces script.
 	{
 		EnemyHealth -= damage;
+		countTime = 0;
+		gameObject.GetComponent<MeshRenderer> ().material.color = Color.Lerp (EnemyBaseColor, Color.red, countTime);
+		if (countTime < 1) {
+		countTime += Time.deltaTime/hurtDuration;
+		}
 		if (EnemyHealth <= 0) {
 		enemyDeath();
 		}
