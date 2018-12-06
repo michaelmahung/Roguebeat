@@ -88,7 +88,7 @@ public abstract class BaseWeapon: MonoBehaviour
 
     public virtual void Fire()
     {
-        if (canFire && !GameManager.Instance.gamePaused)
+        if (canFire && !GameManager.Instance.UI.gamePaused)
         {
             canFire = false;
             StartCoroutine(WeaponCooldown());

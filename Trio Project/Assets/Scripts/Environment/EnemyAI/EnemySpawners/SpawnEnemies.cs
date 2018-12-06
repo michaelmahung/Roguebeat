@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemies : MonoBehaviour {
+public class SpawnEnemies : MonoBehaviour, ITrackRooms {
 
 public float SpawnTimer = 3.0f;
 public bool IsSpawning;
@@ -12,14 +12,14 @@ public bool SpawnMover;
 public Transform StartPosition;
 public Transform EndPosition;
 public GameObject[] EnemyTypes;
+public string CurrentRoom { get; set; }
 private int RandomChance;
 
 
 	// Use this for initialization
 	void Start ()
 	{
-
-	SpawnMover = false;
+	    SpawnMover = false;
 		IsSpawning = true;
 		EnemyTypes = Resources.LoadAll<GameObject> ("Prefabs/Enemies");
 		if (IsSpawning == true) {
@@ -52,7 +52,6 @@ private int RandomChance;
 	{
 		yield return new WaitForSeconds (SpawnTimer);
 		RandomChance = Random.Range (1, 100);
-		print (RandomChance);
 		if (RandomChance <= 40) {
 			Instantiate (EnemyTypes [2], transform.position, transform.rotation);
 		}

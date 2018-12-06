@@ -10,9 +10,12 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
     private Text debugText;
     private string weaponName;
     private string songName;
+    public bool gamePaused;
+    private AudioLowPassFilter filter;
 
 	void Start ()
     {
+        filter = GameManager.Instance.filter;
         pauseScreen.SetActive(false);
         debugText = GetComponentInChildren<Text>();
         UpdateUIText();
@@ -33,9 +36,11 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
     {
         if (ShowText)
         {
-            debugText.text = "Left Click to Fire\n" + "Current weapon: " + weaponName + "\n";
-            debugText.text += "Press '1' to change colors \nPress '2' to swap weapons\n";
+            debugText.text = "Left Click to Fire\n";
+            debugText.text += "Current weapon: " + weaponName + "\n";
             debugText.text += "Tap 'Shift' to dash.\n";
+            debugText.text += "Press '1' to change colors \n";
+            debugText.text += "Press '2' to swap weapons\n";
             debugText.text += "Press 'Z' to pause the game.";
         } else
         {
@@ -46,6 +51,36 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
 	void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            PauseGame();
+        }
+    }
 
-	}
+    public void PauseGame()
+    {
+        try
+        {
+            if (!gamePaused)
+            {
+                gamePaused = true;
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+                filter.enabled = true;
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                gamePaused = false;
+                Time.timeScale = 1;
+                filter.enabled = false;
+            }
+        }
+        catch
+        {
+            gamePaused = false;
+            Debug.LogWarning("Add a reference to the UIController in the GameManager to pause.");
+        }
+
+    }
 }

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseDoor : MonoBehaviour
+public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 {
+    public string CurrentRoom { get; set; }
     public enum moveAxis { X, Y, Z }
     public moveAxis MoveAxis;
+    public enum openCondition { Kills, Objectives, Objects }
+    public openCondition OpenCondition;
     public float moveAmount = 10;
+    public int thingsRequired;
+    protected int thingsDestroyed;
     protected Vector3 moveDirection;
     protected bool doorMoved;
 
@@ -34,5 +39,16 @@ public abstract class BaseDoor : MonoBehaviour
     {
         doorMoved = true;
         transform.localPosition += moveDirection;
+        GameManager.Instance.RemoveDoor(this);
+    }
+
+    public virtual void AddToDoor()
+    {
+        thingsDestroyed++;
+
+        if (thingsDestroyed >= thingsRequired && !doorMoved)
+        {
+            OpenDoor();
+        }
     }
 }

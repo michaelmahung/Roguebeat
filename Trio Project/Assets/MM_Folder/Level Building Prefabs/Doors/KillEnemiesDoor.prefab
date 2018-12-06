@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1576023680549720}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -25.2, y: 0, z: -1.74}
-  m_LocalScale: {x: 7, y: 5, z: 2.500001}
+  m_LocalScale: {x: 7, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -126,5 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveAxis: 2
   moveAmount: 5
-  enemiesRequired: 1
+  thingsRequired: 0
   spawners: []

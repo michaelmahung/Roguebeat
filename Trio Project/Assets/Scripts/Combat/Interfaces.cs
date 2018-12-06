@@ -28,3 +28,8 @@ public interface IChangeSong
 {
     void SongChanged();
 }
+
+public interface ITrackRooms
+{
+    string CurrentRoom { get; set; }
+}

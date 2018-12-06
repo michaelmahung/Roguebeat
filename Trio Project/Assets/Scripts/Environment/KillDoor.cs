@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class KillDoor : BaseDoor
 {
-    private int enemiesKilled;
-    public int enemiesRequired;
-    public SpawnEnemies[] spawners;
+    public List<SpawnEnemies> spawners = new List<SpawnEnemies>();
 
     public new void Start()
     {
         base.Start();
-        spawners = GameObject.FindObjectsOfType<SpawnEnemies>();
+        OpenCondition = openCondition.Kills;
+        StartCoroutine(FindSpawners());
+    }
+
+    IEnumerator FindSpawners()
+    {
+        yield return new WaitForSeconds(0.1f);
+        foreach (SpawnEnemies spawn in GameManager.Instance.ActiveSpawners)
+        {
+            if (spawn.CurrentRoom == CurrentRoom)
+            {
+                spawners.Add(spawn);
+            }
+        }
+        yield break;
+    }
+
+    public override void OpenDoor()
+    {
+        base.OpenDoor();
+        StopSpawners();
     }
 
     public void StopSpawners()
@@ -19,19 +37,7 @@ public class KillDoor : BaseDoor
         foreach (SpawnEnemies enemySpawner in spawners)
         {
             enemySpawner.gameObject.SetActive(false);
+            GameManager.Instance.RemoveSpawner(enemySpawner);
         }
-    }
-
-	public void AddKills ()
-	{
-	    enemiesKilled++;
-
-        if (enemiesKilled >= enemiesRequired && !doorMoved)
-        {
-            StopSpawners();
-            OpenDoor();
-        }
-
-        Debug.LogFormat("{0} enemies left", (enemiesRequired - enemiesKilled));
     }
 }

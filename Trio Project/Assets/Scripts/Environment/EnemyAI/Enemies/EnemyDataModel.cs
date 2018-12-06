@@ -6,7 +6,7 @@ using System.Linq;
 /// <summary>
 /// Base Parent class for enemies and their behavior. Inherits from Interfaces script.
 /// </summary>
-public class EnemyDataModel : MonoBehaviour , IDamageable<float> {
+public class EnemyDataModel : MonoBehaviour , IDamageable<float>, ITrackRooms {
 
 [HideInInspector]// Hide this array of EnemyWeapons from the Inspector.
 public GameObject[] EnemyWeapons;
@@ -16,7 +16,7 @@ public float EnemyHealth; // base variable for all enemy health; is uniquely set
 public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is uniquely set on specific enemy class
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
-public KillDoor KillingForDoors;
+public string CurrentRoom { get; set; }
 
 /*public MyStruct[] EnemyWeaponTypes; ****************************Struct Usage(Mike)
 [System.Serializable]
@@ -36,7 +36,6 @@ public float TimeToDie;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
                                                                                //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
                                                                                //}
-        KillingForDoors = GameObject.FindObjectOfType<KillDoor>();
 	}
 	
 	// Update is called once per frame
@@ -54,10 +53,7 @@ public float TimeToDie;
 
 	public void enemyDeath ()
 	{
-        if (KillingForDoors != null)
-        {
-            KillingForDoors.AddKills();
-        }
+        GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
         Destroy(gameObject);
     }
 }

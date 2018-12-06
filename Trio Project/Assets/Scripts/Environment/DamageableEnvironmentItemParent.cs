@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 [RequireComponent(typeof(Rigidbody), (typeof(Collider)))]
-public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageable<float>, IKillable
+public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageable<float>, IKillable, ITrackRooms
 {
     private float _damageTaken { get; set; }
     protected float damageTaken
@@ -58,6 +58,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected Color startColor;
     protected Color currentColor;
     protected Renderer objectRenderer;
+    public string CurrentRoom { get; set; }
 
     public virtual void Start()
     {
