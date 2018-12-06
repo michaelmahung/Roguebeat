@@ -13,7 +13,7 @@ public class WeaponSwitching : MonoBehaviour
     void Start()
     {
         Instance = this;
-        playerWeapon = GameManager.Instance.player.GetComponent<PlayerWeapon>();
+        playerWeapon = GameManager.Instance.Player.GetComponent<PlayerWeapon>();
         SelectWeapon();
         UpdateWeapon();
     }

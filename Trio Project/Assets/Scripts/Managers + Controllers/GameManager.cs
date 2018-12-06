@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public List<float> highScores = new List<float>();
 
     [Header("Global Script References")]
-    public GameObject player;
+    public GameObject Player;
+    public string PlayerRoom;
     public List<BaseDoor> ActiveDoors = new List<BaseDoor>();
     public List<SpawnEnemies> ActiveSpawners = new List<SpawnEnemies>();
     public AudioLowPassFilter filter;
@@ -61,6 +62,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Public Functions
+    /// </summary>
+
+
     public void AddToDoor(String roomName, BaseDoor.openCondition type)
     {
         for (int i = 0; i < ActiveDoors.Count; i++)
@@ -83,9 +89,16 @@ public class GameManager : MonoBehaviour
         ActiveSpawners.Remove(spawn);
     }
 
+
+
+    /// <summary>
+    /// Private Functions
+    /// </summary>
+
     private void SetComponents()
     {
-        player = FindObjectOfType<PlayerHealth>().gameObject;
+        Player = FindObjectOfType<PlayerHealth>().gameObject;
+        PlayerRoom = Player.GetComponent<PlayerStats>().CurrentRoom;
         filter = audioPlayer.GetComponent<AudioLowPassFilter>();
         filter.cutoffFrequency = 400;
         currentSong = audioPlayer.clip;

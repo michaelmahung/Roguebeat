@@ -252,8 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e3563efce9546bb9763b0bbd012b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowText: 0
+  ShowText: 1
   pauseScreen: {fileID: 1341692039996144}
+  gamePaused: 0
 --- !u!222 &222425316239604732
 CanvasRenderer:
   m_ObjectHideFlags: 1

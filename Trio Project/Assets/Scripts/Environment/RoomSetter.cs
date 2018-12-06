@@ -5,8 +5,11 @@ using UnityEngine;
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
+    public delegate void PlayerEnteredNewRoom();
+    public static event PlayerEnteredNewRoom UpdatePlayerRoom;
 
 	void Start () {
+
 		if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
@@ -21,6 +24,16 @@ public class RoomSetter : MonoBehaviour {
         {
             roomTracker.CurrentRoom = RoomName;
         }
+
+        if (other.tag == "Player")
+        {
+            UpdatePlayer();
+        }
     }
 
+    public void UpdatePlayer()
+    {
+        GameManager.Instance.PlayerRoom = RoomName;
+        UpdatePlayerRoom();
+    }
 }

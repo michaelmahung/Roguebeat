@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RandomHeight : MonoBehaviour {
 
-    public int MaxHeight;
-    public int MinHeight;
+    public int MaxHeight = 60;
+    public int MinHeight = 50;
 
 	void Start ()
     {

@@ -34,8 +34,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574626609682582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 103.834915, y: 76.02147, z: 72.594666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,10 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
   currentSong: {fileID: 0}
   audioPlayer: {fileID: 0}
-  gamePaused: 0
   highScores: []
+  Player: {fileID: 0}
+  PlayerRoom: 
+  ActiveDoors: []
+  ActiveSpawners: []
+  filter: {fileID: 0}
   UI: {fileID: 0}
-  player: {fileID: 0}

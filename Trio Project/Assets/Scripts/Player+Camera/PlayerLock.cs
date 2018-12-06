@@ -14,7 +14,7 @@ public class PlayerLock : MonoBehaviour {
         try
         {
             //Check to see if there is a gameobject tagged as the player
-            player = GameManager.Instance.player.transform;
+            player = GameManager.Instance.Player.transform;
             playerInScene = true;
         }
         catch

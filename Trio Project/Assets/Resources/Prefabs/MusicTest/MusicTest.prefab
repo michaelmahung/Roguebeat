@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 114514155911177162}
   - component: {fileID: 114828603315520600}
   - component: {fileID: 114301517623602672}
-  - component: {fileID: 169051061838462386}
+  - component: {fileID: 169366976757177582}
+  - component: {fileID: 114434671335029974}
   m_Layer: 0
   m_Name: MusicTest
   m_TagString: Untagged
@@ -37,8 +38,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889053093061470}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.9630847, y: 0.7842207, z: -0.4123659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 27.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +56,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -165,6 +166,17 @@ MonoBehaviour:
   nextIndex: 0
   changeColorTime: 1
   isDone: 1
+--- !u!114 &114434671335029974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889053093061470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0c198f8e8cef544afbf616397f63ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114514155911177162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +191,7 @@ MonoBehaviour:
   music:
   - level: 1
     songs:
-    - {fileID: 8300000, guid: 147c5858f7ad21249978af12ef9ecaa5, type: 3}
+    - {fileID: 8300000, guid: 8d0add905acdb294682c484f07ceec8d, type: 3}
   - level: 2
     songs:
     - {fileID: 8300000, guid: 3b0483a7095be1c419b60a0d85eef4b1, type: 3}
@@ -738,7 +750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxScale: 3.5
   isBroke: 0
---- !u!169 &169051061838462386
+--- !u!169 &169366976757177582
 AudioLowPassFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

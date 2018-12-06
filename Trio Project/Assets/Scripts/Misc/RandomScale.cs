@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RandomScale : MonoBehaviour {
 
-    public float minScale;
-    public float maxScale;
+    public float minScale = 1;
+    public float maxScale = 5;
 
 	void Start () {
         gameObject.transform.localScale = new Vector3(Random.Range(minScale, maxScale), Random.Range(minScale, maxScale), Random.Range(minScale, maxScale));
