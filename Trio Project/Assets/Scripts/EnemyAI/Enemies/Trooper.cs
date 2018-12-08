@@ -32,15 +32,40 @@ public class Trooper : EnemyEngagement{
 					closestDistance = distance;
 					closestPlayerShot = s;
 				}
+				if (distance < 1.0f) {
+				StartCoroutine(EnemyDodge());
+				}
 			}
 		}
 
 		if (AllPlayerBullets.Length > 0) { 
 			Debug.DrawLine (this.transform.position, closestPlayerShot.transform.position);
-		} 
+		}
+		 
 	}
 
 	private void FixedUpdate(){
 		ChasePlayer(); //calls ChasePlayer function in parent class
+	}
+
+	IEnumerator EnemyDodge ()
+	{
+		int DodgeChance = Random.Range (0, 100);
+		if (DodgeChance < 30) {
+			int DirectionDodge = Random.Range (1, 3);
+			print (DirectionDodge);
+			var CurrentPosition = transform.position;
+			if (DirectionDodge == 1) {
+				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right * 2)), 5.0f);
+				yield return new WaitForSeconds(5.0f);
+			}
+			if (DirectionDodge == 2) {
+				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right / 2)), 5.0f);
+			}
+			yield return new WaitForSeconds(5.0f);
+		}
+
+
+
 	}
 }

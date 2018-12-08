@@ -1017,6 +1017,10 @@ Prefab:
       propertyPath: m_Name
       value: Boomer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1596928008321874, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
   m_IsPrefabAsset: 0
@@ -1430,7 +1434,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4372690261508830, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -17.782257
+      value: -17.8
       objectReference: {fileID: 0}
     - target: {fileID: 4372690261508830, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1466,7 +1470,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1620403275424218, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114389904460639454, guid: e5df3f33ccf6ccc4780b2086114eeb1b,
+        type: 2}
+      propertyPath: EnemyHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
