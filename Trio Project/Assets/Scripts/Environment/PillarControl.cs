@@ -6,6 +6,7 @@ public class PillarControl : MonoBehaviour {
 
     public Transform up;
     public Transform down;
+    private Transform CurrentPosition;
 
     public float moveSpeed;
 
@@ -23,15 +24,18 @@ public class PillarControl : MonoBehaviour {
 	void Update () {
         float move = moveSpeed * Time.deltaTime;
 
-		if (turnOn == true && onOnce == false)
+		if (turnOn == true) //&& onOnce == false)
         {
             transform.position = Vector3.MoveTowards(transform.position, up.position, move);
-            onOnce = true;
+          
+            //onOnce = true;
+
         }
-        if(turnOn == false && onOnce == true)
+        if(turnOn == false) // && onOnce == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, down.position, move);
-            onOnce = false;
+            //onOnce = false;
+
         }
 	}
 

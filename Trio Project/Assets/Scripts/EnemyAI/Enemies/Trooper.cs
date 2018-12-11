@@ -56,11 +56,11 @@ public class Trooper : EnemyEngagement{
 			print (DirectionDodge);
 			var CurrentPosition = transform.position;
 			if (DirectionDodge == 1) {
-				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right * 2)), 5.0f);
+				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right * 2)), 0.05f);
 				yield return new WaitForSeconds(5.0f);
 			}
 			if (DirectionDodge == 2) {
-				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right / 2)), 5.0f);
+				transform.position = Vector3.Lerp(CurrentPosition, (CurrentPosition + (transform.right / 2)), 0.05f);
 			}
 			yield return new WaitForSeconds(5.0f);
 		}
