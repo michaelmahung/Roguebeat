@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectilePoolManager : MonoBehaviour
@@ -53,7 +52,7 @@ public class ProjectilePoolManager : MonoBehaviour
         }
     }
 
-
+    //This is bad, but it works for now, ill change if needed.
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, float damage, float speed, float life)
     {
         if(!projectileDictionary.ContainsKey(tag))

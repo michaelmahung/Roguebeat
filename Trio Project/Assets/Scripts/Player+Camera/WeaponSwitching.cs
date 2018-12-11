@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
+//Honestly this is a trash system and I saw it in a video and decided to copy it.
+
 public class WeaponSwitching : MonoBehaviour
 {
     private PlayerWeapon playerWeapon;
@@ -21,6 +24,7 @@ public class WeaponSwitching : MonoBehaviour
 
     void Update()
     {
+        //Why even do this
         int previousWeapon = currentWeapon;
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) 
@@ -30,6 +34,7 @@ public class WeaponSwitching : MonoBehaviour
                 currentWeapon = 0;
             }else
             {
+                //If were not at the last weapon, go to the next one and update the UI.
                 currentWeapon++;
             }
             UpdateWeapon();
@@ -41,12 +46,15 @@ public class WeaponSwitching : MonoBehaviour
         }
     }
 
+    //Update weapon tells the playerWeapon component on the player what weapon we are using and updates the UI for some reason.
     public void UpdateWeapon()
     {
         playerWeapon.playerWeapon = weaponList[currentWeapon];
 
         try
         {
+            //Try to update the weapon in the UI component.
+            //If there are any errors in doing so, just stop.
             IWeaponSwap weaponSwap = GameManager.Instance.UI.GetComponent<IWeaponSwap>();
             weaponSwap.WeaponSwapped();
         }
@@ -64,10 +72,13 @@ public class WeaponSwitching : MonoBehaviour
         {
             if (!weaponsAdded)
             {
+                //If we havent made our list of weapons, do that and dont let it do it again.
                 weaponList.Add(weapon.gameObject);
             }
+
             if (i == currentWeapon)
             {
+                //If our weapon index is the selected weapon's index, activate it, otherwise deactivate it
                 weapon.gameObject.SetActive(true);
             }else
             {

@@ -1,14 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+//This is the class that DamageableObjects will inherit from.
 
 public class DamageableObject : DamageableEnvironmentItemParent
 { 
-    public override void Start()
-    {
-        base.Start();
-    }
-
     public override void Kill()
     {
         GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Objects);

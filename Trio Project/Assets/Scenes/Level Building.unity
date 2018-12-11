@@ -427,6 +427,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MaxHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 634f0f55c75707f4bbf16adf0553d536, type: 2}
   m_IsPrefabAsset: 0
@@ -824,7 +834,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1034,7 +1049,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1318,7 +1338,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1697,7 +1722,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2510,7 +2540,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3224,7 +3259,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3794,7 +3834,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -4966,7 +5011,12 @@ Prefab:
     - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
         type: 2}
       propertyPath: MaxHeight
-      value: 60
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906591171032878, guid: 634f0f55c75707f4bbf16adf0553d536,
+        type: 2}
+      propertyPath: MinHeight
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

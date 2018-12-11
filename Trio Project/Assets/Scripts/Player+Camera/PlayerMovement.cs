@@ -62,9 +62,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        //Get the velocity of the player in a direction
+
         dashDirection = rb.velocity.normalized;
         RaycastHit hit;
         Ray dashRay = new Ray(transform.position, dashDirection);
+
+        //Cast a ray and see if we are hitting a wall, if we are, stop at the wall, otherwise dash.
 
         if (Physics.Raycast(dashRay, out hit, dashDistance))
         {
