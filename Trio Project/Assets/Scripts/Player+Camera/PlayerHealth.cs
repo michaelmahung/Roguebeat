@@ -7,27 +7,36 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 {
     [SerializeField]
     private float currentHealth;
-    public float MaxHealth = 10;
+    public float MaxHealth = 100;
     public float HealthPercent;
+    public bool IsPlayerDead;
 
-    public delegate void PlayerDamagedDelegate();
-    public static event PlayerDamagedDelegate PlayerDamaged;
+    public delegate void OnPlayerDamaged();
+    public static event OnPlayerDamaged PlayerDamaged;
+
+    public delegate void OnPlayerKilled();
+    public static event OnPlayerKilled PlayerKilled;
 
     void Start()
     {
         currentHealth = MaxHealth;
-        HealthPercent = currentHealth / MaxHealth;
+    }
 
-        if (GameManager.Instance == null)
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C))
         {
-            Debug.LogWarning("Player will have limited functionality without a GameManager script in the scene.");
+            Damage(10);
         }
     }
+
 
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        HealthPercent = currentHealth / MaxHealth;
         PlayerDamaged();
+
         if (currentHealth <= 0)
         {
             Kill();
@@ -36,6 +45,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     public void Kill()
     {
+        IsPlayerDead = true;
+        PlayerKilled();
         Destroy(gameObject);
     }
 }

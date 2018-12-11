@@ -8,12 +8,20 @@ using System;
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
+    //The GameManager class will be whats known as a "Singleton". Singletons are single instnces of classes,
+    //that are used globally throughout the game. In general, singletons should be used sparingly, but in this case,
+    //we need a class that can be communicated with globally to keep track of scores and such.
     private static GameManager _instance;
 
     public static GameManager Instance
     {
         get
         {
+            //When something trys to access the GameManager Instance, itll check if there already is an Instance running.
+            //If there isn't create an empty GameObject and attach the GameManager script and an AudioPeer script.
+            //If there is an Instance, simply return this instance.
+            //To avoid their being multiple instances, we set _instance = this in the Awake() function.
+
             if (_instance == null) 
             {
                 Debug.LogError("Creating a GameManager instance from scratch, this is not ideal.\nPlease add a GameManager component to the scene");
@@ -27,20 +35,25 @@ public class GameManager : MonoBehaviour
 
     [Header("Global Audio Information")]
     [Tooltip("The current song being played")]
-    public AudioClip currentSong;
+    public AudioClip CurrentSong;
     [Tooltip("The audio player we want to manipulate")]
-    public AudioSource audioPlayer;
+    public AudioSource AudioPlayer;
+
+    [Header("ScoreKeeping")]
+    public int CurrentScore;
 
     [Header("High Score List")]
-    public List<float> highScores = new List<float>();
+    public List<float> HighScores = new List<float>();
 
     [Header("Global Script References")]
     public GameObject Player;
     public string PlayerRoom;
     public List<BaseDoor> ActiveDoors = new List<BaseDoor>();
     public List<SpawnEnemies> ActiveSpawners = new List<SpawnEnemies>();
-    public AudioLowPassFilter filter;
+    public AudioLowPassFilter Filter;
     public UIController UI;
+
+    private bool canRespawn;
 
     private void Awake()
     {
@@ -59,14 +72,25 @@ public class GameManager : MonoBehaviour
 
     void Start ()
     {
-
+        PlayerHealth.PlayerKilled += CanRespawn;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RespawnPlayer();
+        }
+    }
+
+
 
     /// <summary>
     /// Public Functions
     /// </summary>
 
 
+    //Function for adding to the counters of the various room doors.
     public void AddToDoor(String roomName, BaseDoor.openCondition type)
     {
         for (int i = 0; i < ActiveDoors.Count; i++)
@@ -79,11 +103,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Removes a door from the overall door list
     public void RemoveDoor(BaseDoor door)
     {
         ActiveDoors.Remove(door);
     }
 
+    //Removes a spawner from the overall spawner list
     public void RemoveSpawner(SpawnEnemies spawn)
     {
         ActiveSpawners.Remove(spawn);
@@ -91,17 +117,21 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
+
     /// <summary>
     /// Private Functions
     /// </summary>
 
+    //Basically the start function
     private void SetComponents()
     {
         Player = FindObjectOfType<PlayerHealth>().gameObject;
         PlayerRoom = Player.GetComponent<PlayerStats>().CurrentRoom;
-        filter = audioPlayer.GetComponent<AudioLowPassFilter>();
-        filter.cutoffFrequency = 400;
-        currentSong = audioPlayer.clip;
+        Filter = AudioPlayer.GetComponent<AudioLowPassFilter>();
+        Filter.cutoffFrequency = 400;
+        CurrentSong = AudioPlayer.clip;
         UI = GameObject.FindObjectOfType<UIController>();
     }
 
@@ -122,6 +152,20 @@ public class GameManager : MonoBehaviour
         foreach (BaseDoor door in doors)
         {
             ActiveDoors.Add(door);
+        }
+    }
+
+    private void CanRespawn()
+    {
+        canRespawn = true;
+    }
+
+
+    private void RespawnPlayer()
+    {
+        if (canRespawn)
+        {
+            SceneManager.LoadScene("Level Building");
         }
     }
 

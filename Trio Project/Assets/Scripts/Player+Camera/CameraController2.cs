@@ -18,7 +18,11 @@ public class CameraController2 : MonoBehaviour {
         {
             //Attempt to find a gameobject tagged as the player.
             player = GameManager.Instance.Player;
-            if(cameraHeight==0){ cameraHeight = 40; }
+
+            if(cameraHeight <= 0f)
+            {
+                cameraHeight = 40; 
+            }
             gameObject.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
             cameraOffset = transform.position - player.transform.position;
         }
@@ -34,15 +38,18 @@ public class CameraController2 : MonoBehaviour {
     void FixedUpdate()
     {
         //Stuff and things.
-        if (player.transform.localRotation.y > 90f)
+        if (player != null)
         {
-            targetPosition = (player.transform.position + (player.transform.forward * followAhead)) + cameraOffset;
+            if (player.transform.localRotation.y > 90f)
+            {
+                targetPosition = (player.transform.position + (player.transform.forward * followAhead)) + cameraOffset;
+            }
+            else
+            {
+                targetPosition = (player.transform.position + (player.transform.forward * -1 * -followAhead)) + cameraOffset;
+            }
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
         }
-        else
-        {
-            targetPosition = (player.transform.position + (player.transform.forward * -1 * -followAhead)) + cameraOffset;
-        }
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
     }
 
 }
