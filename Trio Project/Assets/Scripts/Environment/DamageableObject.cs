@@ -4,6 +4,12 @@
 
 public class DamageableObject : DamageableEnvironmentItemParent
 { 
+    public new void Start()
+    {
+        base.Start();
+        KillPoints = 75;
+    }
+
     public override void Kill()
     {
         GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Objects);

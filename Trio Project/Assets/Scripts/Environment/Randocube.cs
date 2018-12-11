@@ -16,6 +16,7 @@ public class Randocube : DamageableObject
         base.Start();
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        KillPoints = 10;
 
         //Check out the RoomSetter class to see where this logic exists. What I'm doing here is saying, 
         //Hey room setter, whenever you run your UpdatePlayerRoom event, also run this CheckPlayerRoom function.

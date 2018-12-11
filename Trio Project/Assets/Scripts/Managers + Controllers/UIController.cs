@@ -7,7 +7,8 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
     public bool ShowText;
     public GameObject pauseScreen;
-    private Text debugText;
+    public Text debugText;
+    public Text ScoreText;
     private string weaponName;
     private string songName;
     public bool gamePaused;
@@ -17,10 +18,11 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     {
         filter = GameManager.Instance.Filter;
         pauseScreen.SetActive(false);
-        debugText = GetComponentInChildren<Text>();
         UpdateUIText();
 
         PlayerHealth.PlayerKilled += PlayerKilledText;
+        GameManager.Instance.PlayerRespawned += UpdateUIText;
+        GameManager.Instance.ScoreAdded += UpdateScoreText;
 	}
 
     public void WeaponSwapped()
@@ -33,6 +35,11 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     {
         debugText.fontSize = 60;
         debugText.text = "Press 'R' to respawn";
+    }
+
+    public void UpdateScoreText()
+    {
+        ScoreText.text = "Current Score: " + GameManager.Instance.CurrentScore;
     }
 
 	public void UpdateUIText()

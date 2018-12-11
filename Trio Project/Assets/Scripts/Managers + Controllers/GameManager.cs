@@ -52,36 +52,15 @@ public class GameManager : MonoBehaviour
     public List<SpawnEnemies> ActiveSpawners = new List<SpawnEnemies>();
     public AudioLowPassFilter Filter;
     public UIController UI;
+    public GameObject PlayerSpawnPosition;
 
     private bool canRespawn;
 
-    private void Awake()
-    {
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
+    public delegate void OnScoreAdded();
+    public event OnScoreAdded ScoreAdded;
+    public delegate void OnPlayerRespawn();
+    public event OnPlayerRespawn PlayerRespawned;
 
-        FindDoors();
-        FindSpawners();
-        SetComponents();
-
-        if (PlayerPrefs.HasKey("HighScores"))
-        {
-            //Load saved highscore array.
-        }
-    }
-
-    void Start ()
-    {
-        PlayerHealth.PlayerKilled += CanRespawn;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RespawnPlayer();
-        }
-    }
 
 
 
@@ -95,10 +74,17 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < ActiveDoors.Count; i++)
         {
-            if (ActiveDoors[i].CurrentRoom == roomName && type == ActiveDoors[i].OpenCondition)
+            try
             {
-                ActiveDoors[i].AddToDoor();
-                break;
+                if (ActiveDoors[i].CurrentRoom == roomName && type == ActiveDoors[i].OpenCondition)
+                {
+                    ActiveDoors[i].AddToDoor();
+                    break;
+                }
+            }
+            catch
+            {
+                Debug.LogWarning("Issue adding to room: " + roomName);
             }
         }
     }
@@ -115,14 +101,48 @@ public class GameManager : MonoBehaviour
         ActiveSpawners.Remove(spawn);
     }
 
-
-
-
+    public void AddScore(int score)
+    {
+        CurrentScore += score;
+        if (CurrentScore < 0)
+        {
+            CurrentScore = 0;
+        }
+        ScoreAdded();
+    }
 
 
     /// <summary>
     /// Private Functions
     /// </summary>
+
+    private void Awake()
+    {
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        FindDoors();
+        FindSpawners();
+        SetComponents();
+
+        if (PlayerPrefs.HasKey("HighScores"))
+        {
+            //Load saved highscore array.
+        }
+    }
+
+    void Start()
+    {
+        PlayerHealth.PlayerKilled += CanRespawn;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RespawnPlayer();
+        }
+    }
 
     //Basically the start function
     private void SetComponents()
@@ -165,7 +185,9 @@ public class GameManager : MonoBehaviour
     {
         if (canRespawn)
         {
-            SceneManager.LoadScene("Level Building");
+            Player.SetActive(true);
+            Player.transform.position = PlayerSpawnPosition.transform.position;
+            PlayerRespawned();
         }
     }
 

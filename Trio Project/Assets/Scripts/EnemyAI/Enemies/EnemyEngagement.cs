@@ -47,16 +47,26 @@ public class EnemyEngagement : EnemyDataModel {
 
 	public void SeePlayer ()
 	{
-		transform.LookAt (Hero); // cause enemies to look at Player
-		if (IsFiring == false) {
-			IsFiring = true;
-		StartCoroutine(FireWeapon());
-		}
+        if (isEngagingPlayer)
+        {
+            transform.LookAt(Hero); // cause enemies to look at Player
+            if (IsFiring == false)
+            {
+                IsFiring = true;
+                StartCoroutine(FireWeapon());
+            }
+        } else
+        {
+            StopAllCoroutines();
+        }
 	}
 
 	public void ChasePlayer ()
 	{
-	transform.position += transform.forward*MoveSpeed*Time.deltaTime;
+        if (isEngagingPlayer)
+        {
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+        }
 	}
 }
 

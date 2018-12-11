@@ -63,12 +63,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSong: {fileID: 0}
-  audioPlayer: {fileID: 0}
-  highScores: []
+  CurrentSong: {fileID: 0}
+  AudioPlayer: {fileID: 0}
+  CurrentScore: 0
+  HighScores: []
   Player: {fileID: 0}
   PlayerRoom: 
   ActiveDoors: []
   ActiveSpawners: []
-  filter: {fileID: 0}
+  Filter: {fileID: 0}
   UI: {fileID: 0}
+  PlayerSpawnPosition: {fileID: 0}

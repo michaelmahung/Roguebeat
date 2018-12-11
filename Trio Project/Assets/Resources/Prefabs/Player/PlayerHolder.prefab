@@ -498,7 +498,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260481718491756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.4, y: -1.5, z: -2}
+  m_LocalPosition: {x: -112.9, y: -1.5, z: 1.4}
   m_LocalScale: {x: 1.25, y: 1, z: 1.25}
   m_Children:
   - {fileID: 4122774515125414}
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 1.25
-  fireRate: 0.05
+  fireRate: 0.1
   swapTime: 0.25
   projectileSpawnAmount: 50
   projectileSpeed: 15
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965ae6db344bc4d22bdefd0beeeb923d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 3
+  weaponDamage: 4
   fireRate: 0.25
   swapTime: 0.25
   projectileSpawnAmount: 20
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e38d31a3d3845cf8819802abf0d525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
+  weaponDamage: 6
   fireRate: 0.35
   swapTime: 0.35
   projectileSpawnAmount: 10
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b8632c42e1d4c999082a72f2fa6c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 1
+  weaponDamage: 1.5
   fireRate: 0.1
   swapTime: 0.25
   projectileSpawnAmount: 150
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec885d82d5fd40518d030655e83decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 2
+  weaponDamage: 3
   fireRate: 1
   swapTime: 0.25
   projectileSpawnAmount: 50

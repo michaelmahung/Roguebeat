@@ -13,6 +13,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     bool HitEnemy;
     bool HitWall;
+    string hitTag;
+    IDamageable<float> thingHit;
 
     public void OnObjectSpawn()
     {
@@ -32,8 +34,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     virtual public void OnTriggerEnter (Collider other)
 	{
 
-        string hitTag = other.gameObject.tag;
-        IDamageable <float> thingHit = other.gameObject.GetComponent < IDamageable<float>>();
+        hitTag = other.gameObject.tag;
+        thingHit = other.gameObject.GetComponent <IDamageable<float>>();
 
         if (thingHit != null && hitTag != "Player")
         {

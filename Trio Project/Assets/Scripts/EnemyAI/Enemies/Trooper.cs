@@ -14,6 +14,7 @@ public class Trooper : EnemyEngagement{
 		EnemyHealth = 10.0f; // assigns base enemy health per Trooper
 		EnemyAttackSpeed = 0.1f; // assigns base enemy attack speed per Trooper
 		WeaponValue = 1; // assigns int value to 1 in reading the EnemyWeapons gameobject array in grandparent class EnemyDataModel, which reads from EnemyWeapons Folder
+        KillPoints = 10;
 	}
 
 	// Update is called once per frame

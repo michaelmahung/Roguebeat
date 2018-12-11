@@ -11,6 +11,7 @@ public class Bruiser : EnemyEngagement {
 		EnemyHealth = 15.0f; // assigns base enemy health per Bruiser
 		EnemyAttackSpeed = 3.0f; // assigns base enemy attack speed per Bruiser
 		WeaponValue = 2; // assigns int value to 2 in reading the EnemyWeapons gameobject array in grandparent class EnemyDataModel, which reads from EnemyWeapons Folder
+        KillPoints = 25;
 	}
 	
 	// Update is called once per frame

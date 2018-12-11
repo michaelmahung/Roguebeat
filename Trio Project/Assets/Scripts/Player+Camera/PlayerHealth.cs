@@ -11,15 +11,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     public float HealthPercent;
     public bool IsPlayerDead;
 
+    public int KillPoints { get; set; }
+
     public delegate void OnPlayerDamaged();
-    public static event OnPlayerDamaged PlayerDamaged;
+    public static event OnPlayerDamaged UpdateHealth;
 
     public delegate void OnPlayerKilled();
     public static event OnPlayerKilled PlayerKilled;
 
     void Start()
     {
+        KillPoints = -500;
         currentHealth = MaxHealth;
+        GameManager.Instance.PlayerRespawned += ResetHealth;
     }
 
     void Update()
@@ -30,12 +34,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
         }
     }
 
-
     public void Damage(float damage)
     {
         currentHealth -= damage;
         HealthPercent = currentHealth / MaxHealth;
-        PlayerDamaged();
+        UpdateHealth();
 
         if (currentHealth <= 0)
         {
@@ -43,10 +46,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
         }
     }
 
+    public void ResetHealth()
+    {
+        IsPlayerDead = false;
+        currentHealth = MaxHealth;
+        HealthPercent = currentHealth / MaxHealth;
+        UpdateHealth();
+    }
+
     public void Kill()
     {
-        IsPlayerDead = true;
-        PlayerKilled();
-        Destroy(gameObject);
+        if (!IsPlayerDead)
+        {
+            GameManager.Instance.AddScore(KillPoints);
+            IsPlayerDead = true;
+            PlayerKilled();
+            gameObject.SetActive(false);
+        }
     }
 }

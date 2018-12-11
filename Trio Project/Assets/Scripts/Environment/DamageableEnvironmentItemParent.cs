@@ -67,6 +67,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     [SerializeField]
     protected int Armor;
 
+    protected bool dead;
     protected Color hurtColor;
     protected Color armorColor;
     protected Color startColor;
@@ -74,9 +75,11 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected Renderer objectRenderer;
 
     public string CurrentRoom { get; set; } //Because I take the ITrackRooms interface, I need to add this.
+    public int KillPoints { get; set; } // Killable requires us to assign how many points for dying.
 
     public virtual void Start()
     {
+        KillPoints = 5;
         reactDuration = 1;
         objectRenderer = gameObject.GetComponent<Renderer>();
         startColor = objectRenderer.material.color;
@@ -139,6 +142,11 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
 
     public virtual void Kill()
     {
-        Destroy(gameObject);
+        if (!dead)
+        {
+            dead = true;
+            GameManager.Instance.AddScore(KillPoints);
+            Destroy(gameObject);
+        }
     }
 }

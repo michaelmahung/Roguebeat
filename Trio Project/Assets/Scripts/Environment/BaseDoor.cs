@@ -10,6 +10,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     public moveAxis MoveAxis;
     public enum openCondition { Kills, Objectives, Objects }
     public openCondition OpenCondition;
+    public int OpenPoints;
     public float moveAmount = 10;
     public int thingsRequired;
     protected int thingsDestroyed;
@@ -43,6 +44,9 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
                 moveDirection = new Vector3(0, 0, moveAmount);
                 break;
         }
+
+        OpenPoints = 150;
+
     }
 
 
@@ -65,10 +69,14 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void OpenDoor()
     {
-        doorMoved = true;
-        transform.localPosition += moveDirection;
-        //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
-        GameManager.Instance.RemoveDoor(this);
+        if (!doorMoved)
+        {
+            doorMoved = true;
+            transform.localPosition += moveDirection;
+            GameManager.Instance.AddScore(OpenPoints);
+            //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
+            GameManager.Instance.RemoveDoor(this);
+        }
     }
 
 

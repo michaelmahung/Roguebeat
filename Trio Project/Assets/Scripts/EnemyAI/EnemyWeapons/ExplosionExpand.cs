@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionExpand : MonoBehaviour {
+public class ExplosionExpand : EnemyProjectile {
 
 public float initialSize;
 public float maxSize;
@@ -16,6 +16,7 @@ private Vector3 targetScale;
 
 	// Use this for initialization
 	void Start () {
+        Damage = 30;
 	Changing = false;
 	Unchanged = true;
 	initialSize = gameObject.transform.localScale.x;
