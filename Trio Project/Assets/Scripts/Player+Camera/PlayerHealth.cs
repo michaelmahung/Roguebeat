@@ -7,11 +7,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 {
     [SerializeField]
     private float currentHealth;
-    public float maxHealth = 10;
+    public float MaxHealth = 10;
+    public float HealthPercent;
+
+    public delegate void PlayerDamagedDelegate();
+    public static event PlayerDamagedDelegate PlayerDamaged;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = MaxHealth;
+        HealthPercent = currentHealth / MaxHealth;
 
         if (GameManager.Instance == null)
         {
@@ -22,6 +27,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        PlayerDamaged();
         if (currentHealth <= 0)
         {
             Kill();
