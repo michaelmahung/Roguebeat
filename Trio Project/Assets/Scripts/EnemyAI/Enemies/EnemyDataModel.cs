@@ -49,9 +49,9 @@ public float TimeToDie;
 	{
 		Hero = GameObject.FindGameObjectWithTag ("Player").transform; // Finds the player via Player tag 
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;      
-        print (GetComponent<Renderer>().material.color);                                                             //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
-                                                                               //}
+        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;     
+         //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
+                                                                            
 	}
 	
 	// Update is called once per frame

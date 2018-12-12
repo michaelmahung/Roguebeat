@@ -56,7 +56,9 @@ public class EnemyEngagement : EnemyDataModel {
 
 	public void ChasePlayer ()
 	{
-	transform.position += transform.forward*MoveSpeed*Time.deltaTime;
+
+
+	//transform.position - Hero.transform.position*MoveSpeed*Time.deltaTime;
 	}
 }
 
