@@ -11,6 +11,7 @@ public class Boomer : EnemyEngagement {
 		EnemyHealth = 25.0f; // assigns base enemy health per Boomer
 		EnemyAttackSpeed = 2.0f; // assigns base enemy attack speed per Boomer
 		WeaponValue = 0; // assigns int value to 0 in reading the EnemyWeapons gameobject array in grandparent class EnemyDataModel, which reads from EnemyWeapons Folder
+        KillPoints = 50;
 	}
 	
 	// Update is called once per frame

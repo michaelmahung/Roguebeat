@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
+public class UIController : MonoBehaviour, IWeaponSwap {
 
     public bool ShowText;
     public GameObject pauseScreen;
-    private Text debugText;
+    public Text debugText;
+    public Text ScoreText;
     private string weaponName;
     private string songName;
     public bool gamePaused;
@@ -15,10 +16,13 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
 
 	void Start ()
     {
-        filter = GameManager.Instance.filter;
+        filter = GameManager.Instance.Filter;
         pauseScreen.SetActive(false);
-        debugText = GetComponentInChildren<Text>();
         UpdateUIText();
+
+        PlayerHealth.PlayerKilled += PlayerKilledText;
+        GameManager.Instance.PlayerRespawned += UpdateUIText;
+        GameManager.Instance.ScoreAdded += UpdateScoreText;
 	}
 
     public void WeaponSwapped()
@@ -27,15 +31,22 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
         UpdateUIText();
     }
 
-    public void SongChanged()
+    public void PlayerKilledText()
     {
-        UpdateUIText();
+        debugText.fontSize = 60;
+        debugText.text = "Press 'R' to respawn";
+    }
+
+    public void UpdateScoreText()
+    {
+        ScoreText.text = "Current Score: " + GameManager.Instance.CurrentScore;
     }
 
 	public void UpdateUIText()
     {
         if (ShowText)
         {
+            debugText.fontSize = 30;
             debugText.text = "Left Click to Fire\n";
             debugText.text += "Current weapon: " + weaponName + "\n";
             debugText.text += "Tap 'Shift' to dash.\n";
@@ -46,7 +57,6 @@ public class UIController : MonoBehaviour, IWeaponSwap, IChangeSong {
         {
             debugText.text = "";
         }
-
     }
 
 	void Update ()

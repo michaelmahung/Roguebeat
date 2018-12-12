@@ -4,7 +4,7 @@ using System.Collections;
 
 
 [RequireComponent(typeof(AudioSource))]
-public abstract class BaseWeapon: MonoBehaviour
+public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don't want instances of this class in the game, only children of this class.
 {
     protected List<GameObject> fireLocations = new List<GameObject>();
     protected string projectileName;
@@ -51,10 +51,13 @@ public abstract class BaseWeapon: MonoBehaviour
             fireSound = Resources.Load<AudioClip>("ProjectileSounds/DefaultSound");
         }
 
+        //For every child object of this GameObject that has the word FireLocation in it's name..
+        //I need to change this probably btw, this sucks.
         foreach (Transform firelocation in transform)
         {
             if (firelocation.name.Contains("FireLocation"))
             {
+                //Add the objects location to our fire locations.
                 fireLocations.Add(firelocation.gameObject);
             }
         }
@@ -63,6 +66,7 @@ public abstract class BaseWeapon: MonoBehaviour
 
     public virtual void Start()
     {
+        //try / catch statements are just saying, I want to try doing this and if there are errors do what's in the catch segment. 
         try
         {
             ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
@@ -107,6 +111,7 @@ public abstract class BaseWeapon: MonoBehaviour
         }
     }
 
+    //May switch these to update as they create a little bit of garbage
     public virtual IEnumerator WeaponCooldown()
     {
         yield return new WaitForSeconds(fireRate);

@@ -1,32 +1,67 @@
 ﻿using UnityEngine;
 
+
+//Basic player health script 
+
 public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 {
     [SerializeField]
     private float currentHealth;
-    public float maxHealth = 10;
+    public float MaxHealth = 100;
+    public float HealthPercent;
+    public bool IsPlayerDead;
+
+    public int KillPoints { get; set; }
+
+    public delegate void OnPlayerDamaged();
+    public static event OnPlayerDamaged UpdateHealth;
+
+    public delegate void OnPlayerKilled();
+    public static event OnPlayerKilled PlayerKilled;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        KillPoints = -500;
+        currentHealth = MaxHealth;
+        GameManager.Instance.PlayerRespawned += ResetHealth;
+    }
 
-        if (GameManager.Instance == null)
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C))
         {
-            Debug.LogWarning("Player will have limited functionality without a GameManager script in the scene.");
+            Damage(10);
         }
     }
 
     public void Damage(float damage)
     {
         currentHealth -= damage;
+        HealthPercent = currentHealth / MaxHealth;
+        UpdateHealth();
+
         if (currentHealth <= 0)
         {
             Kill();
         }
     }
 
+    public void ResetHealth()
+    {
+        IsPlayerDead = false;
+        currentHealth = MaxHealth;
+        HealthPercent = currentHealth / MaxHealth;
+        UpdateHealth();
+    }
+
     public void Kill()
     {
-        Destroy(gameObject);
+        if (!IsPlayerDead)
+        {
+            GameManager.Instance.AddScore(KillPoints);
+            IsPlayerDead = true;
+            PlayerKilled();
+            gameObject.SetActive(false);
+        }
     }
 }

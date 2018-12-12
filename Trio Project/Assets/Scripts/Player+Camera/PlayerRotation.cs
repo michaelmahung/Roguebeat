@@ -9,6 +9,9 @@ public class PlayerRotation : MonoBehaviour
 
     void RotateToMousePosition()
     {
+        //Casts a plane to raycast off of into the world.
+        //Shoot a ray into the plane and make the player look at the ray hit position
+
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitDist = 0.0f;

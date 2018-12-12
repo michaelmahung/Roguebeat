@@ -11,6 +11,8 @@ public interface IDamageable<T>
 
 public interface IKillable
 {
+    [SerializeField]
+    int KillPoints { get; set; }
     void Kill();
 }
 

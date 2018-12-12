@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : EnemyProjectile {
 
 public float BulletLife = 6.0f;
 public float BulletSpeed = 50.0f;
@@ -15,6 +15,7 @@ public float BulletSpeed = 50.0f;
  
 	// Use this for initialization
 	void Start () {
+        Damage = 1;
         //also Josh's shit
        /* eColor = GetComponent<EnemyProjectileColorManager>();
         colorIndex = eColor.currentIndex;
@@ -34,11 +35,4 @@ public float BulletSpeed = 50.0f;
 			transform.position += transform.forward * BulletSpeed * Time.deltaTime;
 		}
 	}
-
-	void OnTriggerEnter (Collider other)
-	{
-		if (other.tag == "Wall" || other.tag == "Player") {
-			Destroy (gameObject);
-		}
-	}
-	}
+}

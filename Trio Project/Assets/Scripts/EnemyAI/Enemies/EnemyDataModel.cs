@@ -20,10 +20,15 @@ public float MoveSpeed; // base variable for all enemy movespeeds; is uniquely s
 public float EnemyHealth; // base variable for all enemy health; is uniquely set on specific enemy class
 [Tooltip("Rate Of Fire Of Enemy")]
 public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is uniquely set on specific enemy class
+[Tooltip("How Many Points This Enemy Is Worth On Death")]
+public int KillPoints;
 
+bool dead;
+
+protected bool isEngagingPlayer; //Bool added to allow the AI to "forget" about the player.
 protected bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
-public string CurrentRoom { get; set; }
+public string CurrentRoom { get; set; } // What room is the enemy in.
 
 //Handles Color change on damage to enemy
 private Color EnemyBaseColor;
@@ -47,12 +52,14 @@ public float TimeToDie;
 	// INITIAL START FOR ENEMY DATA MODEL CLASS > ENEMY ENGAGEMENT CLASS > (NAMED) ENEMY CLASS
 	public void Start ()
 	{
+        //When the player enters a new room we want to check if it's our room.
 		Hero = GameObject.FindGameObjectWithTag ("Player").transform; // Finds the player via Player tag 
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;     
-         //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents
-                                                                            
-	}
+        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;      
+        print (GetComponent<Renderer>().material.color);                                                             //for (int i = 0; i < EnemyWeapons.Length; i++) { ********** Code for testing purposes to read EnemyWeapons folder contents//}
+        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        Invoke("CheckPlayerRoom", 0.1f); //Wait a short amount to make sure the AI has been assigned a room.
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -70,10 +77,27 @@ public float TimeToDie;
 
 	public void enemyDeath ()
 	{
-        GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
-        Destroy(gameObject);
+        if (!dead)
+        {
+            dead = true;
+            GameManager.Instance.AddScore(KillPoints);
+            GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
+            Destroy(gameObject);
+        }
     }
 
+    public void CheckPlayerRoom()
+    {
+        //If the player is in our room, engage it
+        if (GameManager.Instance.PlayerRoom == CurrentRoom)
+        {
+            isEngagingPlayer = true;
+            IsFiring = false;
+        } else
+        {
+            isEngagingPlayer = false;
+        }
+    }
 
     // Coroutine that increments and lerps from red to the enemy original color when enemy takes damage.
     IEnumerator LerpColor ()

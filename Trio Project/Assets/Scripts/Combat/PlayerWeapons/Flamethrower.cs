@@ -15,6 +15,7 @@ public class Flamethrower : BaseWeapon
 
     public override void Update()
     {
+        //Mouse input needs to be updated to allow for various controllers
         if (Input.GetMouseButton(0))
         {
             Fire();
