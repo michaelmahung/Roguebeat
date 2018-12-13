@@ -40,10 +40,14 @@ public override void EnterState (AI _owner)
 
 	public override void UpdateState (AI _owner)
 	{
-		
-		if(_owner.switchState) {
+		lookAtPlayer ();
+		ChasePlayer ();
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			_owner.stateMachine.ChangeState (SecondState.Instance);
+		}
+		/*if(_owner.switchState) {
 		_owner.stateMachine.ChangeState(SecondState.Instance);
 		}
+		*/
 	}
-}
-
+	}

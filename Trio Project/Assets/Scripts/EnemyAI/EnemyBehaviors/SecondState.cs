@@ -31,6 +31,7 @@ private SecondState ()
 public override void EnterState (AI _owner)
 	{
 	Debug.Log("Entering Second State");
+
 	}
 
 	public override void ExitState (AI _owner)
@@ -40,9 +41,12 @@ public override void EnterState (AI _owner)
 
 	public override void UpdateState (AI _owner)
 	{
-
-		if (!_owner.switchState) {
+		if (Hero != null) {
 		_owner.stateMachine.ChangeState(FirstState.Instance);
 		}
+		/*if (!_owner.switchState) {
+		_owner.stateMachine.ChangeState(FirstState.Instance);
+		}
+		*/
 	}
 }
