@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using StateStuff;
-
+/*
 public class SecondState : State<AI>
 {
 
@@ -48,5 +48,5 @@ public override void EnterState (AI _owner)
 		_owner.stateMachine.ChangeState(FirstState.Instance);
 		}
 		*/
-	}
-}
+//	}
+//}

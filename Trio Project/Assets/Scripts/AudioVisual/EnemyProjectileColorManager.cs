@@ -32,8 +32,8 @@ public class EnemyProjectileColorManager : MonoBehaviour {
     [Range(.1f, 2.0f)]
     private float changeColorTime;
     //color change is done
-    [SerializeField]
-    private bool isDone = true;
+    //[SerializeField]
+    //private bool isDone = true;
     //timer
     //[SerializeField]
    // private float timer;

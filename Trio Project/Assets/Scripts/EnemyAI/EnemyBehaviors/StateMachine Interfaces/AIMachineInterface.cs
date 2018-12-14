@@ -1,4 +1,4 @@
-﻿namespace TrioProject.StateMachine
+﻿/*namespace TrioProject.StateMachine
 {
 
 public interface AIMachineInterface
@@ -32,4 +32,4 @@ string name {get; set;}
 
 }
 
-}
+}*/

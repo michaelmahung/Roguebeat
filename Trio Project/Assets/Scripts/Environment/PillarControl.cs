@@ -13,34 +13,54 @@ public class PillarControl : MonoBehaviour {
     public bool turnOn;
     bool onOnce;
 
-    
+    public GameObject pTop;
+    public GameObject pBody;
+    public GameObject floor;
+    public AudioClip mySong;
+    public AudioSource Player;
 
     // Use this for initialization
     void Start () {
-     
+        Physics.IgnoreCollision(floor.GetComponent<Collider>(), GetComponent<Collider>());
+        pBody.GetComponent<MeshRenderer>().material.color = Color.blue;
+        pTop.GetComponent<MeshRenderer>().material.color = Color.blue;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        float move = moveSpeed * Time.deltaTime;
+        
+        if(Player.GetComponent<AudioSource>().clip == mySong)
+        {
+            turnOn = true;
+            pBody.GetComponent<MeshRenderer>().material.color = Color.green;
+            pTop.GetComponent<MeshRenderer>().material.color = Color.green;
+            ChangeSize();
+        }
+        if(Player.GetComponent<AudioSource>().clip != mySong)
+        {
+            turnOn = false;
+            pBody.GetComponent<MeshRenderer>().material.color = Color.blue;
+            pTop.GetComponent<MeshRenderer>().material.color = Color.blue;
+            ChangeSize();
+        }
 
-		if (turnOn == true) //&& onOnce == false)
+        
+	}
+
+    void ChangeSize()
+    {
+        float move = moveSpeed * Time.deltaTime;
+        if (turnOn == true) //&& onOnce == false)
         {
             transform.position = Vector3.MoveTowards(transform.position, up.position, move);
-          
             //onOnce = true;
 
         }
-        if(turnOn == false) // && onOnce == true)
+        if (turnOn == false) // && onOnce == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, down.position, move);
             //onOnce = false;
 
         }
-	}
-
-    void ChangeSize()
-    {
-       
     }
 }

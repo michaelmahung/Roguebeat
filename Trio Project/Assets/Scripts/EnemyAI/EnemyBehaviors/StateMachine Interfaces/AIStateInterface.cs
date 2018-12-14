@@ -1,8 +1,9 @@
 ﻿
-namespace TrioProject.StateMachine
-{
-
+//namespace TrioProject.StateMachine
+//{
+/*
 public interface AIStateInterface
+        
 {
 void Initialize();
 
@@ -16,4 +17,4 @@ bool isActive { get; }
 
 T GrabMachine<T>() where T : AIMachineInterface;
 }
-}
+}*/

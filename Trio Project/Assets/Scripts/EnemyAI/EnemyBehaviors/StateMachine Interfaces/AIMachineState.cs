@@ -1,4 +1,4 @@
-﻿namespace TrioProject.StateMachine
+﻿/*namespace TrioProject.StateMachine
 {
 [System.Serializable]
 public abstract class AIMachineState : AIMachineInterface, AIState
@@ -60,20 +60,20 @@ public override void Initialize ()
 			}
 		}
 
-		public override void PhysicsExecute()
-		{
-		base.PhysicsExecute();
-		if(!(onEnter && onExit))
-		{
-		try
-		{
-		currentState.PhysicsExecute();
-		}
-		catch (System.NullReferenceException e)
-		{
-		if (null == initialState)
-		{
-						throw new System.Exception("\n" + name + ".currentState is null when calling Execute()!\tDid you set initial state?\n" + e.Message);
+        public override void PhysicsExecute()
+        {
+            base.PhysicsExecute();
+            if (!(onEnter && onExit))
+            {
+                try
+                {
+                    currentState.PhysicsExecute();
+                }
+                catch (System.NullReferenceException e)
+                {
+                    if (null == initialState)
+                    {
+                        throw new System.Exception("\n" + name + ".currentState is null when calling Execute()!\tDid you set initial state?\n" + e.Message);
                     }
                     else
                     {
@@ -130,4 +130,4 @@ public override void Initialize ()
                     }
                 }
             }
-        }
+        }*/
