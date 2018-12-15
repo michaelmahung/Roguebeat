@@ -31,6 +31,7 @@ public class DeactiveState : State<MAIData> {
 
     public override void EnterState(MAIData _owner)
     {
+        _owner.AIRigidbody.isKinematic = true;
         _owner.IsEnabled = false;
         Debug.Log("Entering Deactive State");
     }
@@ -42,6 +43,7 @@ public class DeactiveState : State<MAIData> {
 
     public override void ExitState(MAIData _owner)
     {
+        _owner.AIRigidbody.isKinematic = false;
         _owner.IsEnabled = true;
         Debug.Log("Exiting Deactive State");
     }

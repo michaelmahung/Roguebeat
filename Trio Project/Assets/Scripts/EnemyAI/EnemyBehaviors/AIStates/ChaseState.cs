@@ -36,8 +36,24 @@ public class ChaseState : State<MAIData> {
 
     public override void UpdateState(MAIData _owner)
     {
+        float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
+
+        if (distance < _owner.AttackRange)
+        {
+            _owner.stateMachine.ChangeState(AttackState.Instance);
+        }
+
         _owner.LookAtPlayer();
         _owner.ChasePlayer();
+
+        if (_owner.HealthPercent < 30)
+        {
+            if (_owner.Flees)
+            {
+                _owner.stateMachine.ChangeState(FleeState.Instance);
+            }
+            _owner.stateMachine.ChangeState(EnrageState.Instance);
+        }
     }
 
     public override void ExitState(MAIData _owner)

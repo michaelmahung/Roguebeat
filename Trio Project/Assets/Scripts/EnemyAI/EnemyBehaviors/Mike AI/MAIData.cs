@@ -6,15 +6,19 @@ using StateStuff;
 
 public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, ITrackRooms {
 
+    public bool Flees;
     public bool IsEnabled;
     public bool SwitchState;
+    public float AttackRange = 10;
     public float Speed = 10;
     public float AttackSpeed = 1;
     public float MaxHealth = 10;
+    public float HealthPercent;
     public int KillPoints { get; set; }
     public string CurrentRoom { get; set; }
+    public Rigidbody AIRigidbody;
 
-    protected Transform Hero;
+    public Transform Hero;
 
     private float currentHealth;
     private bool isDead;
@@ -25,9 +29,11 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
 
     public virtual void Start()
     {
+        AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<MAIData>(this);
         stateMachine.ChangeState(DeactiveState.Instance);
         currentHealth = MaxHealth;
+        HealthPercent = (currentHealth / MaxHealth) * 100;
         Hero = GameManager.Instance.Player.transform;
         //We still have the issue of deciding how the AI will know when the player is in it's room.
         //This method will make the AI check for the player and set its active/deactive state
@@ -55,6 +61,18 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
         transform.position +=  transform.forward * Speed * Time.deltaTime;
     }
 
+    public virtual void AttackPlayer()
+    {
+
+    }
+
+    public virtual void RunFromPlayer()
+    {
+        Vector3 direction = transform.position - Hero.transform.position;
+        direction.Normalize();
+        transform.position += direction * Speed * Time.deltaTime;
+    }
+
     private void CheckRoom()
     {
         if (stateMachine.CheckPlayerRoom(this))
@@ -70,6 +88,7 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
         if (IsEnabled)
         {
             currentHealth -= damage;
+            HealthPercent = (currentHealth / MaxHealth) * 100;
 
             if (currentHealth <= 0)
             {
