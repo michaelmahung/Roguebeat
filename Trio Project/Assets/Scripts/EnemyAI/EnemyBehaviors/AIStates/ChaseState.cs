@@ -1,7 +1,7 @@
 ﻿using StateStuff;
 using UnityEngine;
 
-public class ChaseState : State<MAIData> {
+public class ChaseState : State<AI> {
 
     private static ChaseState _instance;
 
@@ -29,12 +29,12 @@ public class ChaseState : State<MAIData> {
     }
 
 
-    public override void EnterState(MAIData _owner)
+    public override void EnterState(AI _owner)
     {
         Debug.Log("Entering Chase State");
     }
 
-    public override void UpdateState(MAIData _owner)
+    public override void UpdateState(AI _owner)
     {
         float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
 
@@ -43,10 +43,10 @@ public class ChaseState : State<MAIData> {
             _owner.stateMachine.ChangeState(AttackState.Instance);
         }
 
-        _owner.LookAtPlayer();
+        _owner.lookAtPlayer();
         _owner.ChasePlayer();
 
-        if (_owner.HealthPercent < 30)
+        if (_owner.HealthPercentage < 30)
         {
             if (_owner.Flees)
             {
@@ -56,7 +56,7 @@ public class ChaseState : State<MAIData> {
         }
     }
 
-    public override void ExitState(MAIData _owner)
+    public override void ExitState(AI _owner)
     {
         Debug.Log("Exiting Chase State");
     }

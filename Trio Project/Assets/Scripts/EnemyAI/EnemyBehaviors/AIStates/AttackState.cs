@@ -1,7 +1,7 @@
 ﻿using StateStuff;
 using UnityEngine;
 
-public class AttackState : State<MAIData> {
+public class AttackState : State<AI> {
 
     private static AttackState _instance;
 
@@ -29,25 +29,26 @@ public class AttackState : State<MAIData> {
     }
 
 
-    public override void EnterState(MAIData _owner)
+    public override void EnterState(AI _owner)
     {
         Debug.Log("Entering Attack State");
     }
 
-    public override void UpdateState(MAIData _owner)
+    public override void UpdateState(AI _owner)
     {
         float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
-
-        if (distance > _owner.AttackRange)
+        Debug.Log("Attacking!");
+        /*if (distance > _owner.AttackRange)
         {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
         }
-
-        _owner.LookAtPlayer();
+        */
+        _owner.isEngagingPlayer = true;
+        _owner.lookAtPlayer();
         _owner.ChasePlayer();
-        _owner.AttackPlayer();
+        _owner.StartCoroutine(_owner.FireWeapon());
 
-        if (_owner.HealthPercent < 30)
+        if (_owner.HealthPercentage < 30)
         {
             if (_owner.Flees)
             {
@@ -57,7 +58,7 @@ public class AttackState : State<MAIData> {
         }
     }
 
-    public override void ExitState(MAIData _owner)
+    public override void ExitState(AI _owner)
     {
         Debug.Log("Exiting Attack State");
     }

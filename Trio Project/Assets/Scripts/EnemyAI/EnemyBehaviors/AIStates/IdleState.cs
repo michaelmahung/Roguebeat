@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using StateStuff;
 
-public class IdleState : State<MAIData> {
+public class IdleState : State<AI> {
 
     private static IdleState _instance;
     private float idleTimer;
@@ -29,13 +29,13 @@ public class IdleState : State<MAIData> {
         }
     }
 
-    public override void EnterState(MAIData _owner)
+    public override void EnterState(AI _owner)
     {
         idleTimer = 0;
         Debug.Log("Entering Idle State");
     }
 
-    public override void UpdateState(MAIData _owner)
+    public override void UpdateState(AI _owner)
     {
         idleTimer += Time.deltaTime;
         if (idleTimer > 3)
@@ -44,7 +44,7 @@ public class IdleState : State<MAIData> {
         }
     }
 
-    public override void ExitState(MAIData _owner)
+    public override void ExitState(AI _owner)
     {
         Debug.Log("Exiting Idle State");
     }

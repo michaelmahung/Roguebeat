@@ -1,7 +1,7 @@
 ﻿using StateStuff;
 using UnityEngine;
 
-public class FleeState : State<MAIData> {
+public class FleeState : State<AI> {
 
     private static FleeState _instance;
     private float fleeTimer;
@@ -29,13 +29,13 @@ public class FleeState : State<MAIData> {
         }
     }
 
-    public override void EnterState(MAIData _owner)
+    public override void EnterState(AI _owner)
     {
         Debug.Log("Entering Flee State");
         fleeTimer = 0;
     }
 
-    public override void UpdateState(MAIData _owner)
+    public override void UpdateState(AI _owner)
     {
         fleeTimer += Time.deltaTime;
 
@@ -44,10 +44,10 @@ public class FleeState : State<MAIData> {
             _owner.stateMachine.ChangeState(IdleState.Instance);
         }
 
-        _owner.RunFromPlayer();
+        _owner.Flee();
     }
 
-    public override void ExitState(MAIData _owner)
+    public override void ExitState(AI _owner)
     {
         Debug.Log("Exiting Flee State");
     }

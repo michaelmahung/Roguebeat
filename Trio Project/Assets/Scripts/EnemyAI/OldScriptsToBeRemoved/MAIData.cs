@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using StateStuff;
 
 
@@ -26,8 +26,9 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
     public StateMachine<MAIData> stateMachine { get; set; }
 
     /*****************************************************/
+  
 
-    public virtual void Start()
+    /*public virtual void Start()
     {
         AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<MAIData>(this);
@@ -108,4 +109,4 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
             Destroy(gameObject);
         }
     }
-}
+}*/
