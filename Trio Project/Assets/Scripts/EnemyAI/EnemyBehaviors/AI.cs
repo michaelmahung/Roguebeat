@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using StateStuff;
-/*
+
 public class AI : MonoBehaviour
 {
 public bool switchState = false;
@@ -41,7 +41,6 @@ private void Start ()
 		stateMachine.Update();
 	}
 
-
 	public void lookAtPlayer ()
 	{
 	transform.LookAt(Hero);
@@ -52,4 +51,4 @@ private void Start ()
 		transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 	}
 
-}*/
+}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using StateStuff;
-/*
+
 public class FirstState : State<AI>
 {
 
@@ -26,8 +26,6 @@ private FirstState ()
 		}
 	}
 
-
-
 public override void EnterState (AI _owner)
 	{
 	Debug.Log("Entering First State");
@@ -40,15 +38,11 @@ public override void EnterState (AI _owner)
 
 	public override void UpdateState (AI _owner)
 	{
-		lookAtPlayer ();
-		ChasePlayer ();
-		if (Input.GetKeyDown (KeyCode.Space)) {
+	_owner.lookAtPlayer();
+	_owner.ChasePlayer();
+		if (_owner.switchState) {
 			_owner.stateMachine.ChangeState (SecondState.Instance);
 		}
-		/*if(_owner.switchState) {
-		_owner.stateMachine.ChangeState(SecondState.Instance);
-		}
-		*/
-	//}
-	//}
+	}
+	}
 
