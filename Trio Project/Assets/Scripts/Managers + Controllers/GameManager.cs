@@ -64,10 +64,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Public Functions
-    /// </summary>
-
+    #region Public Functions
 
     //Function for adding to the counters of the various room doors.
     public void AddToDoor(String roomName, BaseDoor.openCondition type)
@@ -111,11 +108,9 @@ public class GameManager : MonoBehaviour
         ScoreAdded();
     }
 
+    #endregion
 
-    /// <summary>
-    /// Private Functions
-    /// </summary>
-
+    #region Private Functions
     private void Awake()
     {
         _instance = this;
@@ -190,5 +185,7 @@ public class GameManager : MonoBehaviour
             PlayerRespawned();
         }
     }
+
+    #endregion
 
 }

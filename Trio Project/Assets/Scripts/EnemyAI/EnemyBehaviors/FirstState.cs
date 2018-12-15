@@ -6,43 +6,57 @@ using StateStuff;
 public class FirstState : State<AI>
 {
 
-private static FirstState _instance;
-private FirstState ()
-	{
-		if (_instance != null) {
-			return;
-		}
+    private static FirstState _instance;
+    private FirstState()
+    {
+        if (_instance != null)
+        {
+            return;
+        }
 
-		_instance = this;
-	}
+        _instance = this;
+    }
 
-	public static FirstState Instance {
-		get {
-			if (_instance == null) {
-				new FirstState ();
-			}
+    public static FirstState Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                new FirstState();
+            }
 
-			return _instance;
-		}
-	}
+            return _instance;
+        }
+    }
 
-public override void EnterState (AI _owner)
-	{
-	Debug.Log("Entering First State");
-	}
 
-	public override void ExitState (AI _owner)
-	{
-		Debug.Log ("Exiting First State");
-	}
 
-	public override void UpdateState (AI _owner)
-	{
-	_owner.lookAtPlayer();
-	_owner.ChasePlayer();
-		if (_owner.switchState) {
-			_owner.stateMachine.ChangeState (SecondState.Instance);
-		}
-	}
-	}
+    public override void EnterState(AI _owner)
+    {
+        Debug.Log("Entering First State");
+    }
+
+    public override void ExitState(AI _owner)
+    {
+        Debug.Log("Exiting First State");
+    }
+
+    public override void UpdateState(AI _owner)
+    {
+        _owner.lookAtPlayer();
+        _owner.ChasePlayer();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _owner.stateMachine.ChangeState(SecondState.Instance);
+        }
+
+        if (_owner.switchState)
+        {
+            _owner.stateMachine.ChangeState(SecondState.Instance);
+        }
+
+    }
+}
 

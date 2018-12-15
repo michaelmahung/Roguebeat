@@ -1,5 +1,5 @@
-﻿#define TRIO_STATEMACHINE_VERBOSE
-/*namespace TrioProject.StateMachine
+﻿/*#define TRIO_STATEMACHINE_VERBOSE
+namespace TrioProject.StateMachine
 {
 [System.Serializable]
 public abstract class AIState : AIStateInterface
@@ -56,6 +56,7 @@ public virtual void Initialize ()
 
 				internal AIMachineInterface machine { get; set; }
 
-				public bool IsActive { get { return machine.IsCurrentState (GetType ()); } }*/
+				public bool IsActive { get { return machine.IsCurrentState (GetType ()); } }*
 			//	}
 			//	}
+            */
