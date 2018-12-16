@@ -32,13 +32,12 @@ public class IdleState : State<AI> {
     public override void EnterState(AI _owner)
     {
         idleTimer = 0;
-        Debug.Log("Entering Idle State");
     }
 
     public override void UpdateState(AI _owner)
     {
         idleTimer += Time.deltaTime;
-        if (idleTimer > 3)
+        if (idleTimer > 2)
         {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
         }
@@ -46,6 +45,5 @@ public class IdleState : State<AI> {
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting Idle State");
     }
 }

@@ -463,10 +463,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1596928008321874, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdadb0bc08317a24b92b13a24f28b027, type: 2}
   m_IsPrefabAsset: 0
@@ -732,10 +728,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1887100240752668, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca46b6aa2959f64439ab517c2d922564, type: 2}
   m_IsPrefabAsset: 0
@@ -778,47 +770,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1620403275424218, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114389904460639454, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5df3f33ccf6ccc4780b2086114eeb1b, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &850551641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1620403275424218, guid: e5df3f33ccf6ccc4780b2086114eeb1b,
-    type: 2}
-  m_PrefabInternal: {fileID: 850551640}
---- !u!114 &850551642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 850551641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30cd05093f064a941bcf17c27ee3ff72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyWeapons: []
-  Hero: {fileID: 0}
-  AIRigidbody: {fileID: 0}
-  MoveSpeed: 0
-  EnemyHealth: 0
-  HealthPercentage: 0
-  EnemyAttackSpeed: 0
-  hurtDuration: 0.5
-  smoothColor: 0.1
-  AttackRange: 10
-  KillPoints: 0
-  seconds: 0
-  Flees: 0
-  IsEnabled: 0
-  switchState: 0
-  dead: 0
-  WeaponValue: 0
 --- !u!1 &912163465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1260481718491756, guid: 3c6466c8494909a4e8371bc27df18e48,

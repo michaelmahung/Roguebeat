@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23384726536993128}
   - component: {fileID: 54048503373653832}
   - component: {fileID: 65144638776971582}
-  - component: {fileID: 114922660108148086}
+  - component: {fileID: 114463215497010010}
   m_Layer: 0
   m_Name: Boomer
   m_TagString: Enemy
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596928008321874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.49, y: 1, z: 17.29}
+  m_LocalPosition: {x: -14.736428, y: 1, z: -0.10639091}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &114922660108148086
+--- !u!114 &114463215497010010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,14 +121,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596928008321874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ad32655d2297a4bb22708506e396e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 564f79569262390498e3a0cafb91f5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyWeapons: []
-  MoveSpeed: 5
-  EnemyHealth: 50
-  EnemyAttackSpeed: 1
-  IsFiring: 0
-  WeaponValue: 0
+  Hero: {fileID: 0}
+  AIRigidbody: {fileID: 0}
+  MoveSpeed: 0
+  EnemyHealth: 0
+  HealthPercentage: 0
+  EnemyAttackSpeed: 0
   hurtDuration: 0.5
-  smoothColor: 0.005
+  smoothColor: 0.1
+  AttackRange: 30
+  KillPoints: 0
+  seconds: 0
+  isEngagingPlayer: 0
+  IsFiring: 0
+  Flees: 0
+  Enraged: 0
+  IsEnabled: 0
+  switchState: 0
+  dead: 0
+  WeaponValue: 0

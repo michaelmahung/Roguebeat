@@ -31,7 +31,6 @@ public class ChaseState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
-        Debug.Log("Entering Chase State");
     }
 
     public override void UpdateState(AI _owner)
@@ -58,6 +57,5 @@ public class ChaseState : State<AI> {
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting Chase State");
     }
 }

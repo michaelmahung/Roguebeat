@@ -31,13 +31,11 @@ public class AttackState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
-        Debug.Log("Entering Attack State");
     }
 
     public override void UpdateState(AI _owner)
     {
         float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
-        Debug.Log("Attacking!");
         /*if (distance > _owner.AttackRange)
         {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
@@ -50,16 +48,16 @@ public class AttackState : State<AI> {
 
         if (_owner.HealthPercentage < 30)
         {
+        _owner.Flees = true;
             if (_owner.Flees)
             {
                 _owner.stateMachine.ChangeState(FleeState.Instance);
             }
-            _owner.stateMachine.ChangeState(EnrageState.Instance);
+            //_owner.stateMachine.ChangeState(EnrageState.Instance);
         }
     }
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting Attack State");
     }
 }

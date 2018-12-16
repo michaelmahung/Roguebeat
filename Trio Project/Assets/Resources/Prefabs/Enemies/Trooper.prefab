@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23122206793041312}
   - component: {fileID: 135894656048912982}
   - component: {fileID: 54645164965061410}
-  - component: {fileID: 114389904460639454}
+  - component: {fileID: 114681917650158600}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Enemy
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &114389904460639454
+--- !u!114 &114681917650158600
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,15 +109,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1620403275424218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2978edc956f0ef54d9ff2c3cec338941, type: 3}
+  m_Script: {fileID: 11500000, guid: 30cd05093f064a941bcf17c27ee3ff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyWeapons: []
   Hero: {fileID: 0}
-  MoveSpeed: 5
+  AIRigidbody: {fileID: 0}
+  MoveSpeed: 0
   EnemyHealth: 0
-  EnemyAttackSpeed: 5
+  HealthPercentage: 0
+  EnemyAttackSpeed: 0
+  hurtDuration: 0.5
+  smoothColor: 0.1
+  AttackRange: 10
+  KillPoints: 0
+  seconds: 0
+  isEngagingPlayer: 0
   IsFiring: 0
+  Flees: 0
+  Enraged: 0
+  IsEnabled: 0
+  switchState: 0
+  dead: 0
   WeaponValue: 0
 --- !u!135 &135894656048912982
 SphereCollider:

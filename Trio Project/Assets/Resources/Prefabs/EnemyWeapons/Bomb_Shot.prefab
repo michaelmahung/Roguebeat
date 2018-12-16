@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BombLife: 1
-  BombSpeed: 10
+  BombSpeed: 20
   BigBoom: {fileID: 1519971338207426, guid: dcdd4aa8123ef674bbbfc55ba147186e, type: 2}

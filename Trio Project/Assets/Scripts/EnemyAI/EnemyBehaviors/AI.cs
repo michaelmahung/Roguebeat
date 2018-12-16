@@ -18,7 +18,7 @@ public Rigidbody AIRigidbody;
 public float MoveSpeed; // base variable for all enemy movespeeds; is uniquely set on specific enemy class
 [Tooltip("Amount Of Enemy Health")]
 public float EnemyHealth; // base variable for all enemy health; is uniquely set on specific enemy class
-private float currentHealth;
+protected float currentHealth;
 public float HealthPercentage;
 [Tooltip("Rate Of Fire Of Enemy")]
 public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is uniquely set on specific enemy class
@@ -56,8 +56,7 @@ public StateMachine<AI> stateMachine { get; set; }
     {
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
-        stateMachine.ChangeState(AttackState.Instance);
-        currentHealth = EnemyHealth;
+        stateMachine.ChangeState(IdleState.Instance);
         HealthPercentage = (currentHealth / EnemyHealth) * 100;
         Hero = GameManager.Instance.Player.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
@@ -78,9 +77,10 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public virtual void Damage (float damage) // function on enemies to read damage from fire from player, reads Damage from Interfaces script.
 	{
-		EnemyHealth -= damage;
+		currentHealth -= damage;
 		StartCoroutine (LerpColor ()); // begin lerping color to show damage to enemy
-		if (EnemyHealth <= 0) {
+		UpdateHealthPercentage();
+		if (currentHealth <= 0) {
 			enemyDeath ();
 		}
 	}
@@ -139,9 +139,7 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public IEnumerator FireWeapon ()
 	{
-		print ("We have gotten");
 		yield return new WaitForSeconds (EnemyAttackSpeed);
-		print ("to figure out why");
 		Instantiate (EnemyWeapons [WeaponValue], transform.position, transform.rotation);
 		if (isEngagingPlayer == true) {
 			if (IsFiring == false) {
@@ -177,4 +175,9 @@ public StateMachine<AI> stateMachine { get; set; }
             isEngagingPlayer = false;
         }
     }
+
+    public void UpdateHealthPercentage ()
+	{
+		HealthPercentage = (currentHealth / EnemyHealth) * 100;
+	}
 }
