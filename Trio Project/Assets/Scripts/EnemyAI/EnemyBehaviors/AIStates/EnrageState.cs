@@ -30,8 +30,12 @@ public class EnrageState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
-        _owner.EnemyAttackSpeed *= 1.5f;
-        _owner.MoveSpeed*= 1.5f;
+        if (!_owner.Enraged)
+        {
+            _owner.Enraged = true;
+            _owner.EnemyAttackSpeed *= 1.5f;
+            _owner.MoveSpeed *= 1.5f;
+        }
         Debug.Log("Entering Enrage State");
     }
 

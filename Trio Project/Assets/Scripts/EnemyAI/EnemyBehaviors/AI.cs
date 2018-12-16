@@ -41,6 +41,7 @@ public int seconds = 0;
 public bool isEngagingPlayer; //Bool added to allow the AI to "forget" about the player.
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public bool Flees;
+public bool Enraged;
 public bool IsEnabled;
 public bool switchState = false;
 public bool dead;
