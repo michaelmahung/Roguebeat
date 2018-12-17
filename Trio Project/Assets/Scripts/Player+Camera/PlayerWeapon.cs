@@ -4,6 +4,6 @@
 
 public class PlayerWeapon: MonoBehaviour {
 
-public GameObject playerWeapon;
+public GameObject playerWeapon { get; set; }
 
 }

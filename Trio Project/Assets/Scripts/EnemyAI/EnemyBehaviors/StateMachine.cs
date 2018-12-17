@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace StateStuff
+﻿namespace StateStuff
 {
     public class StateMachine<T>
     {

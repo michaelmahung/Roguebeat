@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController2 : MonoBehaviour {
 
-    public GameObject player;
     public float followAhead;
     public float smoothing;
-    public float cameraHeight;
 
+    private float cameraHeight;
+    private GameObject player;
     private Vector3 targetPosition;
     private Vector3 cameraOffset;
 

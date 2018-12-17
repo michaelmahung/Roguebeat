@@ -6,7 +6,6 @@ using StateStuff;
 public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 {
 
-[HideInInspector]
 public GameObject[] EnemyWeapons;
 public Transform Hero; // Transform variable used to acquire the player.
 public string CurrentRoom { get; set; } // What room is the enemy in.
@@ -23,9 +22,9 @@ public float HealthPercentage;
 [Tooltip("Rate Of Fire Of Enemy")]
 public float EnemyAttackSpeed; // base variable for all enemy attack speeds; is uniquely set on specific enemy class
 [Tooltip("Time Length Of Damage Visual")]
-public float hurtDuration = 0.5f; // duration of hurt visual
+public float HurtDuration = 0.5f; // duration of hurt visual
 [Tooltip("Incremental Change Rate For Damage Visual")]
-public float smoothColor = 0.10f; //rate of color change for hurt visual
+public float SmoothColor = 0.10f; //rate of color change for hurt visual
 public float AttackRange = 30;
 //Floats
 
@@ -43,8 +42,8 @@ public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wa
 public bool Flees;
 public bool Enraged;
 public bool IsEnabled;
-public bool switchState = false;
-public bool dead;
+public bool SwitchState = false;
+public bool Dead;
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 //Bools
 
@@ -88,20 +87,20 @@ public StateMachine<AI> stateMachine { get; set; }
 	IEnumerator LerpColor ()
 	{
 		float progress = 0; //instance float created on start of coroutine 
-		float increment = smoothColor / hurtDuration; //instance float created on start of coroutine
+		float increment = SmoothColor / HurtDuration; //instance float created on start of coroutine
 		while (progress < 1) 
 		{
 		gameObject.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, EnemyBaseColor, progress);
 		progress += increment; //add to Float progress by an amount from smoothColor divided by hurtDuration
-		yield return new WaitForSeconds(smoothColor);
+		yield return new WaitForSeconds(SmoothColor);
 		}
 	}
 
 	public void enemyDeath ()
 	{
-        if (!dead)
+        if (!Dead)
         {
-            dead = true;
+            Dead = true;
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);

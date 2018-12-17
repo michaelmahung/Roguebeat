@@ -4,7 +4,7 @@
 
 //A delegate works very similarly to any other data type, except for the fact that it takes in functions as variables.
 //If I want to make a new array I do: GameObject[] GOArray = new GameObject[];
-//If I want to make a new delegate I do: PlayerEnteredNewRoom playerEntererRoom = new PlayerEnteredNewRoom(InsertFunctionToCallHere);
+//If I want to make a new delegate I do: PlayerEnteredNewRoom playerEnteredRoom = new PlayerEnteredNewRoom(InsertFunctionToCallHere);
 
 //One thing to note with delegates is that the return type is important to keep consistent.
 //Because I made a delegate void - it can only interact with other void functions.
@@ -31,6 +31,7 @@
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
+
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
 

@@ -71,6 +71,5 @@ MonoBehaviour:
   PlayerRoom: 
   ActiveDoors: []
   ActiveSpawners: []
-  Filter: {fileID: 0}
   UI: {fileID: 0}
-  PlayerSpawnPosition: {fileID: 0}
+  PlayerSpawnPosition: {x: -112.5, y: 0, z: 0}

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("The audio player we want to manipulate")]
     public AudioSource AudioPlayer;
 
-    [Header("ScoreKeeping")]
+    [Header("Scorekeeping")]
     public int CurrentScore;
 
     [Header("High Score List")]
@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     public string PlayerRoom;
     public List<BaseDoor> ActiveDoors = new List<BaseDoor>();
     public List<SpawnEnemies> ActiveSpawners = new List<SpawnEnemies>();
-    public AudioLowPassFilter Filter;
+    public AudioLowPassFilter Filter { get; set; }
     public UIController UI;
-    public GameObject PlayerSpawnPosition;
+    public Vector3 PlayerSpawnPosition;
 
     private bool canRespawn;
 
@@ -129,6 +129,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerHealth.PlayerKilled += CanRespawn;
+
+        if (PlayerSpawnPosition == null)
+        {
+            PlayerSpawnPosition = new Vector3(-112.5f, 0, 0);
+        }
     }
 
     private void Update()
@@ -181,7 +186,7 @@ public class GameManager : MonoBehaviour
         if (canRespawn)
         {
             Player.SetActive(true);
-            Player.transform.position = PlayerSpawnPosition.transform.position;
+            Player.transform.position = PlayerSpawnPosition;
             PlayerRespawned();
         }
     }
