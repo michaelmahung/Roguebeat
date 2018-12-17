@@ -39,9 +39,10 @@ public class FleeState : State<AI> {
     {
         fleeTimer += Time.deltaTime;
 
-        if (fleeTimer > 7)
+        if (fleeTimer > 5)
         {
             _owner.stateMachine.ChangeState(IdleState.Instance);
+            _owner.HasFleed = true;
         }
 
         _owner.Flee();

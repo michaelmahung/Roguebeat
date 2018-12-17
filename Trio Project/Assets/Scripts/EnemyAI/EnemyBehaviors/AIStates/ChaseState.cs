@@ -45,14 +45,16 @@ public class ChaseState : State<AI> {
         _owner.lookAtPlayer();
         _owner.ChasePlayer();
 
-        if (_owner.HealthPercentage < 30)
+        /*
+        if (_owner.HealthPercentage < 30 &&_owner.Flees != null)
         {
-            if (_owner.Flees)
+            if (_owner.Flees == true && _owner.HasFleed == false)
             {
                 _owner.stateMachine.ChangeState(FleeState.Instance);
+                return;
             }
             _owner.stateMachine.ChangeState(EnrageState.Instance);
-        }
+        }*/
     }
 
     public override void ExitState(AI _owner)

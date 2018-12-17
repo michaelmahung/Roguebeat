@@ -47,8 +47,9 @@ public class EnrageState : State<AI> {
         {
             _owner.lookAtPlayer();
             _owner.ChasePlayer();
-            _owner.lookAtPlayer();
-        }else
+            _owner.StartCoroutine(_owner.FireWeapon());
+        }
+        else
         {
             _owner.lookAtPlayer();
             _owner.ChasePlayer();

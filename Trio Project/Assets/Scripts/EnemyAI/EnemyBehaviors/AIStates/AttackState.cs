@@ -46,14 +46,16 @@ public class AttackState : State<AI> {
         _owner.ChasePlayer();
         _owner.StartCoroutine(_owner.FireWeapon());
 
-        if (_owner.HealthPercentage < 30)
+        //If the owners health is low and they have an assigned Flee behavior.
+        //Check to see if the owner has fleed already or if they are supposed to enrage.
+        if (_owner.HealthPercentage < 30 && _owner.Flees != null)
         {
-        _owner.Flees = true;
-            if (_owner.Flees)
+            if (_owner.Flees == true && _owner.HasFleed == false)
             {
                 _owner.stateMachine.ChangeState(FleeState.Instance);
+                return;
             }
-            //_owner.stateMachine.ChangeState(EnrageState.Instance);
+            _owner.stateMachine.ChangeState(EnrageState.Instance);
         }
     }
 

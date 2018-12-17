@@ -8,6 +8,7 @@ public class Trooper_New : AI{
 	// Use this for initialization
 	public override void Start () {
 	base.Start();
+        Flees = true;
 		MoveSpeed = 10.0f; // assigns base enemy move speed per Trooper
 		EnemyHealth = 10.0f; // assigns base enemy health per Trooper
 		EnemyAttackSpeed = 1.0f; // assigns base enemy attack speed per Trooper
