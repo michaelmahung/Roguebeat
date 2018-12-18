@@ -15,9 +15,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     public delegate void OnPlayerDamaged();
     public static event OnPlayerDamaged UpdateHealth;
+    public static event OnPlayerDamaged PlayerDamaged;
 
     public delegate void OnPlayerKilled();
     public static event OnPlayerKilled PlayerKilled;
+
+    public Shaker cameraShaker;
 
     void Start()
     {
@@ -38,6 +41,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     {
         currentHealth -= damage;
         HealthPercent = currentHealth / MaxHealth;
+        if (cameraShaker != null)
+        {
+            cameraShaker.ShakeMe();
+        }
+
+        PlayerDamaged();
         UpdateHealth();
 
         if (currentHealth <= 0)

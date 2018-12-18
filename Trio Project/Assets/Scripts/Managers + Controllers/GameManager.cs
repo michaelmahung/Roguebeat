@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerSpawnPosition == null)
         {
-            PlayerSpawnPosition = new Vector3(-112.5f, 0, 0);
+            PlayerSpawnPosition = Player.transform.position;
         }
     }
 
