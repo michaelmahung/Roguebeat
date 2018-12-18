@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour, IWeaponSwap {
 
     public bool ShowText;
-    public GameObject pauseScreen;
-    public Text debugText;
+    public bool GamePaused;
+    public GameObject PauseScreen;
+    public Text UIText;
     public Text ScoreText;
+
     private string weaponName;
     private string songName;
-    public bool gamePaused;
     private AudioLowPassFilter filter;
 
 	void Start ()
     {
         filter = GameManager.Instance.Filter;
-        pauseScreen.SetActive(false);
+        PauseScreen.SetActive(false);
         UpdateUIText();
 
         PlayerHealth.PlayerKilled += PlayerKilledText;
@@ -33,8 +34,8 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
     public void PlayerKilledText()
     {
-        debugText.fontSize = 60;
-        debugText.text = "Press 'R' to respawn";
+        UIText.fontSize = 60;
+        UIText.text = "Press 'R' to respawn";
     }
 
     public void UpdateScoreText()
@@ -46,16 +47,16 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     {
         if (ShowText)
         {
-            debugText.fontSize = 30;
-            debugText.text = "Left Click to Fire\n";
-            debugText.text += "Current weapon: " + weaponName + "\n";
-            debugText.text += "Tap 'Shift' to dash.\n";
-            debugText.text += "Press '1' to change colors \n";
-            debugText.text += "Press '2' to swap weapons\n";
-            debugText.text += "Press 'Z' to pause the game.";
+            UIText.fontSize = 30;
+            UIText.text = "Left Click to Fire\n";
+            UIText.text += "Current weapon: " + weaponName + "\n";
+            UIText.text += "Tap 'Shift' to dash.\n";
+            UIText.text += "Press '1' to change colors \n";
+            UIText.text += "Press '2' to swap weapons\n";
+            UIText.text += "Press 'Z' to pause the game.";
         } else
         {
-            debugText.text = "";
+            UIText.text = "";
         }
     }
 
@@ -71,24 +72,24 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     {
         try
         {
-            if (!gamePaused)
+            if (!GamePaused)
             {
-                gamePaused = true;
-                pauseScreen.SetActive(true);
+                GamePaused = true;
+                PauseScreen.SetActive(true);
                 Time.timeScale = 0;
                 filter.enabled = true;
             }
             else
             {
-                pauseScreen.SetActive(false);
-                gamePaused = false;
+                PauseScreen.SetActive(false);
+                GamePaused = false;
                 Time.timeScale = 1;
                 filter.enabled = false;
             }
         }
         catch
         {
-            gamePaused = false;
+            GamePaused = false;
             Debug.LogWarning("Add a reference to the UIController in the GameManager to pause.");
         }
 

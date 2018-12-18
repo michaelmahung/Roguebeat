@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombShot : MonoBehaviour {
 public float BombLife = 1.0f;
-public float BombSpeed = 10.0f;
+public float BombSpeed = 20.0f;
 public GameObject BigBoom;
  
 	// Use this for initialization

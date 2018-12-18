@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using StateStuff;
 
-public class DeactiveState : State<AI> {
+public class IdleState : State<AI> {
 
-    private static DeactiveState _instance;
+    private static IdleState _instance;
+    private float idleTimer;
 
-    private DeactiveState()
+    private IdleState()
     {
         if (_instance != null)
         {
@@ -15,37 +16,34 @@ public class DeactiveState : State<AI> {
         _instance = this;
     }
 
-    public static DeactiveState Instance
+    public static IdleState Instance
     {
         get
         {
             if (_instance == null)
             {
-                new DeactiveState();
+                new IdleState();
             }
 
             return _instance;
         }
     }
 
-
     public override void EnterState(AI _owner)
     {
-        _owner.AIRigidbody.isKinematic = true;
-        _owner.IsEnabled = false;
-        Debug.Log("Entering Deactive State");
+        idleTimer = 0;
     }
 
     public override void UpdateState(AI _owner)
     {
-        
+        idleTimer += Time.deltaTime;
+        if (idleTimer > 2)
+        {
+            _owner.stateMachine.ChangeState(ChaseState.Instance);
+        }
     }
 
     public override void ExitState(AI _owner)
     {
-        _owner.AIRigidbody.isKinematic = false;
-        _owner.IsEnabled = true;
-        Debug.Log("Exiting Deactive State");
     }
-
 }

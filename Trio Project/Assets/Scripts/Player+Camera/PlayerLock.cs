@@ -6,7 +6,7 @@ public class PlayerLock : MonoBehaviour {
 
     //Simply makes this object move alongside with whatever object is set as the player.
 
-    public Transform player;
+    private Transform player;
 
 	void Start () 
     {
@@ -18,7 +18,7 @@ public class PlayerLock : MonoBehaviour {
         catch
         {
             //If there isnt, flag a warning
-            Debug.LogError("No PlayerHealth component found, please assign one.");
+            Debug.LogError("No player gameobject found.");
         }
 	}
 	

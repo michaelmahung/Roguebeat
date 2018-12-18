@@ -30,7 +30,7 @@ public class Flamethrower : BaseWeapon
 
     public override void Fire()
     {
-        if (canFire && !GameManager.Instance.UI.gamePaused)
+        if (canFire && !GameManager.Instance.UI.GamePaused)
         {
             canFire = false;
             StartCoroutine(WeaponCooldown());

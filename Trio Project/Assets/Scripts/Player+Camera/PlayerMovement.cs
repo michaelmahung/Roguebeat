@@ -3,13 +3,13 @@
 public class PlayerMovement : MonoBehaviour 
 {
     [Range(5, 100)]
-    public float acceleration = 20;
+    public float Acceleration = 20;
 
     [Range(5, 50)]
-    public float topSpeed = 20;
+    public float TopSpeed = 20;
 
     [Range(1, 15)]
-    public int maxDashDistance = 5;
+    public int MaxDashDistance = 5;
 
     private int dashDistance;
     private Rigidbody rb;
@@ -29,29 +29,30 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Physics based movement for the player, Rigidbody.AddForce moves the player regardless of their rotation.
-        if (rb.velocity.magnitude > topSpeed)
+
+        if (rb.velocity.magnitude > TopSpeed)
         {
-            rb.velocity = rb.velocity.normalized * topSpeed;
+            rb.velocity = rb.velocity.normalized * TopSpeed;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            rb.AddForce(North * acceleration);
+            rb.AddForce(North * Acceleration);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.AddForce(West * acceleration);
+            rb.AddForce(West * Acceleration);
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            rb.AddForce(South * acceleration);
+            rb.AddForce(South * Acceleration);
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.AddForce(East * acceleration);
+            rb.AddForce(East * Acceleration);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -78,6 +79,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         rb.MovePosition(transform.position += dashDirection * dashDistance);
-        dashDistance = maxDashDistance;
+        dashDistance = MaxDashDistance;
     }
 }

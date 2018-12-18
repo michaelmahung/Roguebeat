@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771244600678864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4891988471934154}
@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cad618ebf5573418c27f6c8d21634f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!114 &114388679704312368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,13 +295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b7b89f56f349546903eba5ef491e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitingObject: {fileID: 4055151542159052}
-  orbitPath:
-    xAxis: 3
-    yAxis: 3
-  orbitProgress: 0
-  orbitPeriod: 1.5
-  orbitActive: 1
+  OrbitProgress: 0
+  OrbitSpeed: 3
+  OrbitActive: 1
+  ObjectToOrbit: {fileID: 4055151542159052}
+  EllipsePath:
+    xAxis: 4
+    yAxis: 4
 --- !u!135 &135007720415523470
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class PlayerHealthBarDisplay : MonoBehaviour
 {
-    private PlayerHealth HealthComponent;
-    private Slider PlayerHealthBar;
+    private PlayerHealth playerHealth;
+    private Slider playerHealthBar;
 
     private void Start()
     {
-        PlayerHealthBar = GetComponent<Slider>();
-        HealthComponent = GameManager.Instance.Player.GetComponent<PlayerHealth>();
+        playerHealthBar = GetComponent<Slider>();
+        playerHealth = GameManager.Instance.Player.GetComponent<PlayerHealth>();
         PlayerHealth.UpdateHealth += UpdateHealthBar;
     }
 
     public void UpdateHealthBar()
     {
-        if (PlayerHealthBar != null)
+        if (playerHealthBar != null)
         {
-            PlayerHealthBar.normalizedValue = HealthComponent.HealthPercent;
+            playerHealthBar.normalizedValue = playerHealth.HealthPercent;
         } else
         {
             print("No health bar found");

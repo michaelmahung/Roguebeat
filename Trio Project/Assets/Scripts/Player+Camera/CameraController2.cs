@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController2 : MonoBehaviour {
 
+    public float FollowAhead;
+    public float Smoothing;
+    public Vector3 TargetPosition;
     public GameObject player;
-    public float followAhead;
-    public float smoothing;
-    public float cameraHeight;
 
-    private Vector3 targetPosition;
+    private float cameraHeight;
     private Vector3 cameraOffset;
 
     void Start()
@@ -42,13 +40,13 @@ public class CameraController2 : MonoBehaviour {
         {
             if (player.transform.localRotation.y > 90f)
             {
-                targetPosition = (player.transform.position + (player.transform.forward * followAhead)) + cameraOffset;
+                TargetPosition = (player.transform.position + (player.transform.forward * FollowAhead)) + cameraOffset;
             }
             else
             {
-                targetPosition = (player.transform.position + (player.transform.forward * -1 * -followAhead)) + cameraOffset;
+                TargetPosition = (player.transform.position + (player.transform.forward * -1 * -FollowAhead)) + cameraOffset;
             }
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, TargetPosition, Smoothing * Time.deltaTime);
         }
     }
 

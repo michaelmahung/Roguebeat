@@ -13,6 +13,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     public int OpenPoints;
     public float moveAmount = 10;
     public int thingsRequired;
+
     protected int thingsDestroyed;
     protected Vector3 moveDirection;
     protected bool doorMoved;

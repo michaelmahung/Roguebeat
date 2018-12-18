@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour, IPooledObject
 {
-    [HideInInspector]
-    public float projectileDamage;
-    [HideInInspector]
-    public float projectileSpeed;
-    [HideInInspector]
-    public float activeTime;
+    public float projectileDamage { get; set; }
+    public float projectileSpeed { get; set; }
+    public float activeTime { get; set; }
 
-    bool HitEnemy;
-    bool HitWall;
+    bool hitEnemy;
+    bool hitWall;
     string hitTag;
     IDamageable<float> thingHit;
 

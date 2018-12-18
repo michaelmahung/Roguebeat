@@ -123,8 +123,6 @@ public class PlaylistHolder : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = currentStruct.songs[songValue];
-        //IChangeSong changeSong = GameManager.Instance.UI.GetComponent<IChangeSong>();
-        //changeSong.SongChanged();
         audioSource.Play();
     }
 

@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using StateStuff;
+﻿using StateStuff;
+using UnityEngine;
 
-public class ChaseState : State<AI> {
+public class AttackState : State<AI> {
 
-    private static ChaseState _instance;
+    private static AttackState _instance;
 
-    private ChaseState()
+    private AttackState()
     {
         if (_instance != null)
         {
@@ -15,13 +15,13 @@ public class ChaseState : State<AI> {
         _instance = this;
     }
 
-    public static ChaseState Instance
+    public static AttackState Instance
     {
         get
         {
             if (_instance == null)
             {
-                new ChaseState();
+                new AttackState();
             }
 
             return _instance;
@@ -36,17 +36,19 @@ public class ChaseState : State<AI> {
     public override void UpdateState(AI _owner)
     {
         float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
-
-        if (distance < _owner.AttackRange)
+        /*if (distance > _owner.AttackRange)
         {
-            _owner.stateMachine.ChangeState(AttackState.Instance);
+            _owner.stateMachine.ChangeState(ChaseState.Instance);
         }
-
+        */
+        _owner.isEngagingPlayer = true;
         _owner.lookAtPlayer();
         _owner.ChasePlayer();
+        _owner.StartCoroutine(_owner.FireWeapon());
 
-        /*
-        if (_owner.HealthPercentage < 30 &&_owner.Flees != null)
+        //If the owners health is low and they have an assigned Flee behavior.
+        //Check to see if the owner has fleed already or if they are supposed to enrage.
+        if (_owner.HealthPercentage < 30 && _owner.Flees != null)
         {
             if (_owner.Flees == true && _owner.HasFleed == false)
             {
@@ -54,7 +56,7 @@ public class ChaseState : State<AI> {
                 return;
             }
             _owner.stateMachine.ChangeState(EnrageState.Instance);
-        }*/
+        }
     }
 
     public override void ExitState(AI _owner)
