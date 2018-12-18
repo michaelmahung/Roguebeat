@@ -11,6 +11,7 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
     public float Speed = 10;
     public float AttackSpeed = 1;
     public float MaxHealth = 10;
+    public float HealthPercent;
     public int KillPoints { get; set; }
     public string CurrentRoom { get; set; }
 
@@ -70,6 +71,7 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
         if (IsEnabled)
         {
             currentHealth -= damage;
+            HealthPercent = currentHealth / MaxHealth;
 
             if (currentHealth <= 0)
             {
