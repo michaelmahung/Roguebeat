@@ -36,10 +36,6 @@ public abstract class MAIData : MonoBehaviour, IDamageable<float>, IKillable, IT
         currentHealth = MaxHealth;
         HealthPercent = (currentHealth / MaxHealth) * 100;
         Hero = GameManager.Instance.Player.transform;
-        //We still have the issue of deciding how the AI will know when the player is in it's room.
-        //This method will make the AI check for the player and set its active/deactive state
-        //The other method would be for the statemachine to work without generic types
-        //Another method would be for the GameManager to check AI rooms, but that would involve keeping a list of all AI at all times.
         RoomSetter.UpdatePlayerRoom += CheckRoom;
         Invoke("CheckRoom", 0.1f);
     }
