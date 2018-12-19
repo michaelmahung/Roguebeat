@@ -13,6 +13,7 @@ public Transform StartPosition;
 public Transform EndPosition;
 public GameObject[] EnemyTypes;
 public string CurrentRoom { get; set; }
+public RoomSetter MyRoom;
 private int RandomChance;
 
 
@@ -24,7 +25,8 @@ private int RandomChance;
         PlayerHealth.PlayerKilled += StopSpawns;
 	    SpawnMover = false;
 		EnemyTypes = Resources.LoadAll<GameObject> ("Prefabs/Enemies");
-	}
+        Invoke("FindMyRoom", 0.01f);
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -49,25 +51,37 @@ private int RandomChance;
 		}
 	}
 
+    void FindMyRoom()
+    {
+        MyRoom = GameObject.Find(CurrentRoom).GetComponent<RoomSetter>();
+    }
+
 	IEnumerator BeginSpawning ()
 	{
 		yield return new WaitForSeconds (SpawnTimer);
-		RandomChance = Random.Range (1, 100);
-		if (RandomChance <= 40) {
-			Instantiate (EnemyTypes [2], transform.position, transform.rotation);
-		}
 
-		if (RandomChance > 40 && RandomChance < 80) {
-			Instantiate (EnemyTypes [1], transform.position, transform.rotation);
-		}
+        if (MyRoom.EnemiesCapped() == false)
+        {
+            RandomChance = Random.Range(1, 100);
+            if (RandomChance <= 40)
+            {
+                Instantiate(EnemyTypes[2], transform.position, transform.rotation);
+            }
 
-		if (RandomChance >= 80) {
-			Instantiate (EnemyTypes [0], transform.position, transform.rotation);
-		}
+            if (RandomChance > 40 && RandomChance < 80)
+            {
+                Instantiate(EnemyTypes[1], transform.position, transform.rotation);
+            }
 
+            if (RandomChance >= 80)
+            {
+                Instantiate(EnemyTypes[0], transform.position, transform.rotation);
+            }
 
-		StartCoroutine (BeginSpawning ());
-	}
+            MyRoom.AddEnemy();
+        }
+        StartCoroutine(BeginSpawning());
+    }
 
     void CheckPlayerRoom()
     {

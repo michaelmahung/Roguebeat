@@ -21,6 +21,8 @@ public class PillarControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Player = GameManager.Instance.AudioPlayer;
+        floor = GameObject.FindGameObjectWithTag("Floor");
         Physics.IgnoreCollision(floor.GetComponent<Collider>(), GetComponent<Collider>());
         pBody.GetComponent<MeshRenderer>().material.color = Color.blue;
         pTop.GetComponent<MeshRenderer>().material.color = Color.blue;

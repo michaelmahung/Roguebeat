@@ -656,7 +656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cad618ebf5573418c27f6c8d21634f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!4 &506647085
 Transform:
   m_ObjectHideFlags: 0
@@ -682,13 +681,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b7b89f56f349546903eba5ef491e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitingObject: {fileID: 918646240}
-  orbitPath:
-    xAxis: 3
-    yAxis: 3
-  orbitProgress: 0
-  orbitPeriod: 1.5
-  orbitActive: 1
+  OrbitProgress: 0
+  OrbitSpeed: 3
+  OrbitActive: 1
+  ObjectToOrbit: {fileID: 0}
+  EllipsePath:
+    xAxis: 0
+    yAxis: 0
 --- !u!1 &715504400
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,9 +886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fc47c8a3d47704f8b7719b979f48b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FollowAhead: 0
+  Smoothing: 0
+  TargetPosition: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
-  followAhead: 5
-  smoothing: 4
 --- !u!1 &749690576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,9 +1110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65216107c6bad98408a6007455b44b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _band: 4
-  _minIntensity: 0.25
-  _maxIntensity: 0.55
+  Band: 4
+  MinIntensity: 0
+  MaxIntensity: 0
 --- !u!1 &990837581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e3563efce9546bb9763b0bbd012b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 1213487802}
+  ShowText: 0
+  GamePaused: 0
+  PauseScreen: {fileID: 0}
+  UIText: {fileID: 0}
+  ScoreText: {fileID: 0}
 --- !u!114 &1506234468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1592,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   Armor: 1
+  ArmorClip: {fileID: 0}
+  DamageClip: {fileID: 0}
+  KillClip: {fileID: 0}
 --- !u!136 &1614907593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1858,14 +1865,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  allPlayableSongs: []
-  currentSong: {fileID: 0}
-  audioPlayer: {fileID: 990837582}
-  gamePaused: 0
-  highScores: []
+  CurrentSong: {fileID: 0}
+  AudioPlayer: {fileID: 0}
+  SFXAudio: {fileID: 0}
+  PlayerAudio: {fileID: 0}
+  CurrentScore: 0
+  HighScores: []
+  Player: {fileID: 0}
+  PlayerRoom: 
+  ActiveDoors: []
+  ActiveSpawners: []
   UI: {fileID: 1506234467}
-  player: {fileID: 0}
+  PlayerSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1937818526
 Transform:
   m_ObjectHideFlags: 0

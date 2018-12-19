@@ -31,6 +31,8 @@
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
+    public int EnemyCount;
+    public int EnemyCap;
 
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
@@ -62,5 +64,24 @@ public class RoomSetter : MonoBehaviour {
     {
         GameManager.Instance.PlayerRoom = RoomName;
         UpdatePlayerRoom();
+    }
+
+    public void AddEnemy()
+    {
+        EnemyCount++;
+    }
+
+    public void RemoveEnemy()
+    {
+        EnemyCount--;
+    }
+
+    public bool EnemiesCapped()
+    {
+        if (EnemyCount >= EnemyCap)
+        {
+            return true;
+        }
+        return false;
     }
 }

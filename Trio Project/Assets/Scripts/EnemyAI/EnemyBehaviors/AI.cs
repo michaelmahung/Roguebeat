@@ -9,6 +9,7 @@ public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 public GameObject[] EnemyWeapons;
 public Transform Hero; // Transform variable used to acquire the player.
 public string CurrentRoom { get; set; } // What room is the enemy in.
+public RoomSetter MyRoom;
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
 
@@ -59,13 +60,19 @@ public StateMachine<AI> stateMachine { get; set; }
         HealthPercentage = (currentHealth / EnemyHealth) * 100;
         Hero = GameManager.Instance.Player.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color; 
+        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
         RoomSetter.UpdatePlayerRoom += CheckRoom;
+        Invoke("FindMyRoom", 0.1f);
     }
 
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    void FindMyRoom()
+    {
+        MyRoom = GameObject.Find(CurrentRoom).GetComponent<RoomSetter>();
     }
 
 
@@ -104,6 +111,10 @@ public StateMachine<AI> stateMachine { get; set; }
         if (!Dead)
         {
             Dead = true;
+            if (MyRoom != null)
+            {
+                MyRoom.RemoveEnemy();
+            }
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
