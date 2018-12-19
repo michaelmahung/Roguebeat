@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114867912818294176}
   - component: {fileID: 114335031769154470}
   - component: {fileID: 114433151429425124}
+  - component: {fileID: 114247572881329468}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Player
@@ -1810,6 +1811,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a4fc5cffcf346ad9c5c27155e6bc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114247572881329468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1260481718491756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8947f56852119574abaec14d8830a119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HurtClip: {fileID: 8300000, guid: ec2cd607fb707f445bce5f4f9d5c39d9, type: 3}
 --- !u!114 &114335031769154470
 MonoBehaviour:
   m_ObjectHideFlags: 1
