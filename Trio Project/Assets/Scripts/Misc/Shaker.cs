@@ -15,7 +15,7 @@ public class Shaker : MonoBehaviour {
     {
         if (shaking)
         {
-            Vector3 newPos = Random.insideUnitSphere * (Time.deltaTime * ShakeAmount);
+            Vector3 newPos = transform.position + (Random.insideUnitSphere * (Time.deltaTime * ShakeAmount));
             newPos.y = transform.position.y;
 
             transform.position = newPos;
