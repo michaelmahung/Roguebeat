@@ -1,5 +1,5 @@
-﻿using StateStuff;
-using UnityEngine;
+﻿using UnityEngine;
+using StateStuff;
 
 public class ChaseState : State<AI> {
 
