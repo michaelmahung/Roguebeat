@@ -37,7 +37,6 @@ public int seconds = 0;
 
 
 //Bools
-public bool isEngagingPlayer; //Bool added to allow the AI to "forget" about the player.
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public bool? Flees;
 public bool HasFleed;
@@ -61,8 +60,7 @@ public StateMachine<AI> stateMachine { get; set; }
         Hero = GameManager.Instance.Player.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color; 
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
-        Invoke("CheckPlayerRoom", 0.1f); //Wait a short amount to make sure the AI has been assigned a room.
+        RoomSetter.UpdatePlayerRoom += CheckRoom;
     }
 
     private void Update()
@@ -77,12 +75,16 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public virtual void Damage (float damage) // function on enemies to read damage from fire from player, reads Damage from Interfaces script.
 	{
-		currentHealth -= damage;
-		StartCoroutine (LerpColor ()); // begin lerping color to show damage to enemy
-		UpdateHealthPercentage();
-		if (currentHealth <= 0) {
-			enemyDeath ();
-		}
+        if (IsEnabled)
+        {
+            currentHealth -= damage;
+            StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
+            UpdateHealthPercentage();
+            if (currentHealth <= 0)
+            {
+                enemyDeath();
+            }
+        }
 	}
 
 	IEnumerator LerpColor ()
@@ -133,6 +135,7 @@ public StateMachine<AI> stateMachine { get; set; }
     public virtual void Flee()
     {
 		Vector3 direction = transform.position - Hero.transform.position;
+        direction.y = transform.position.y;
         direction.Normalize();
         transform.position += direction * MoveSpeed * Time.deltaTime;
     }
@@ -141,14 +144,16 @@ public StateMachine<AI> stateMachine { get; set; }
 	{
 		yield return new WaitForSeconds (EnemyAttackSpeed);
 		Instantiate (EnemyWeapons [WeaponValue], transform.position, transform.rotation);
-		if (isEngagingPlayer == true) {
-			if (IsFiring == false) {
-				IsFiring = true;
-				StartCoroutine (FireWeapon ());
-			} else {
-				StopAllCoroutines ();
-			}
-		}
+
+        if (IsFiring == false)
+        {
+            IsFiring = true;
+            StartCoroutine(FireWeapon());
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
 	}
 
 	//************************************************************************************
@@ -162,19 +167,6 @@ public StateMachine<AI> stateMachine { get; set; }
         }
         stateMachine.ChangeState(DeactiveState.Instance);
 	}
-
-	public void CheckPlayerRoom()
-    {
-        //If the player is in our room, engage it
-        if (GameManager.Instance.PlayerRoom == CurrentRoom)
-        {
-            isEngagingPlayer = true;
-            IsFiring = false;
-        } else
-        {
-            isEngagingPlayer = false;
-        }
-    }
 
     public void UpdateHealthPercentage ()
 	{

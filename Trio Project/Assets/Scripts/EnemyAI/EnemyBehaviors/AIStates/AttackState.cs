@@ -41,7 +41,6 @@ public class AttackState : State<AI> {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
         }
         */
-        _owner.isEngagingPlayer = true;
         _owner.lookAtPlayer();
         _owner.ChasePlayer();
         _owner.StartCoroutine(_owner.FireWeapon());
