@@ -31,6 +31,7 @@ public class ChaseState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
+        _owner.IsEnabled = true;
     }
 
     public override void UpdateState(AI _owner)

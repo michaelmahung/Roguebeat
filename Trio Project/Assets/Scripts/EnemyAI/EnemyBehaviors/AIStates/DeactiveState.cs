@@ -31,9 +31,10 @@ public class DeactiveState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
+        _owner.StopAllCoroutines();
         _owner.AIRigidbody.isKinematic = true;
         _owner.IsEnabled = false;
-        Debug.Log("Entering Deactive State");
+        //Debug.Log("Entering Deactive State");
     }
 
     public override void UpdateState(AI _owner)
@@ -45,7 +46,7 @@ public class DeactiveState : State<AI> {
     {
         _owner.AIRigidbody.isKinematic = false;
         _owner.IsEnabled = true;
-        Debug.Log("Exiting Deactive State");
+        //Debug.Log("Exiting Deactive State");
     }
 
 }

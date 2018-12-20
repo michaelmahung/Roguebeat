@@ -31,6 +31,13 @@
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
+    public int EnemyCount;
+    public int EnemyCap;
+
+    public Transform camPlacement;
+    public GameObject cam;
+
+    private CameraController2 cc;
 
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
@@ -39,6 +46,7 @@ public class RoomSetter : MonoBehaviour {
 		if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
+            cc = GameObject.FindObjectOfType<CameraController2>();
         }
 	}
 
@@ -53,14 +61,42 @@ public class RoomSetter : MonoBehaviour {
 
         if (other.tag == "Player")
         {
+            cc.player = camPlacement.gameObject;
+        
+           /* if (cam.transform.position != camPlacement.transform.position)
+            {
+                cam.transform.position = Vector3.Slerp(transform.position, camPlacement.position, 1.0f);
+               
+            }*/
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
         }
+
+        
     }
 
     public void UpdatePlayer()
     {
         GameManager.Instance.PlayerRoom = RoomName;
         UpdatePlayerRoom();
+    }
+
+    public void AddEnemy()
+    {
+        EnemyCount++;
+    }
+
+    public void RemoveEnemy()
+    {
+        EnemyCount--;
+    }
+
+    public bool EnemiesCapped()
+    {
+        if (EnemyCount >= EnemyCap)
+        {
+            return true;
+        }
+        return false;
     }
 }

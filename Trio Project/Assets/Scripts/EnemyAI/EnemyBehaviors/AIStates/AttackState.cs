@@ -35,13 +35,8 @@ public class AttackState : State<AI> {
 
     public override void UpdateState(AI _owner)
     {
-       // float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
-        /*if (distance > _owner.AttackRange)
-        {
-            _owner.stateMachine.ChangeState(ChaseState.Instance);
-        }
-        */
-        _owner.isEngagingPlayer = true;
+        float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
+
         _owner.lookAtPlayer();
         _owner.ChasePlayer();
         _owner.StartCoroutine(_owner.FireWeapon());

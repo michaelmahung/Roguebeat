@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4749439500501804}
   m_Layer: 0
   m_Name: DoorWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,5 +359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveAxis: 1
   OpenCondition: 0
+  OpenPoints: 0
   moveAmount: 10
   thingsRequired: 5

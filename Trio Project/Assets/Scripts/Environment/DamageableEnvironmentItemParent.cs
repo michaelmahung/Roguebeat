@@ -74,6 +74,10 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected Color currentColor;
     protected Renderer objectRenderer;
 
+    public AudioClip ArmorClip;
+    public AudioClip DamageClip;
+    public AudioClip KillClip;
+
     public string CurrentRoom { get; set; } //Because I take the ITrackRooms interface, I need to add this.
     public int KillPoints { get; set; } // Killable requires us to assign how many points for dying.
 
@@ -107,9 +111,18 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         if (damageTaken > 0)
         {
             Health -= damageTaken;
-            objectRenderer.material.color = hurtColor;
-            reactDuration = 0;
-            duration = damageTaken;
+
+            if (Health <= 0)
+            {
+                GameManager.Instance.PlaySFXOverlap(GameManager.Instance.SFXAudio, KillClip);
+                Kill();
+            } else
+            {
+                objectRenderer.material.color = hurtColor;
+                GameManager.Instance.PlaySFX(GameManager.Instance.SFXAudio, DamageClip);
+                reactDuration = 0;
+                duration = damageTaken;
+            }
             //We want the thing hit to flash red after being hit and we do this with the duration.
             //When taking damage, the duration is set to the amount of damage taken after armor.
             //This way, stronger weapons have a more lasting reaction than weaker ones - up to a cap of 2 seconds.
@@ -118,14 +131,10 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         if (damageTaken == 0)
         {
             objectRenderer.material.color = armorColor;
+            GameManager.Instance.PlaySFX(GameManager.Instance.SFXAudio, ArmorClip);
             reactDuration = 0;
             duration = 0.5f;
             //If the damage weve taken is negated by our armor, flash yellow instead.
-        }
-
-        if (Health <= 0)
-        {
-            Kill();
         }
     }
 

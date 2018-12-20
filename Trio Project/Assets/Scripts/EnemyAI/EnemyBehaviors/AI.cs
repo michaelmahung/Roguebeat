@@ -9,6 +9,7 @@ public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 public GameObject[] EnemyWeapons;
 public Transform Hero; // Transform variable used to acquire the player.
 public string CurrentRoom { get; set; } // What room is the enemy in.
+public RoomSetter MyRoom;
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
 
@@ -37,7 +38,6 @@ public int seconds = 0;
 
 
 //Bools
-public bool isEngagingPlayer; //Bool added to allow the AI to "forget" about the player.
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public bool? Flees;
 public bool HasFleed;
@@ -47,8 +47,6 @@ public bool SwitchState = false;
 public bool Dead;
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 //Bools
-
-public SpawnEnemies SpawnScript;
 
 
 
@@ -62,14 +60,19 @@ public StateMachine<AI> stateMachine { get; set; }
         HealthPercentage = (currentHealth / EnemyHealth) * 100;
         Hero = GameManager.Instance.Player.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
-        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color; 
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
-        Invoke("CheckPlayerRoom", 0.1f); //Wait a short amount to make sure the AI has been assigned a room.
+        EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
+        RoomSetter.UpdatePlayerRoom += CheckRoom;
+        Invoke("FindMyRoom", 0.1f);
     }
 
     private void Update()
     {
         stateMachine.Update();
+    }
+
+    void FindMyRoom()
+    {
+        MyRoom = GameObject.Find(CurrentRoom).GetComponent<RoomSetter>();
     }
 
 
@@ -79,12 +82,16 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public virtual void Damage (float damage) // function on enemies to read damage from fire from player, reads Damage from Interfaces script.
 	{
-		currentHealth -= damage;
-		StartCoroutine (LerpColor ()); // begin lerping color to show damage to enemy
-		UpdateHealthPercentage();
-		if (currentHealth <= 0) {
-			enemyDeath ();
-		}
+        if (IsEnabled)
+        {
+            currentHealth -= damage;
+            StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
+            UpdateHealthPercentage();
+            if (currentHealth <= 0)
+            {
+                enemyDeath();
+            }
+        }
 	}
 
 	IEnumerator LerpColor ()
@@ -104,11 +111,13 @@ public StateMachine<AI> stateMachine { get; set; }
         if (!Dead)
         {
             Dead = true;
-
+            if (MyRoom != null)
+            {
+                MyRoom.RemoveEnemy();
+            }
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
-            Debug.Log("getting here");
             Destroy(gameObject);
         }
     }
@@ -137,6 +146,7 @@ public StateMachine<AI> stateMachine { get; set; }
     public virtual void Flee()
     {
 		Vector3 direction = transform.position - Hero.transform.position;
+        direction.y = transform.position.y;
         direction.Normalize();
         transform.position += direction * MoveSpeed * Time.deltaTime;
     }
@@ -145,14 +155,16 @@ public StateMachine<AI> stateMachine { get; set; }
 	{
 		yield return new WaitForSeconds (EnemyAttackSpeed);
 		Instantiate (EnemyWeapons [WeaponValue], transform.position, transform.rotation);
-		if (isEngagingPlayer == true) {
-			if (IsFiring == false) {
-				IsFiring = true;
-				StartCoroutine (FireWeapon ());
-			} else {
-				StopAllCoroutines ();
-			}
-		}
+
+        if (IsFiring == false)
+        {
+            IsFiring = true;
+            StartCoroutine(FireWeapon());
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
 	}
 
 	//************************************************************************************
@@ -166,19 +178,6 @@ public StateMachine<AI> stateMachine { get; set; }
         }
         stateMachine.ChangeState(DeactiveState.Instance);
 	}
-
-	public void CheckPlayerRoom()
-    {
-        //If the player is in our room, engage it
-        if (GameManager.Instance.PlayerRoom == CurrentRoom)
-        {
-            isEngagingPlayer = true;
-            IsFiring = false;
-        } else
-        {
-            isEngagingPlayer = false;
-        }
-    }
 
     public void UpdateHealthPercentage ()
 	{

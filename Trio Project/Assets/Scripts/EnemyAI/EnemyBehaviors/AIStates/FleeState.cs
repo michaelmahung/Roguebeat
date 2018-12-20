@@ -31,6 +31,7 @@ public class FleeState : State<AI> {
 
     public override void EnterState(AI _owner)
     {
+        //Debug.Log("Entering Flee State");
         fleeTimer = 0;
     }
 
@@ -49,6 +50,7 @@ public class FleeState : State<AI> {
 
     public override void ExitState(AI _owner)
     {
+        //Debug.Log("Exiting Flee State");
     }
 
 

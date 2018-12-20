@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System;
 
 [RequireComponent(typeof(AudioSource))]
@@ -38,6 +35,8 @@ public class GameManager : MonoBehaviour
     public AudioClip CurrentSong;
     [Tooltip("The audio player we want to manipulate")]
     public AudioSource AudioPlayer;
+    public AudioSource SFXAudio;
+    public AudioSource PlayerAudio;
 
     [Header("Scorekeeping")]
     public int CurrentScore;
@@ -108,6 +107,26 @@ public class GameManager : MonoBehaviour
         ScoreAdded();
     }
 
+    public void PlaySFX(AudioSource source, AudioClip clip)
+    {
+        if (!SFXAudio.isPlaying)
+        {
+            float random = UnityEngine.Random.Range(0.75f, 1.5f);
+            SFXAudio.pitch = random;
+            SFXAudio.Stop();
+            SFXAudio.clip = clip;
+            SFXAudio.Play();
+        }
+    }
+
+    public void PlaySFXOverlap(AudioSource source, AudioClip clip)
+    {
+        float random = UnityEngine.Random.Range(0.5f, 2f);
+        SFXAudio.pitch = random;
+        SFXAudio.clip = clip;
+        SFXAudio.Play();
+    }
+
     #endregion
 
     #region Private Functions
@@ -132,7 +151,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerSpawnPosition == null)
         {
-            PlayerSpawnPosition = new Vector3(-112.5f, 0, 0);
+            PlayerSpawnPosition = Player.transform.position;
         }
     }
 
