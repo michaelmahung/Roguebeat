@@ -10,6 +10,8 @@ public class CameraController2 : MonoBehaviour {
     private float cameraHeight;
     private Vector3 cameraOffset;
 
+    
+
     void Start()
     {
         try
