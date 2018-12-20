@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23389542090387800}
   - component: {fileID: 65153689326323964}
   - component: {fileID: 114595558809126456}
+  - component: {fileID: 54862853402508774}
   m_Layer: 0
   m_Name: TestEnemySpawner
   m_TagString: Untagged
@@ -85,6 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662456579292438}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54862853402508774
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662456579292438}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65153689326323964
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -92,7 +108,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662456579292438}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -108,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 10
+  SpawnTimer: 7.5
   IsSpawning: 0
   SpawnerTransition: 0
   SpawnMovementSpeed: 10
@@ -116,3 +132,4 @@ MonoBehaviour:
   StartPosition: {fileID: 0}
   EndPosition: {fileID: 0}
   EnemyTypes: []
+  MyRoom: {fileID: 0}

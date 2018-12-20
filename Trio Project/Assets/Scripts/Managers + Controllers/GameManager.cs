@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlayerRespawn();
     public event OnPlayerRespawn PlayerRespawned;
 
+    //Difficulty Multiplier work by Sam
+    public float[] Multiplier = {1.0f, 1.25f, 1.5f, 1.75f};
+    public float Difficulty;
+
 
 
 
@@ -138,6 +142,7 @@ public class GameManager : MonoBehaviour
         FindDoors();
         FindSpawners();
         SetComponents();
+        Difficulty = Multiplier[3];
 
         if (PlayerPrefs.HasKey("HighScores"))
         {
@@ -155,12 +160,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RespawnPlayer();
-        }
+    private void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.R)) {
+			RespawnPlayer ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.V)) {
+		Difficulty = Multiplier[3];
+			print(Difficulty);
+		}
     }
 
     //Basically the start function

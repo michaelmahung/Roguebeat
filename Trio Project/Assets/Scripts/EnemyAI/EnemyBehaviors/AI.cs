@@ -57,7 +57,7 @@ public StateMachine<AI> stateMachine { get; set; }
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
-        HealthPercentage = (currentHealth / EnemyHealth) * 100;
+        //HealthPercentage = (currentHealth / EnemyHealth) * 100; *****Moved to specific enemy starts As their assignments of stats happens AFTER this call, making it null
         Hero = GameManager.Instance.Player.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
@@ -183,4 +183,5 @@ public StateMachine<AI> stateMachine { get; set; }
 	{
 		HealthPercentage = (currentHealth / EnemyHealth) * 100;
 	}
+
 }

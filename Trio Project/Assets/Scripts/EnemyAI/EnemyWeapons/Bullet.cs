@@ -15,7 +15,7 @@ public float BulletSpeed = 50.0f;
  
 	// Use this for initialization
 	void Start () {
-        Damage = 1;
+        Damage = 1 * GameManager.Instance.Difficulty;
         //also Josh's shit
        /* eColor = GetComponent<EnemyProjectileColorManager>();
         colorIndex = eColor.currentIndex;
