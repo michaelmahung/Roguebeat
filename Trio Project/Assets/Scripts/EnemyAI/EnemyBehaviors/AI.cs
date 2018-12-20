@@ -48,6 +48,8 @@ public bool Dead;
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 //Bools
 
+public SpawnEnemies SpawnScript;
+
 
 
 public StateMachine<AI> stateMachine { get; set; }
@@ -102,9 +104,11 @@ public StateMachine<AI> stateMachine { get; set; }
         if (!Dead)
         {
             Dead = true;
+
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
+            Debug.Log("getting here");
             Destroy(gameObject);
         }
     }

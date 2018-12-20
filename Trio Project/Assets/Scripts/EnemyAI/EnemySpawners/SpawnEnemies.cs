@@ -14,6 +14,10 @@ public Transform EndPosition;
 public GameObject[] EnemyTypes;
 public string CurrentRoom { get; set; }
 private int RandomChance;
+public int EnemyCount;
+public int EnemyMaxCount;
+private int CounterCheck;
+public List<GameObject> EnemyNumbers = new List<GameObject>();
 
 
 	// Use this for initialization
@@ -53,20 +57,35 @@ private int RandomChance;
 	{
 		yield return new WaitForSeconds (SpawnTimer);
 		RandomChance = Random.Range (1, 100);
-		if (RandomChance <= 40) {
-			Instantiate (EnemyTypes [2], transform.position, transform.rotation);
+		if (EnemyCount <= EnemyMaxCount) {
+			if (RandomChance <= 40) {
+			CounterCheck++;
+				for (EnemyCount = EnemyCount; EnemyCount < CounterCheck && EnemyCount <= EnemyMaxCount; EnemyCount++) {
+					EnemyNumbers.Add (Instantiate (EnemyTypes [0], transform.position, transform.rotation) as GameObject);
+					//Instantiate (EnemyTypes [2], transform.position, transform.rotation);
+				}
+			}
+
+			if (RandomChance > 40 && RandomChance < 80) {
+				CounterCheck++;
+				for (EnemyCount = EnemyCount; EnemyCount < CounterCheck && EnemyCount <= EnemyMaxCount; EnemyCount++) {
+					EnemyNumbers.Add (Instantiate (EnemyTypes [1], transform.position, transform.rotation) as GameObject);
+					//Instantiate (EnemyTypes [1], transform.position, transform.rotation);
+				}
+			}
+
+			if (RandomChance >= 80) {
+				CounterCheck++;
+				for (EnemyCount = EnemyCount; EnemyCount < CounterCheck && EnemyCount <= EnemyMaxCount; EnemyCount++) {
+					EnemyNumbers.Add (Instantiate (EnemyTypes [2], transform.position, transform.rotation) as GameObject);
+				}
+
+				//Instantiate (EnemyTypes [0], transform.position, transform.rotation);
+			}
+
+
+			StartCoroutine (BeginSpawning ());
 		}
-
-		if (RandomChance > 40 && RandomChance < 80) {
-			Instantiate (EnemyTypes [1], transform.position, transform.rotation);
-		}
-
-		if (RandomChance >= 80) {
-			Instantiate (EnemyTypes [0], transform.position, transform.rotation);
-		}
-
-
-		StartCoroutine (BeginSpawning ());
 	}
 
     void CheckPlayerRoom()
@@ -86,6 +105,7 @@ private int RandomChance;
 
     void StartSpawns()
     {
+
         IsSpawning = true;
         StartCoroutine(BeginSpawning());
     }

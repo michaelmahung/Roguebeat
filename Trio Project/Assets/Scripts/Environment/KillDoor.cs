@@ -45,8 +45,8 @@ public class KillDoor : BaseDoor
 
         foreach (SpawnEnemies enemySpawner in spawners)
         {
-            enemySpawner.gameObject.SetActive(false);
-            GameManager.Instance.RemoveSpawner(enemySpawner);
+            //enemySpawner.gameObject.SetActive(false);
+            //GameManager.Instance.RemoveSpawner(enemySpawner);
         }
     }
 }
