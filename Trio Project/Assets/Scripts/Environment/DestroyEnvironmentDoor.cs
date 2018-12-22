@@ -9,6 +9,5 @@ public class DestroyEnvironmentDoor : BaseDoor
     public new void Start()
     {
         base.Start();
-        OpenCondition = openCondition.Objects;
     }
 }

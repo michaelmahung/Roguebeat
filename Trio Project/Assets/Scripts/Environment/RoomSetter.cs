@@ -33,6 +33,8 @@ public class RoomSetter : MonoBehaviour {
     public string RoomName;
     public int EnemyCount;
     public int EnemyCap;
+    public BaseDoor MyDoor;
+    public SpawnEnemies[] MySpawners;
 
     public Transform camPlacement;
     public GameObject cam;
@@ -42,7 +44,17 @@ public class RoomSetter : MonoBehaviour {
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
 
-	void Start () {
+    private void Awake()
+    {
+        MyDoor = GetComponentInChildren<BaseDoor>();
+        MySpawners = GetComponentsInChildren<SpawnEnemies>();
+        if (MyDoor != null)
+        {
+            MyDoor.MyRoom = this;
+        }
+    }
+
+    void Start () {
 		if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
@@ -50,29 +62,31 @@ public class RoomSetter : MonoBehaviour {
         }
 	}
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
 
         if (roomTracker != null)
         {
-            roomTracker.CurrentRoom = RoomName;
+            roomTracker.MyRoomName = RoomName;
+            if (roomTracker.MyRoom == null)
+            {
+                roomTracker.MyRoom = this;
+            }
         }
 
         if (other.tag == "Player")
         {
             cc.player = camPlacement.gameObject;
         
-           /* if (cam.transform.position != camPlacement.transform.position)
-            {
-                cam.transform.position = Vector3.Slerp(transform.position, camPlacement.position, 1.0f);
-               
-            }*/
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
         }
+    }
 
-        
+    private void OnTriggerExit(Collider other)
+    {
+        UpdatePlayerRoom();
     }
 
     public void UpdatePlayer()

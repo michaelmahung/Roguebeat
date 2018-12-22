@@ -33,5 +33,6 @@ public interface IChangeSong
 
 public interface ITrackRooms
 {
-    string CurrentRoom { get; set; }
+    string MyRoomName { get; set; }
+    RoomSetter MyRoom { get; set; }
 }

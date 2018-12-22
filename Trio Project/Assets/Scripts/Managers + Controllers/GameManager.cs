@@ -24,19 +24,10 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("Creating a GameManager instance from scratch, this is not ideal.\nPlease add a GameManager component to the scene");
                 GameObject gm = new GameObject("GameManager");
                 gm.AddComponent<GameManager>();
-                gm.AddComponent<AudioPeer>();
             }
             return _instance;
         }
     }
-
-    [Header("Global Audio Information")]
-    [Tooltip("The current song being played")]
-    public AudioClip CurrentSong;
-    [Tooltip("The audio player we want to manipulate")]
-    public AudioSource AudioPlayer;
-    public AudioSource SFXAudio;
-    public AudioSource PlayerAudio;
 
     [Header("Scorekeeping")]
     public int CurrentScore;
@@ -47,59 +38,22 @@ public class GameManager : MonoBehaviour
     [Header("Global Script References")]
     public GameObject Player;
     public string PlayerRoom;
-    public List<BaseDoor> ActiveDoors = new List<BaseDoor>();
-    public List<SpawnEnemies> ActiveSpawners = new List<SpawnEnemies>();
-    public AudioLowPassFilter Filter { get; set; }
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
 
-    private bool canRespawn;
+    [Header("Difficulty Settings")]
+    //Difficulty Multiplier work by Sam
+    public float[] Multiplier = {1.0f, 1.25f, 1.5f, 1.75f};
+    public float Difficulty;
 
     public delegate void OnScoreAdded();
     public event OnScoreAdded ScoreAdded;
     public delegate void OnPlayerRespawn();
     public event OnPlayerRespawn PlayerRespawned;
 
-    //Difficulty Multiplier work by Sam
-    public float[] Multiplier = {1.0f, 1.25f, 1.5f, 1.75f};
-    public float Difficulty;
+    private bool canRespawn;
 
 
-
-
-    #region Public Functions
-
-    //Function for adding to the counters of the various room doors.
-    public void AddToDoor(String roomName, BaseDoor.openCondition type)
-    {
-        for (int i = 0; i < ActiveDoors.Count; i++)
-        {
-            try
-            {
-                if (ActiveDoors[i].CurrentRoom == roomName && type == ActiveDoors[i].OpenCondition)
-                {
-                    ActiveDoors[i].AddToDoor();
-                    break;
-                }
-            }
-            catch
-            {
-                Debug.LogWarning("Issue adding to room: " + roomName);
-            }
-        }
-    }
-
-    //Removes a door from the overall door list
-    public void RemoveDoor(BaseDoor door)
-    {
-        ActiveDoors.Remove(door);
-    }
-
-    //Removes a spawner from the overall spawner list
-    public void RemoveSpawner(SpawnEnemies spawn)
-    {
-        ActiveSpawners.Remove(spawn);
-    }
 
     public void AddScore(int score)
     {
@@ -111,36 +65,12 @@ public class GameManager : MonoBehaviour
         ScoreAdded();
     }
 
-    public void PlaySFX(AudioSource source, AudioClip clip)
-    {
-        if (!SFXAudio.isPlaying)
-        {
-            float random = UnityEngine.Random.Range(0.75f, 1.5f);
-            SFXAudio.pitch = random;
-            SFXAudio.Stop();
-            SFXAudio.clip = clip;
-            SFXAudio.Play();
-        }
-    }
-
-    public void PlaySFXOverlap(AudioSource source, AudioClip clip)
-    {
-        float random = UnityEngine.Random.Range(0.5f, 2f);
-        SFXAudio.pitch = random;
-        SFXAudio.clip = clip;
-        SFXAudio.Play();
-    }
-
-    #endregion
-
     #region Private Functions
     private void Awake()
     {
         _instance = this;
         DontDestroyOnLoad(gameObject);
 
-        FindDoors();
-        FindSpawners();
         SetComponents();
         Difficulty = Multiplier[3];
 
@@ -150,7 +80,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         PlayerHealth.PlayerKilled += CanRespawn;
 
@@ -176,31 +106,8 @@ public class GameManager : MonoBehaviour
     private void SetComponents()
     {
         Player = FindObjectOfType<PlayerHealth>().gameObject;
-        PlayerRoom = Player.GetComponent<PlayerStats>().CurrentRoom;
-        Filter = AudioPlayer.GetComponent<AudioLowPassFilter>();
-        Filter.cutoffFrequency = 400;
-        CurrentSong = AudioPlayer.clip;
+        PlayerRoom = Player.GetComponent<PlayerStats>().MyRoomName;
         UI = GameObject.FindObjectOfType<UIController>();
-    }
-
-    private void FindSpawners()
-    {
-        SpawnEnemies[] spawners;
-        spawners = FindObjectsOfType<SpawnEnemies>();
-        foreach (SpawnEnemies spawn in spawners)
-        {
-            ActiveSpawners.Add(spawn);
-        }
-    }
-
-    private void FindDoors()
-    {
-        BaseDoor[] doors;
-        doors = GameObject.FindObjectsOfType<BaseDoor>();
-        foreach (BaseDoor door in doors)
-        {
-            ActiveDoors.Add(door);
-        }
     }
 
     private void CanRespawn()

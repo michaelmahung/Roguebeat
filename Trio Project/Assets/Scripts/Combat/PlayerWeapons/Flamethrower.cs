@@ -9,8 +9,6 @@ public class Flamethrower : BaseWeapon
     new void Start()
     {
         base.Start();
-        audioSource.volume = 0.40f;
-        audioSource.loop = true;
     }
 
     public override void Update()
@@ -24,7 +22,7 @@ public class Flamethrower : BaseWeapon
         if (Input.GetMouseButtonUp(0))
         {
             firing = false;
-            audioSource.Stop();
+            AudioManager.Instance.StopSound(fireSound.name);
         }
     }
 
@@ -34,10 +32,9 @@ public class Flamethrower : BaseWeapon
         {
             canFire = false;
             StartCoroutine(WeaponCooldown());
-            audioSource.clip = fireSound;
             if (!firing)
             {
-                audioSource.Play();
+                AudioManager.Instance.PlaySound(fireSound.name);
                 firing = true;
             }
             ShootWeapon();
@@ -56,6 +53,12 @@ public class Flamethrower : BaseWeapon
     {
         firing = false;
         base.OnEnable();
+    }
+
+    public override void OnDisable()
+    {
+        AudioManager.Instance.StopSound(fireSound.name);
+        base.OnDisable();
     }
 
 

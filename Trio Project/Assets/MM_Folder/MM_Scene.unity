@@ -1592,9 +1592,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 50
   Armor: 1
-  ArmorClip: {fileID: 0}
-  DamageClip: {fileID: 0}
-  KillClip: {fileID: 0}
 --- !u!136 &1614907593
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1865,18 +1862,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentSong: {fileID: 0}
-  AudioPlayer: {fileID: 0}
-  SFXAudio: {fileID: 0}
-  PlayerAudio: {fileID: 0}
   CurrentScore: 0
   HighScores: []
   Player: {fileID: 0}
   PlayerRoom: 
-  ActiveDoors: []
-  ActiveSpawners: []
   UI: {fileID: 1506234467}
   PlayerSpawnPosition: {x: 0, y: 0, z: 0}
+  Multiplier:
+  - 1
+  - 1.25
+  - 1.5
+  - 1.75
+  Difficulty: 0
 --- !u!4 &1937818526
 Transform:
   m_ObjectHideFlags: 0

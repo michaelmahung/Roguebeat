@@ -19,11 +19,23 @@ public class PillarControl : MonoBehaviour {
     public AudioClip mySong;
     public AudioSource Player;
 
+    //Added a collider array to allow pillars and their children to go through the floor.
+    //Also added a floor layer and assigned it in the inspector.
+    private Collider[] allColliders;
+
     // Use this for initialization
     void Start () {
-        Player = GameManager.Instance.AudioPlayer;
+        allColliders = GetComponentsInChildren<Collider>();
         floor = GameObject.FindGameObjectWithTag("Floor");
+
+        //Foreach loop will get all children with collider and ignore collision with floor on them as well as parent.
+        foreach (Collider col in allColliders)
+        {
+            Physics.IgnoreCollision(floor.GetComponent<Collider>(), col);
+        }
+
         Physics.IgnoreCollision(floor.GetComponent<Collider>(), GetComponent<Collider>());
+        Player = AudioManager.Instance.AudioPlayer;
         pBody.GetComponent<MeshRenderer>().material.color = Color.blue;
         pTop.GetComponent<MeshRenderer>().material.color = Color.blue;
 	}

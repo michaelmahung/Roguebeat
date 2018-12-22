@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
 	void Start ()
     {
-        filter = GameManager.Instance.Filter;
+        filter = AudioManager.Instance.Filter;
         PauseScreen.SetActive(false);
         UpdateUIText();
 
@@ -89,8 +89,10 @@ public class UIController : MonoBehaviour, IWeaponSwap {
         }
         catch
         {
+            PauseScreen.SetActive(false);
             GamePaused = false;
-            Debug.LogWarning("Add a reference to the UIController in the GameManager to pause.");
+            Time.timeScale = 1;
+            filter.enabled = false;
         }
 
     }

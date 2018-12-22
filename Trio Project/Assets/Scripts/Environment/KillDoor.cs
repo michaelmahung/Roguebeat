@@ -11,23 +11,6 @@ public class KillDoor : BaseDoor
     public new void Start()
     {
         base.Start();
-        OpenCondition = openCondition.Kills;
-        StartCoroutine(FindSpawners());
-    }
-
-    IEnumerator FindSpawners()
-    {
-        //Wait for the GameManager to find all the active spawners then make a list of the spawners in my room.
-
-        yield return new WaitForSeconds(0.1f);
-        foreach (SpawnEnemies spawn in GameManager.Instance.ActiveSpawners)
-        {
-            if (spawn.CurrentRoom == CurrentRoom)
-            {
-                spawners.Add(spawn);
-            }
-        }
-        yield break; //Stop the coroutine once it's done.
     }
 
     //Look into the BaseDoor class to see why this is being "overridden".
@@ -36,17 +19,5 @@ public class KillDoor : BaseDoor
     public override void OpenDoor()
     {
         base.OpenDoor();
-        StopSpawners();
-    }
-
-    public void StopSpawners()
-    {
-        //Disable all the spawners in my room and remove the spawners from the GameManager instance.
-
-        foreach (SpawnEnemies enemySpawner in spawners)
-        {
-            //enemySpawner.gameObject.SetActive(false);
-            //GameManager.Instance.RemoveSpawner(enemySpawner);
-        }
     }
 }

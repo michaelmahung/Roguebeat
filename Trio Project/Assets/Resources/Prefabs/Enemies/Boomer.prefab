@@ -100,7 +100,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &65144638776971582
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -131,16 +131,15 @@ MonoBehaviour:
   EnemyHealth: 0
   HealthPercentage: 0
   EnemyAttackSpeed: 0
-  hurtDuration: 0.5
-  smoothColor: 0.1
+  HurtDuration: 0.5
+  SmoothColor: 0.1
   AttackRange: 30
   KillPoints: 0
   seconds: 0
-  isEngagingPlayer: 0
   IsFiring: 0
-  Flees: 0
+  HasFleed: 0
   Enraged: 0
   IsEnabled: 0
-  switchState: 0
-  dead: 0
+  SwitchState: 0
+  Dead: 0
   WeaponValue: 0

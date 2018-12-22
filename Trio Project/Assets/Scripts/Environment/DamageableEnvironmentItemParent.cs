@@ -74,11 +74,16 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected Color currentColor;
     protected Renderer objectRenderer;
 
-    public AudioClip ArmorClip;
-    public AudioClip DamageClip;
-    public AudioClip KillClip;
+    protected enum ItemType
+    {
+        Wood,
+        Metal
+    }
 
-    public string CurrentRoom { get; set; } //Because I take the ITrackRooms interface, I need to add this.
+    protected ItemType itemType;
+
+    public string MyRoomName { get; set; } //Because I take the ITrackRooms interface, I need to add this.
+    public RoomSetter MyRoom { get; set; }
     public int KillPoints { get; set; } // Killable requires us to assign how many points for dying.
 
     public virtual void Start()
@@ -114,12 +119,12 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
 
             if (Health <= 0)
             {
-                GameManager.Instance.PlaySFXOverlap(GameManager.Instance.SFXAudio, KillClip);
+                AudioManager.Instance.PlaySound(itemType.ToString() + "Break");
                 Kill();
             } else
             {
                 objectRenderer.material.color = hurtColor;
-                GameManager.Instance.PlaySFX(GameManager.Instance.SFXAudio, DamageClip);
+                AudioManager.Instance.PlaySound(itemType.ToString() + "Hit");
                 reactDuration = 0;
                 duration = damageTaken;
             }
@@ -131,7 +136,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         if (damageTaken == 0)
         {
             objectRenderer.material.color = armorColor;
-            GameManager.Instance.PlaySFX(GameManager.Instance.SFXAudio, ArmorClip);
+            AudioManager.Instance.PlaySound(itemType.ToString() + "Armor");
             reactDuration = 0;
             duration = 0.5f;
             //If the damage weve taken is negated by our armor, flash yellow instead.

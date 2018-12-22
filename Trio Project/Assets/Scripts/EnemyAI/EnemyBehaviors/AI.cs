@@ -8,8 +8,8 @@ public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 
 public GameObject[] EnemyWeapons;
 public Transform Hero; // Transform variable used to acquire the player.
-public string CurrentRoom { get; set; } // What room is the enemy in.
-public RoomSetter MyRoom;
+public string MyRoomName { get; set; } // What room is the enemy in.
+public RoomSetter MyRoom { get; set; }
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
 
@@ -72,7 +72,7 @@ public StateMachine<AI> stateMachine { get; set; }
 
     void FindMyRoom()
     {
-        MyRoom = GameObject.Find(CurrentRoom).GetComponent<RoomSetter>();
+        MyRoom = GameObject.Find(MyRoomName).GetComponent<RoomSetter>();
     }
 
 
@@ -117,7 +117,8 @@ public StateMachine<AI> stateMachine { get; set; }
             }
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
-            GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
+            RoomManager.Instance.AddToDoor(MyRoom);
+            //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
             Destroy(gameObject);
         }
     }

@@ -14,6 +14,7 @@ public class Randocube : DamageableObject
     {
         //Again, base.Start(); says I want to do what my parent does but I also want to do the stuff beneath it.
         base.Start();
+        itemType = ItemType.Wood;
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         KillPoints = 10;
@@ -27,7 +28,7 @@ public class Randocube : DamageableObject
     public void CheckPlayerRoom()
     {
         //If the players current room is also my room
-        if (GameManager.Instance.PlayerRoom == CurrentRoom)
+        if (GameManager.Instance.PlayerRoom == MyRoomName)
         {
             UnFreeze();
         } else

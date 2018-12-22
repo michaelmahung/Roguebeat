@@ -12,8 +12,8 @@ public bool SpawnMover;
 public Transform StartPosition;
 public Transform EndPosition;
 public GameObject[] EnemyTypes;
-public string CurrentRoom { get; set; }
-public RoomSetter MyRoom;
+public string MyRoomName { get; set; }
+public RoomSetter MyRoom { get; set; }
 private int RandomChance;
 
 
@@ -25,7 +25,6 @@ private int RandomChance;
         PlayerHealth.PlayerKilled += StopSpawns;
 	    SpawnMover = false;
 		EnemyTypes = Resources.LoadAll<GameObject> ("Prefabs/Enemies");
-        Invoke("FindMyRoom", 0.01f);
     }
 	
 	// Update is called once per frame
@@ -50,11 +49,6 @@ private int RandomChance;
 			}
 		}
 	}
-
-    void FindMyRoom()
-    {
-        MyRoom = GameObject.Find(CurrentRoom).GetComponent<RoomSetter>();
-    }
 
 	IEnumerator BeginSpawning ()
 	{
@@ -87,7 +81,7 @@ private int RandomChance;
     {
         if (gameObject.activeInHierarchy == true)
         {
-            if (GameManager.Instance.PlayerRoom == CurrentRoom)
+            if (GameManager.Instance.PlayerRoom == MyRoomName)
             {
                 StartSpawns();
             }

@@ -28,10 +28,11 @@ bool dead;
 protected bool isEngagingPlayer; //Bool added to allow the AI to "forget" about the player.
 protected bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
-public string CurrentRoom { get; set; } // What room is the enemy in.
+public string MyRoomName { get; set; } // What room is the enemy in.
+public RoomSetter MyRoom { get; set; }
 
-//Handles Color change on damage to enemy
-private Color EnemyBaseColor;
+    //Handles Color change on damage to enemy
+    private Color EnemyBaseColor;
 [Tooltip("Time Length Of Damage Visual")]
 public float hurtDuration = 0.5f; // duration of hurt visual
 [Tooltip("Incremental Change Rate For Damage Visual")]
@@ -81,7 +82,7 @@ public float TimeToDie;
         {
             dead = true;
             GameManager.Instance.AddScore(KillPoints);
-            GameManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
+            //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
             Destroy(gameObject);
         }
     }
@@ -89,7 +90,7 @@ public float TimeToDie;
     public void CheckPlayerRoom()
     {
         //If the player is in our room, engage it
-        if (GameManager.Instance.PlayerRoom == CurrentRoom)
+        if (GameManager.Instance.PlayerRoom == MyRoomName)
         {
             isEngagingPlayer = true;
             IsFiring = false;

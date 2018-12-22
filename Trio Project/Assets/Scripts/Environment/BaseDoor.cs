@@ -5,11 +5,10 @@
 
 public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 {
-    public string CurrentRoom { get; set; }
+    public string MyRoomName { get; set; }
+    public RoomSetter MyRoom { get; set; }
     public enum moveAxis { X, Y, Z }
     public moveAxis MoveAxis;
-    public enum openCondition { Kills, Objectives, Objects }
-    public openCondition OpenCondition;
     public int OpenPoints;
     public float moveAmount = 10;
     public int thingsRequired;
@@ -73,10 +72,10 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
         if (!doorMoved)
         {
             doorMoved = true;
+            RoomManager.Instance.RemoveSpawners(MyRoom);
             transform.localPosition += moveDirection;
             GameManager.Instance.AddScore(OpenPoints);
             //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
-            GameManager.Instance.RemoveDoor(this);
         }
     }
 

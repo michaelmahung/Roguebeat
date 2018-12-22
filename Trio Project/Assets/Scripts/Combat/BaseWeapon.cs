@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Collections;
 
 
-[RequireComponent(typeof(AudioSource))]
 public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don't want instances of this class in the game, only children of this class.
 {
     protected List<GameObject> fireLocations = new List<GameObject>();
     protected string projectileName;
     protected string weaponName;
     protected bool canFire = true;
-    protected AudioSource audioSource;
 
     [Header("Weapon Information")]
     [Range(0.5f, 10)]
@@ -38,8 +36,6 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     {
         weaponName = gameObject.name;
         projectileName = weaponName + " Projectile";
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0.15f;
 
         if (icon == null)
         {
@@ -96,8 +92,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         {
             canFire = false;
             StartCoroutine(WeaponCooldown());
-            audioSource.clip = fireSound;
-            audioSource.Play();
+            AudioManager.Instance.PlaySound(fireSound.name);
             ShootWeapon();
         } 
     }
@@ -128,7 +123,6 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
 
     public virtual void OnEnable()
     {
-        audioSource.Stop();
         canFire = false;
         StartCoroutine(SwapCooldown());
     }

@@ -21,7 +21,7 @@
 
         public bool CheckPlayerRoom(ITrackRooms track)
         {
-            if (track.CurrentRoom == GameManager.Instance.PlayerRoom)
+            if (track.MyRoomName == GameManager.Instance.PlayerRoom)
             {
                 return true;
             }
