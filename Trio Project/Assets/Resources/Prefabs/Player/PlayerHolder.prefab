@@ -1297,7 +1297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  cameraShaker: {fileID: 0}
 --- !u!114 &114075020785020660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1374,8 +1373,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 20
-  TopSpeed: 20
-  MaxDashDistance: 5
+  TopSpeed: 25
+  MaxDashDistance: 8
+  MinDashSpeed: 10
+  DashCooldown: 3
 --- !u!114 &114367809422015438
 MonoBehaviour:
   m_ObjectHideFlags: 1

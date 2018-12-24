@@ -1836,6 +1836,7 @@ MonoBehaviour:
   PlayerRoom: 
   UI: {fileID: 114337724054829664}
   PlayerSpawnPosition: {x: -112.5, y: 0, z: 0}
+  cameraShaker: {fileID: 114165671707682518}
   Multiplier:
   - 1
   - 1.25

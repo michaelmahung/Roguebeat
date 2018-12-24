@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour 
 {
@@ -11,6 +12,13 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 15)]
     public int MaxDashDistance = 5;
 
+    [Range(5, 15)]
+    public int MinDashSpeed = 10;
+
+    [Range(1, 7)]
+    public int DashCooldown = 2;
+
+    private bool canDash;
     private int dashDistance;
     private Rigidbody rb;
     private Vector3
@@ -24,7 +32,14 @@ public class PlayerMovement : MonoBehaviour
 	void Start () 
     {
         rb = GetComponent<Rigidbody>();
+        GameManager.Instance.PlayerRespawned += SetDash;
+        SetDash();
 	}
+
+    public void SetDash()
+    {
+        canDash = true;
+    }
 	
     private void FixedUpdate()
     {
@@ -55,9 +70,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(East * Acceleration);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            Dash();
+            if (rb.velocity.magnitude > MinDashSpeed && canDash)
+            {
+                Debug.Log(rb.velocity.magnitude + " " + canDash);
+                StartCoroutine("StartDashCooldown");
+                Dash();
+            }
         }
     }
 
@@ -78,7 +98,16 @@ public class PlayerMovement : MonoBehaviour
                 dashDistance = (int)hit.distance;
             }
         }
+        GameManager.Instance.cameraShaker.ShakeMe(30, 0.1f);
         rb.MovePosition(transform.position += dashDirection * dashDistance);
         dashDistance = MaxDashDistance;
+    }
+
+    IEnumerator StartDashCooldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(DashCooldown);
+        canDash = true;
+        yield break;
     }
 }

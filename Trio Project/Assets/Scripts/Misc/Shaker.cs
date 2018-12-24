@@ -22,8 +22,10 @@ public class Shaker : MonoBehaviour {
         }
     }
 
-    public void ShakeMe()
+    public void ShakeMe(float amount, float time)
     {
+        ShakeAmount = amount;
+        ShakeTime = time;
         StartCoroutine("Shake");
     }
 

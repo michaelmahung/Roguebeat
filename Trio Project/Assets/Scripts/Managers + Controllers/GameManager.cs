@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public string PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
+    public Shaker cameraShaker;
 
     [Header("Difficulty Settings")]
     //Difficulty Multiplier work by Sam

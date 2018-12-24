@@ -11,7 +11,6 @@ public interface IDamageable<T>
 
 public interface IKillable
 {
-    [SerializeField]
     int KillPoints { get; set; }
     void Kill();
 }
@@ -34,5 +33,5 @@ public interface IChangeSong
 public interface ITrackRooms
 {
     string MyRoomName { get; set; }
-    RoomSetter MyRoom { get; set; }
+    RoomSetter MyRoom{get;set;}
 }

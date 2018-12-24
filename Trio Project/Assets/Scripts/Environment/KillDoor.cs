@@ -14,7 +14,7 @@ public class KillDoor : BaseDoor
     }
 
     //Look into the BaseDoor class to see why this is being "overridden".
-    //by assing base.OpenDoor(); I am saying: do what the parent class normally does, but also StopSpawners();
+    //by assing base.OpenDoor(); I am saying: do what the parent class normally does
 
     public override void OpenDoor()
     {
