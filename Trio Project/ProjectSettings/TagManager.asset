@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Damageable
   - Floor
+  - Fog
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Invisible Wall
   - Floor
   - Player
-  - 
+  - FogLayer
   - 
   - 
   - 
