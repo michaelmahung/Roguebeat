@@ -2,6 +2,8 @@
 
 public class PlayerRotation : MonoBehaviour 
 {
+    public Camera mainCam;
+
     void Update () 
     {
         RotateToMousePosition();

@@ -7,5 +7,7 @@ public class PeaShooter : BaseWeapon
     new void Start()
     {
         base.Start();
+        GetWeaponActive();
+        //SetWeaponActive(true);
     }
 }

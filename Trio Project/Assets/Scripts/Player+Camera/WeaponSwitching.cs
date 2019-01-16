@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 
 
-//Honestly this is a trash system and I saw it in a video and decided to copy it.
-
 public class WeaponSwitching : MonoBehaviour
 {
+    private BaseWeapon[] allWeapons;
+    private int weaponIndex;
     private PlayerWeapon playerWeapon;
-    private List<GameObject> weaponList = new List<GameObject>();
-    private int currentWeapon;
-    bool weaponsAdded;
+    IWeaponSwap weaponSwap;
 
     public static WeaponSwitching Instance;
 
@@ -17,77 +15,59 @@ public class WeaponSwitching : MonoBehaviour
     {
         Instance = this;
         playerWeapon = GameManager.Instance.Player.GetComponent<PlayerWeapon>();
-        SelectWeapon();
+        allWeapons = transform.GetComponentsInChildren<BaseWeapon>();
+        weaponSwap = GameManager.Instance.UI.GetComponent<IWeaponSwap>();
+
+        CheckWeapons();
+    }
+
+    private void CheckWeapons()
+    {
+        foreach (BaseWeapon weapon in allWeapons)
+        {
+            weapon.gameObject.SetActive(false);
+        }
+
+        weaponIndex = 0;
+        allWeapons[weaponIndex].gameObject.SetActive(true);
         UpdateWeapon();
     }
 
+    private void NextWeapon(int currentIndex)
+    {
+        Debug.Log(currentIndex);
+
+        if (currentIndex < allWeapons.Length - 1)
+        {
+            weaponIndex += 1;
+        } else
+        {
+            weaponIndex = 0;
+        }
+
+        if (allWeapons[weaponIndex].WeaponActive)
+        {
+            allWeapons[currentIndex].gameObject.SetActive(false);
+            allWeapons[weaponIndex].gameObject.SetActive(true);
+            UpdateWeapon();
+        } else
+        {
+            allWeapons[currentIndex].gameObject.SetActive(false);
+            NextWeapon(weaponIndex); //RECURSION LETS GO
+        }
+    }
+
+    void UpdateWeapon()
+    {
+        playerWeapon.playerWeapon = allWeapons[weaponIndex].gameObject;
+        weaponSwap.WeaponSwapped();
+    }
 
     void Update()
     {
-        //Why even do this
-        int previousWeapon = currentWeapon;
-
         if (Input.GetKeyDown(KeyCode.Alpha2)) 
         {
-            if (currentWeapon >= transform.childCount -1)
-            {
-                currentWeapon = 0;
-            }else
-            {
-                //If were not at the last weapon, go to the next one and update the UI.
-                currentWeapon++;
-            }
-            UpdateWeapon();
-        }
-
-        if (previousWeapon != currentWeapon)
-        {
-            SelectWeapon();
+            NextWeapon(weaponIndex);
         }
     }
-
-    //Update weapon tells the playerWeapon component on the player what weapon we are using and updates the UI for some reason.
-    public void UpdateWeapon()
-    {
-        playerWeapon.playerWeapon = weaponList[currentWeapon];
-
-        try
-        {
-            //Try to update the weapon in the UI component.
-            //If there are any errors in doing so, just stop.
-            IWeaponSwap weaponSwap = GameManager.Instance.UI.GetComponent<IWeaponSwap>();
-            weaponSwap.WeaponSwapped();
-        }
-        catch
-        {
-            return;
-            //Debug.LogError("No UIController script found in scene");
-        }
-    }
-
-    public void SelectWeapon()
-    {
-        int i = 0;
-        foreach(Transform weapon in transform)
-        {
-            if (!weaponsAdded)
-            {
-                //If we havent made our list of weapons, do that and dont let it do it again.
-                weaponList.Add(weapon.gameObject);
-            }
-
-            if (i == currentWeapon)
-            {
-                //If our weapon index is the selected weapon's index, activate it, otherwise deactivate it
-                weapon.gameObject.SetActive(true);
-            }else
-            {
-                weapon.gameObject.SetActive(false);
-            }
-
-            i++;
-        }
-        weaponsAdded = true;
-    }
-
 }
