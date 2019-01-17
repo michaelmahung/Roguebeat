@@ -7,5 +7,6 @@ public class LaserRifle : BaseWeapon
     new void Start()
     {
         base.Start();
+        GetWeaponActive();
     }
 }

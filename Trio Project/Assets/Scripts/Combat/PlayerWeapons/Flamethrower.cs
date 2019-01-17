@@ -9,6 +9,7 @@ public class Flamethrower : BaseWeapon
     new void Start()
     {
         base.Start();
+        GetWeaponActive();
     }
 
     public override void Update()

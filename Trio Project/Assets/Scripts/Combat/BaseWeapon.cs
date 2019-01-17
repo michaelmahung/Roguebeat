@@ -30,11 +30,25 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     public GameObject projectile;
     public AudioClip fireSound;
     public Texture2D icon;
+    public bool WeaponActive
+    {
+        get { return weaponActive; }
+        set { weaponActive = value; }
+    }
+
+    [SerializeField]
+    private bool weaponActive;
 
 
     public virtual void Awake()
     {
         weaponName = gameObject.name;
+
+        if (!DataManager.HasPref(weaponName))
+        {
+            SetWeaponActive(true);
+        }
+
         projectileName = weaponName + " Projectile";
 
         if (icon == null)
@@ -131,6 +145,20 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     {
         canFire = false;
         StopAllCoroutines();
+    }
+
+    public void SetWeaponActive(bool value)
+    {
+        WeaponActive = value;
+        DataManager.SetPref(weaponName, value);
+    }
+
+    public void GetWeaponActive()
+    {
+        if (DataManager.HasPref(weaponName))
+        {
+            WeaponActive = DataManager.GetPref(weaponName);
+        }
     }
 
 }
