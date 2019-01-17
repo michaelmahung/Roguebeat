@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     private bool canRespawn;
 
 
-
     public void AddScore(int score)
     {
         CurrentScore += score;

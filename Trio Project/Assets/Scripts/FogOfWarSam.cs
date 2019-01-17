@@ -42,8 +42,8 @@ for (int i=0; i< m_vertices.Length; i++){
 	}
 
 }
-FogRefreshTime += Time.deltaTime;
-if(FogRefreshTime > 0.5f){
+/* FogRefreshTime += Time.deltaTime;
+if(FogRefreshTime > 0.2f){
 for(int i = 0; i< m_colors.Length; i++){
 	Vector3 v = m_fogOfWarPlane.transform.TransformPoint(m_vertices[i]);
 	float dist = Vector3.SqrMagnitude(v - hit.point);
