@@ -76,7 +76,7 @@ public class SideTurret : MonoBehaviour {
         fire = Instantiate(shot1, spawn.transform.position, spawn.transform.rotation) as GameObject;
         if(p1fire == false)
         {
-            print("I am shooting a bullet");
+            //print("I am shooting a bullet");
             p1fire = true;
             StartCoroutine(PhaseOne());
             

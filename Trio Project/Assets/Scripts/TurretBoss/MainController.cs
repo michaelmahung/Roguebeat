@@ -59,7 +59,7 @@ public class MainController : MonoBehaviour {
     {
 
         phase = "Attack";
-        print("i am now attacking");
+        //print("i am now attacking");
 
     }
 
