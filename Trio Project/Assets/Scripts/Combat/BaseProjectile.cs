@@ -10,9 +10,9 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     bool hitEnemy;
     bool hitWall;
-    string hitTag;
+    protected string hitTag;
     int shld;
-    IDamageable<float> thingHit;
+    protected IDamageable<float> thingHit;
 
     
 

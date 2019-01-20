@@ -33,7 +33,37 @@ public class WeaponSwitching : MonoBehaviour
         UpdateWeapon();
     }
 
-    private void NextWeapon(int currentIndex)
+    private void NextWeapon(int startingIndex)
+    {
+        Debug.Log(allWeapons.Length);
+
+        for (int i = startingIndex + 1; i < allWeapons.Length + 1; i++)
+        {
+            if (i == allWeapons.Length)
+            {
+                i = 0;
+            }
+
+            if (i == startingIndex)
+            {
+                //Debug.Log("No other active weapons found");
+                break;
+            } else if (allWeapons[i].WeaponActive)
+            {
+                weaponIndex = i;
+                allWeapons[startingIndex].gameObject.SetActive(false);
+                allWeapons[weaponIndex].gameObject.SetActive(true);
+                //Debug.Log("switching to new weapon: " + allWeapons[weaponIndex].gameObject.name);
+                UpdateWeapon();
+                break;
+            } else
+            {
+                continue;
+            }
+        }
+    }
+
+    /*private void NextWeapon(int currentIndex)
     {
         Debug.Log(currentIndex);
 
@@ -55,7 +85,7 @@ public class WeaponSwitching : MonoBehaviour
             allWeapons[currentIndex].gameObject.SetActive(false);
             NextWeapon(weaponIndex); //RECURSION LETS GO
         }
-    }
+    }*/
 
     void UpdateWeapon()
     {

@@ -8,8 +8,8 @@ public class FlamethrowerProjectile : BaseProjectile
     public override void OnTriggerEnter(Collider other)
     {
 
-        string hitTag = other.gameObject.tag;
-        IDamageable<float> thingHit = other.gameObject.GetComponent<IDamageable<float>>();
+        hitTag = other.gameObject.tag;
+        thingHit = other.gameObject.GetComponent<IDamageable<float>>();
 
         if (thingHit != null && hitTag != "Player")
         {
