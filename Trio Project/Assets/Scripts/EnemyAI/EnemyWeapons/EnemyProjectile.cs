@@ -6,6 +6,8 @@ public class EnemyProjectile : MonoBehaviour {
     IDamageable<float> otherDamageable;
     string thingHitTag;
 
+
+   
     private void OnTriggerEnter(Collider other)
     {
         thingHitTag = other.tag;

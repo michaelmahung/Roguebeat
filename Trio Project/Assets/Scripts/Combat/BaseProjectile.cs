@@ -11,7 +11,10 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     bool hitEnemy;
     bool hitWall;
     string hitTag;
+    int shld;
     IDamageable<float> thingHit;
+
+    
 
     public void OnObjectSpawn()
     {
@@ -28,9 +31,13 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         gameObject.SetActive(false);
     }
 
+   
+
     virtual public void OnTriggerEnter (Collider other)
 	{
+        ShieldBehavior s = gameObject.GetComponent<ShieldBehavior>();
 
+        //shld = other.gameObject.GetComponent<ShieldBehavior>().health;
         hitTag = other.gameObject.tag;
         thingHit = other.gameObject.GetComponent <IDamageable<float>>();
 
@@ -40,9 +47,17 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             Deactivate();
         }
 
-        else if (hitTag == "Wall")
+        else if (hitTag == "Wall" || hitTag == "Shield")
         {
+            if(hitTag == "Shield")
+            {
+                //print("Im hit");
+                other.gameObject.GetComponent<ShieldBehavior>().health--;
+            }
             Deactivate();
+            
+
         }
+
     }
 }

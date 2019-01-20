@@ -12,6 +12,7 @@ TagManager:
   - Damageable
   - Floor
   - Fog
+  - Shield
   layers:
   - Default
   - TransparentFX

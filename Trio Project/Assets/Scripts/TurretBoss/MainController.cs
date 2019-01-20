@@ -10,11 +10,12 @@ public class MainController : MonoBehaviour {
     public bool snapCalled;
     public string phase;
     public int attackPhase = 1;
+    public ShieldController shieldControl;
 
 	// Use this for initialization
 	void Start () {
         phase = "Idle";
-        Invoke("Attack", 2);
+        Invoke("ShieldsUp", 1);
 	}
 	
 	// Update is called once per frame
@@ -75,7 +76,8 @@ public class MainController : MonoBehaviour {
 
     void ShieldsUp()
     {
-
+        shieldControl.GetComponent<ShieldController>().raiseShields = true;
+        Invoke("Attack", 1);
     }
 
 }
