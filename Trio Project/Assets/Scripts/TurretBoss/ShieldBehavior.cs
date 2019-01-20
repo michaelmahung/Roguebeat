@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldBehavior : MonoBehaviour {
+public class ShieldBehavior : MonoBehaviour, IDamageable<float> {
 
     public bool spawnShield;
     public bool shieldDown;
     public bool genShield;
-    public int health {get;set; }
+    public int health;
     public Transform spawnPoint;
     //public ShieldController sC;
     //public GameObject shieldObject;
     
 // Use this for initialization
 void Start () {
-        health = 10;
+        //health = 10;
         shieldDown = true;
 	}
 	
@@ -49,6 +49,7 @@ void Start () {
                 m.enabled = true;
                 spawnPoint.transform.localScale = Vector3.Lerp(spawnPoint.transform.localScale, spawnPoint.transform.localScale * 2, Time.deltaTime * 1.35f);
                 shieldDown = false;
+            health = 10;
             //sC.raiseShields = false;
                 Invoke("SwitchGen", .5f);
                 //genShield = false;
@@ -62,9 +63,10 @@ void Start () {
       
     }
 
-    public void ImHit()
+    public void Damage(float hurt)
     {
-        print("I'm hit!");
+        // print("Im hit");
+        health--;
     }
 
     void SwitchGen()

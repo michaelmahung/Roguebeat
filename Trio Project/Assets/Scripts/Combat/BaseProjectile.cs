@@ -40,8 +40,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         //shld = other.gameObject.GetComponent<ShieldBehavior>().health;
         hitTag = other.gameObject.tag;
         thingHit = other.gameObject.GetComponent <IDamageable<float>>();
-
-        if (thingHit != null && hitTag != "Player")
+        
+        if (thingHit != null && hitTag != "Player" && hitTag != "Untagged")
         {
             thingHit.Damage(projectileDamage);
             Deactivate();
@@ -49,15 +49,16 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
         else if (hitTag == "Wall" || hitTag == "Shield")
         {
-            if(hitTag == "Shield")
-            {
+            //if(hitTag == "Shield")
+           // {
                 //print("Im hit");
-                other.gameObject.GetComponent<ShieldBehavior>().health--;
-            }
+                //other.gameObject.GetComponent<ShieldBehavior>().health--;
+            //}
             Deactivate();
             
 
         }
+        
 
     }
 }

@@ -406,6 +406,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 1505719580}
 --- !u!65 &82935143
 BoxCollider:
@@ -1816,6 +1817,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 341179849}
 --- !u!65 &457211976
 BoxCollider:
@@ -3578,6 +3580,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 1128505812}
 --- !u!65 &920670630
 BoxCollider:
@@ -4526,6 +4529,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 2088032903}
 --- !u!65 &1093012433
 BoxCollider:
@@ -5248,6 +5252,10 @@ Prefab:
     - target: {fileID: 224071683170861200, guid: 92d13d8050912e94499a3c791f2e25eb,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399354803451244, guid: 92d13d8050912e94499a3c791f2e25eb, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7566,6 +7574,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 259588504}
 --- !u!65 &1843599035
 BoxCollider:
@@ -7816,6 +7825,7 @@ MonoBehaviour:
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  health: 0
   spawnPoint: {fileID: 1163130823}
 --- !u!65 &1904923539
 BoxCollider:
