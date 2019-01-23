@@ -11,8 +11,6 @@ public class FogOfWarSam : MonoBehaviour {
 	public float m_radius = 20f; // radius of raycasthit around player, acts as "LOS"
 	private float m_radiusSqr {get { return m_radius * m_radius ;}}
 
-	private float FogRefreshTime = 0.0f;
-
 	private Mesh m_mesh;
 	private Vector3[] m_vertices;
 	public Color[] m_colors;

@@ -37,6 +37,13 @@ public class Randocube : DamageableObject
         }
     }
 
+    void OnCollisionEnter(Collision col){
+    if(col.gameObject.tag == "RoomLights"){
+        print("hitting ceiling");
+Physics.IgnoreCollision(this.GetComponent<Collider>(), col.gameObject.GetComponent<Collider>());
+}
+    }
+
     public void UnFreeze()
     {
         if (rb != null)

@@ -38,7 +38,7 @@ public class RoomSetter : MonoBehaviour {
 
     public Transform camPlacement;
     public GameObject cam;
-
+    public GameObject RoomLight;
     private CameraController2 cc;
 
     public delegate void UpdateRoomDelegate();
@@ -78,6 +78,7 @@ public class RoomSetter : MonoBehaviour {
         if (other.tag == "Player")
         {
             cc.player = camPlacement.gameObject;
+            RoomLight.GetComponent<MeshRenderer>().material.color = Color.clear; 
         
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
@@ -87,6 +88,9 @@ public class RoomSetter : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         UpdatePlayerRoom();
+        if(other.tag == "Player"){
+        RoomLight.GetComponent<MeshRenderer>().material.color = Color.black;
+        }
     }
 
     public void UpdatePlayer()

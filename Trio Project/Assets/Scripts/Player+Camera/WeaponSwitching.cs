@@ -35,7 +35,7 @@ public class WeaponSwitching : MonoBehaviour
 
     private void NextWeapon(int startingIndex)
     {
-        Debug.Log(allWeapons.Length);
+//*Turned off by Sam */        Debug.Log(allWeapons.Length);
 
         for (int i = startingIndex + 1; i < allWeapons.Length + 1; i++)
         {
