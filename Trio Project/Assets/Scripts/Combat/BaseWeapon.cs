@@ -33,7 +33,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     public bool WeaponActive
     {
         get { return weaponActive; }
-        set { weaponActive = value; }
+        private set { weaponActive = value; }
     }
 
     [SerializeField]
