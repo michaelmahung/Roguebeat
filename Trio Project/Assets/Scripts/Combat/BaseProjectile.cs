@@ -35,7 +35,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     virtual public void OnTriggerEnter (Collider other)
 	{
-        ShieldBehavior s = gameObject.GetComponent<ShieldBehavior>();
+//        ShieldBehavior s = gameObject.GetComponent<ShieldBehavior>();
 
         //shld = other.gameObject.GetComponent<ShieldBehavior>().health;
         hitTag = other.gameObject.tag;
