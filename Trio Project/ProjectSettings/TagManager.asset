@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - Fog
   - Shield
+  - RoomLights
   layers:
   - Default
   - TransparentFX
