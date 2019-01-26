@@ -31,8 +31,6 @@
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
-    public int EnemyCount;
-    public int EnemyCap;
     public BaseDoor MyDoor;
     public SpawnEnemies[] MySpawners;
 
@@ -40,6 +38,10 @@ public class RoomSetter : MonoBehaviour {
     public GameObject cam;
 
     private CameraController2 cc;
+
+    private int EnemyCount;
+    [SerializeField]
+    private int EnemyCap;
 
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;

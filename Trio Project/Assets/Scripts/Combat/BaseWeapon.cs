@@ -35,9 +35,16 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         get { return weaponActive; }
         private set { weaponActive = value; }
     }
+    public int WeaponCost
+    {
+        get { return weaponCost; }
+        private set { weaponCost = value; }
+    }
 
     [SerializeField]
     private bool weaponActive;
+    [SerializeField]
+    private int weaponCost;
 
 
     public virtual void Awake()

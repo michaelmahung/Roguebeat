@@ -65,6 +65,14 @@ public class GameManager : MonoBehaviour
         ScoreAdded();
     }
 
+    public void ResetPlayerPosition()
+    {
+        Player.transform.position = PlayerSpawnPosition;
+        Rigidbody rb = Player.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
     #region Private Functions
     private void Awake()
     {
@@ -121,7 +129,7 @@ public class GameManager : MonoBehaviour
         if (canRespawn)
         {
             Player.SetActive(true);
-            Player.transform.position = PlayerSpawnPosition;
+            ResetPlayerPosition();
             PlayerRespawned();
         }
     }

@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponBuyUI : MonoBehaviour {
+
 	public GameObject Player;
 	public GameObject PurchaseUI;
 	public bool WeaponScreenActive;
-	 private AudioLowPassFilter filter;
+	private AudioLowPassFilter filter;
+    private BaseWeapon selectedWeapon;
+    public Text WeaponCostText;
 	
 
 	// Use this for initialization
@@ -14,8 +18,7 @@ public class WeaponBuyUI : MonoBehaviour {
 		WeaponScreenActive = false;
 		PurchaseUI.SetActive(false);
 		filter = AudioManager.Instance.Filter;
-
-		
+        selectedWeapon = PeaShooter.Instance;
 	}
 	
 	// Update is called once per frame
@@ -28,7 +31,8 @@ public class WeaponBuyUI : MonoBehaviour {
 
 	void OnTriggerEnter(){
 if(Player){
-	PurchaseWeapons();
+
+            PurchaseWeapons();
 }
 	}
 	public void PurchaseWeapons()
@@ -47,14 +51,48 @@ WeaponScreenActive = false;
 			PurchaseUI.SetActive(false);
 			Time.timeScale = 1;
 			filter.enabled = false;
+                GameManager.Instance.ResetPlayerPosition();
 
 			}
 		}
 	}
 
-	public void BuyShotgun(){
+    public void SelectWeapon(BaseWeapon weapon)
+    {
+        selectedWeapon = weapon;
+        UpdateWeaponText();
+    }
+
+    public void BuyWeapon()
+    {
+        if (!selectedWeapon.WeaponActive)
+        {
+            if (GameManager.Instance.CurrentScore >= selectedWeapon.WeaponCost)
+            {
+                Debug.Log("Purchased " + selectedWeapon.name);
+                selectedWeapon.SetWeaponActive(true);
+                return;
+            }
+            else
+            {
+                Debug.LogFormat("{0} costs {1} points! You need {2} more.", selectedWeapon.name, selectedWeapon.WeaponCost, (selectedWeapon.WeaponCost - GameManager.Instance.CurrentScore));
+                return;
+            }
+        }
+
+        Debug.Log("You already own " + selectedWeapon.name);
+    }
+
+    void UpdateWeaponText()
+    {
+        WeaponCostText.text = string.Format("{0} costs {1} points", selectedWeapon.name, selectedWeapon.WeaponCost);
+    }
+
+	/*public void BuyShotgun(){
 		if(GameManager.Instance.CurrentScore > 50){
-print("Bought Shotgun!");
+            Shotgun.Instance.SetWeaponActive(true);
+            PurchaseWeapons();
+            print("Bought Shotgun!");
 		}
 		else
 		{
@@ -64,7 +102,9 @@ print("Bought Shotgun!");
 
 	public void BuyLaser(){
 		if(GameManager.Instance.CurrentScore > 100){
-print("Bought Laser!");
+            LaserRifle.Instance.SetWeaponActive(true);
+            PurchaseWeapons();
+            print("Bought Laser!");
 		}
 		else{
 			print ("Costs 100 points, not enough to buy laser!");
@@ -72,11 +112,13 @@ print("Bought Laser!");
 	}
 	public void BuyFlamethrower(){
 		if(GameManager.Instance.CurrentScore > 250){
+            Flamethrower.Instance.SetWeaponActive(true);
+            PurchaseWeapons();
 		print("Bought Flamethrower!");
 		}
 		else
 		{
 		print("Costs 250 points, not enough to buy flamethrower!");
 		}
-	}
+	}*/
 }

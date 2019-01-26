@@ -367,7 +367,7 @@ Transform:
   m_Children:
   - {fileID: 4720825350680702}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4122774515125414
 Transform:
@@ -447,7 +447,7 @@ Transform:
   m_Children:
   - {fileID: 4972208085236360}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4533784098106328
 Transform:
@@ -540,9 +540,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4385448352095506}
   - {fileID: 4110144806575366}
   - {fileID: 4995969805687120}
-  - {fileID: 4385448352095506}
   - {fileID: 4601170907560838}
   - {fileID: 4927055595583240}
   m_Father: {fileID: 4122774515125414}
@@ -632,7 +632,7 @@ Transform:
   - {fileID: 4800651011696302}
   - {fileID: 4196320736457908}
   m_Father: {fileID: 4788392912037924}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23188316954563128
 MeshRenderer:
@@ -1317,6 +1317,8 @@ MonoBehaviour:
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}
   fireSound: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
   icon: {fileID: 0}
+  weaponActive: 0
+  weaponCost: 250
 --- !u!114 &114082730242121330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1422,6 +1424,8 @@ MonoBehaviour:
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
   icon: {fileID: 0}
+  weaponActive: 0
+  weaponCost: 0
 --- !u!114 &114505403501578842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1442,6 +1446,8 @@ MonoBehaviour:
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  weaponActive: 0
+  weaponCost: 100
 --- !u!114 &114544196771942496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1473,6 +1479,8 @@ MonoBehaviour:
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
   icon: {fileID: 0}
+  weaponActive: 0
+  weaponCost: 150
 --- !u!114 &114867912818294176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1484,6 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18590d9555bd4d2888852d41560c33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
 --- !u!114 &114931861658291242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1504,3 +1513,5 @@ MonoBehaviour:
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  weaponActive: 0
+  weaponCost: 50
