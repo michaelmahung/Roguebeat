@@ -31,25 +31,29 @@
 public class RoomSetter : MonoBehaviour {
 
     public string RoomName;
+    public int EnemyCount;
+    public int EnemyCap;
     public BaseDoor MyDoor;
     public SpawnEnemies[] MySpawners;
 
     public Transform camPlacement;
     public GameObject cam;
-
+    public GameObject RoomLight;
     private CameraController2 cc;
 
-    private int EnemyCount;
-    [SerializeField]
-    private int EnemyCap;
+    public Color CeilingColorFull = Color.green;
+    public Color CeilingColorClear = Color.green;
 
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
 
     private void Awake()
     {
+
         MyDoor = GetComponentInChildren<BaseDoor>();
         MySpawners = GetComponentsInChildren<SpawnEnemies>();
+        RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+        CeilingColorClear.a = 0.5f;
         if (MyDoor != null)
         {
             MyDoor.MyRoom = this;
@@ -80,6 +84,7 @@ public class RoomSetter : MonoBehaviour {
         if (other.tag == "Player")
         {
             cc.player = camPlacement.gameObject;
+            RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorClear;
         
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
@@ -89,6 +94,9 @@ public class RoomSetter : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         UpdatePlayerRoom();
+        if(other.tag == "Player"){
+        RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+        }
     }
 
     public void UpdatePlayer()

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public BaseWeapon[] allWeapons { get; private set; }
+    private BaseWeapon[] allWeapons;
     private int weaponIndex;
     private PlayerWeapon playerWeapon;
     IWeaponSwap weaponSwap;
@@ -33,38 +33,59 @@ public class WeaponSwitching : MonoBehaviour
         UpdateWeapon();
     }
 
-    //Take in the current weapon and use that as a starting point
     private void NextWeapon(int startingIndex)
     {
-        //Go to the weapon immediately after the weapon we started with (to avoid checking for the weapon we already have equipped.)
+//*Turned off by Sam */        Debug.Log(allWeapons.Length);
+
         for (int i = startingIndex + 1; i < allWeapons.Length + 1; i++)
         {
-            //If we're at the end of our array, start back at 0
             if (i == allWeapons.Length)
             {
                 i = 0;
             }
 
-            //If we have ended up back where we started, do nothing.
             if (i == startingIndex)
             {
+                //Debug.Log("No other active weapons found");
                 break;
-            }
-            //Otherwise, switch to the next active weapon found.
-            else if (allWeapons[i].WeaponActive)
+            } else if (allWeapons[i].WeaponActive)
             {
                 weaponIndex = i;
                 allWeapons[startingIndex].gameObject.SetActive(false);
                 allWeapons[weaponIndex].gameObject.SetActive(true);
+                //Debug.Log("switching to new weapon: " + allWeapons[weaponIndex].gameObject.name);
                 UpdateWeapon();
                 break;
             } else
             {
-                //Redundant, but if we're not at the weapon we started at, and the weapon we're at isnt active, just keep going through the loop.
                 continue;
             }
         }
     }
+
+    /*private void NextWeapon(int currentIndex)
+    {
+        Debug.Log(currentIndex);
+
+        if (currentIndex < allWeapons.Length - 1)
+        {
+            weaponIndex += 1;
+        } else
+        {
+            weaponIndex = 0;
+        }
+
+        if (allWeapons[weaponIndex].WeaponActive)
+        {
+            allWeapons[currentIndex].gameObject.SetActive(false);
+            allWeapons[weaponIndex].gameObject.SetActive(true);
+            UpdateWeapon();
+        } else
+        {
+            allWeapons[currentIndex].gameObject.SetActive(false);
+            NextWeapon(weaponIndex); //RECURSION LETS GO
+        }
+    }*/
 
     void UpdateWeapon()
     {
