@@ -53,7 +53,7 @@ public class RoomSetter : MonoBehaviour {
         MyDoor = GetComponentInChildren<BaseDoor>();
         MySpawners = GetComponentsInChildren<SpawnEnemies>();
         RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
-        CeilingColorClear.a = 0.5f;
+        //CeilingColorClear.a = 0.5f;
         if (MyDoor != null)
         {
             MyDoor.MyRoom = this;
