@@ -36,7 +36,7 @@ void Start () {
         if(health <= 0)
         {
             shieldDown = true;
-            print("Shield down!");
+            //print("Shield down!");
         }
         /*if (sC.raiseShields == true)
         {
@@ -48,9 +48,9 @@ void Start () {
                 // Generate();
                 m.enabled = true;
                 spawnPoint.transform.localScale = Vector3.Lerp(spawnPoint.transform.localScale, spawnPoint.transform.localScale * 2, Time.deltaTime * 1.35f);
+                //spawnPoint.transform.localScale = Vector3.Lerp(spawnPoint.transform.localScale, gameObject.transform.localScale , Time.deltaTime);
                 shieldDown = false;
-            health = 10;
-            //sC.raiseShields = false;
+                health = 10;
                 Invoke("SwitchGen", .5f);
                 //genShield = false;
             }

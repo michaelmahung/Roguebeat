@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideTurret : MonoBehaviour {
+public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     public MainController controller;
     public GameObject body;
@@ -20,6 +20,9 @@ public class SideTurret : MonoBehaviour {
     public float atkTime;
 
     public GameObject spawn;
+    public GameObject Tbody;
+    public GameObject cap;
+    public GameObject barrel;
 
     public bool p1fire;
     public bool p2fire;
@@ -31,6 +34,7 @@ public class SideTurret : MonoBehaviour {
     void Start () {
 
         controller = body.GetComponent<MainController>();
+        health = maxHealth;
 
     }
 
@@ -38,32 +42,60 @@ public class SideTurret : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
-        if(controller.phase == "Attack")
-        {
-           
-            if(controller.attackPhase == 1)
+        
+            if (controller.phase == "Attack" && disabled == false )
             {
-                atkTime = 1.0f;
+            //print("im attacking you fucker");
+                if (controller.attackPhase == 1)
+                {
+                //print("I am in attack phase 1");
+                    atkTime = 1.0f;
+                    if (attacking == false)
+                    {
+                        attacking = true;
+                        StartCoroutine(PhaseOne());
+                    }
+
+                }
+
+                if (controller.attackPhase == 2)
+                {
+                    atkTime = .75f;
+                    if (attacking == false)
+                         {
+                            attacking = true;
+                            StartCoroutine(PhaseTwo());
+                        }
+            }
+
+                if (controller.attackPhase == 3)
+                {
+                atkTime = 1.2f;
                 if (attacking == false)
                 {
                     attacking = true;
-                    StartCoroutine(PhaseOne());
+                    StartCoroutine(PhaseThree());
                 }
-                
             }
 
-            if (controller.attackPhase == 2)
+
+
+            }
+        
+        else
+        {
+            StopAllCoroutines();
+            attacking = false;
+        }
+            if (health == 0)
             {
-
+                disabled = true;
             }
-
-            if (controller.attackPhase == 3)
-            {
-
-            }
-
-
+        if(controller.attackPhase == 3 && disabled == true)
+        {
+            dead = true;
+            transform.gameObject.tag = "Untagged";
+            DestroyPhys();
         }
 
 	}
@@ -74,7 +106,7 @@ public class SideTurret : MonoBehaviour {
         p1fire = false;
         GameObject fire;
         fire = Instantiate(shot1, spawn.transform.position, spawn.transform.rotation) as GameObject;
-        if(p1fire == false)
+        if(p1fire == false )
         {
             //print("I am shooting a bullet");
             p1fire = true;
@@ -88,13 +120,56 @@ public class SideTurret : MonoBehaviour {
         }
     }
 
-    void PhaseTwo()
+    public IEnumerator PhaseTwo()
     {
+        yield return new WaitForSeconds(atkTime);
+        p2fire = false;
+        GameObject fire;
+        fire = Instantiate(shot2, spawn.transform.position, spawn.transform.rotation) as GameObject;
+        if (p2fire == false)
+        {
+            //print("I am shooting a bullet");
+            p2fire = true;
+            StartCoroutine(PhaseTwo());
 
+        }
+        else
+        {
+            attacking = false;
+            StopCoroutine(PhaseTwo());
+        }
     }
 
-    void PhaseThree()
+    public IEnumerator PhaseThree()
     {
+        yield return new WaitForSeconds(atkTime);
+        p3fire = false;
+        GameObject fire;
+        fire = Instantiate(shot3, spawn.transform.position, spawn.transform.rotation) as GameObject;
+        if (p3fire == false)
+        {
+            //print("I am shooting a bullet");
+            p3fire = true;
+            StartCoroutine(PhaseThree());
 
+        }
+        else
+        {
+            attacking = false;
+            StopCoroutine(PhaseThree());
+        }
+    }
+
+    public void Damage(float hurt)
+    {
+        health--;
+    }
+
+    public void DestroyPhys()
+    {
+        Destroy(Tbody);
+        Destroy(cap);
+        Destroy(barrel);
+        Destroy(spawn);
     }
 }
