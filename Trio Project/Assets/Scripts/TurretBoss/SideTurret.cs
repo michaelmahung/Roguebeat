@@ -87,7 +87,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
             StopAllCoroutines();
             attacking = false;
         }
-            if (health == 0)
+            if (health <= 0)
             {
                 disabled = true;
             }

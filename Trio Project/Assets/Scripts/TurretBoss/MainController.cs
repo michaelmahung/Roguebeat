@@ -15,6 +15,9 @@ public class MainController : MonoBehaviour {
     public ShieldController shieldControl;
     public SideTurret rTurret;
     public SideTurret lTurret;
+    public MainTurret head;
+    public GameObject cenCap;
+    public GameObject cenBody;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +32,14 @@ public class MainController : MonoBehaviour {
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         if (follow == true)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+            if (head.tooClose == false)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+            }
+            if(head.tooClose == true)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation,( speed * speedMultiplyer)* Time.deltaTime);
+            }
         }
         if(snapCalled == true)
         {
@@ -49,6 +59,24 @@ public class MainController : MonoBehaviour {
                 callDestroyOnce = true;
             }
         }
+        if (attackPhase == 4 || (phase == "Attack" && head.tooClose == true))
+        {
+
+            cenBody.GetComponent<Renderer>().material.color = Color.red;
+            cenCap.GetComponent<Renderer>().material.color = Color.red;
+        }
+
+        if(attackPhase != 4 && (phase != "Attack" || head.tooClose == false))
+        {
+            cenBody.GetComponent<Renderer>().material.color = Color.blue;
+            cenCap.GetComponent<Renderer>().material.color = Color.blue;
+        }
+
+        /*if(phase == "Attack" && head.tooClose == true)
+        {
+            cenBody.GetComponent<Renderer>().material.color = Color.red;
+            cenCap.GetComponent<Renderer>().material.color = Color.red;
+        }*/
     }
 
     void SnapToBool()
@@ -86,7 +114,13 @@ public class MainController : MonoBehaviour {
             rTurret.disabled = false;
             lTurret.disabled = false;
         }
+        
         callDestroyOnce = false;
+        if(attackPhase == 4)
+        {
+            cenBody.GetComponent<Renderer>().material.color = Color.red;
+            cenCap.GetComponent<Renderer>().material.color = Color.red;
+        }
         Invoke("Attack", 1);
     }
 
@@ -108,6 +142,11 @@ public class MainController : MonoBehaviour {
         if(rTurret.disabled == true && lTurret.disabled == true && attackPhase <= 2)
         {
             Invoke("RepairSides", 2);
+        }
+        if(attackPhase == 3 && rTurret.dead == true && lTurret.dead == true)
+        {
+            attackPhase++;
+            Invoke("Attack", 1);
         }
     }
 

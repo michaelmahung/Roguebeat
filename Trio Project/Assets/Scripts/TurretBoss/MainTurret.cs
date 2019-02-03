@@ -8,6 +8,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public SideTurret lTurret;
     public MainController controller;
     public GameObject body;
+    public GameObject masterBody;
 
     public int health = 30;
 
@@ -23,13 +24,13 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public bool p1fire;
     public bool p2fire;
     public bool p3fire;
+    public bool p4fire;
     public bool burnFire;
 
     public bool attacking;
     public bool tooClose;
     public bool trueOnce;
-    public bool exitRotation;
-    public bool exitDone;
+    public bool dead;
 
 
 	// Use this for initialization
@@ -94,8 +95,25 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     StartCoroutine(PhaseThree());
                 }
             }
+
+            if (controller.attackPhase == 4)
+            {
+                if (trueOnce == true)
+                {
+                    StopCoroutine(Flamethrower());
+                    attacking = false;
+                    trueOnce = false;
+                }
+                atkTime = .075f;
+                if (attacking == false)
+                {
+                    attacking = true;
+                    StartCoroutine(PhaseFour());
+                }
+            }
         }
-        if(controller.phase == "Attack" && tooClose == true)
+        
+        if (controller.phase == "Attack" && tooClose == true)
         {
             if(trueOnce == false)
             {
@@ -117,6 +135,11 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
             attacking = false;
         }
 
+        if(health <= 0)
+        {
+            Dead();
+        }
+
     }
 
     public IEnumerator PhaseOne()
@@ -127,7 +150,6 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         fire = Instantiate(shot1, spawn.transform.position, spawn.transform.rotation) as GameObject;
         if (p1fire == false)
         {
-            //print("I am shooting a bullet");
             p1fire = true;
             StartCoroutine(PhaseOne());
 
@@ -141,14 +163,12 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
 
     public IEnumerator PhaseTwo()
     {
-        print("I moved to phase 2");
         yield return new WaitForSeconds(atkTime);
         p2fire = false;
         GameObject fire;
         fire = Instantiate(shot2, spawn.transform.position, spawn.transform.rotation) as GameObject;
         if (p2fire == false)
         {
-            //print("I am shooting a bullet");
             p2fire = true;
             StartCoroutine(PhaseTwo());
 
@@ -168,7 +188,6 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         fire = Instantiate(shot3, spawn.transform.position, spawn.transform.rotation) as GameObject;
         if (p3fire == false)
         {
-            //print("I am shooting a bullet");
             p3fire = true;
             StartCoroutine(PhaseThree());
 
@@ -180,15 +199,37 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         }
     }
 
+    public IEnumerator PhaseFour()
+    {
+        yield return new WaitForSeconds(atkTime);
+        p4fire = false;
+        GameObject fire;
+        fire = Instantiate(shot1, spawn.transform.position, spawn.transform.rotation) as GameObject;
+        if (p4fire == false)
+        {
+            p4fire = true;
+            StartCoroutine(PhaseFour());
+
+        }
+        else
+        {
+            attacking = false;
+            StopCoroutine(PhaseFour());
+        }
+    }
+
     public IEnumerator Flamethrower()
     {
         yield return new WaitForSeconds(atkTime);
         burnFire = false;
         GameObject fire;
         fire = Instantiate(burn, spawn.transform.position, spawn.transform.rotation) as GameObject;
-        //print("BUUUURRRRN!!!");
         if (tooClose == true)
         {
+            if(controller.attackPhase == 4)
+            {
+               
+            }
             if (burnFire == false)
             {
                 burnFire = true;
@@ -209,5 +250,11 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         {
             health--;
         }
+    }
+
+    public void Dead()
+    {
+        dead = true;
+        Destroy(masterBody);
     }
 }
