@@ -246,7 +246,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
 
     public void Damage(float hurt)
     {
-        if(rTurret.dead == true && lTurret.dead == true)
+        if((rTurret.dead == true && lTurret.dead == true)||(controller.phase == "Attack" && tooClose == true))
         {
             health--;
         }

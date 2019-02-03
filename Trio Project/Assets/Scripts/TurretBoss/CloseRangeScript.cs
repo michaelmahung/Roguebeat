@@ -5,10 +5,12 @@ using UnityEngine;
 public class CloseRangeScript : MonoBehaviour {
 
     public MainTurret head;
+    public PlayerHealth pHealth;
+    public GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		
+        pHealth = player.GetComponent<PlayerHealth>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +24,10 @@ public class CloseRangeScript : MonoBehaviour {
         {
             head.tooClose = true;
         }
+        /*if(other.gameObject.tag == null)
+        {
+            head.tooClose = false;
+        }*/
     }
 
     private void OnTriggerExit(Collider other)

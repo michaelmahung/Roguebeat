@@ -2205,6 +2205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 114750650401337032}
+  player: {fileID: 0}
 --- !u!114 &114060943664992760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2402,7 +2403,7 @@ MonoBehaviour:
   controller: {fileID: 114119397570241734}
   body: {fileID: 1579841544402824}
   masterBody: {fileID: 1162805171845608}
-  health: 75
+  health: 300
   shot1: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   shot2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
   shot3: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
