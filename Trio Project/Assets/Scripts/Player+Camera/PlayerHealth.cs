@@ -7,10 +7,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 {
     [SerializeField]
     private float currentHealth;
-    public float HealthPercent { get; set; }
+    public float HealthPercent { get; private set; }
     private float MaxHealth = 100;
 
-    private bool IsPlayerDead;
+    private bool isPlayerDead;
+    public bool IsPlayerDead
+    {
+        get { return isPlayerDead; }
+        private set { isPlayerDead = value; }
+    }
 
     public int KillPoints { get; set; }
 

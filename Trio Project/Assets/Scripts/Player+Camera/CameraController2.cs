@@ -17,7 +17,7 @@ public class CameraController2 : MonoBehaviour {
         try
         {
             //Attempt to find a gameobject tagged as the player.
-            player = GameManager.Instance.Player;
+            player = GameManager.Instance.PlayerObject;
 
             if(cameraHeight <= 0f)
             {

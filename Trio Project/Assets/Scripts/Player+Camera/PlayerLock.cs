@@ -13,7 +13,7 @@ public class PlayerLock : MonoBehaviour {
         try
         {
             //Check to see if there is a gameobject tagged as the player
-            player = GameManager.Instance.Player.transform;
+            player = GameManager.Instance.PlayerObject.transform;
         }
         catch
         {

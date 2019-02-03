@@ -14,7 +14,7 @@ public class WeaponSwitching : MonoBehaviour
     void Start()
     {
         Instance = this;
-        playerWeapon = GameManager.Instance.Player.GetComponent<PlayerWeapon>();
+        playerWeapon = GameManager.Instance.PlayerObject.GetComponent<PlayerWeapon>();
         allWeapons = transform.GetComponentsInChildren<BaseWeapon>();
         weaponSwap = GameManager.Instance.UI.GetComponent<IWeaponSwap>();
 

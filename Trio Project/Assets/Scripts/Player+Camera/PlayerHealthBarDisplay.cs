@@ -9,7 +9,7 @@ public class PlayerHealthBarDisplay : MonoBehaviour
     private void Start()
     {
         playerHealthBar = GetComponent<Slider>();
-        playerHealth = GameManager.Instance.Player.GetComponent<PlayerHealth>();
+        playerHealth = GameManager.Instance.PlayerObject.GetComponent<PlayerHealth>();
         PlayerHealth.UpdateHealth += UpdateHealthBar;
     }
 

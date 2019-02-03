@@ -36,11 +36,12 @@ public class GameManager : MonoBehaviour
     public List<float> HighScores = new List<float>();
 
     [Header("Global Script References")]
-    public GameObject Player;
+    public GameObject PlayerObject;
     public string PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
     public Shaker cameraShaker;
+    public bool isPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
 
     [Header("Difficulty Settings")]
     //Difficulty Multiplier work by Sam
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
     public event OnPlayerRespawn PlayerRespawned;
 
     private bool canRespawn;
-
+    private PlayerHealth playerHealthReference;
 
     public void AddScore(int score)
     {
@@ -67,8 +68,8 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayerPosition()
     {
-        Player.transform.position = PlayerSpawnPosition;
-        Rigidbody rb = Player.GetComponent<Rigidbody>();
+        PlayerObject.transform.position = PlayerSpawnPosition;
+        Rigidbody rb = PlayerObject.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerSpawnPosition == null)
         {
-            PlayerSpawnPosition = Player.transform.position;
+            PlayerSpawnPosition = PlayerObject.transform.position;
         }
     }
 
@@ -113,8 +114,9 @@ public class GameManager : MonoBehaviour
     //Basically the start function
     private void SetComponents()
     {
-        Player = FindObjectOfType<PlayerHealth>().gameObject;
-        PlayerRoom = Player.GetComponent<PlayerStats>().MyRoomName;
+        playerHealthReference = FindObjectOfType<PlayerHealth>();
+        PlayerObject = playerHealthReference.gameObject;
+        PlayerRoom = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
         UI = GameObject.FindObjectOfType<UIController>();
     }
 
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
     {
         if (canRespawn)
         {
-            Player.SetActive(true);
+            PlayerObject.SetActive(true);
             ResetPlayerPosition();
             PlayerRespawned();
         }

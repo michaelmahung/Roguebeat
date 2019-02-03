@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
     public void WeaponSwapped()
     {
-        weaponName = GameManager.Instance.Player.GetComponent<PlayerWeapon>().playerWeapon.name;
+        weaponName = GameManager.Instance.PlayerObject.GetComponent<PlayerWeapon>().playerWeapon.name;
         UpdateUIText();
     }
 
