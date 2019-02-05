@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -74052,6 +74052,11 @@ Prefab:
       propertyPath: RoomLight
       value: 
       objectReference: {fileID: 82898524}
+    - target: {fileID: 114687998617480258, guid: 2260477b9f428ad4d8c98b018d30f02e,
+        type: 2}
+      propertyPath: CeilingColorClear.a
+      value: 0.015686275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2260477b9f428ad4d8c98b018d30f02e, type: 2}
   m_IsPrefabAsset: 0
@@ -74209,6 +74214,11 @@ Prefab:
       propertyPath: RoomLight
       value: 
       objectReference: {fileID: 742389959}
+    - target: {fileID: 114886576966952970, guid: 3420c6a862df6654488850e907ae9998,
+        type: 2}
+      propertyPath: CeilingColorClear.a
+      value: 0.043137256
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114177489467273510, guid: 3420c6a862df6654488850e907ae9998, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 3420c6a862df6654488850e907ae9998, type: 2}
@@ -75753,7 +75763,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1584882081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -85.7, y: 143.4, z: -1.77}
+  m_LocalPosition: {x: -87.52, y: 1.3, z: -1.77}
   m_LocalScale: {x: 1.9560001, y: 10, z: 19.51005}
   m_Children: []
   m_Father: {fileID: 0}

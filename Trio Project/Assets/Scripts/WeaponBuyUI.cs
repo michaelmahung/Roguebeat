@@ -29,8 +29,8 @@ public class WeaponBuyUI : MonoBehaviour {
 	}	
 	}
 
-	void OnTriggerEnter(){
-if(Player){
+	void OnTriggerEnter(Collider other){
+if(other.tag == "Player"){
 
             PurchaseWeapons();
 }
