@@ -28,6 +28,7 @@ public GameObject BigBoom;
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Player" || other.tag == "Wall") {
+            print("I got'em!");
 			callExplosion ();
 		}
 	}

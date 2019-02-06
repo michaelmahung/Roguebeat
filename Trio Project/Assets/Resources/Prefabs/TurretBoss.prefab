@@ -2205,6 +2205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 114750650401337032}
+  pHealth: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &114060943664992760
 MonoBehaviour:
@@ -2240,7 +2241,7 @@ MonoBehaviour:
   follow: 0
   callDestroyOnce: 0
   phase: 
-  attackPhase: 1
+  attackPhase: 3
   shieldControl: {fileID: 114152312405044742}
   rTurret: {fileID: 114632225790878610}
   lTurret: {fileID: 114968200582575500}
@@ -2361,8 +2362,11 @@ MonoBehaviour:
   dead: 0
   shot1: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   shot2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
-  shot3: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
+  shot3: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
   atkTime: 0
+  p1Time: 1
+  p2Time: 0.75
+  p3Time: 2
   spawn: {fileID: 1464490263490192}
   Tbody: {fileID: 1314995327817124}
   cap: {fileID: 1925659168260354}
@@ -2406,9 +2410,14 @@ MonoBehaviour:
   health: 300
   shot1: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   shot2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
-  shot3: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
+  shot3: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
   burn: {fileID: 1328958666017412, guid: 322ab283588de1c4397b56d569fda02d, type: 2}
   atkTime: 0
+  p1Time: 1
+  p2Time: 0.75
+  p3Time: 2
+  burnTime: 0.025
+  p4Time: 0.075
   spawn: {fileID: 1777777729260302}
   p1fire: 0
   p2fire: 0
@@ -2454,8 +2463,11 @@ MonoBehaviour:
   dead: 0
   shot1: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   shot2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
-  shot3: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 2}
+  shot3: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
   atkTime: 0
+  p1Time: 1
+  p2Time: 0.75
+  p3Time: 2
   spawn: {fileID: 1422482427480392}
   Tbody: {fileID: 1195556339205138}
   cap: {fileID: 1772433918004782}

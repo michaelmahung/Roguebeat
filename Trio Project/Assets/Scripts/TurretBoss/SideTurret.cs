@@ -18,6 +18,9 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public GameObject shot3;
 
     public float atkTime;
+    public float p1Time;
+    public float p2Time;
+    public float p3Time;
 
     public GameObject spawn;
     public GameObject Tbody;
@@ -49,7 +52,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
                 if (controller.attackPhase == 1)
                 {
                 //print("I am in attack phase 1");
-                    atkTime = 1.0f;
+                    atkTime = p1Time;
                     if (attacking == false)
                     {
                         attacking = true;
@@ -60,7 +63,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
                 if (controller.attackPhase == 2)
                 {
-                    atkTime = .75f;
+                    atkTime = p2Time;
                     if (attacking == false)
                          {
                             attacking = true;
@@ -70,7 +73,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
                 if (controller.attackPhase == 3)
                 {
-                atkTime = 1.2f;
+                atkTime = p3Time;
                 if (attacking == false)
                 {
                     attacking = true;

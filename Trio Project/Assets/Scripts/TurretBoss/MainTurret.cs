@@ -18,6 +18,11 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public GameObject burn;
 
     public float atkTime;
+    public float p1Time;
+    public float p2Time;
+    public float p3Time;
+    public float burnTime;
+    public float p4Time;
 
     public GameObject spawn;
 
@@ -55,7 +60,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     trueOnce = false;
                 }
                 //print("I am in attack phase 1");
-                atkTime = 1.0f;
+                atkTime = p1Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -72,7 +77,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     attacking = false;
                     trueOnce = false;
                 }
-                atkTime = .75f;
+                atkTime = p2Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -88,7 +93,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     attacking = false;
                     trueOnce = false;
                 }
-                atkTime = 1.2f;
+                atkTime = p3Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -104,7 +109,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     attacking = false;
                     trueOnce = false;
                 }
-                atkTime = .075f;
+                atkTime = p4Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -121,7 +126,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                 attacking = false;
                 trueOnce = true;
             }
-            atkTime = .025f;
+            atkTime = burnTime;
             if(attacking == false)
             {
                 
