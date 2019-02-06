@@ -8,10 +8,11 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     public string MyRoomName { get; set; }
     public RoomSetter MyRoom { get; set; }
     public enum moveAxis { X, Y, Z }
-    public moveAxis MoveAxis;
-    public int OpenPoints;
-    public float moveAmount = 10;
-    public int thingsRequired;
+
+    [SerializeField] private moveAxis MoveAxis;
+    [SerializeField] private int OpenPoints;
+    [SerializeField] private float moveAmount = 10;
+    [SerializeField] private int thingsRequired;
 
     protected int thingsDestroyed;
     protected Vector3 moveDirection;

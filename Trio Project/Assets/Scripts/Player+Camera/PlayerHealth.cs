@@ -5,9 +5,14 @@
 
 public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 {
-    [SerializeField]
-    private float currentHealth;
-    public float HealthPercent { get; private set; }
+    [SerializeField] private float currentHealth;
+    public float HealthPercent
+    {
+        get
+        {
+            return currentHealth / MaxHealth;
+        }
+    }
     private float MaxHealth = 100;
 
     private bool isPlayerDead;
@@ -28,7 +33,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     void Start()
     {
-        KillPoints = -500;
+        KillPoints = 0;
         currentHealth = MaxHealth;
         GameManager.Instance.PlayerRespawned += ResetHealth;
     }
@@ -44,7 +49,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     public void Damage(float damage)
     {
         currentHealth -= damage;
-        HealthPercent = currentHealth / MaxHealth;
+        //HealthPercent = currentHealth / MaxHealth;
+
         if (GameManager.Instance.cameraShaker != null)
         {
             GameManager.Instance.cameraShaker.ShakeMe(80, 0.1f);
@@ -63,7 +69,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     {
         IsPlayerDead = false;
         currentHealth = MaxHealth;
-        HealthPercent = currentHealth / MaxHealth;
+        //HealthPercent = currentHealth / MaxHealth;
         UpdateHealth();
     }
 

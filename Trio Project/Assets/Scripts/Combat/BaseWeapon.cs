@@ -50,19 +50,22 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     public virtual void Awake()
     {
         weaponName = gameObject.name;
+        projectileName = weaponName + " Projectile";
 
+        //Automatically setting weapons active while testing
+        //TODO make sure all but base weapon will be disabled for demo
         if (!DataManager.HasPref(weaponName))
         {
             SetWeaponActive(true);
         }
 
-        projectileName = weaponName + " Projectile";
-
+        //If no unique icon is set, simply load the default icon
         if (icon == null)
         {
             icon = Resources.Load<Texture2D>("Icons/DefaultIcon");
         }
 
+        //If no unique fire sound it set, load the default fire sound
         if (fireSound == null)
         {
             fireSound = Resources.Load<AudioClip>("ProjectileSounds/DefaultSound");
@@ -83,13 +86,15 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
 
     public virtual void Start()
     {
-        //try / catch statements are just saying, I want to try doing this and if there are errors do what's in the catch segment. 
+        //try / catch statements are just saying, I want to try doing this thing - if there are errors while trying to do it, do what's in the catch segment. 
         try
         {
+            //Try adding our projectile to the projectile dictionary
             ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
         }
         catch
         {
+            //If there is no projectile dictionary, create one and add our projectile to it.
             if (ProjectilePoolManager.Instance == null)
             {
                 GameObject go = new GameObject("ProjectilePoolManager");
@@ -123,6 +128,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     {
         for (int i = 0; i < fireLocations.Count; i++)
         {
+            //Boo this function, need to refactor - Spawn an object from the pool and pass the weapons values down to the projectile.
             ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
         }
     }

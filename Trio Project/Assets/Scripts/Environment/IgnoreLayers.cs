@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class IgnoreInvisibleWalls : MonoBehaviour {
+public class IgnoreLayers : MonoBehaviour {
 
 	void Start ()
     {
@@ -18,5 +18,7 @@ public class IgnoreInvisibleWalls : MonoBehaviour {
      * Layer 8 = Invisible Wall
      * Layer 9 = Floor
      * Layer 10 = Player
+     * Layer 11 = FogLayer
+     * Layer 12 = Shield
      * */
 }

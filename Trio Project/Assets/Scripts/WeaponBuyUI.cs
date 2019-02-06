@@ -15,6 +15,8 @@ public class WeaponBuyUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PlayerHealth.PlayerKilled += ToggleWeaponBuyUI;
+        Player = GameManager.Instance.PlayerObject;
 		WeaponScreenActive = false;
 		PurchaseUI.SetActive(false);
 		filter = AudioManager.Instance.Filter;
@@ -25,44 +27,61 @@ public class WeaponBuyUI : MonoBehaviour {
 	void Update () {
 	//	print(Time.timeScale);
 	if(Input.GetKeyDown(KeyCode.F) && WeaponScreenActive == true){
-		PurchaseWeapons();
+		ToggleWeaponBuyUI();
 	}	
 	}
 
 	void OnTriggerEnter(Collider other){
 if(other.tag == "Player"){
 
-            PurchaseWeapons();
+            ToggleWeaponBuyUI();
 }
 	}
-	public void PurchaseWeapons()
+	public void ToggleWeaponBuyUI()
 	{
 		if(WeaponScreenActive == false)
 		{
-			WeaponScreenActive = true;
-			PurchaseUI.SetActive(true);
-			Time.timeScale = 0.0000001f;
-			filter.enabled = true;
+            OpenWeaponUI();
 		}
-		else{
-			if(WeaponScreenActive == true)
-			{
-WeaponScreenActive = false;
-			PurchaseUI.SetActive(false);
-			Time.timeScale = 1;
-			filter.enabled = false;
-                GameManager.Instance.ResetPlayerPosition();
-
-			}
-		}
+		else if (WeaponScreenActive == true)
+        {
+            CloseWeaponUI();
+        }
 	}
 
+    void CloseWeaponUI()
+    {
+        WeaponScreenActive = false;
+        PurchaseUI.SetActive(false);
+        Time.timeScale = 1;
+        filter.enabled = false;
+
+        if(GameManager.Instance.isPlayerDead)
+        {
+            GameManager.Instance.RespawnPlayer();
+            return;
+        }
+
+        GameManager.Instance.ResetPlayerPosition();
+        return;
+    }
+
+    void OpenWeaponUI()
+    {
+        WeaponScreenActive = true;
+        PurchaseUI.SetActive(true);
+        Time.timeScale = 0.0000001f;
+        filter.enabled = true;
+    }
+
+    //This is the function that should be linked to the individual buttons in the UI
     public void SelectWeapon(BaseWeapon weapon)
     {
         selectedWeapon = weapon;
         UpdateWeaponText();
     }
 
+    //This is the function that should be called when pressing the Purchase Weapon button
     public void BuyWeapon()
     {
         if (!selectedWeapon.WeaponActive)

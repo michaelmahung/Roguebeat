@@ -74,11 +74,21 @@ public class GameManager : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
     }
 
+    public void RespawnPlayer()
+    {
+        if (canRespawn)
+        {
+            PlayerObject.SetActive(true);
+            ResetPlayerPosition();
+            PlayerRespawned();
+        }
+    }
+
     #region Private Functions
     private void Awake()
     {
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         SetComponents();
         Difficulty = Multiplier[3];
@@ -101,9 +111,9 @@ public class GameManager : MonoBehaviour
 
     private void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.R)) {
+		/*if (Input.GetKeyDown (KeyCode.R)) {
 			RespawnPlayer ();
-		}
+		}*/
 
 		if (Input.GetKeyDown (KeyCode.V)) {
 		Difficulty = Multiplier[3];
@@ -123,17 +133,6 @@ public class GameManager : MonoBehaviour
     private void CanRespawn()
     {
         canRespawn = true;
-    }
-
-
-    private void RespawnPlayer()
-    {
-        if (canRespawn)
-        {
-            PlayerObject.SetActive(true);
-            ResetPlayerPosition();
-            PlayerRespawned();
-        }
     }
 
     #endregion

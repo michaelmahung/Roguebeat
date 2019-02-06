@@ -10,7 +10,7 @@ public class CloseRangeScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        pHealth = player.GetComponent<PlayerHealth>();
+        pHealth = GameManager.Instance.PlayerObject.GetComponent<PlayerHealth>();
 	}
 	
 	// Update is called once per frame
