@@ -5,14 +5,14 @@ using UnityEngine;
 public class LevelSpawning : MonoBehaviour {
 
     [SerializeField] LevelInfo Level1;
-    [SerializeField] GameObject prefab;
+    //[SerializeField] GameObject prefab;
     //[SerializeField] GameObject[,] grid;
-    [SerializeField] RoomInfo[,] AllRooms;
-    [SerializeField] int CellOffset = 51; //This will need to change if the room size changes
+    //[SerializeField] RoomInfo[,] AllRooms;
+    //[SerializeField] int CellOffset = 51; //This will need to change if the room size changes
+
+    //public int GridFactor;
 
     private RoomFactory roomFactory;
-
-    public int GridFactor;
 
     void Start () {
 
@@ -25,14 +25,25 @@ public class LevelSpawning : MonoBehaviour {
         //SpawnRooms(AllRooms);
     }
 
+    IEnumerator StartSpawning()
+    {
+        yield return new WaitForSeconds(2);
+        SpawnRoom();
+    }
+
+    void SpawnRoom()
+    {
+
+    }
+
     GameObject GeneratePrefab(int x, int z)
     {
         return roomFactory.GrabRandomRoom();
     }
 
-    Vector3 GenerateRoomLocation(int x, int z)
+    Vector3 GenerateRoomLocation(int x, int z, LevelInfo level)
     {
-        return new Vector3(x * CellOffset, 0, z * CellOffset);
+        return new Vector3(x * level.CellOffset, 0, z * level.CellOffset);
     }
 
     #region
