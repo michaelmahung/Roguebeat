@@ -4,45 +4,71 @@ using UnityEngine;
 
 public class LevelSpawning : MonoBehaviour {
 
+    [SerializeField] LevelInfo Level1;
     [SerializeField] GameObject prefab;
-    [SerializeField] GameObject[,] grid;
-    RoomHolder Rooms = new RoomHolder();
+    //[SerializeField] GameObject[,] grid;
+    [SerializeField] RoomInfo[,] AllRooms;
+    [SerializeField] int CellOffset = 51; //This will need to change if the room size changes
+
+    private RoomFactory roomFactory;
+
     public int GridFactor;
-    public int CellOffset;
 
     void Start () {
-        grid = new GameObject[GridFactor, GridFactor];
-        Debug.Log(grid.Length);
-        PopulateArray(grid);
-	}
-	
-    void PopulateArray(GameObject[,] array)
+
+        roomFactory = GetComponent<RoomFactory>();
+        Level1.CellOffset = 51;
+        Level1.GridFactor = 3;
+        //AllRooms = new RoomInfo[GridFactor, GridFactor];
+        //SetSpawnPositions(AllRooms);
+        //GenerateRoomPrefabs(AllRooms);
+        //SpawnRooms(AllRooms);
+    }
+
+    GameObject GeneratePrefab(int x, int z)
+    {
+        return roomFactory.GrabRandomRoom();
+    }
+
+    Vector3 GenerateRoomLocation(int x, int z)
+    {
+        return new Vector3(x * CellOffset, 0, z * CellOffset);
+    }
+
+    #region
+    /*void SetSpawnPositions(RoomInfo[,] array)
     {
         for (int i = 0; i < GridFactor; i++)
         {
             for (int j = 0; j < GridFactor; j++)
             {
-                array[i, j] = SelectRoomToSpawn(i, j);
+                array[i, j].RoomLocation = GenerateRoomLocation(i, j);
             }
         }
-
-        SpawnRooms(array);
     }
 
-    void SpawnRooms(GameObject[,] array)
+    void GenerateRoomPrefabs(RoomInfo[,] array)
     {
         for (int i = 0; i < GridFactor; i++)
         {
             for (int j = 0; j < GridFactor; j++)
             {
-                Instantiate(prefab, new Vector3(CellOffset * j, 7.5f, CellOffset * i), Quaternion.identity);
-                prefab.SetActive(true);
+                array[i, j].RoomPrefab = GeneratePrefab(i, j);
             }
         }
     }
 
-    GameObject SelectRoomToSpawn(int x, int z)
+    void SpawnRooms(RoomInfo[,] array)
     {
-        return prefab;
-    }
+        for (int i = 0; i < GridFactor; i++)
+        {
+            for (int j = 0; j < GridFactor; j++)
+            {
+                Instantiate(array[i, j].RoomPrefab, array[i, j].RoomLocation, Quaternion.identity, transform);
+                array[i, j].RoomPrefab.SetActive(true);
+            }
+        }
+    }*/
+    #endregion
+
 }

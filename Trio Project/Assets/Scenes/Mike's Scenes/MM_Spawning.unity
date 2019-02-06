@@ -506,8 +506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1240144445002038, guid: f0943aec3bb95eb48ab3559bd2867061, type: 2}
-  GridFactor: 9
   CellOffset: 51
+  GridFactor: 3
 --- !u!4 &1968985750
 Transform:
   m_ObjectHideFlags: 0
