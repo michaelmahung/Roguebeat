@@ -4,82 +4,82 @@ using UnityEngine;
 
 public class LevelSpawning : MonoBehaviour {
 
-    [SerializeField] LevelInfo Level1;
-    //[SerializeField] GameObject prefab;
-    //[SerializeField] GameObject[,] grid;
-    //[SerializeField] RoomInfo[,] AllRooms;
-    //[SerializeField] int CellOffset = 51; //This will need to change if the room size changes
+    LevelInfo TestLevel;
+    RoomFactory roomFactory;
+    Vector3 currentLocation;
+    Vector3 startRoomLocation;
+    Vector3 endRoomLocation;
+    int rowSpawnCount;
+    bool startRoomSpawned;
+    bool endRoomSpawned;
 
-    //public int GridFactor;
-
-    private RoomFactory roomFactory;
+    public enum RoomSpawnTypes { StartingRoom, OpenRoom, BossRoom, LRRoom, LRTRoom, LRBRoom, RandomRoom, DefaultState};
+    public RoomSpawnTypes RoomToSpawn;
 
     void Start () {
 
+        TestLevel = new LevelInfo();
         roomFactory = GetComponent<RoomFactory>();
-        Level1.CellOffset = 51;
-        Level1.GridFactor = 3;
-        //AllRooms = new RoomInfo[GridFactor, GridFactor];
-        //SetSpawnPositions(AllRooms);
-        //GenerateRoomPrefabs(AllRooms);
-        //SpawnRooms(AllRooms);
+        TestLevel.RoomOffset = 51;
+        TestLevel.GridFactor = 4;
+
+        SetRoomLocation(TestLevel);
+        StartCoroutine(StartSpawning());
+    }
+
+    //Start at the first row of rooms
+    //If there is already a room on my location, move to another location.
+    //If not, spawn a room on my location
+
+    void SetRoomLocation(LevelInfo level)
+    {
+        currentLocation = new Vector3(Random.Range(0, level.GridFactor), 0, level.MinY);
     }
 
     IEnumerator StartSpawning()
     {
         yield return new WaitForSeconds(2);
-        SpawnRoom();
+        if (!endRoomSpawned)
+        {
+            SetRoomLocation(TestLevel);
+            SpawnRoom(currentLocation, TestLevel);
+            StartCoroutine(StartSpawning());
+        }else
+        {
+            StopAllCoroutines();
+        }
     }
 
-    void SpawnRoom()
+    RoomSpawnTypes CalculateRoomToSpawn()
     {
-
+        if (!startRoomSpawned)
+        {
+            startRoomSpawned = true;
+            startRoomLocation = currentLocation;
+            return RoomSpawnTypes.StartingRoom;
+        } else
+        {
+            return RoomSpawnTypes.OpenRoom;
+        }
     }
 
-    GameObject GeneratePrefab(int x, int z)
+    void SpawnRoom(Vector3 location, LevelInfo level) 
+    {
+        if (!TestLevel.IsRoomAlreadySpawned(location))
+        {
+            RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn()), location);
+            TestLevel.AddToSpawnedRooms(location, room);
+            Instantiate(room.RoomType, location * level.RoomOffset, Quaternion.identity, transform);
+        } else
+        {
+            RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn()), location);
+            TestLevel.UpdateRoom(location, room);
+            //Destroy()
+        }
+    }
+
+    GameObject GeneratePrefab()
     {
         return roomFactory.GrabRandomRoom();
     }
-
-    Vector3 GenerateRoomLocation(int x, int z, LevelInfo level)
-    {
-        return new Vector3(x * level.CellOffset, 0, z * level.CellOffset);
-    }
-
-    #region
-    /*void SetSpawnPositions(RoomInfo[,] array)
-    {
-        for (int i = 0; i < GridFactor; i++)
-        {
-            for (int j = 0; j < GridFactor; j++)
-            {
-                array[i, j].RoomLocation = GenerateRoomLocation(i, j);
-            }
-        }
-    }
-
-    void GenerateRoomPrefabs(RoomInfo[,] array)
-    {
-        for (int i = 0; i < GridFactor; i++)
-        {
-            for (int j = 0; j < GridFactor; j++)
-            {
-                array[i, j].RoomPrefab = GeneratePrefab(i, j);
-            }
-        }
-    }
-
-    void SpawnRooms(RoomInfo[,] array)
-    {
-        for (int i = 0; i < GridFactor; i++)
-        {
-            for (int j = 0; j < GridFactor; j++)
-            {
-                Instantiate(array[i, j].RoomPrefab, array[i, j].RoomLocation, Quaternion.identity, transform);
-                array[i, j].RoomPrefab.SetActive(true);
-            }
-        }
-    }*/
-    #endregion
-
 }
