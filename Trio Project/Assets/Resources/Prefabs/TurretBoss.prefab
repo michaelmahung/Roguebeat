@@ -2241,7 +2241,7 @@ MonoBehaviour:
   follow: 0
   callDestroyOnce: 0
   phase: 
-  attackPhase: 3
+  attackPhase: 1
   shieldControl: {fileID: 114152312405044742}
   rTurret: {fileID: 114632225790878610}
   lTurret: {fileID: 114968200582575500}
