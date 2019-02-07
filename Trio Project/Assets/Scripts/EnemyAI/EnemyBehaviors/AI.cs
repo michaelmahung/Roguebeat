@@ -85,7 +85,7 @@ public StateMachine<AI> stateMachine { get; set; }
         if (IsEnabled)
         {
             currentHealth -= damage;
-            StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
+            //StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
             UpdateHealthPercentage();
             if (currentHealth <= 0)
             {
@@ -94,7 +94,7 @@ public StateMachine<AI> stateMachine { get; set; }
         }
 	}
 
-	IEnumerator LerpColor ()
+	 IEnumerator LerpColor ()
 	{
 		float progress = 0; //instance float created on start of coroutine 
 		float increment = SmoothColor / HurtDuration; //instance float created on start of coroutine
@@ -105,6 +105,7 @@ public StateMachine<AI> stateMachine { get; set; }
 		yield return new WaitForSeconds(SmoothColor);
 		}
 	}
+
 
 	public void enemyDeath ()
 	{
@@ -136,7 +137,7 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public virtual void ChasePlayer()
     {
-        transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+        transform.localPosition += transform.forward * MoveSpeed * Time.deltaTime;
     }
 
 	public virtual void Enrage()
@@ -147,8 +148,9 @@ public StateMachine<AI> stateMachine { get; set; }
     public virtual void Flee()
     {
 		Vector3 direction = transform.position - Hero.transform.position;
-        direction.y = transform.position.y;
+        direction.y = 0;//transform.position.y;
         direction.Normalize();
+        transform.LookAt(direction);
         transform.position += direction * MoveSpeed * Time.deltaTime;
     }
 
