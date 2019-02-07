@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+ * This is where ill hold all the logic for grabbing differnet room types
+ * one thing to look at here is that we are loading from the resources folder
+ * so the overhead of this script on startup can be pretty big depending on 
+ * how many rooms we end up creating
+ * */
+
+
 using UnityEngine;
-
-public struct RoomInfo
-{
-    public Vector3 RoomLocation;
-    public GameObject RoomPrefab;
-}
-
 
 public class RoomFactory : MonoBehaviour {
 
@@ -17,11 +16,11 @@ public class RoomFactory : MonoBehaviour {
     [SerializeField] private GameObject[] LRRooms;
     [SerializeField] private GameObject[] LRTRooms;
     [SerializeField] private GameObject[] LRBRooms;
-    [SerializeField] private GameObject[][] AllRooms;
+    [SerializeField] private GameObject[][] AllRooms; //We need an array to hold all of our arrays in order to generate a random room type.
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this); //Keeping this object from reinstantiating will reduce how many times we need to reload all these rooms.
 
         OpenRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/Open Rooms");
         BossRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/Boss Rooms");
@@ -33,6 +32,7 @@ public class RoomFactory : MonoBehaviour {
         AllRooms = new GameObject[][] { OpenRooms, BossRooms, StartingRooms, LRRooms, LRTRooms, LRBRooms };
     }
 
+    //Generate random numbers and grab a random room from a random room array
     public GameObject GrabRandomRoom()
     {
         int rand = Random.Range(0, AllRooms.Length);
@@ -42,7 +42,38 @@ public class RoomFactory : MonoBehaviour {
         return AllRooms[rand][rand2];
     }
 
-    public GameObject GrabOpenRoom() { return OpenRooms[Random.Range(0, OpenRooms.Length)];}
+    public GameObject GrabRoom(LevelSpawning.RoomSpawnTypes room)
+    {
+        switch (room)
+        {
+            case LevelSpawning.RoomSpawnTypes.StartingRoom:
+                return StartingRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.OpenRoom:
+                return OpenRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.BossRoom:
+                return BossRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.LRBRoom:
+                return LRBRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.LRTRoom:
+                return LRTRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.LRRoom:
+                return LRRooms[Random.Range(0, OpenRooms.Length)];
+
+            case LevelSpawning.RoomSpawnTypes.RandomRoom:
+                return GrabRandomRoom();
+
+            default:
+                Debug.Log("Error selecting room to spawn");
+                return GrabRandomRoom();
+        }
+    }
+
+    /*public GameObject GrabOpenRoom() { return OpenRooms[Random.Range(0, OpenRooms.Length)];}
 
     public GameObject GrabBossRoom() { return BossRooms[Random.Range(0, OpenRooms.Length)];}
 
@@ -53,4 +84,5 @@ public class RoomFactory : MonoBehaviour {
     public GameObject GrabLRTRoom() { return LRTRooms[Random.Range(0, OpenRooms.Length)];}
 
     public GameObject GrabLRBRoom() { return LRBRooms[Random.Range(0, OpenRooms.Length)];}
+    */
 }

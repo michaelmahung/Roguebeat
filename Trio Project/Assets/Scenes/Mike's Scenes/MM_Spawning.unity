@@ -505,9 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6622467f291a644a6a95ddf8b014fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1240144445002038, guid: f0943aec3bb95eb48ab3559bd2867061, type: 2}
-  CellOffset: 51
-  GridFactor: 3
+  RoomToSpawn: 0
 --- !u!4 &1968985750
 Transform:
   m_ObjectHideFlags: 0
