@@ -81,7 +81,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     virtual protected void DealDamage(IDamageable<float> thingToDamage)
     {
-        Debug.Log(thingToDamage);
+        //Debug.Log(thingToDamage);
         Deactivate();
         thingToDamage.Damage(projectileDamage);
     }
