@@ -130,6 +130,7 @@ MonoBehaviour:
   Damage: 0
   Life: 2
   Speed: 15
+  missile: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
 --- !u!135 &135809501001873908
 SphereCollider:
   m_ObjectHideFlags: 1
