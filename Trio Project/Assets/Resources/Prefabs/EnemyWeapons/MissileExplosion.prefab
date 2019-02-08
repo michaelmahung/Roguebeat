@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 135210151397612822}
   - component: {fileID: 114996274934156252}
   m_Layer: 0
-  m_Name: BigExplosion
+  m_Name: MissileExplosion
   m_TagString: eProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1519971338207426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.56, y: 0.5, z: -2.79}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.464876, y: 0.464876, z: 0.464876}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

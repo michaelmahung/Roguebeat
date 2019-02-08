@@ -23,6 +23,7 @@ public class MainController : MonoBehaviour {
 	void Start () {
         phase = "Idle";
         Invoke("ShieldsUp", 1);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -59,7 +60,7 @@ public class MainController : MonoBehaviour {
                 callDestroyOnce = true;
             }
         }
-        if (attackPhase == 4 || (phase == "Attack" && head.tooClose == true))
+        if ((attackPhase == 4 || (phase == "Attack" && head.tooClose == true)) && head.changeColor == false)
         {
 
             cenBody.GetComponent<Renderer>().material.color = Color.red;
@@ -70,6 +71,12 @@ public class MainController : MonoBehaviour {
         {
             cenBody.GetComponent<Renderer>().material.color = Color.blue;
             cenCap.GetComponent<Renderer>().material.color = Color.blue;
+        }
+
+        if((head.tooClose == true && head.changeColor == true) || (attackPhase == 4 && head.changeColor == true))
+        {
+            cenBody.GetComponent<Renderer>().material.color = Color.white;
+            cenCap.GetComponent<Renderer>().material.color = Color.white;
         }
 
         /*if(phase == "Attack" && head.tooClose == true)

@@ -33,6 +33,8 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     public bool attacking;
 
+    public bool changeColor;
+
     // Use this for initialization
     void Start () {
 
@@ -100,6 +102,12 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
             transform.gameObject.tag = "Untagged";
             DestroyPhys();
         }
+        if(changeColor == true)
+        {
+            Tbody.GetComponent<MeshRenderer>().material.color = Color.red;
+            cap.GetComponent<MeshRenderer>().material.color = Color.red;
+            Invoke("ChangeBack", .1f);
+        }
 
 	}
 
@@ -166,6 +174,10 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public void Damage(float hurt)
     {
         health--;
+        if (health > 0)
+        {
+            changeColor = true;
+        }
     }
 
     public void DestroyPhys()
@@ -174,5 +186,12 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
         Destroy(cap);
         Destroy(barrel);
         Destroy(spawn);
+    }
+
+    public void ChangeBack()
+    {
+        Tbody.GetComponent<MeshRenderer>().material.color = Color.blue;
+        cap.GetComponent<MeshRenderer>().material.color = Color.blue;
+        changeColor = false;
     }
 }

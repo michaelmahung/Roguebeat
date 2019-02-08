@@ -108,8 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc7f83585dcd114b8c9795e25b6e476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamage: 0
-  projectileSpeed: 25
-  activeTime: 5
-  HitEnemy: 0
-  HitWall: 0

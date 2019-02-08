@@ -9,6 +9,8 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public MainController controller;
     public GameObject body;
     public GameObject masterBody;
+    public GameObject mBody;
+    public GameObject cap;
 
     public int health = 30;
 
@@ -36,6 +38,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public bool tooClose;
     public bool trueOnce;
     public bool dead;
+    public bool changeColor;
 
 
 	// Use this for initialization
@@ -143,6 +146,12 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         if(health <= 0)
         {
             Dead();
+        }
+        if(changeColor == true)
+        {
+            //mBody.GetComponent<MeshRenderer>().material.color = Color.white;
+            //cap.GetComponent<MeshRenderer>().material.color = Color.white;
+            Invoke("ChangeBack", .1f);
         }
 
     }
@@ -254,6 +263,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         if((rTurret.dead == true && lTurret.dead == true)||(controller.phase == "Attack" && tooClose == true))
         {
             health--;
+            changeColor = true;
         }
     }
 
@@ -261,5 +271,12 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     {
         dead = true;
         Destroy(masterBody);
+    }
+
+    public void ChangeBack()
+    {
+        //mBody.GetComponent<MeshRenderer>().material.color = Color.red;
+        //cap.GetComponent<MeshRenderer>().material.color = Color.red;
+        changeColor = false;
     }
 }

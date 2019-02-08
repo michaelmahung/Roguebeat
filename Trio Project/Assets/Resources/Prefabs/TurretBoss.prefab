@@ -2218,9 +2218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4781385456091698}
 --- !u!114 &114119397570241734
@@ -2279,9 +2282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4108460765497060}
 --- !u!114 &114315828425190332
@@ -2295,9 +2301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4103087936199846}
 --- !u!114 &114411968597184050
@@ -2311,9 +2320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4081607978484008}
 --- !u!114 &114460812508321004
@@ -2375,6 +2387,7 @@ MonoBehaviour:
   p2fire: 0
   p3fire: 0
   attacking: 0
+  changeColor: 0
 --- !u!114 &114642488002389986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2386,9 +2399,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4426127692232788}
 --- !u!114 &114750650401337032
@@ -2407,6 +2423,8 @@ MonoBehaviour:
   controller: {fileID: 114119397570241734}
   body: {fileID: 1579841544402824}
   masterBody: {fileID: 1162805171845608}
+  mBody: {fileID: 1668851289467664}
+  cap: {fileID: 1556684910737480}
   health: 300
   shot1: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
   shot2: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 2}
@@ -2415,7 +2433,7 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 2
+  p3Time: 3.5
   burnTime: 0.025
   p4Time: 0.075
   spawn: {fileID: 1777777729260302}
@@ -2428,6 +2446,7 @@ MonoBehaviour:
   tooClose: 0
   trueOnce: 0
   dead: 0
+  changeColor: 0
 --- !u!114 &114780543984670872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2439,9 +2458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ba940d927810a4782b9431be78654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origMat: {fileID: 2100000, guid: 29cbf095a01202341b597d05b2ca4d73, type: 2}
+  newMat: {fileID: 2100000, guid: a29f373073550b447b642ea07d23a7f5, type: 2}
   spawnShield: 0
   shieldDown: 0
   genShield: 0
+  changeColor: 0
   health: 0
   spawnPoint: {fileID: 4179973817518158}
 --- !u!114 &114968200582575500
@@ -2476,6 +2498,7 @@ MonoBehaviour:
   p2fire: 0
   p3fire: 0
   attacking: 0
+  changeColor: 0
 --- !u!135 &135307537101817666
 SphereCollider:
   m_ObjectHideFlags: 1
