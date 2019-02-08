@@ -46,7 +46,10 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         if (gameObject.activeInHierarchy)
         {
             //Debug.Log("Deactivating");
-            thisCollider.enabled = false;
+            if (thisCollider != null)
+            {
+                thisCollider.enabled = false;
+            }
             gameObject.SetActive(false);
             hitTag = null;
             thingHit = null;
@@ -72,10 +75,10 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             //thingHit.Damage(projectileDamage);
         }
 
-        else if (hitTag == "Wall" || hitTag == "Shield")
+        else if (hitTag == "Wall" || hitTag == "Shield" || hitTag == "eProjectile")
         {
             //Debug.Log(hitTag);
-            Deactivate();
+            Invoke("Deactivate", 0.25f);
         }
     }
 
@@ -100,7 +103,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             DealDamage(thingHit);
         }
 
-        else if (hitTag == "Wall" || hitTag == "Shield")
+        else if (hitTag == "Wall" || hitTag == "Shield" || hitTag == "eProjectile")
         {
             Deactivate();
         }
