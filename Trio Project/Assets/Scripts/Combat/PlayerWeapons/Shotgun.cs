@@ -24,6 +24,7 @@ public class Shotgun : BaseWeapon
     new void Start()
     {
         base.Start();
+        SetWeaponActive(true);
         GetWeaponActive();
     }
 }

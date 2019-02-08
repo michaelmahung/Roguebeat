@@ -16,7 +16,7 @@ public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
     // Use this for initialization
     void Start () {
         // Player = GameObject.FindGameObjectWithTag("Player");
-        playerHere = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHere = GameManager.Instance.PlayerObject.transform;
        // KillPoints = 75;
     }
 	
@@ -46,7 +46,7 @@ public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
         {
           
                 //print("Im hit");
-                Destroy(other);
+                //Destroy(other);
                 callExplosion();
             
         }
