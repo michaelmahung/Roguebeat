@@ -49,7 +49,7 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
 
             //print("Im hit");
             //Destroy(other);
-            mngr.CurrentScore += killpoints;
+            //mngr.CurrentScore += killpoints;
                 callExplosion();
             
         }

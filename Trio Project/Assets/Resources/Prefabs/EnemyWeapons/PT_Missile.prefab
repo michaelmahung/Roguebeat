@@ -921,6 +921,7 @@ MonoBehaviour:
   Damage: 0
   Life: 2
   Speed: 15
+  missile: {fileID: 0}
 --- !u!114 &114387986720676610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -935,7 +936,8 @@ MonoBehaviour:
   BigBoom: {fileID: 1519971338207426, guid: 3e34978df4e746a4e96cb03225460fc3, type: 2}
   playerHere: {fileID: 0}
   mrBody: {fileID: 54494001092322830}
-  MissileSpeed: 0
+  Life: 1
+  MissileSpeed: 7
   turnSpeed: 1.75
   mngr: {fileID: 0}
   killpoints: 75

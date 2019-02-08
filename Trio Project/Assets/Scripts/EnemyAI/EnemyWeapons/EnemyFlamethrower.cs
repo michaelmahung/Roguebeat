@@ -26,13 +26,13 @@ public class EnemyFlamethrower : EnemyProjectile
             transform.position += transform.forward * Speed * Time.deltaTime;
         }
     }
-    private void OnTriggerEnter(Collision other)
+    /*private void OnTriggerEnter(Collision collider)
     {
-        if (other.gameObject.tag == "eProjectile")
+        if (collider.gameObject.tag == "eProjectile")
         {
-           // Physics.IgnoreCollision(missile.GetComponent<Collider>(), GetComponent<Collider>());
+            Physics.IgnoreCollision(missile.GetComponent<Collider>(), GetComponent<Collider>());
         }
-    }
+    }*/
 
 
 }

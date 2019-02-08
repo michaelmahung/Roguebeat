@@ -2378,7 +2378,7 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 2
+  p3Time: 3.5
   spawn: {fileID: 1464490263490192}
   Tbody: {fileID: 1314995327817124}
   cap: {fileID: 1925659168260354}
@@ -2489,7 +2489,7 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 2
+  p3Time: 3.5
   spawn: {fileID: 1422482427480392}
   Tbody: {fileID: 1195556339205138}
   cap: {fileID: 1772433918004782}

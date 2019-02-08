@@ -3,8 +3,8 @@
 public class EnemyProjectile : MonoBehaviour {
 
     public float Damage;
-    IDamageable<float> otherDamageable;
-    string thingHitTag;
+    protected IDamageable<float> otherDamageable;
+    protected string thingHitTag;
 
 
    
@@ -13,7 +13,7 @@ public class EnemyProjectile : MonoBehaviour {
         thingHitTag = other.tag;
         otherDamageable = other.gameObject.GetComponent<IDamageable<float>>();
 
-        if (otherDamageable != null && other.tag != "Enemy" && other.tag != "Shield" && other.tag != "Untagged")
+        if (otherDamageable != null && other.tag != "Enemy" && other.tag != "Shield" && other.tag != "Untagged" && other.tag != "eProjectile")
         {
             otherDamageable.Damage(Damage);
             Destroy(this.gameObject);
