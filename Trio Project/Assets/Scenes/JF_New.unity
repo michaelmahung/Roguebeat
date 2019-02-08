@@ -5866,6 +5866,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114387986720676610, guid: fc8a37db2a0465643bee99e78f80da5e,
+        type: 2}
+      propertyPath: MissileSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
   m_IsPrefabAsset: 0

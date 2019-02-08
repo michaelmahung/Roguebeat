@@ -102,12 +102,23 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
             transform.gameObject.tag = "Untagged";
             DestroyPhys();
         }
+        if(disabled == true)
+        {
+            Tbody.GetComponent<MeshRenderer>().material.color = Color.black;
+            cap.GetComponent<MeshRenderer>().material.color = Color.black;
+        }
+        if(disabled == false && changeColor == false)
+        {
+            Tbody.GetComponent<MeshRenderer>().material.color = Color.blue;
+            cap.GetComponent<MeshRenderer>().material.color = Color.blue;
+        }
         if(changeColor == true)
         {
             Tbody.GetComponent<MeshRenderer>().material.color = Color.red;
             cap.GetComponent<MeshRenderer>().material.color = Color.red;
             Invoke("ChangeBack", .1f);
         }
+
 
 	}
 

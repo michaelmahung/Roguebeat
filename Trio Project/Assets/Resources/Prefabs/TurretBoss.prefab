@@ -2343,18 +2343,10 @@ MonoBehaviour:
   controller: {fileID: 114119397570241734}
   head: {fileID: 1609091033886430}
   check: {fileID: 114750650401337032}
-  a: -30
-  b: 0
-  c: 0
-  rotatiing: 0
+  player: {fileID: 0}
+  degree: 0.25
   aTrue: 0
-  bTrue: 0
-  speed: 2
-  atRotation: 0
-  randDegree: 0
-  currentDegree: 0
-  rotationY: 0
-  timer: 1.5
+  speed: 300
 --- !u!114 &114632225790878610
 MonoBehaviour:
   m_ObjectHideFlags: 1
