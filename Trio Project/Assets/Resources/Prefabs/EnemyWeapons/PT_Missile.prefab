@@ -935,8 +935,10 @@ MonoBehaviour:
   BigBoom: {fileID: 1519971338207426, guid: 3e34978df4e746a4e96cb03225460fc3, type: 2}
   playerHere: {fileID: 0}
   mrBody: {fileID: 54494001092322830}
-  MissileSpeed: 7
+  MissileSpeed: 0
   turnSpeed: 1.75
+  mngr: {fileID: 0}
+  killpoints: 75
 --- !u!135 &135585708806167282
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
+public class PT_Missile : MonoBehaviour, IDamageable<float> {
 
     public GameObject BigBoom;
     //public GameObject Player;
     public Transform playerHere;
     public Rigidbody mrBody;
-    //public int Life = 1;
+    public int Life = 1;
     public float MissileSpeed;
     public float turnSpeed;
+    public GameManager mngr;
+    public int killpoints;
     
 
     // Use this for initialization
     void Start () {
         // Player = GameObject.FindGameObjectWithTag("Player");
         playerHere = GameObject.FindGameObjectWithTag("Player").transform;
-       // KillPoints = 75;
+        mngr = GameObject.FindObjectOfType<GameManager>();
     }
 	
 	// Update is called once per frame
@@ -25,10 +27,10 @@ public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
 
         // Vector3 relativePos = playerHere.position - transform.position;
         //Quaternion rotatation = Quaternion.LookRotation(relativePos, Vector3.up);
-        /*if(Life <= 0)
+        if(Life <= 0)
         {
             callExplosion();
-        }*/
+        }
         transform.position += transform.forward * MissileSpeed * Time.deltaTime;
         var playerPos = Quaternion.LookRotation(playerHere.position - transform.position);
         mrBody.MoveRotation(Quaternion.RotateTowards(transform.rotation, playerPos, turnSpeed));
@@ -44,9 +46,10 @@ public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
         }
         if (other.tag == "PlayerBaseShot")
         {
-          
-                //print("Im hit");
-                Destroy(other);
+
+            //print("Im hit");
+            //Destroy(other);
+            mngr.CurrentScore += killpoints;
                 callExplosion();
             
         }
@@ -60,8 +63,8 @@ public class PT_Missile : MonoBehaviour/*, IDamageable<float> */{
 
     
 
-    /*public void Damage(float hurt)
+    public void Damage(float hurt)
     {
         Life--;
-    }*/
+    }
 }
