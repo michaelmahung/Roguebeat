@@ -20,6 +20,7 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
         // Player = GameObject.FindGameObjectWithTag("Player");
         playerHere = GameObject.FindGameObjectWithTag("Player").transform;
         mngr = GameObject.FindObjectOfType<GameManager>();
+        PlayerHealth.PlayerKilled += PlayerDead;
     }
 	
 	// Update is called once per frame
@@ -58,6 +59,7 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
     void callExplosion()
     {
         Instantiate(BigBoom, transform.position, transform.rotation);
+        PlayerHealth.PlayerKilled -= PlayerDead;
         Destroy(gameObject);
     }
 
@@ -66,5 +68,11 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
     public void Damage(float hurt)
     {
         Life--;
+    }
+
+    public void PlayerDead()
+    {
+        PlayerHealth.PlayerKilled -= PlayerDead;
+        Destroy(gameObject);
     }
 }

@@ -13,7 +13,7 @@ public class CursorManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
 
-        if (currentScene.name == "Level Building")
+        if (currentScene.name == "Level Building" || currentScene.name == "JF_New")
         {
             Cursor.SetCursor(Resources.Load<Texture2D>("Icons/DefaultIcon_White"), new Vector2(0, 0), CursorMode.ForceSoftware);
         }

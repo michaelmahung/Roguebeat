@@ -52,7 +52,10 @@ public class RoomSetter : MonoBehaviour {
 
         MyDoor = GetComponentInChildren<BaseDoor>();
         MySpawners = GetComponentsInChildren<SpawnEnemies>();
-        RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+        if(RoomLight != null)
+        {
+            RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+        }
         //CeilingColorClear.a = 0.5f;
         if (MyDoor != null)
         {
@@ -84,18 +87,25 @@ public class RoomSetter : MonoBehaviour {
         if (other.tag == "Player")
         {
             cc.player = camPlacement.gameObject;
-            RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorClear;
-        
+            if (RoomLight != null)
+            {
+                RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorClear;
+            }
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
+            
         }
+        //Debug.Log(other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
         UpdatePlayerRoom();
         if(other.tag == "Player"){
-        RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+            if (RoomLight != null)
+            {
+                RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+            }
         }
     }
 

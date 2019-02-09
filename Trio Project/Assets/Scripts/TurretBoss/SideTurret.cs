@@ -193,10 +193,10 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     public void DestroyPhys()
     {
-        Destroy(Tbody);
-        Destroy(cap);
-        Destroy(barrel);
-        Destroy(spawn);
+        Tbody.SetActive(false);
+        cap.SetActive(false);
+        barrel.SetActive(false);
+        spawn.SetActive(false);
     }
 
     public void ChangeBack()
