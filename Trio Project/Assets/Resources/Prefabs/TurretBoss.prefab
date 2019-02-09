@@ -2264,7 +2264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raiseShields: 0
   destroyShields: 0
-  speed: 15
+  speed: 40
   shield1: {fileID: 1594082283767768}
   shield2: {fileID: 1410187622188726}
   shield3: {fileID: 1731677979080306}
