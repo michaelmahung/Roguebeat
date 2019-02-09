@@ -10,6 +10,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     public float activeTime { get; set; }
 
     protected float RaycastHitLength { get; set; } //How far ahead of the projectile will it check for objects.
+    protected float RayHitDelay { get; set; } //How long to wait after hitting something with a raycast to react to it
 
     Collider thisCollider;
     bool hitEnemy;
@@ -17,15 +18,18 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     protected string hitTag;
     int shld;
     protected IDamageable<float> thingHit;
+    bool canDamage;
 
     virtual protected void Awake()
     {
         thisCollider = GetComponent<Collider>();
         RaycastHitLength = 0.75f;
+        RayHitDelay = 0.5f;
     }
 
     public void OnObjectSpawn()
     {
+        canDamage = true;
         thisCollider.enabled = true;
         Invoke("Deactivate", activeTime);
     }
@@ -50,6 +54,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             {
                 thisCollider.enabled = false;
             }
+            canDamage = false;
             gameObject.SetActive(false);
             hitTag = null;
             thingHit = null;
@@ -71,14 +76,14 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
         if (thingHit != null && hitTag != "Player" && hitTag != "Untagged" && hitTag != "PlayerBaseShot")
         {
-            DealDamage(thingHit);
+            StartCoroutine(LateDamage(thingHit, RayHitDelay));
             //thingHit.Damage(projectileDamage);
         }
 
         else if (hitTag == "Wall" || hitTag == "Shield" || hitTag == "eProjectile")
         {
             //Debug.Log(hitTag);
-            Invoke("Deactivate", 0.25f);
+            Invoke("Deactivate", RayHitDelay);
         }
     }
 
@@ -89,7 +94,11 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         thingToDamage.Damage(projectileDamage);
     }
 
-
+    virtual protected IEnumerator LateDamage(IDamageable<float> thingToDamage, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        DealDamage(thingToDamage);
+    }
 
     //Collider-based hit detection, may still be used to very fast objects as insurance.
 

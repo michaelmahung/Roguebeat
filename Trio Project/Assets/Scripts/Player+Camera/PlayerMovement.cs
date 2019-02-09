@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetDash()
     {
+        dashDistance = MaxDashDistance;
         canDash = true;
     }
 	
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (rb.velocity.magnitude > MinDashSpeed && canDash)
             {
-                Debug.Log(rb.velocity.magnitude + " " + canDash);
+                //Debug.Log(rb.velocity.magnitude + " " + canDash);
                 StartCoroutine("StartDashCooldown");
                 Dash();
             }

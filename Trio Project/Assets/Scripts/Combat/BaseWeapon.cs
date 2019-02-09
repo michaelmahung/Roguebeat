@@ -52,6 +52,8 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         weaponName = gameObject.name;
         projectileName = weaponName + " Projectile";
 
+        SetWeaponActive(true);
+
         //Automatically setting weapons active while testing
         //TODO make sure all but base weapon will be disabled for demo
         if (!DataManager.HasPref(weaponName))
@@ -166,12 +168,14 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         DataManager.SetPref(weaponName, value);
     }
 
-    public void GetWeaponActive()
+    public bool GetWeaponActive()
     {
         if (DataManager.HasPref(weaponName))
         {
             WeaponActive = DataManager.GetPref(weaponName);
         }
+
+        return DataManager.GetPref(weaponName);
     }
 
 }
