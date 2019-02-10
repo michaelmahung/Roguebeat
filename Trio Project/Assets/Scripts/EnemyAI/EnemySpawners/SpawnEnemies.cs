@@ -59,17 +59,17 @@ private int RandomChance;
             RandomChance = Random.Range(1, 100);
             if (RandomChance <= 40)
             {
-                Instantiate(EnemyTypes[3], transform.position, transform.rotation);
+                Instantiate(EnemyTypes[4], transform.position, transform.rotation);
             }
 
             if (RandomChance > 40 && RandomChance < 80)
             {
-                Instantiate(EnemyTypes[1], transform.position, transform.rotation);
+                Instantiate(EnemyTypes[2], transform.position, transform.rotation);
             }
 
             if (RandomChance >= 80)
             {
-                Instantiate(EnemyTypes[0], transform.position, transform.rotation);
+                Instantiate(EnemyTypes[1], transform.position, transform.rotation);
             }
 
             MyRoom.AddEnemy();
