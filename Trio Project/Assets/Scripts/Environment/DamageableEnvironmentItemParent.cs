@@ -119,12 +119,12 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
 
             if (Health <= 0)
             {
-                AudioManager.Instance.PlaySound(itemType.ToString() + "Break");
+                SFXManager.Instance.PlaySound(itemType.ToString() + "Break");
                 Kill();
             } else
             {
                 objectRenderer.material.color = hurtColor;
-                AudioManager.Instance.PlaySound(itemType.ToString() + "Hit");
+                SFXManager.Instance.PlaySound(itemType.ToString() + "Hit");
                 reactDuration = 0;
                 duration = damageTaken;
             }
@@ -136,7 +136,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         if (damageTaken == 0)
         {
             objectRenderer.material.color = armorColor;
-            AudioManager.Instance.PlaySound(itemType.ToString() + "Armor");
+            SFXManager.Instance.PlaySound(itemType.ToString() + "Armor");
             reactDuration = 0;
             duration = 0.5f;
             //If the damage weve taken is negated by our armor, flash yellow instead.

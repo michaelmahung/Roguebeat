@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class SFXManager : MonoBehaviour {
 
-    public static AudioManager Instance;
+    public static SFXManager Instance;
 
     [Header("Sound Information")]
 

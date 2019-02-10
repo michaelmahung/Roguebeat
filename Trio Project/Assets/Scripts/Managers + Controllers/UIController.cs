@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
 	void Start ()
     {
-        filter = AudioManager.Instance.Filter;
+        filter = SFXManager.Instance.Filter;
         PauseScreen.SetActive(false);
         UpdateUIText();
 

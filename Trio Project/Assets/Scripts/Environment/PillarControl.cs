@@ -35,7 +35,7 @@ public class PillarControl : MonoBehaviour {
         }
 
         Physics.IgnoreCollision(floor.GetComponent<Collider>(), GetComponent<Collider>());
-        Player = AudioManager.Instance.AudioPlayer;
+        Player = SFXManager.Instance.AudioPlayer;
         pBody.GetComponent<MeshRenderer>().material.color = Color.blue;
         pTop.GetComponent<MeshRenderer>().material.color = Color.blue;
 	}

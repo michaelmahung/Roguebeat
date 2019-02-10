@@ -47,22 +47,22 @@ public class RoomFactory : MonoBehaviour {
         switch (room)
         {
             case LevelSpawning.RoomSpawnTypes.StartingRoom:
-                return StartingRooms[Random.Range(0, OpenRooms.Length)];
+                return StartingRooms[Random.Range(0, StartingRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.OpenRoom:
                 return OpenRooms[Random.Range(0, OpenRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.BossRoom:
-                return BossRooms[Random.Range(0, OpenRooms.Length)];
+                return BossRooms[Random.Range(0, BossRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.LRBRoom:
-                return LRBRooms[Random.Range(0, OpenRooms.Length)];
+                return LRBRooms[Random.Range(0, LRBRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.LRTRoom:
-                return LRTRooms[Random.Range(0, OpenRooms.Length)];
+                return LRTRooms[Random.Range(0, LRTRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.LRRoom:
-                return LRRooms[Random.Range(0, OpenRooms.Length)];
+                return LRRooms[Random.Range(0, LRRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.RandomRoom:
                 return GrabRandomRoom();
@@ -72,17 +72,4 @@ public class RoomFactory : MonoBehaviour {
                 return GrabRandomRoom();
         }
     }
-
-    /*public GameObject GrabOpenRoom() { return OpenRooms[Random.Range(0, OpenRooms.Length)];}
-
-    public GameObject GrabBossRoom() { return BossRooms[Random.Range(0, OpenRooms.Length)];}
-
-    public GameObject GrabStartingRoom() { return StartingRooms[Random.Range(0, OpenRooms.Length)]; }
-
-    public GameObject GrabLRRoom() { return LRRooms[Random.Range(0, OpenRooms.Length)];}
-
-    public GameObject GrabLRTRoom() { return LRTRooms[Random.Range(0, OpenRooms.Length)];}
-
-    public GameObject GrabLRBRoom() { return LRBRooms[Random.Range(0, OpenRooms.Length)];}
-    */
 }

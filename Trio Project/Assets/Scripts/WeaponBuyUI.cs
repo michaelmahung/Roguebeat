@@ -19,7 +19,7 @@ public class WeaponBuyUI : MonoBehaviour {
         Player = GameManager.Instance.PlayerObject;
 		WeaponScreenActive = false;
 		PurchaseUI.SetActive(false);
-		filter = AudioManager.Instance.Filter;
+		filter = SFXManager.Instance.Filter;
         selectedWeapon = PeaShooter.Instance;
 	}
 	

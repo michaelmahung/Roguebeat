@@ -23,8 +23,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     virtual protected void Awake()
     {
         thisCollider = GetComponent<Collider>();
-        RaycastHitLength = 0.75f;
-        RayHitDelay = 0.5f;
+        RaycastHitLength = 0.25f;
+        RayHitDelay = 0.75f;
     }
 
     public void OnObjectSpawn()

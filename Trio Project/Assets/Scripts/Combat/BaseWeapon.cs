@@ -120,7 +120,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         {
             canFire = false;
             StartCoroutine(WeaponCooldown());
-            AudioManager.Instance.PlaySound(fireSound.name);
+            SFXManager.Instance.PlaySound(fireSound.name);
             ShootWeapon();
         } 
     }

@@ -8,6 +8,6 @@ public class PlayerSFX : MonoBehaviour {
 	
     private void PlaySFX()
     {
-        AudioManager.Instance.PlaySound("PlayerHurt");
+        SFXManager.Instance.PlaySound("PlayerHurt");
     }
 }
