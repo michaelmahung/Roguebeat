@@ -1374,11 +1374,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9427969adaf7443d0ac228cebfd4a8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 20
-  TopSpeed: 25
-  MaxDashDistance: 8
-  MinDashSpeed: 10
-  DashCooldown: 3
+  acceleration: 20
+  topSpeed: 20
+  maxDashDistance: 5
+  minDashSpeed: 10
+  dashCooldown: 2
 --- !u!114 &114367809422015438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1437,7 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e38d31a3d3845cf8819802abf0d525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 8
+  weaponDamage: 12
   fireRate: 0.35
   swapTime: 0.35
   projectileSpawnAmount: 10
@@ -1493,6 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
+  rotationSpeed: 7
 --- !u!114 &114931861658291242
 MonoBehaviour:
   m_ObjectHideFlags: 1

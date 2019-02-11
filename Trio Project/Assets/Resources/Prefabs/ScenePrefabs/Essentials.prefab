@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224782422945481398}
   - component: {fileID: 114207991075840004}
-  - component: {fileID: 114279566872002924}
+  - component: {fileID: 114191753131539016}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 223294652789459372}
   - component: {fileID: 114765830737395932}
   - component: {fileID: 114334467548836698}
-  - component: {fileID: 114337724054829664}
+  - component: {fileID: 114019273280972302}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -585,7 +585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4802185575795520}
-  - component: {fileID: 114561829177612706}
+  - component: {fileID: 114444775226268438}
   m_Layer: 0
   m_Name: Essentials
   m_TagString: Untagged
@@ -1183,6 +1183,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114019273280972302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330858637332422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba8007329d9f4fdb82f094c9dff99c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowText: 1
+  GamePaused: 0
+  PauseScreen: {fileID: 1670265125015850}
+  UIText: {fileID: 114947859750736118}
+  ScoreText: {fileID: 114025401271805846}
 --- !u!114 &114022999659400664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1878,7 +1894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: SelectWeapon
         m_Mode: 2
         m_Arguments:
@@ -2025,7 +2041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: SelectWeapon
         m_Mode: 2
         m_Arguments:
@@ -2038,6 +2054,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114191753131539016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138926131370506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bbee7fbdb3a4bf28c8f3701c6daf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114195855618773442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2259,17 +2286,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114279566872002924
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1138926131370506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcfa78ae8e563d4084730f879894bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114311593505249180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2548,22 +2564,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114337724054829664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330858637332422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e3563efce9546bb9763b0bbd012b96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowText: 1
-  GamePaused: 0
-  PauseScreen: {fileID: 1670265125015850}
-  UIText: {fileID: 114947859750736118}
-  ScoreText: {fileID: 114025401271805846}
 --- !u!114 &114346826044951176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2602,18 +2602,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentScore: 0
+  _currentScore: 0
   HighScores: []
-  PlayerObject: {fileID: 0}
   PlayerRoom: 
-  UI: {fileID: 114337724054829664}
+  UI: {fileID: 0}
   PlayerSpawnPosition: {x: -112.5, y: 0, z: 0}
-  cameraShaker: {fileID: 114165671707682518}
-  Multiplier:
-  - 1
-  - 1.25
-  - 1.5
-  - 1.75
+  CameraShaker: {fileID: 114165671707682518}
   Difficulty: 0
 --- !u!114 &114378059473888058
 MonoBehaviour:
@@ -2933,7 +2927,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: SelectWeapon
         m_Mode: 2
         m_Arguments:
@@ -2979,6 +2973,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Button
+--- !u!114 &114444775226268438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735196530565114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae08853608c434250a697043595f44a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PurchaseUI: {fileID: 1351962932990954}
+  WeaponScreenActive: 0
+  WeaponCostText: {fileID: 114782787940140656}
 --- !u!114 &114476568623498530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3089,7 +3097,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: ToggleWeaponBuyUI
         m_Mode: 1
         m_Arguments:
@@ -3189,21 +3197,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114561829177612706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735196530565114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d964ea6a1899548a93b8e1994b9554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  PurchaseUI: {fileID: 1351962932990954}
-  WeaponScreenActive: 0
-  WeaponCostText: {fileID: 114782787940140656}
 --- !u!114 &114578554058768946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3297,7 +3290,6 @@ MonoBehaviour:
   FollowAhead: 5
   Smoothing: 4
   TargetPosition: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
 --- !u!114 &114747879283517442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3450,7 +3442,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: BuyWeapon
         m_Mode: 1
         m_Arguments:
@@ -3909,7 +3901,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114561829177612706}
+      - m_Target: {fileID: 114444775226268438}
         m_MethodName: SelectWeapon
         m_Mode: 2
         m_Arguments:
