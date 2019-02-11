@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RandomHeight : MonoBehaviour {
 
-    public int MaxHeight = 50;
-    public int MinHeight = 40;
+    [SerializeField] private int MaxHeight = 50;
+    [SerializeField] private int MinHeight = 40;
 
 	void Start ()
     {

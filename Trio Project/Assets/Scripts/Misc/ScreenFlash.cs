@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ScreenFlash : MonoBehaviour {
 
-    public Image FlashImage;
-    public Color32 FlashColor;
+    [SerializeField] private Image FlashImage;
+    [SerializeField] private Color32 FlashColor;
 
     [Range(0, 255f)]
-    public byte FlashIntensity;
+    [SerializeField] private byte FlashIntensity;
     [Range(1, 20)]
-    public byte FlashReductionTime;
+    [SerializeField] private byte FlashReductionTime;
     private byte currentIntensity;
 
     void Start ()

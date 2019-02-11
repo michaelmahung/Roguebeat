@@ -4,9 +4,9 @@ using UnityEngine;
 public class Shaker : MonoBehaviour {
 
     [Range(1, 200)]
-    public float ShakeAmount;
+    [SerializeField] private float ShakeAmount;
     [Range(0.01f, 2)]
-    public float ShakeTime;
+    [SerializeField] private float ShakeTime;
 
     private bool shaking;
 

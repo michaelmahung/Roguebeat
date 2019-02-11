@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSpawning : MonoBehaviour {
@@ -30,14 +29,6 @@ public class LevelSpawning : MonoBehaviour {
 
         TestLevel = new LevelFactory(10, 15, true, true, true);
         roomFactory = GetComponent<RoomFactory>();
-
-        /* Handled by constructor
-        TestLevel.GridBasedSpawns = true;
-        TestLevel.GridSize = 10;
-        TestLevel.LinearSpawns = false;
-        TestLevel.CanDoubleBack = true;
-        TestLevel.MaxRooms = 15;
-        */
 
         SetRoomLocation(TestLevel);
         StartCoroutine(StartSpawning());

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScenesManager: MonoBehaviour
 {
     [SerializeField]
-    private string[] AllScenes = new string[] { "Level Building", "Main Menu" };
+    private readonly string[] AllScenes = new string[] { "Level Building", "Main Menu" };
 
     public void Load(string scene)
     {

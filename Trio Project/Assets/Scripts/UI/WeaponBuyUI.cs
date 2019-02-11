@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class WeaponBuyUI : MonoBehaviour {
 
-	public GameObject Player;
-	public GameObject PurchaseUI;
-	public bool WeaponScreenActive;
-	private AudioLowPassFilter filter;
-    private BaseWeapon selectedWeapon;
-    public Text WeaponCostText;
-	
+	[SerializeField] private GameObject PurchaseUI;
+    [SerializeField] private bool WeaponScreenActive;
+    [SerializeField] private Text WeaponCostText;
 
-	// Use this for initialization
-	void Start () {
+    private GameObject Player;
+    private AudioLowPassFilter filter;
+    private BaseWeapon selectedWeapon;
+
+
+    // Use this for initialization
+    void Start () {
         PlayerHealth.PlayerKilled += ToggleWeaponBuyUI;
         Player = GameManager.Instance.PlayerObject;
 		WeaponScreenActive = false;
@@ -56,7 +57,7 @@ if(other.tag == "Player"){
         Time.timeScale = 1;
         filter.enabled = false;
 
-        if(GameManager.Instance.isPlayerDead)
+        if(GameManager.Instance.IsPlayerDead)
         {
             GameManager.Instance.RespawnPlayer();
             return;

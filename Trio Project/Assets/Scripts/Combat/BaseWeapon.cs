@@ -11,25 +11,25 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     protected bool canFire = true;
 
     [Header("Weapon Information")]
-    [Range(0.5f, 10)]
-    public float weaponDamage = 1;
+    [Range(0.5f, 20)]
+    [SerializeField] protected float weaponDamage = 1;
     [Range(0.05f, 3)]
-    public float fireRate = 0.5f;
+    [SerializeField] protected float fireRate = 0.5f;
     [Range(0.01f, 0.5f)]
-    public float swapTime = 0.25f;
+    [SerializeField] protected float swapTime = 0.25f;
 
     [Header("Projectile Information")]
     [Range(5, 150)]
-    public int projectileSpawnAmount = 50;
+    [SerializeField] protected int projectileSpawnAmount = 50;
     [Range(1, 60)]
-    public int projectileSpeed = 30;
+    [SerializeField] protected int projectileSpeed = 30;
     [Range(0, 10)]
-    public float projectileLife = 5;
+    [SerializeField] protected float projectileLife = 5;
 
     [Header("Misc")]
-    public GameObject projectile;
-    public AudioClip fireSound;
-    public Texture2D icon;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected AudioClip fireSound;
+    [SerializeField] protected Texture2D icon;
     public bool WeaponActive
     {
         get { return weaponActive; }
@@ -42,9 +42,9 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     }
 
     [SerializeField]
-    private bool weaponActive;
+    protected bool weaponActive;
     [SerializeField]
-    private int weaponCost;
+    protected int weaponCost;
 
 
     public virtual void Awake()
@@ -128,6 +128,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
 
     public virtual void ShootWeapon()
     {
+        //All this is doing is positioning and spawning a projectile at each fire location
         for (int i = 0; i < fireLocations.Count; i++)
         {
             //Boo this function, need to refactor - Spawn an object from the pool and pass the weapons values down to the projectile.

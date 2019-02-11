@@ -51,9 +51,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
         currentHealth -= damage;
         //HealthPercent = currentHealth / MaxHealth;
 
-        if (GameManager.Instance.cameraShaker != null)
+        if (GameManager.Instance.CameraShaker != null)
         {
-            GameManager.Instance.cameraShaker.ShakeMe(80, 0.1f);
+            GameManager.Instance.CameraShaker.ShakeMe(80, 0.1f);
         }
 
         PlayerDamaged();
@@ -73,6 +73,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
         UpdateHealth();
     }
 
+    //MUST be public due to the IKillable interface
     public void Kill()
     {
         if (!IsPlayerDead)

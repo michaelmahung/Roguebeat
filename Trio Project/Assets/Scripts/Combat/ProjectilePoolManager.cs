@@ -4,17 +4,17 @@ using UnityEngine;
 public class ProjectilePoolManager : MonoBehaviour
 {
     [System.Serializable]
-    public class ProjectileVariables
+    class ProjectileVariables
     {
         public string tag;
         public GameObject prefab;
         public int size;
     }
 
-    [SerializeField]
-    public List<ProjectileVariables> ProjectileTypes;
+    [SerializeField] private List<ProjectileVariables> ProjectileTypes;
 
-    public Dictionary<string, Queue<GameObject>> projectileDictionary; 
+    private Dictionary<string, Queue<GameObject>> projectileDictionary; 
+
     public static ProjectilePoolManager Instance;
 
     public void Awake()
@@ -67,9 +67,9 @@ public class ProjectilePoolManager : MonoBehaviour
 
         if (baseProjectile != null)
         {
-            baseProjectile.projectileDamage = damage;
-            baseProjectile.projectileSpeed = speed;
-            baseProjectile.activeTime = life;
+            baseProjectile.ProjectileDamage = damage;
+            baseProjectile.ProjectileSpeed = speed;
+            baseProjectile.ActiveTime = life;
         }else
         {
             Debug.LogError("BaseProjectile class not found on projectile");

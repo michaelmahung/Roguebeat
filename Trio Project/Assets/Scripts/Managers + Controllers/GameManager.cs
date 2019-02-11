@@ -30,22 +30,23 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("Scorekeeping")]
-    public int CurrentScore;
+    [SerializeField] private int _currentScore;
+    public int CurrentScore { get { return _currentScore; } set { _currentScore = value; } }
 
     [Header("High Score List")]
-    public List<float> HighScores = new List<float>();
+    [SerializeField] private List<float> HighScores = new List<float>();
 
     [Header("Global Script References")]
-    public GameObject PlayerObject;
     public string PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
-    public Shaker cameraShaker;
-    public bool isPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
+    public Shaker CameraShaker;
+    public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
+    public GameObject PlayerObject { get; private set; }
 
     [Header("Difficulty Settings")]
     //Difficulty Multiplier work by Sam
-    public float[] Multiplier = {1.0f, 1.25f, 1.5f, 1.75f};
+    private readonly float[] multiplier = { 1.0f, 1.25f, 1.5f, 1.75f };
     public float Difficulty;
 
     public delegate void OnScoreAdded();
@@ -59,11 +60,13 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         CurrentScore += score;
+
         if (CurrentScore < 0)
         {
             CurrentScore = 0;
         }
-        ScoreAdded();
+
+        ScoreAdded(); //Tell everyone weve changed our score.
     }
 
     public void ResetPlayerPosition()
@@ -88,10 +91,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        //DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject); //TODO - make GameManager it's own object in scene.
 
         SetComponents();
-        Difficulty = Multiplier[3];
+        Difficulty = multiplier[3];
 
         if (PlayerPrefs.HasKey("HighScores"))
         {
@@ -103,22 +106,11 @@ public class GameManager : MonoBehaviour
     {
         PlayerHealth.PlayerKilled += CanRespawn;
 
+        //If there isnt a default spawn position set, make where the player starts in the scene the spawn position.
         if (PlayerSpawnPosition == null)
         {
             PlayerSpawnPosition = PlayerObject.transform.position;
         }
-    }
-
-    private void Update ()
-	{
-		/*if (Input.GetKeyDown (KeyCode.R)) {
-			RespawnPlayer ();
-		}*/
-
-		if (Input.GetKeyDown (KeyCode.V)) {
-		Difficulty = Multiplier[3];
-			print(Difficulty);
-		}
     }
 
     //Basically the start function
@@ -127,7 +119,7 @@ public class GameManager : MonoBehaviour
         playerHealthReference = FindObjectOfType<PlayerHealth>();
         PlayerObject = playerHealthReference.gameObject;
         PlayerRoom = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
-        UI = GameObject.FindObjectOfType<UIController>();
+        UI = FindObjectOfType<UIController>();
     }
 
     private void CanRespawn()

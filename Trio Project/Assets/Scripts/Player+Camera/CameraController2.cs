@@ -2,11 +2,11 @@
 
 public class CameraController2 : MonoBehaviour {
 
-    public float FollowAhead;
-    public float Smoothing;
-    public Vector3 TargetPosition;
-    public GameObject player;
+    [SerializeField] private float FollowAhead;
+    [SerializeField] private float Smoothing;
+    [SerializeField] private Vector3 TargetPosition;
 
+    private GameObject focalPoint;
     private float cameraHeight;
     private Vector3 cameraOffset;
 
@@ -17,14 +17,14 @@ public class CameraController2 : MonoBehaviour {
         try
         {
             //Attempt to find a gameobject tagged as the player.
-            player = GameManager.Instance.PlayerObject;
+            focalPoint = GameManager.Instance.PlayerObject;
 
             if(cameraHeight <= 0f)
             {
                 cameraHeight = 40; 
             }
-            gameObject.transform.position = player.transform.position + new Vector3(0, cameraHeight, 0);
-            cameraOffset = transform.position - player.transform.position;
+            gameObject.transform.position = focalPoint.transform.position + new Vector3(0, cameraHeight, 0);
+            cameraOffset = transform.position - focalPoint.transform.position;
         }
         catch
         {
@@ -38,17 +38,25 @@ public class CameraController2 : MonoBehaviour {
     void FixedUpdate()
     {
         //Stuff and things.
-        if (player != null)
+        if (focalPoint != null)
         {
-            if (player.transform.localRotation.y > 90f)
+            if (focalPoint.transform.localRotation.y > 90f)
             {
-                TargetPosition = (player.transform.position + (player.transform.forward * FollowAhead)) + cameraOffset;
+                TargetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * FollowAhead)) + cameraOffset;
             }
             else
             {
-                TargetPosition = (player.transform.position + (player.transform.forward * -1 * -FollowAhead)) + cameraOffset;
+                TargetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * -1 * -FollowAhead)) + cameraOffset;
             }
             transform.position = Vector3.Lerp(transform.position, TargetPosition, Smoothing * Time.deltaTime);
+        }
+    }
+
+    public void SetFocalPoint(GameObject location)
+    {
+        if (location != null)
+        {
+            focalPoint = location;
         }
     }
 

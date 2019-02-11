@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+//We probably want to switch most physics-based collision to work off of layers. 
+//This will potentially significantly reduce the amount of collisions occuring at any given time
+//and will reduce the strain on the CPU.
+
 public class IgnoreLayers : MonoBehaviour {
 
 	void Start ()

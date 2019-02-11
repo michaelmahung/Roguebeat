@@ -4,19 +4,19 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour 
 {
     [Range(5, 100)]
-    public float Acceleration = 20;
+    [SerializeField] private float acceleration = 20;
 
     [Range(5, 50)]
-    public float TopSpeed = 20;
+    [SerializeField] private float topSpeed = 20;
 
     [Range(1, 15)]
-    public int MaxDashDistance = 5;
+    [SerializeField] private int maxDashDistance = 5;
 
     [Range(5, 15)]
-    public int MinDashSpeed = 10;
+    [SerializeField] private int minDashSpeed = 10;
 
     [Range(1, 7)]
-    public int DashCooldown = 2;
+    [SerializeField] private int dashCooldown = 2;
 
     private bool canDash;
     private int dashDistance;
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetDash()
     {
-        dashDistance = MaxDashDistance;
+        dashDistance = maxDashDistance;
         canDash = true;
     }
 	
@@ -46,34 +46,34 @@ public class PlayerMovement : MonoBehaviour
     {
         //Physics based movement for the player, Rigidbody.AddForce moves the player regardless of their rotation.
 
-        if (rb.velocity.magnitude > TopSpeed)
+        if (rb.velocity.magnitude > topSpeed)
         {
-            rb.velocity = rb.velocity.normalized * TopSpeed;
+            rb.velocity = rb.velocity.normalized * topSpeed;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            rb.AddForce(North * Acceleration);
+            rb.AddForce(North * acceleration);
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.AddForce(West * Acceleration);
+            rb.AddForce(West * acceleration);
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            rb.AddForce(South * Acceleration);
+            rb.AddForce(South * acceleration);
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.AddForce(East * Acceleration);
+            rb.AddForce(East * acceleration);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (rb.velocity.magnitude > MinDashSpeed && canDash)
+            if (rb.velocity.magnitude > minDashSpeed && canDash)
             {
                 //Debug.Log(rb.velocity.magnitude + " " + canDash);
                 StartCoroutine("StartDashCooldown");
@@ -99,15 +99,15 @@ public class PlayerMovement : MonoBehaviour
                 dashDistance = (int)hit.distance;
             }
         }
-        GameManager.Instance.cameraShaker.ShakeMe(30, 0.1f);
+        GameManager.Instance.CameraShaker.ShakeMe(30, 0.1f);
         rb.MovePosition(transform.position += dashDirection * dashDistance);
-        dashDistance = MaxDashDistance;
+        dashDistance = maxDashDistance;
     }
 
     IEnumerator StartDashCooldown()
     {
         canDash = false;
-        yield return new WaitForSeconds(DashCooldown);
+        yield return new WaitForSeconds(dashCooldown);
         canDash = true;
         yield break;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyProjectileColorManager : MonoBehaviour {
 
     //array to hold all enemy shots
-    GameObject[] AlleShots;
+    GameObject[] allEShots;
     //script to access
     private PlaylistHolder playlistHolder;
 
@@ -31,22 +31,16 @@ public class EnemyProjectileColorManager : MonoBehaviour {
     [SerializeField]
     [Range(.1f, 2.0f)]
     private float changeColorTime;
-    //color change is done
-    //[SerializeField]
-    //private bool isDone = true;
-    //timer
-    //[SerializeField]
-   // private float timer;
 
     // Use this for initialization
     void Start () {
         //declare PlaylistHolder script
         playlistHolder = GetComponent<PlaylistHolder>();
         //Fill the array of enemy projectiles with all items with eProjectile tag
-        AlleShots = GameObject.FindGameObjectsWithTag("eProjectile");
+        allEShots = GameObject.FindGameObjectsWithTag("eProjectile");
 
         //for each item in the AlleShots array
-        foreach (GameObject go in AlleShots)
+        foreach (GameObject go in allEShots)
         {
             //create an array of the renderers for each of those objects
             MeshRenderer[] renderers = go.GetComponentsInChildren<MeshRenderer>();
@@ -65,35 +59,26 @@ public class EnemyProjectileColorManager : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
 	void Update () {
-        //ColorChange();
-        AlleShots = GameObject.FindGameObjectsWithTag("eProjectile");
-        //make the timer count
-        //timer = Time.deltaTime;
+
+        allEShots = GameObject.FindGameObjectsWithTag("eProjectile");
+
         //access the samples from the music script and check to see if the sample number 
         //is equal to or greater than the set range and that the last color change is completed
-        if (playlistHolder._samples[sampleNumber] >= sampleRange)// && isDone == true)
+        if (playlistHolder._samples[sampleNumber] >= sampleRange)
         {
             //if so, add 1 to both current and next index
             currentIndex = (currentIndex + 1) % colors.Length;
             nextIndex = (currentIndex + 1) % colors.Length;
-            //set isdone to false
-            //isDone = false;
-            //call the function to change the color
-            //ColorChange();
         }
+
         ColorChange();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print("there are " + AlleShots.Length + " eProjectile tags in play");
-        }
     }
 
     void ColorChange()
     {
         //for each item in the AlleShots array
-        foreach (GameObject go in AlleShots)
+        foreach (GameObject go in allEShots)
         {
             //create an array of the renderers for each of those objects
             MeshRenderer[] renderers = go.GetComponentsInChildren<MeshRenderer>();
@@ -103,8 +88,7 @@ public class EnemyProjectileColorManager : MonoBehaviour {
             //get access to each material
             foreach (Material m in r.materials)
             {
-            //check to make sure it can use colors
-            //if (m.HasProperty("_Color"))
+
             //Lerp from currentIndex color to nextIndex Color in the specified time
             m.color = Color.Lerp(colors[currentIndex], colors[nextIndex], changeColorTime);
                     //set isDone to true
@@ -112,11 +96,5 @@ public class EnemyProjectileColorManager : MonoBehaviour {
                 }
             }
         }
-        /*if (timer >= changeColorTime && isDone == false)
-        {
-            //set is done to true
-            isDone = true;
-            timer = 0.0f;
-        }*/
     }
 }

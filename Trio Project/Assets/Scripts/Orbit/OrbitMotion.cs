@@ -6,11 +6,11 @@ using UnityEngine;
 public class OrbitMotion : MonoBehaviour {
 
     [Range(0f, 1f)]
-    public float OrbitProgress = 0f;
-    public float OrbitSpeed = 3f;
-    public bool OrbitActive = true;
-    public Transform ObjectToOrbit;
-    public Ellipse EllipsePath;
+    [SerializeField] private float OrbitProgress = 0f;
+    [SerializeField] private float OrbitSpeed = 3f;
+    [SerializeField] private bool OrbitActive = true;
+    [SerializeField] private Transform ObjectToOrbit;
+    [SerializeField] private Ellipse EllipsePath;
 
     Quaternion fixedRotation;
 

@@ -5,8 +5,8 @@
 [System.Serializable]
 public class Ellipse
 {
-    public float xAxis;
-    public float yAxis;
+    [SerializeField] private float xAxis;
+    [SerializeField] private float yAxis;
 
     public Ellipse (float xAxis, float yAxis)
     {
