@@ -2,8 +2,8 @@
 
 public class CameraController2 : MonoBehaviour {
 
-    [SerializeField] private float FollowAhead;
-    [SerializeField] private float Smoothing;
+    [SerializeField] private float FollowAhead = 5;
+    [SerializeField] private float Smoothing = 4;
     [SerializeField] private Vector3 TargetPosition;
 
     private GameObject focalPoint;

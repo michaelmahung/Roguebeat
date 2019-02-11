@@ -38,30 +38,20 @@ public class RoomSetter : MonoBehaviour {
     public SpawnEnemies[] MySpawners;
     [SerializeField] private Transform camPlacement;
     [SerializeField] private GameObject cam;
-    [SerializeField] private GameObject RoomLight;
 
     private CameraController2 camController;
-
-    [SerializeField] private Color CeilingColorFull = Color.green;
-    [SerializeField] private Color CeilingColorClear = Color.green;
+    private RoomLight myLight;
 
     public delegate void UpdateRoomDelegate();
     public static event UpdateRoomDelegate UpdatePlayerRoom;
 
     private void Awake()
     {
-
         MyDoor = GetComponentInChildren<BaseDoor>();
         MySpawners = GetComponentsInChildren<SpawnEnemies>();
-        if(RoomLight != null)
-        {
-            RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
-        }
-        //CeilingColorClear.a = 0.5f;
-        if (MyDoor != null)
-        {
-            MyDoor.MyRoom = this;
-        }
+        myLight = GetComponentInChildren<RoomLight>();
+
+        FindComponents();
     }
 
     void Start () {
@@ -89,10 +79,11 @@ public class RoomSetter : MonoBehaviour {
         {
             camController.SetFocalPoint(camPlacement.gameObject);
 
-            if (RoomLight != null)
+            if (myLight != null)
             {
-                RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorClear;
+                myLight.ToggleLight(true);
             }
+
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
             
@@ -104,9 +95,9 @@ public class RoomSetter : MonoBehaviour {
     {
         UpdatePlayerRoom();
         if(other.tag == "Player"){
-            if (RoomLight != null)
+            if (myLight != null)
             {
-                RoomLight.GetComponent<MeshRenderer>().material.color = CeilingColorFull;
+                myLight.ToggleLight(false);
             }
         }
     }
@@ -134,5 +125,23 @@ public class RoomSetter : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    void FindComponents()
+    {
+        if (camPlacement == null)
+        {
+            camPlacement = GameManager.Instance.PlayerObject.transform;
+        }
+
+        if (cam == null)
+        {
+            cam = GameObject.FindObjectOfType<CameraController2>().gameObject;
+        }
+
+        if (MyDoor != null)
+        {
+            MyDoor.MyRoom = this;
+        }
     }
 }

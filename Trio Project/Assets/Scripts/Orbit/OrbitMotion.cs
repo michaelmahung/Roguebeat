@@ -10,12 +10,17 @@ public class OrbitMotion : MonoBehaviour {
     [SerializeField] private float OrbitSpeed = 3f;
     [SerializeField] private bool OrbitActive = true;
     [SerializeField] private Transform ObjectToOrbit;
-    [SerializeField] private Ellipse EllipsePath;
+    [SerializeField] private Ellipse EllipsePath = new Ellipse(4, 4);
 
     Quaternion fixedRotation;
 
     private void Start()
     {
+        if (ObjectToOrbit == null)
+        {
+            ObjectToOrbit = GetComponentInChildren<LockRotation>().gameObject.transform;
+        }
+
         fixedRotation = transform.rotation;
 
         if (ObjectToOrbit == null)

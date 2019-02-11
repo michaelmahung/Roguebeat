@@ -19,7 +19,6 @@ public class LevelSpawning : MonoBehaviour {
     Vector3
         North = new Vector3(0, 0, 1),
         East = new Vector3(1, 0, 0),
-        South = new Vector3(0, 0, -1),
         West = new Vector3(-1, 0, 0),
         PreviousSpawnLocation,
         PreviousMoveDirection,
@@ -27,10 +26,16 @@ public class LevelSpawning : MonoBehaviour {
 
     void Start () {
 
-        TestLevel = new LevelFactory(10, 15, true, true, true);
+        TestLevel = new LevelFactory(4, 15, true, true, false);
         roomFactory = GetComponent<RoomFactory>();
 
-        SetRoomLocation(TestLevel);
+        /*Spawning should happen in the following order
+         * Find an open location to spawn a room in
+         * Figure out which room type to spawn
+         * Spawn the room
+         */
+
+        FindNextRoomLocation(TestLevel);
         StartCoroutine(StartSpawning());
     }
 
@@ -40,7 +45,7 @@ public class LevelSpawning : MonoBehaviour {
         yield return new WaitForSeconds(0.10f);
         if (!TestLevel.EndRoomSpawned)
         {
-            SetRoomLocation(TestLevel);
+            FindNextRoomLocation(TestLevel);
             SpawnRoom(currentLocation, TestLevel);
             StartCoroutine(StartSpawning());
         }else
@@ -52,7 +57,7 @@ public class LevelSpawning : MonoBehaviour {
     //If we are just starting off, we want to pick a random location in the first row and spawn a starting room.
     //This is important because every room thereafter HAS to be linked to this room in some way.
     //If the starting room has already been spawned, start incrementing our location by 1 and moving.
-    void SetRoomLocation(LevelFactory level)
+    void FindNextRoomLocation(LevelFactory level)
     {
         if (!level.StartRoomSpawned)
         {
@@ -108,7 +113,6 @@ public class LevelSpawning : MonoBehaviour {
             //Create a new room at our location, name it, and pass it into our room dictionary.
             //Instantiate the room type we generated, and name it accordingly.
             RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn(level)), location, "Room" + level.CurrentRoomCount);
-            TestLevel.AddToSpawnedRooms(location, room);
             GameObject go = Instantiate(room.RoomType, location * level.RoomOffset, Quaternion.identity, transform);
             if (level.EndRoomSpawned)
             {
@@ -116,6 +120,7 @@ public class LevelSpawning : MonoBehaviour {
                 return;
             }
             go.name = room.RoomName;
+            TestLevel.AddToSpawnedRooms(location, room);
             return;
         }
         else
@@ -158,15 +163,19 @@ public class LevelSpawning : MonoBehaviour {
 
             //Otherwise, if we can double back and there is a room in our way
             currentLocation = PreviousSpawnLocation;
-            RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn(level)), location, "Room" + level.CurrentRoomCount);
-            GameObject dBgo = Instantiate(room.RoomType, ((location + North) * level.RoomOffset), Quaternion.identity, transform);
+            Vector3 direction = CalculateMoveDirection(level);
+            RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn(level)), location + direction, "Room" + level.CurrentRoomCount);
+            level.UpdateRoom(location + direction, room);
+            GameObject dBgo = Instantiate(room.RoomType, ((location + direction) * level.RoomOffset), Quaternion.identity, transform);
+
             if (level.EndRoomSpawned)
             {
                 dBgo.name = "End Room";
+            } else
+            {
+                dBgo.name = room.RoomName;
             }
 
-
-            level.UpdateRoom(location, room);
             return;
         }
     }
@@ -181,7 +190,9 @@ public class LevelSpawning : MonoBehaviour {
         bool eastSpawned = TestLevel.IsRoomAlreadySpawned(currentLocation + East);
         bool westSpawned = TestLevel.IsRoomAlreadySpawned(currentLocation + West);
         bool northSpawned = TestLevel.IsRoomAlreadySpawned(currentLocation + North);
-        bool southSpawned = TestLevel.IsRoomAlreadySpawned(currentLocation + South);
+        
+        //TODO - rework direction picking and spawning
+         
         //Debug.Log(currentLocation + " " + level.MaxZ + " " + level.MaxX);
 
         if (level.GridBasedSpawns) //If we only want to spawn inside our grid...
@@ -288,94 +299,4 @@ public class LevelSpawning : MonoBehaviour {
         //If all else fails, move North
         return North;
     }
-
-    /*
-     * 
-     * else //Otherwise we'll go off of a MaxRoomCount
-        {
-
-            //If we are as far east as we can go and theres a room spawned to the west of us, move north.
-            if (currentLocation.x == level.MaxX && westSpawned && currentLocation.z != level.MaxZ)
-            {
-                return North;
-            }
-            //If we are as far west as we can go and theres a room spawned to the east of us, move north.
-            else if (currentLocation.x == level.MinX && eastSpawned && currentLocation.z != level.MaxZ)
-            {
-                return North;
-            }
-            //If im not at my X or Z bounds, move east or west.
-
-
-            //Need to change this, should check if at Max/Min X - and roll for East/North or West/North accordingly.
-            //Weight will by 70% chance East/West, 30% North.
-            //**Actually just make a bool that will allow for unconstrained spawns and go off of a total room count.
-
-            else if (currentLocation.z != level.MaxZ)
-            {
-                int rand = Random.Range(0, 2);
-
-                if (rand == 0 && !eastSpawned)
-                {
-                    return East;
-                }
-                else if (rand == 1 && !westSpawned)
-                {
-                    return West;
-                }
-            }
-            else if (currentLocation.z == level.MaxZ)
-            {
-                int rand2 = Random.Range(0, 7);
-
-                if (rand2 >= 0 && rand2 <= 2 && !eastSpawned && currentLocation.x != level.MaxX)
-                {
-                    return East;
-                }
-                else if (rand2 >= 3 && rand2 <= 5 && !westSpawned && currentLocation.x != level.MinX)
-                {
-                    return West;
-                }
-                else
-                {
-                    canSpawnEnd = true;
-                }
-            }
-        }
-                //Need to change this, should check if at Max/Min X - and roll for East/North or West/North accordingly.
-        //Weight will by 70% chance East/West, 30% North.
-
-        else if (currentLocation.z != level.MaxZ)
-        {
-            int rand = Random.Range(0, 2);
-
-            if (rand == 0 && !eastSpawned)
-            {
-                return East;
-            }
-            else if (rand == 1 && !westSpawned)
-            {
-                return West;
-            }
-        }
-        else if (currentLocation.z == level.MaxZ)
-        {
-            int rand2 = Random.Range(0, 7);
-
-            if (rand2 >= 0 && rand2 <= 2 && !eastSpawned && currentLocation.x != level.MaxX)
-            {
-                return East;
-            }
-            else if (rand2 >= 3 && rand2 <= 5 && !westSpawned && currentLocation.x != level.MinX)
-            {
-                return West;
-            }
-            else
-            {
-                canSpawnEnd = true;
-            }
-        }
-     * 
-     * 
-     * */
 }

@@ -8,7 +8,7 @@ public class EllipseRenderer : MonoBehaviour {
     LineRenderer lr;
     [Range(3, 36)]
     [SerializeField] private int segments = 24;
-    [SerializeField] private Ellipse ellipse;
+    [SerializeField] private Ellipse ellipse = new Ellipse(4, 4);
     Quaternion fixedRotation;
 
     public void Awake()

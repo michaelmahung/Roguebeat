@@ -12,12 +12,12 @@ public class EnemyProjectileColorManager : MonoBehaviour {
     //what beat number to check between 1 and 512
     [SerializeField]
     [Range(1, 512)]
-    private int sampleNumber;
+    private int sampleNumber = 255;
 
     //what decibal range to check for
     [SerializeField]
     [Range(.00000000000000001f, .4f)]
-    private float sampleRange;
+    private float sampleRange = .2f;
 
     //array of what colors to transition through
     public Color[] colors;
@@ -30,7 +30,7 @@ public class EnemyProjectileColorManager : MonoBehaviour {
     //how fast should the color change happen
     [SerializeField]
     [Range(.1f, 2.0f)]
-    private float changeColorTime;
+    private float changeColorTime = 1;
 
     // Use this for initialization
     void Start () {

@@ -9,14 +9,19 @@ public class ScreenFlash : MonoBehaviour {
     [SerializeField] private Color32 FlashColor;
 
     [Range(0, 255f)]
-    [SerializeField] private byte FlashIntensity;
+    [SerializeField] private byte FlashIntensity = 10;
     [Range(1, 20)]
-    [SerializeField] private byte FlashReductionTime;
+    [SerializeField] private byte FlashReductionTime = 5;
     private byte currentIntensity;
 
     void Start ()
     {
         PlayerHealth.PlayerDamaged += SetFlashIntensity;
+
+        if (FlashImage == null)
+        {
+            FlashImage = Resources.Load<Image>("Icons/HurtImage");
+        }
 	}
 	
 	void Update () {

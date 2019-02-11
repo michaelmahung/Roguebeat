@@ -16,6 +16,7 @@ public class WeaponBuyUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        FindComponents();
         PlayerHealth.PlayerKilled += ToggleWeaponBuyUI;
         Player = GameManager.Instance.PlayerObject;
 		WeaponScreenActive = false;
@@ -24,20 +25,6 @@ public class WeaponBuyUI : MonoBehaviour {
         selectedWeapon = PeaShooter.Instance;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	//	print(Time.timeScale);
-	if(Input.GetKeyDown(KeyCode.F) && WeaponScreenActive == true){
-		ToggleWeaponBuyUI();
-	}	
-	}
-
-	void OnTriggerEnter(Collider other){
-if(other.tag == "Player"){
-
-            ToggleWeaponBuyUI();
-}
-	}
 	public void ToggleWeaponBuyUI()
 	{
 		if(WeaponScreenActive == false)
@@ -108,37 +95,16 @@ if(other.tag == "Player"){
         WeaponCostText.text = string.Format("{0} costs {1} points", selectedWeapon.name, selectedWeapon.WeaponCost);
     }
 
-	/*public void BuyShotgun(){
-		if(GameManager.Instance.CurrentScore > 50){
-            Shotgun.Instance.SetWeaponActive(true);
-            PurchaseWeapons();
-            print("Bought Shotgun!");
-		}
-		else
-		{
-			print("Costs 50 points, not enough to buy shotgun!");
-		}
-	}
+    void FindComponents()
+    {
+        if (PurchaseUI == null)
+        {
+            PurchaseUI = GameObject.Find("Upgrades UI");
+        }
 
-	public void BuyLaser(){
-		if(GameManager.Instance.CurrentScore > 100){
-            LaserRifle.Instance.SetWeaponActive(true);
-            PurchaseWeapons();
-            print("Bought Laser!");
-		}
-		else{
-			print ("Costs 100 points, not enough to buy laser!");
-		}
-	}
-	public void BuyFlamethrower(){
-		if(GameManager.Instance.CurrentScore > 250){
-            Flamethrower.Instance.SetWeaponActive(true);
-            PurchaseWeapons();
-		print("Bought Flamethrower!");
-		}
-		else
-		{
-		print("Costs 250 points, not enough to buy flamethrower!");
-		}
-	}*/
+        if (WeaponCostText == null)
+        {
+            WeaponCostText = GameObject.Find("Weapon Cost Text").GetComponent<Text>();
+        }
+    }
 }

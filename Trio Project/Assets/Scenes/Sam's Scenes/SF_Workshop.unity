@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 82898528}
   - component: {fileID: 82898527}
   - component: {fileID: 82898526}
+  - component: {fileID: 82898525}
   m_Layer: 0
   m_Name: Room1
   m_TagString: Untagged
@@ -424,6 +425,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &82898525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82898524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!64 &82898526
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -486,12 +500,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 82898524}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.04921, y: 31.9, z: -87.102196}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.3000107, y: 2.5638103, z: 48.530006}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 0
+  m_Father: {fileID: 1258423768}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &99986321 stripped
 Transform:
@@ -675,13 +689,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -111.57921, y: -26.83619, z: 87.4022}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 82898529}
-  - {fileID: 742389963}
-  - {fileID: 1987145504}
-  - {fileID: 2016690603}
-  - {fileID: 1464578551}
-  - {fileID: 1951450218}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72801,6 +72809,7 @@ GameObject:
   - component: {fileID: 742389961}
   - component: {fileID: 742389960}
   - component: {fileID: 742389964}
+  - component: {fileID: 742389965}
   m_Layer: 0
   m_Name: Room2
   m_TagString: RoomLights
@@ -72870,12 +72879,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 742389959}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.79921, y: 31.9, z: -87.102196}
-  m_LocalScale: {x: 4.75, y: 1, z: 5}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.30000305, y: 2.5638103, z: -0.22000128}
+  m_LocalScale: {x: 4.750001, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 1
+  m_Father: {fileID: 1258423768}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &742389964
 BoxCollider:
@@ -72889,6 +72898,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20954132, y: 6.786763, z: 10}
   m_Center: {x: -5.14941, y: -3.3933816, z: 0}
+--- !u!114 &742389965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742389959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &756122915
 Prefab:
   m_ObjectHideFlags: 0
@@ -74785,6 +74807,7 @@ GameObject:
   - component: {fileID: 1464578549}
   - component: {fileID: 1464578548}
   - component: {fileID: 1464578547}
+  - component: {fileID: 1464578552}
   m_Layer: 0
   m_Name: Room5
   m_TagString: RoomLights
@@ -74866,13 +74889,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1464578546}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 158.04921, y: 31.9, z: -37.1022}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.22000122, y: 2.5638103, z: -0.29999924}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 4
+  m_Father: {fileID: 811885683}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1464578552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1464578546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1474475083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1675953170573646, guid: 92d13d8050912e94499a3c791f2e25eb,
@@ -76139,6 +76175,7 @@ GameObject:
   - component: {fileID: 1951450216}
   - component: {fileID: 1951450215}
   - component: {fileID: 1951450214}
+  - component: {fileID: 1951450219}
   m_Layer: 0
   m_Name: Room6
   m_TagString: RoomLights
@@ -76220,13 +76257,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1951450213}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 158.04921, y: 31.9, z: 12.897804}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.3000031, y: 2.5638103, z: 0.22000119}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 5
+  m_Father: {fileID: 812085937}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1951450219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1951450213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1987145499
 GameObject:
   m_ObjectHideFlags: 0
@@ -76239,6 +76289,7 @@ GameObject:
   - component: {fileID: 1987145502}
   - component: {fileID: 1987145501}
   - component: {fileID: 1987145500}
+  - component: {fileID: 1987145505}
   m_Layer: 0
   m_Name: Room3
   m_TagString: RoomLights
@@ -76320,13 +76371,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987145499}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 109.29921, y: 31.9, z: -87.102196}
-  m_LocalScale: {x: 4.75, y: 1, z: 5}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.30000305, y: 2.5638103, z: -0.22000128}
+  m_LocalScale: {x: 4.750001, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 2
+  m_Father: {fileID: 590645579}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987145505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1987145499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &2012839040
 Prefab:
   m_ObjectHideFlags: 0
@@ -76403,6 +76467,7 @@ GameObject:
   - component: {fileID: 2016690601}
   - component: {fileID: 2016690600}
   - component: {fileID: 2016690599}
+  - component: {fileID: 2016690604}
   m_Layer: 0
   m_Name: Room4
   m_TagString: RoomLights
@@ -76484,13 +76549,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2016690598}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 158.04921, y: 31.9, z: -87.102196}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.22000122, y: 2.5638103, z: -0.30000305}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
-  m_Father: {fileID: 195390154}
-  m_RootOrder: 3
+  m_Father: {fileID: 675993593}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2016690604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016690598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &2017324952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836368666156976, guid: f27f56833e14e734d9d13381f89f7c7f,

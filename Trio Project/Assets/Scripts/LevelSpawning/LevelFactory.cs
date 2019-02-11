@@ -77,6 +77,11 @@ public class LevelFactory
     //If we need to go back and replace a room that has been previously spawned, we will use this function
     public bool UpdateRoom(Vector3 location, RoomInformation room)
     {
+        if (IsRoomAlreadySpawned(location))
+        {
+            DeleteRoom(location);
+        }
+
         try
         {
             SpawnedRooms.Remove(location);

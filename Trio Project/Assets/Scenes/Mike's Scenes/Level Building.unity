@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 60716896}
   - component: {fileID: 60716895}
   - component: {fileID: 60716894}
+  - component: {fileID: 60716898}
   m_Layer: 11
   m_Name: RoomLight (6)
   m_TagString: RoomLights
@@ -405,6 +406,19 @@ Transform:
   m_Father: {fileID: 439188353}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60716898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60716893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &74012274
 Prefab:
   m_ObjectHideFlags: 0
@@ -1428,6 +1442,7 @@ GameObject:
   - component: {fileID: 407663607}
   - component: {fileID: 407663606}
   - component: {fileID: 407663605}
+  - component: {fileID: 407663609}
   m_Layer: 11
   m_Name: RoomLight
   m_TagString: RoomLights
@@ -1504,6 +1519,19 @@ Transform:
   m_Father: {fileID: 1618172871}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407663609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 407663604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &416595636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4995327176818844, guid: b129c48b8b8716943bcf605f4e7b74a5,
@@ -1520,6 +1548,7 @@ GameObject:
   - component: {fileID: 431967748}
   - component: {fileID: 431967747}
   - component: {fileID: 431967746}
+  - component: {fileID: 431967750}
   m_Layer: 11
   m_Name: RoomLight (5)
   m_TagString: RoomLights
@@ -1596,6 +1625,19 @@ Transform:
   m_Father: {fileID: 1987288425}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &431967750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431967745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &439188353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4345991943673430, guid: 3420c6a862df6654488850e907ae9998,
@@ -3094,6 +3136,7 @@ GameObject:
   - component: {fileID: 954527466}
   - component: {fileID: 954527465}
   - component: {fileID: 954527464}
+  - component: {fileID: 954527468}
   m_Layer: 11
   m_Name: RoomLight (4)
   m_TagString: RoomLights
@@ -3170,6 +3213,19 @@ Transform:
   m_Father: {fileID: 58976895}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &954527468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 954527463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &961567229
 Prefab:
   m_ObjectHideFlags: 0
@@ -5306,6 +5362,7 @@ GameObject:
   - component: {fileID: 1564756309}
   - component: {fileID: 1564756308}
   - component: {fileID: 1564756307}
+  - component: {fileID: 1564756311}
   m_Layer: 11
   m_Name: RoomLight
   m_TagString: RoomLights
@@ -5382,6 +5439,19 @@ Transform:
   m_Father: {fileID: 322882013}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1564756311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564756306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1577836074
 Prefab:
   m_ObjectHideFlags: 0
@@ -6319,6 +6389,7 @@ GameObject:
   - component: {fileID: 1794922238}
   - component: {fileID: 1794922237}
   - component: {fileID: 1794922236}
+  - component: {fileID: 1794922240}
   m_Layer: 11
   m_Name: RoomLight
   m_TagString: RoomLights
@@ -6395,6 +6466,19 @@ Transform:
   m_Father: {fileID: 818047680}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794922240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794922235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1817970307
 Prefab:
   m_ObjectHideFlags: 0
@@ -7061,6 +7145,7 @@ GameObject:
   - component: {fileID: 2045609640}
   - component: {fileID: 2045609639}
   - component: {fileID: 2045609638}
+  - component: {fileID: 2045609642}
   m_Layer: 11
   m_Name: RoomLight
   m_TagString: RoomLights
@@ -7137,6 +7222,19 @@ Transform:
   m_Father: {fileID: 1651089778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2045609642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2045609637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ceilingColorFull: {r: 0, g: 1, b: 0, a: 1}
+  ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &2079595429
 Prefab:
   m_ObjectHideFlags: 0
