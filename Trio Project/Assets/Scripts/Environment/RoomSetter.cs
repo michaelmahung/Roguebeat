@@ -60,7 +60,7 @@ public class RoomSetter : MonoBehaviour {
             RoomName = gameObject.name;
             camController = FindObjectOfType<CameraController2>();
         }
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -93,7 +93,11 @@ public class RoomSetter : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        UpdatePlayerRoom();
+        if (UpdatePlayerRoom != null)
+        {
+            UpdatePlayerRoom();
+        }
+
         if(other.tag == "Player"){
             if (myLight != null)
             {
@@ -105,7 +109,11 @@ public class RoomSetter : MonoBehaviour {
     public void UpdatePlayer()
     {
         GameManager.Instance.PlayerRoom = RoomName;
-        UpdatePlayerRoom();
+
+        if (UpdatePlayerRoom != null)
+        {
+            UpdatePlayerRoom();
+        }
     }
 
     public void AddEnemy()
