@@ -174,6 +174,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         head.attacking = false;
         head.changeColor = false;
         head.trueOnce = false;
+        head.p3Start = true;
 
         //Left turret info
         lTurret.health = lTurret.maxHealth;
@@ -185,6 +186,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         lTurret.dead = false;
         lTurret.attacking = false;
         lTurret.changeColor = false;
+        lTurret.p3Start = true;
         lTurret.transform.tag = "Enemy";
 
         //Right turret info
@@ -197,6 +199,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         rTurret.dead = false;
         rTurret.attacking = false;
         rTurret.changeColor = false;
+        rTurret.p3Start = true;
         rTurret.transform.tag = "Enemy";
 
         //Main Controller info

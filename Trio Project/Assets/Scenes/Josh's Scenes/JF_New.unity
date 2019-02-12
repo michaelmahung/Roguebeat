@@ -4653,19 +4653,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 951044449}
-    - target: {fileID: 4505370120557032, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.2500005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505370120557032, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.2500005
-      objectReference: {fileID: 0}
-    - target: {fileID: 114119397570241734, guid: 6dfee752de0c88b4c979fc2acbb5a057,
-        type: 2}
-      propertyPath: attackPhase
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
   m_IsPrefabAsset: 0
@@ -4998,23 +4985,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3420c6a862df6654488850e907ae9998, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1595702789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1579841544402824, guid: 6dfee752de0c88b4c979fc2acbb5a057,
-    type: 2}
-  m_PrefabInternal: {fileID: 1525793234}
---- !u!65 &1595702793
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1595702789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1602165429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4959347430850526, guid: 634f0f55c75707f4bbf16adf0553d536,

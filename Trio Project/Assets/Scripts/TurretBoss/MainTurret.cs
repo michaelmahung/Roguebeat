@@ -31,6 +31,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public bool p1fire;
     public bool p2fire;
     public bool p3fire;
+    public bool p3Start = true;
     public bool p4fire;
     public bool burnFire;
 
@@ -96,7 +97,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
                     attacking = false;
                     trueOnce = false;
                 }
-                atkTime = p3Time;
+                //atkTime = p3Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -196,10 +197,20 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
 
     public IEnumerator PhaseThree()
     {
-        yield return new WaitForSeconds(atkTime);
+        if(p3Start == true)
+        {
+            atkTime = p3Time / 3;
+            yield return new WaitForSeconds(atkTime);
+        }
+        if (p3Start == false)
+        {
+            atkTime = p3Time;
+            yield return new WaitForSeconds(atkTime);
+        }
         p3fire = false;
         GameObject fire;
         fire = Instantiate(shot3, spawn.transform.position, spawn.transform.rotation) as GameObject;
+        p3Start = false;
         if (p3fire == false)
         {
             p3fire = true;

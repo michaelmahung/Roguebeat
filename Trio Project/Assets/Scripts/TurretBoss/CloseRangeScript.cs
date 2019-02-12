@@ -35,6 +35,7 @@ public class CloseRangeScript : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             head.tooClose = false;
+            head.p3Start = true;
             //head.attacking = false;
         }
     }

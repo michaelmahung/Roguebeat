@@ -941,6 +941,10 @@ MonoBehaviour:
   turnSpeed: 1.75
   mngr: {fileID: 0}
   killpoints: 75
+  maxTimer: 1
+  Timer: 0
+  speedPlus: 2
+  speedMax: 30
 --- !u!135 &135585708806167282
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -21,7 +21,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public float p1Time;
     public float p2Time;
     public float p3Time;
-
+    
     public GameObject spawn;
     public GameObject Tbody;
     public GameObject cap;
@@ -30,6 +30,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public bool p1fire;
     public bool p2fire;
     public bool p3fire;
+    public bool p3Start = true;
 
     public bool attacking;
 
@@ -75,7 +76,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
                 if (controller.attackPhase == 3)
                 {
-                atkTime = p3Time;
+                //atkTime = p3Time;
                 if (attacking == false)
                 {
                     attacking = true;
@@ -164,7 +165,16 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     public IEnumerator PhaseThree()
     {
-        yield return new WaitForSeconds(atkTime);
+        if(p3Start == true)
+        {
+            atkTime = p3Time / 3;
+            yield return new WaitForSeconds(atkTime);
+        }
+        if (p3Start == false)
+        {
+            atkTime = p3Time;
+            yield return new WaitForSeconds(atkTime);
+        }
         p3fire = false;
         GameObject fire;
         fire = Instantiate(shot3, spawn.transform.position, spawn.transform.rotation) as GameObject;

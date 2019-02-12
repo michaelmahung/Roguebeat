@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 4254714280582556}
   - component: {fileID: 114119397570241734}
   - component: {fileID: 54597662800921752}
+  - component: {fileID: 65081296762798532}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -810,9 +811,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162805171845608}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -97.70483, y: 0, z: -4.0903587}
-  m_LocalScale: {x: 1.25, y: 1, z: 1.25}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -4.090359, y: -2, z: 0.20482683}
+  m_LocalScale: {x: 1.2500005, y: 1, z: 1.2500005}
   m_Children:
   - {fileID: 4254714280582556}
   - {fileID: 4444992779301886}
@@ -1965,6 +1966,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.39464068, y: 212.52281, z: 0.39610934}
   m_Center: {x: -0.005198095, y: 105.761406, z: 0.00879282}
+--- !u!65 &65081296762798532
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579841544402824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65090093549994722
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2244,7 +2257,7 @@ MonoBehaviour:
   follow: 0
   callDestroyOnce: 0
   phase: 
-  attackPhase: 1
+  attackPhase: 3
   shieldControl: {fileID: 114152312405044742}
   rTurret: {fileID: 114632225790878610}
   lTurret: {fileID: 114968200582575500}
@@ -2370,7 +2383,7 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 3.5
+  p3Time: 2.5
   spawn: {fileID: 1464490263490192}
   Tbody: {fileID: 1314995327817124}
   cap: {fileID: 1925659168260354}
@@ -2378,6 +2391,7 @@ MonoBehaviour:
   p1fire: 0
   p2fire: 0
   p3fire: 0
+  p3Start: 1
   attacking: 0
   changeColor: 0
 --- !u!114 &114642488002389986
@@ -2425,13 +2439,14 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 3.5
+  p3Time: 2.5
   burnTime: 0.025
   p4Time: 0.075
   spawn: {fileID: 1777777729260302}
   p1fire: 0
   p2fire: 0
   p3fire: 0
+  p3Start: 1
   p4fire: 0
   burnFire: 0
   attacking: 0
@@ -2481,7 +2496,7 @@ MonoBehaviour:
   atkTime: 0
   p1Time: 1
   p2Time: 0.75
-  p3Time: 3.5
+  p3Time: 2.5
   spawn: {fileID: 1422482427480392}
   Tbody: {fileID: 1195556339205138}
   cap: {fileID: 1772433918004782}
@@ -2489,6 +2504,7 @@ MonoBehaviour:
   p1fire: 0
   p2fire: 0
   p3fire: 0
+  p3Start: 1
   attacking: 0
   changeColor: 0
 --- !u!135 &135307537101817666
