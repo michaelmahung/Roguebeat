@@ -26,7 +26,10 @@ public class LevelSpawning : MonoBehaviour {
 
     void Start () {
 
-        TestLevel = new LevelFactory(4, 15, true, true, false);
+        //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
+        //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
+        TestLevel = new LevelFactory(5, 5, true, false, false);
+
         roomFactory = GetComponent<RoomFactory>();
 
         /*Spawning should happen in the following order
@@ -66,10 +69,34 @@ public class LevelSpawning : MonoBehaviour {
             return;
         }
 
-        PreviousSpawnLocation = currentLocation;
+        //If doubling back is NOT allowed, calculate a move direction and check if there is a room in that direction
+        //While there isn't an empty room in our requested direction, keep trying directions.
 
-        PreviousMoveDirection = CalculateMoveDirection(level);
-        currentLocation += PreviousMoveDirection;
+        if (!level.CanDoubleBack)
+        {
+            CurrentMoveDirection = CalculateMoveDirection(level);
+
+            while(level.IsRoomAlreadySpawned(currentLocation + CurrentMoveDirection))
+            {
+                CurrentMoveDirection = CalculateMoveDirection(level);
+            }
+
+            PreviousSpawnLocation = currentLocation;
+        }
+        if (level.CanDoubleBack)
+        {
+            currentLocation = PreviousSpawnLocation;
+            CurrentMoveDirection = CalculateMoveDirection(level);
+
+            while(level.IsRoomAlreadySpawned(currentLocation + CurrentMoveDirection))
+            {
+                CurrentMoveDirection = CalculateMoveDirection(level);
+            }
+
+            PreviousSpawnLocation = currentLocation;
+        }
+
+        currentLocation += CurrentMoveDirection;
     }
 
     void SpawnLevelRooms()
