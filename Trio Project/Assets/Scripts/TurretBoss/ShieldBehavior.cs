@@ -11,6 +11,7 @@ public class ShieldBehavior : MonoBehaviour, IDamageable<float> {
     public bool changeColor;
     public int health;
     public Transform spawnPoint;
+    public MainController controller;
     
     //public ShieldController sC;
     //public GameObject shieldObject;
@@ -19,6 +20,7 @@ public class ShieldBehavior : MonoBehaviour, IDamageable<float> {
 void Start () {
         //health = 10;
         shieldDown = true;
+        
 	}
 	
 	// Update is called once per frame
@@ -52,7 +54,14 @@ void Start () {
                 m.enabled = true;
                 spawnPoint.transform.localScale = Vector3.Lerp(spawnPoint.transform.localScale, spawnPoint.transform.localScale * 2, Time.deltaTime * 1.35f);
                 shieldDown = false;
+            if (controller.Difficulty >= 3)
+            {
+                health = 15;
+            }
+            else
+            {
                 health = 10;
+            }
                 Invoke("SwitchGen", .5f);
                 
             }

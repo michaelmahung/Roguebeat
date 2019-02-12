@@ -97,7 +97,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
             {
                 disabled = true;
             }
-        if(controller.attackPhase == 3 && disabled == true)
+        if(controller.attackPhase == controller.maxAttackPhase - 1 && disabled == true)
         {
             dead = true;
             transform.gameObject.tag = "Untagged";

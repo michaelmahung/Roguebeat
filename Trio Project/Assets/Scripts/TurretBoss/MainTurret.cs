@@ -12,7 +12,8 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public GameObject mBody;
     public GameObject cap;
 
-    public int health = 30;
+    public int health;
+    public int map;//Max Attack Phase
 
     public GameObject shot1;
     public GameObject shot2;
@@ -46,6 +47,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
 	void Start () {
 
         controller = body.GetComponent<MainController>();
+        
 
 	}
 	
@@ -154,7 +156,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
             //cap.GetComponent<MeshRenderer>().material.color = Color.white;
             Invoke("ChangeBack", .1f);
         }
-
+        map = controller.maxAttackPhase;
     }
 
     public IEnumerator PhaseOne()
@@ -202,9 +204,14 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
             atkTime = p3Time / 3;
             yield return new WaitForSeconds(atkTime);
         }
-        if (p3Start == false)
+        if (p3Start == false && map == 4)
         {
             atkTime = p3Time;
+            yield return new WaitForSeconds(atkTime);
+        }
+        if(p3Start == false && map < 4)
+        {
+            atkTime = p3Time / 2;
             yield return new WaitForSeconds(atkTime);
         }
         p3fire = false;

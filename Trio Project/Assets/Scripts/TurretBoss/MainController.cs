@@ -7,12 +7,14 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public string MyRoomName { get; set; }
     public RoomSetter MyRoom { get; set; }
     public Transform player;
+    public int Difficulty;
     public float speed;
     public int speedMultiplyer;
     public bool snapCalled;
     public bool follow;
     public bool callDestroyOnce;
     public string phase;
+    public int maxAttackPhase;
     public int attackPhase = 1;
     public ShieldController shieldControl;
     public SideTurret rTurret;
@@ -25,6 +27,19 @@ public class MainController : MonoBehaviour, ITrackRooms {
 	void Start () {
         phase = "Idle";
        // Invoke("ShieldsUp", 1);
+       if (Difficulty <= 1)
+        {
+            maxAttackPhase = 2;
+        }
+       if(Difficulty == 2)
+        {
+            maxAttackPhase = 3;
+        }
+       if(Difficulty >= 3)
+        {
+            maxAttackPhase = 4;
+        }
+        head.health = 100 * (maxAttackPhase - 1);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
 	}
@@ -71,16 +86,25 @@ public class MainController : MonoBehaviour, ITrackRooms {
             cenCap.GetComponent<Renderer>().material.color = Color.red;
         }
 
-        if(attackPhase != 4 && (phase != "Attack" || head.tooClose == false))
+        if(attackPhase != 4 && ((phase != "Attack" || head.tooClose == false) || head.changeColor == false))
         {
             cenBody.GetComponent<Renderer>().material.color = Color.blue;
             cenCap.GetComponent<Renderer>().material.color = Color.blue;
         }
-
-        if((head.tooClose == true && head.changeColor == true) || (attackPhase == 4 && head.changeColor == true))
+        if(phase == "Attack" && attackPhase == maxAttackPhase && head.changeColor == true)
         {
-            cenBody.GetComponent<Renderer>().material.color = Color.white;
-            cenCap.GetComponent<Renderer>().material.color = Color.white;
+            cenBody.GetComponent<Renderer>().material.color = Color.red;
+            cenCap.GetComponent<Renderer>().material.color = Color.red;
+        }
+
+        if((head.tooClose == true && head.changeColor == true) || (attackPhase == maxAttackPhase && head.changeColor == true))
+        {
+
+            if (maxAttackPhase == 4)
+            {
+                cenBody.GetComponent<Renderer>().material.color = Color.white;
+                cenCap.GetComponent<Renderer>().material.color = Color.white;
+            }
         }
 
         /*if(phase == "Attack" && head.tooClose == true)
@@ -150,16 +174,29 @@ public class MainController : MonoBehaviour, ITrackRooms {
     {
         //Debug.Log("Starting Shields Up Phase");
         phase = "ShieldsUp";
-        shieldControl.GetComponent<ShieldController>().raiseShields = true;
+        if (maxAttackPhase > 2)
+        {
+            shieldControl.GetComponent<ShieldController>().raiseShields = true;
+        }
         if (rTurret.disabled == false && lTurret.disabled == false)
         {
             Invoke("Attack", 2);
         }
-        if(rTurret.disabled == true && lTurret.disabled == true && attackPhase <= 2)
+        if (maxAttackPhase == 4)
         {
-            Invoke("RepairSides", 2);
+            if (rTurret.disabled == true && lTurret.disabled == true && attackPhase <= 2)
+            {
+                Invoke("RepairSides", 2);
+            }
         }
-        if(attackPhase == 3 && rTurret.dead == true && lTurret.dead == true)
+        if(maxAttackPhase == 3)
+        {
+            if (rTurret.disabled == true && lTurret.disabled == true && attackPhase <= 1)
+            {
+                Invoke("RepairSides", 2);
+            }
+        }
+        if(attackPhase == maxAttackPhase - 1 && rTurret.dead == true && lTurret.dead == true)
         {
             attackPhase++;
             Invoke("Attack", 1);
@@ -167,9 +204,9 @@ public class MainController : MonoBehaviour, ITrackRooms {
     }
     void SetValues()
     {
-       // Debug.Log("SetValues");
+        // Debug.Log("SetValues");
         //main turret info
-        head.health = 300;
+        head.health = 100 * (maxAttackPhase - 1);
         head.tooClose = false;
         head.attacking = false;
         head.changeColor = false;
