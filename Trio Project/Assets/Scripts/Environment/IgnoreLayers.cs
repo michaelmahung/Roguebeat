@@ -10,6 +10,7 @@ public class IgnoreLayers : MonoBehaviour {
     {
         Physics.IgnoreLayerCollision(8, 10, true);
         Physics.IgnoreLayerCollision(0, 11, true);
+        Physics.IgnoreLayerCollision(0, 13, true);
 	}
 
     /* Layer 0 = Default
@@ -25,5 +26,6 @@ public class IgnoreLayers : MonoBehaviour {
      * Layer 10 = Player
      * Layer 11 = FogLayer
      * Layer 12 = Shield
+     * Layer 13 = Spawn Point    
      * */
 }

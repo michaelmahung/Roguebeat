@@ -33,6 +33,12 @@ public class RoomManager : MonoBehaviour {
 
     public void AddToDoor(RoomSetter room)
     {
-        room.MyDoor.AddToDoor();
+        if (room.MyDoors != null)
+        {
+            foreach(BaseDoor door in room.MyDoors)
+            {
+                door.AddToDoor();
+            }
+        }
     }
 }

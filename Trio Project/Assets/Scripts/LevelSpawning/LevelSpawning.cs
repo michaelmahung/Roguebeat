@@ -24,11 +24,14 @@ public class LevelSpawning : MonoBehaviour {
         PreviousMoveDirection,
         CurrentMoveDirection;
 
+    public delegate void FinishedSpawning();
+    public static FinishedSpawning FinishedSpawningRooms;
+
     void Start () {
 
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
         //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
-        TestLevel = new LevelFactory(5, 5, true, false, false);
+        TestLevel = new LevelFactory(20, 10, true, false, false);
 
         roomFactory = GetComponent<RoomFactory>();
 
@@ -53,6 +56,7 @@ public class LevelSpawning : MonoBehaviour {
             StartCoroutine(StartSpawning());
         }else
         {
+            FinishedSpawningRooms();
             StopAllCoroutines();
         }
     }
@@ -78,6 +82,7 @@ public class LevelSpawning : MonoBehaviour {
 
             while(level.IsRoomAlreadySpawned(currentLocation + CurrentMoveDirection))
             {
+                //For as long as we are on top of another rooms location, pick a new location and try to spawn there.
                 CurrentMoveDirection = CalculateMoveDirection(level);
             }
 
@@ -85,6 +90,7 @@ public class LevelSpawning : MonoBehaviour {
         }
         if (level.CanDoubleBack)
         {
+            //If we are allowed to double back, go back to our previous location and try to find an open space
             currentLocation = PreviousSpawnLocation;
             CurrentMoveDirection = CalculateMoveDirection(level);
 
@@ -136,16 +142,17 @@ public class LevelSpawning : MonoBehaviour {
         //If there isnt already a room spawned at our location
         if (!TestLevel.IsRoomAlreadySpawned(location))
         {
-            //Debug.Log("No Room Here");
             //Create a new room at our location, name it, and pass it into our room dictionary.
             //Instantiate the room type we generated, and name it accordingly.
             RoomInformation room = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn(level)), location, "Room" + level.CurrentRoomCount);
             GameObject go = Instantiate(room.RoomType, location * level.RoomOffset, Quaternion.identity, transform);
+
             if (level.EndRoomSpawned)
             {
                 go.name = "End Room";
                 return;
             }
+
             go.name = room.RoomName;
             TestLevel.AddToSpawnedRooms(location, room);
             return;
@@ -153,32 +160,24 @@ public class LevelSpawning : MonoBehaviour {
         else
         //If theres a room on top of ours and the level doesn't allow us to backtrack through old rooms.
         {
-            //Debug.Log("Theres a room here");
             if (!level.CanDoubleBack)
             {
-                //Debug.Log("Cant double back");
                 //Generate a room
                 RoomInformation endRoom = new RoomInformation(roomFactory.GrabRoom(CalculateRoomToSpawn(level)), location, "Room" + level.CurrentRoomCount);
 
                 //If we're allowed to spawn an end room
                 if (level.EndRoomSpawned)
                 {
-                    //Debug.Log("Looking to spawn end room");
-                    //And were not currently on top of our starting room
+                    //And were currently on top of our starting room
                     if (currentLocation == startRoomLocation)
                     {
-                        //Debug.Log("On top of spawn room");
-                        //currentLocation += North;
-                        //Delete the room at our current location and replace it with our new room
-                        //level.DeleteRoom(currentLocation);
-                        //level.UpdateRoom(currentLocation, endRoom);
+                        //Move one space north and spawn the final room
                         GameObject go = Instantiate(endRoom.RoomType, (location + North) * level.RoomOffset, Quaternion.identity, transform);
                         go.name = "End Room";
                         return;
                     }
                     else
                     {
-                        //Debug.Log("not on top of spawn room" + currentLocation + " spawn location " + startRoomLocation);
                         //Otherwise, move north and create a new room at that location
                         //currentLocation += North;
                         GameObject go = Instantiate(endRoom.RoomType, (location + North) * level.RoomOffset, Quaternion.identity, transform);
