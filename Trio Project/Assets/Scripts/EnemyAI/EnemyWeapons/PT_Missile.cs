@@ -13,12 +13,17 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
     public float turnSpeed;
     public GameManager mngr;
     public int killpoints;
+    public float maxTimer;
+    public float Timer;
+    public int speedPlus;
+    public int speedMax;
     
 
     // Use this for initialization
     void Start () {
         // Player = GameObject.FindGameObjectWithTag("Player");
         playerHere = GameObject.FindGameObjectWithTag("Player").transform;
+        Timer = maxTimer;
         mngr = GameObject.FindObjectOfType<GameManager>();
         PlayerHealth.PlayerKilled += PlayerDead;
     }
@@ -35,6 +40,13 @@ public class PT_Missile : MonoBehaviour, IDamageable<float> {
         transform.position += transform.forward * MissileSpeed * Time.deltaTime;
         var playerPos = Quaternion.LookRotation(playerHere.position - transform.position);
         mrBody.MoveRotation(Quaternion.RotateTowards(transform.rotation, playerPos, turnSpeed));
+        Timer = Timer - Time.deltaTime;
+        if(Timer <= 0 && MissileSpeed < speedMax)
+        {
+            MissileSpeed = MissileSpeed + speedPlus;
+            turnSpeed = turnSpeed + (speedPlus / 2);
+            Timer = maxTimer;
+        }
         
 	}
 

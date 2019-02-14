@@ -2,12 +2,12 @@
 
 public class CameraController2 : MonoBehaviour {
 
-    [SerializeField] private float FollowAhead = 5;
-    [SerializeField] private float Smoothing = 4;
-    [SerializeField] private Vector3 TargetPosition;
+    [SerializeField] private float followAhead = 5;
+    [SerializeField] private float smoothing = 4;
+    [SerializeField] private Vector3 targetPosition;
+    [SerializeField] private float cameraHeight;
 
     private GameObject focalPoint;
-    private float cameraHeight;
     private Vector3 cameraOffset;
 
     
@@ -42,13 +42,13 @@ public class CameraController2 : MonoBehaviour {
         {
             if (focalPoint.transform.localRotation.y > 90f)
             {
-                TargetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * FollowAhead)) + cameraOffset;
+                targetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * followAhead)) + cameraOffset;
             }
             else
             {
-                TargetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * -1 * -FollowAhead)) + cameraOffset;
+                targetPosition = (focalPoint.transform.position + (focalPoint.transform.forward * -1 * -followAhead)) + cameraOffset;
             }
-            transform.position = Vector3.Lerp(transform.position, TargetPosition, Smoothing * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
         }
     }
 

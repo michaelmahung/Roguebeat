@@ -3978,6 +3978,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.097
       objectReference: {fileID: 0}
+    - target: {fileID: 114207991075840004, guid: 92d13d8050912e94499a3c791f2e25eb,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d13d8050912e94499a3c791f2e25eb, type: 2}
   m_IsPrefabAsset: 0
@@ -4028,6 +4033,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2260477b9f428ad4d8c98b018d30f02e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1360756861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114368918179582784, guid: 92d13d8050912e94499a3c791f2e25eb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1291200208}
+  m_Script: {fileID: 11500000, guid: 104f77c002457492fbe0910a2273f504, type: 3}
 --- !u!1001 &1363298006
 Prefab:
   m_ObjectHideFlags: 0
@@ -4643,6 +4654,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114750650401337032, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: mngr
+      value: 
+      objectReference: {fileID: 1360756861}
     - target: {fileID: 114018383101007896, guid: 6dfee752de0c88b4c979fc2acbb5a057,
         type: 2}
       propertyPath: pHealth
@@ -4653,18 +4669,35 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 951044449}
-    - target: {fileID: 4505370120557032, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.2500005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4505370120557032, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.2500005
-      objectReference: {fileID: 0}
-    - target: {fileID: 114119397570241734, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+    - target: {fileID: 224789275320153560, guid: 6dfee752de0c88b4c979fc2acbb5a057,
         type: 2}
-      propertyPath: attackPhase
-      value: 3
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224789275320153560, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224706809534211562, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224706809534211562, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224543507071596154, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224543507071596154, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dfee752de0c88b4c979fc2acbb5a057, type: 2}
@@ -4998,23 +5031,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3420c6a862df6654488850e907ae9998, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1595702789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1579841544402824, guid: 6dfee752de0c88b4c979fc2acbb5a057,
-    type: 2}
-  m_PrefabInternal: {fileID: 1525793234}
---- !u!65 &1595702793
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1595702789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1602165429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4959347430850526, guid: 634f0f55c75707f4bbf16adf0553d536,

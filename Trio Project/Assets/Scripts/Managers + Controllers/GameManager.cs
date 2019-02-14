@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
             if (_instance == null) 
             {
-                Debug.LogError("Creating a GameManager instance from scratch, this is not ideal.\nPlease add a GameManager component to the scene");
+                Debug.LogError("No GameManager in scene");
                 GameObject gm = new GameObject("GameManager");
                 gm.AddComponent<GameManager>();
             }

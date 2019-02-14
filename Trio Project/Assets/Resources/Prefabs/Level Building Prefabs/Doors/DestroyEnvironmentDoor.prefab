@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1386a46e7ff884fb98b58850c89fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRooms: []
   MoveAxis: 1
+  OpenPoints: 0
   moveAmount: 10
-  thingsRequired: 0
+  thingsRequired: 3

@@ -15,10 +15,12 @@ using System.Collections.Generic;
 
 public class LevelFactory
 {
-    public int GridSize; //The amount of cells per row/column
-    public int RoomOffset = 51; //The distance between each room cell
+    const int ROOMOFFSET = 51; //The room offset is based off of the distance required between each room - right now its 51 units.
 
-    public Vector3 LevelStartPoint { get { return Vector3.zero; } }
+    public int GridSize; //The amount of cells per row/column
+    public int RoomOffset = ROOMOFFSET; //The distance between each room cell
+
+    public Vector3 LevelStartPoint { get { return Vector3.zero; } } //TODO - make start point changable per level
     public RoomInformation CurrentRoom { get; set; }
     public RoomInformation PreviousRoom { get; set; }
 
@@ -28,7 +30,7 @@ public class LevelFactory
     public int MaxX { get { return GridSize - 1; } } //The grid factor is 3, make sure we dont go past x = 2
     public int MaxZ { get { return GridSize - 1; } } //""
 
-    int _maxRooms { get; set; }
+    int _maxRooms { get; set; } //variable to be manipulated later.
     public int MaxRooms { get { return _maxRooms - 1; } set { _maxRooms = value; }}//How many rooms maximum do we want to spawn?
     public int CurrentRoomCount { get { return SpawnedRooms.Count; } } //How many rooms have we spawned so far?
 
@@ -41,7 +43,7 @@ public class LevelFactory
 
     //This dictionary will keep track of how many rooms are spawned as well as the location and type of room stored in that room.
     //We want to make sure this is Serialized, because if we are going to save and load level progress, it may be helpful to 
-    //reload into a room that has already been spawnd. 
+    //reload into a room that has already been spawned. 
     [SerializeField] private Dictionary<Vector3, RoomInformation> SpawnedRooms = new Dictionary<Vector3, RoomInformation>();
 
     //Constructors
@@ -114,7 +116,7 @@ public class LevelFactory
 }
 
     //If this class didn't have a constructor i'd just make it a struct
-    //All it's doing is keeping track of where it is, as well as the type/prefab of room it is spawning.
+    //All it's doing is keeping track of where it is, the name of the room, and the type/prefab of room it is spawning.
     public class RoomInformation
     {
         public RoomInformation(GameObject type, Vector3 location, string name)
