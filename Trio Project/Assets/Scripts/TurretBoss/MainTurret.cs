@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainTurret : MonoBehaviour, IDamageable<float> {
 
+    public GameManager mngr;
     public SideTurret rTurret;
     public SideTurret lTurret;
     public MainController controller;
@@ -11,9 +13,16 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public GameObject masterBody;
     public GameObject mBody;
     public GameObject cap;
+    public GameObject healthCanvas;
+    public Image healthBar;
+    public GameObject Indicator;
+    public Image BigHB;
+    public Image red;
 
-    public int health;
+    public float health;
+    public float maxHealth;
     public int map;//Max Attack Phase
+    public int killpoints;
 
     public GameObject shot1;
     public GameObject shot2;
@@ -41,19 +50,60 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public bool trueOnce;
     public bool dead;
     public bool changeColor;
+    public bool restartHealth;
 
 
 	// Use this for initialization
 	void Start () {
 
         controller = body.GetComponent<MainController>();
+        mngr = GameObject.FindObjectOfType<GameManager>();
+        //healthCanvas.SetActive(false);
+        Indicator.SetActive(false);
+        health = maxHealth;
+        
         
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (controller.phase == "Attack" && tooClose == false)
+
+        if (controller.Difficulty <= 1)
+        {
+            healthCanvas.SetActive(true);
+            killpoints = 100;
+        }
+        if(controller.Difficulty > 1)
+        {
+            healthCanvas.SetActive(false);
+            if(controller.Difficulty == 2)
+            {
+                killpoints = 300;
+            }
+
+            if(controller.Difficulty >= 3)
+            {
+                killpoints = 1000;
+            }
+        }
+
+        if(controller.phase == "Attack" && (tooClose == true || controller.attackPhase == controller.maxAttackPhase))
+        {
+            Indicator.SetActive(true);
+        }
+        else
+        {
+            Indicator.SetActive(false);
+        }
+
+        if(restartHealth == true)
+        {
+            healthBar.fillAmount = health / maxHealth;
+            restartHealth = false;
+        }
+
+        if (controller.phase == "Attack" && tooClose == false)
         {
             
             
@@ -281,6 +331,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         if((rTurret.dead == true && lTurret.dead == true)||(controller.phase == "Attack" && tooClose == true))
         {
             health--;
+            healthBar.fillAmount = health / maxHealth;
             changeColor = true;
         }
     }
@@ -288,6 +339,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public void Dead()
     {
         dead = true;
+        mngr.AddScore(killpoints);
         Destroy(masterBody);
     }
 

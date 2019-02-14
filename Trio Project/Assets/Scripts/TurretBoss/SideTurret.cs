@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     public MainController controller;
     public GameObject body;
+    public Image healthBar;
+    public GameObject healthBG;
+    public GameObject healthCanvas;
 
-    public int health;
-    public int maxHealth = 10;
+    public float health;
+    public float maxHealth = 10;
 
     public bool disabled;
     public bool dead;
@@ -48,7 +52,18 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
 
     // Update is called once per frame
     void Update () {
-        
+
+        healthBar.fillAmount = health / maxHealth;
+
+        if(controller.Difficulty <= 1)
+        {
+            healthCanvas.SetActive(true);
+        }
+        if(controller.Difficulty >= 2)
+        {
+            healthCanvas.SetActive(false);
+        }
+
             if (controller.phase == "Attack" && disabled == false )
             {
             //print("im attacking you fucker");
@@ -207,6 +222,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
         cap.SetActive(false);
         barrel.SetActive(false);
         spawn.SetActive(false);
+        healthBG.SetActive(false);
     }
 
     public void ChangeBack()

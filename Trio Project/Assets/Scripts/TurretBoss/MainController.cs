@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UI
 
 public class MainController : MonoBehaviour, ITrackRooms {
 
@@ -22,6 +23,8 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public MainTurret head;
     public GameObject cenCap;
     public GameObject cenBody;
+    public GameObject BossInfo;
+    public bool inRoom;
 
 	// Use this for initialization
 	void Start () {
@@ -39,14 +42,22 @@ public class MainController : MonoBehaviour, ITrackRooms {
         {
             maxAttackPhase = 4;
         }
-        head.health = 100 * (maxAttackPhase - 1);
+        head.maxHealth = 100 * (maxAttackPhase - 1);
+        head.health = head.maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if(inRoom == true  && Difficulty >= 2)
+        {
+            BossInfo.SetActive(true);
+        }
+        if(inRoom == false)
+        {
+            BossInfo.SetActive(false);
+        }
             Vector3 relativePos = player.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         if (follow == true)
@@ -147,8 +158,10 @@ public class MainController : MonoBehaviour, ITrackRooms {
         attackPhase++;
         if (attackPhase < 4)
         {
-            rTurret.health = rTurret.maxHealth * attackPhase;
-            lTurret.health = lTurret.maxHealth * attackPhase;
+            rTurret.maxHealth = 10 * attackPhase;
+            lTurret.maxHealth = 10 * attackPhase;
+            rTurret.health = rTurret.maxHealth;
+            lTurret.health = lTurret.maxHealth;
             rTurret.disabled = false;
             lTurret.disabled = false;
         }
@@ -167,7 +180,15 @@ public class MainController : MonoBehaviour, ITrackRooms {
         //Debug.Log("DestroyAllShields");
         phase = "DestoyAllShields";
         shieldControl.GetComponent<ShieldController>().destroyShields = true;
-        Invoke("ShieldsUp", 1);
+        if (Difficulty >= 2)
+        {
+            Invoke("ShieldsUp", 1);
+        }
+        if(Difficulty <= 1)
+        {
+            attackPhase++;
+            Invoke("Attack", 1);
+        }
     }
 
     void ShieldsUp()
@@ -206,7 +227,9 @@ public class MainController : MonoBehaviour, ITrackRooms {
     {
         // Debug.Log("SetValues");
         //main turret info
-        head.health = 100 * (maxAttackPhase - 1);
+        head.maxHealth = 100 * (maxAttackPhase - 1);
+        head.health = head.maxHealth;
+        head.restartHealth = true;
         head.tooClose = false;
         head.attacking = false;
         head.changeColor = false;
@@ -219,6 +242,10 @@ public class MainController : MonoBehaviour, ITrackRooms {
         lTurret.cap.SetActive(true);
         lTurret.barrel.SetActive(true);
         lTurret.spawn.SetActive(true);
+        if (Difficulty <= 1)
+        {
+            lTurret.healthBG.SetActive(true);
+        }
         lTurret.disabled = false;
         lTurret.dead = false;
         lTurret.attacking = false;
@@ -232,6 +259,10 @@ public class MainController : MonoBehaviour, ITrackRooms {
         rTurret.cap.SetActive(true);
         rTurret.barrel.SetActive(true);
         rTurret.spawn.SetActive(true);
+        if (Difficulty <= 1)
+        {
+            rTurret.healthBG.SetActive(true);
+        }
         rTurret.disabled = false;
         rTurret.dead = false;
         rTurret.attacking = false;
@@ -247,7 +278,15 @@ public class MainController : MonoBehaviour, ITrackRooms {
         callDestroyOnce = false;
         shieldControl.GetComponent<ShieldController>().destroyShields = true;
 
-        Invoke("ShieldsUp", 1);
+        if(Difficulty <= 1)
+        {
+            Invoke("Attack", .1f);
+        }
+        if (Difficulty >= 2)
+        {
+            //print("I was called");
+            Invoke("ShieldsUp", 1);
+        }
 
     }
 
@@ -256,12 +295,14 @@ public class MainController : MonoBehaviour, ITrackRooms {
         //Debug.Log(MyRoomName);
         if (GameManager.Instance.PlayerRoom == MyRoomName)
         {
-           // Debug.Log("HE'S HERE!!!!");
+            // Debug.Log("HE'S HERE!!!!");
+            inRoom = true;
             SetValues();
         }
         else
         {
             //Debug.Log("Player not in room");
+            inRoom = false;
             phase = "Idle";
             attackPhase = 0;
             //Idle();
