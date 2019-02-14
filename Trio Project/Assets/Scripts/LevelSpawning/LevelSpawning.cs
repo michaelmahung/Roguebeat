@@ -26,7 +26,7 @@ public class LevelSpawning : MonoBehaviour {
 
     void Start () {
 
-        TestLevel = new LevelFactory(4, 15, true, true, false);
+        TestLevel = new LevelFactory(6, 15, true, true, false);
         roomFactory = GetComponent<RoomFactory>();
 
         /*Spawning should happen in the following order

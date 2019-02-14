@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using StateStuff;
+using System; // to use public event Actions
 
 public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 {
@@ -48,6 +49,9 @@ public bool Dead;
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 //Bools
 
+//Public Event
+public event Action<float> OnHealthPctChanged = delegate {};
+
 
 
 public StateMachine<AI> stateMachine { get; set; }
@@ -85,6 +89,8 @@ public StateMachine<AI> stateMachine { get; set; }
         if (IsEnabled)
         {
             currentHealth -= damage;
+            float currentHealthPct = (float)currentHealth/(float)EnemyHealth;
+            OnHealthPctChanged(currentHealthPct);
             //StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
             UpdateHealthPercentage();
             if (currentHealth <= 0)

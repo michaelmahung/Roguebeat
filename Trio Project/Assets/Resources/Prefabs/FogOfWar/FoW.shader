@@ -1,7 +1,11 @@
 ﻿Shader "Custom/FoW" {
 	Properties {
 		//_Color ("Color", Color) = (1,1,1,1)
+		_ColorTint("Color Tint", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_BumpMap("Normal Map", 2D) = "bump"{}
+		_RimColor("Rim Color", Color) = (1,1,1,1)
+		_RimPower("Rim Power", Range(1.0,6.0)) = 3.0
 		_ShadowMap("FoW (RGB)", 2D) = "white" {}
 		//_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		//_Metallic ("Metallic", Range(0,1)) = 0.0

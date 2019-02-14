@@ -17,7 +17,7 @@ private Vector3 targetScale;
 
 	// Use this for initialization
 	void Start () {
-        Damage = 30 * GameManager.Instance.Difficulty;
+        Damage = 10 * GameManager.Instance.Difficulty;
 	Changing = false;
 	Unchanged = true;
 	initialSize = gameObject.transform.localScale.x;
