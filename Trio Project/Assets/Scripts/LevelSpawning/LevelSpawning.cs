@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+//TODO -- REFACTOR ALL OF THIS
 public class LevelSpawning : MonoBehaviour {
 
     LevelFactory TestLevel;
@@ -29,14 +30,10 @@ public class LevelSpawning : MonoBehaviour {
 
     void Start () {
 
-<<<<<<< HEAD
-        TestLevel = new LevelFactory(6, 15, true, true, false);
-=======
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
         //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
         TestLevel = new LevelFactory(4, 15, true, false, false);
 
->>>>>>> c0e3cfbb3b2d778570180308eab551016bda3c76
         roomFactory = GetComponent<RoomFactory>();
 
         /*Spawning should happen in the following order

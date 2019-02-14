@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         ScoreAdded(); //Tell everyone weve changed our score.
     }
 
+    //Why not cache player rigidbody?
     public void ResetPlayerPosition()
     {
         PlayerObject.transform.position = PlayerSpawnPosition;
@@ -105,12 +106,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         PlayerHealth.PlayerKilled += CanRespawn;
+        LevelSpawning.FinishedSpawningRooms += FindStartLocation;
 
         //If there isnt a default spawn position set, make where the player starts in the scene the spawn position.
         if (PlayerSpawnPosition == null)
         {
             PlayerSpawnPosition = PlayerObject.transform.position;
         }
+    }
+
+    //TODO -- dont do this
+    private void FindStartLocation()
+    {
+        PlayerSpawnPosition = GameObject.Find("PlayerSpawn").transform.position;
+        ResetPlayerPosition();
     }
 
     //Basically the start function

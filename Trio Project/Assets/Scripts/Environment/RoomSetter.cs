@@ -29,7 +29,7 @@ using System.Collections.Generic;
 //The benefit from this is that we can create a static event - making it accessable to any other script.
 //In this case we will make a global event called UpdatePlayerRoom that will alert any script that wants to listen to it whenever the player enters a new room.
 
-    //TODO clean up or split this class up
+    //TODO clean up or split this class up - maybe rename?
 
 public class RoomSetter : MonoBehaviour {
 

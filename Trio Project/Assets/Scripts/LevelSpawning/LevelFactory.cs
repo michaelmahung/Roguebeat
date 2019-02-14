@@ -1,7 +1,7 @@
 ﻿/*
  * This class will be used to contain general information about the level being created.
  *     When spawning, there are a few key things to keep track of.
-     * I need to make sure that each level has an open connection to the final room
+     * I need to make sure that each level has an open connection to the final room^
      * I need to make sure that rooms do not spawn on top of each other^
      * I need to make sure that rooms do not spawn outside of the grid (unless otherwise specified)^
      * I need to make sure that there is a room the player can spawn in^

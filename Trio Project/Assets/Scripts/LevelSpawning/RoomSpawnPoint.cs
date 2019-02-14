@@ -6,6 +6,8 @@
  * 3. How do I make sure my spawns wont interfere with another rooms spawns? --> spawn sequentially in order of the rooms placed.
  */
 
+
+ //TODO - need to clean this up a bit
 using UnityEngine;
 using System.Collections.Generic;
 
