@@ -14,7 +14,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     [SerializeField] private moveAxis MoveAxis = moveAxis.Y;
     [SerializeField] private int OpenPoints;
     [SerializeField] private float moveAmount = 10;
-    [SerializeField] private int thingsRequired = 5;
+    [SerializeField] private int thingsRequired = 3;
 
     protected int thingsDestroyed;
     protected Vector3 moveDirection;

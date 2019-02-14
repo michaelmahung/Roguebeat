@@ -74,11 +74,6 @@ public class RoomSetter : MonoBehaviour {
             point.SetMyRoom(this);
         }
 
-        foreach (RoomSpawnPoint point in MyOpenWalls)
-        {
-            point.SpawnRandom();
-        }
-
         FindComponents();
     }
 
@@ -157,8 +152,6 @@ public class RoomSetter : MonoBehaviour {
 
     void FindComponents()
     {
-        Debug.Log("Finding doors");
-
         BaseDoor[] _doors = GetComponentsInChildren<BaseDoor>();
 
         foreach(BaseDoor baseDoor in _doors)
@@ -184,9 +177,13 @@ public class RoomSetter : MonoBehaviour {
         {
             foreach (BaseDoor door in MyDoors)
             {
-                //door.MyRoom = this;
                 door.AddRoom(this);
             }
+        }
+
+        foreach (RoomSpawnPoint point in MyOpenWalls)
+        {
+            point.SpawnRandom();
         }
     }
 }

@@ -11,6 +11,9 @@ using System.Collections.Generic;
 
 public class RoomSpawnPoint : MonoBehaviour {
 
+    public enum spawnPointType { Start, Open, Boss };
+    public spawnPointType SpawnPointType;
+
     [SerializeField] public RoomSetter OtherRoom;
     [SerializeField] private RoomSpawnPoint otherSpawnPoint;
     [SerializeField] public RoomSetter MyRoom { get; private set; }
@@ -49,12 +52,24 @@ public class RoomSpawnPoint : MonoBehaviour {
         if (other.GetComponent<RoomSpawnPoint>() != null)
         {
             otherSpawnPoint = other.GetComponent<RoomSpawnPoint>();
+            otherSpawnPoint.otherSpawnPoint = this;
             OtherRoom = otherSpawnPoint.GetComponentInParent<RoomSetter>();
             otherSpawnPoint.OtherRoom = GetComponentInParent<RoomSetter>();
 
             if (otherSpawnPoint != null)
             {
+                if (otherSpawnPoint.SpawnPointType == spawnPointType.Start) //If im overlapping doors with the spawn room, make the room open so the player can leave it.
+                {
+                    Destroy(otherSpawnPoint.gameObject);
+                    Destroy(gameObject);
+                    return;
+                }
+            }
+
+            if (otherSpawnPoint != null) //If there is still a room overlapping mine, FLEX ON IT.
+            {
                 otherSpawnPoint.Flex(flexFactor);
+                return;
             }
         }
     }

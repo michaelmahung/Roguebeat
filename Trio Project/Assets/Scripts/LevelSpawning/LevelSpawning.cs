@@ -31,7 +31,7 @@ public class LevelSpawning : MonoBehaviour {
 
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
         //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
-        TestLevel = new LevelFactory(20, 10, true, false, false);
+        TestLevel = new LevelFactory(4, 15, true, false, false);
 
         roomFactory = GetComponent<RoomFactory>();
 
