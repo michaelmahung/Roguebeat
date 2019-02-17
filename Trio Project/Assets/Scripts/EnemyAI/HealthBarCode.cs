@@ -40,7 +40,7 @@ private IEnumerator ChangeToPct(float pct)
 
 private void LateUpdate()
 {
-transform.LookAt(Camera.main.transform);
-transform.Rotate(0, 180, 0);
+//transform.LookAt(Camera.main.transform);
+//transform.Rotate(0, 0, -90);
 }
 }
