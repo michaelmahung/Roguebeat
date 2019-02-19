@@ -10,7 +10,7 @@ public class Bruiser_New : AI{
 	base.Start();
 		MoveSpeed = 10.0f * GameManager.Instance.Difficulty; // assigns base enemy move speed per Trooper
 		EnemyHealth = 10.0f * GameManager.Instance.Difficulty; // assigns base enemy health per Trooper
-		EnemyAttackSpeed = 2.0f * GameManager.Instance.Difficulty; // assigns base enemy attack speed per Trooper
+		EnemyAttackSpeed = 0.2f * GameManager.Instance.Difficulty; // assigns base enemy attack speed per Trooper
 		WeaponValue = 2; // assigns int value to 1 in reading the EnemyWeapons gameobject array in grandparent class EnemyDataModel, which reads from EnemyWeapons Folder
         KillPoints = 10;
 		currentHealth = EnemyHealth;

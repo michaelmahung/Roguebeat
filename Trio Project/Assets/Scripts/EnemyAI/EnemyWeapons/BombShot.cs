@@ -6,18 +6,19 @@ public class BombShot : MonoBehaviour {
 public float BombLife = 1.0f;
 public float BombSpeed = 20.0f;
 public GameObject BigBoom;
+
  
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		BombLife -= Time.deltaTime;
-		if (BombLife <= 0) {
+		  if (BombLife <= 0) {
 		callExplosion();
+		
 		}
 
 		if (BombLife > 0) {

@@ -14,6 +14,9 @@ public RoomSetter MyRoom { get; set; }
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
 
+public GameObject FiringPoint;
+public HealthBarCode HealthBar;
+
 //Floats
 [Tooltip("Movement Speed Of Enemy")]
 public float MoveSpeed; // base variable for all enemy movespeeds; is uniquely set on specific enemy class
@@ -93,6 +96,7 @@ public StateMachine<AI> stateMachine { get; set; }
             OnHealthPctChanged(currentHealthPct);
             //StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
             UpdateHealthPercentage();
+            HealthBar.HealthChange(currentHealthPct);
             if (currentHealth <= 0)
             {
                 enemyDeath();
@@ -138,7 +142,8 @@ public StateMachine<AI> stateMachine { get; set; }
 
 	public virtual void lookAtPlayer()
     {
-        transform.LookAt(Hero);
+        Vector3 targetPosition = new Vector3(Hero.position.x, this.transform.position.y, Hero.position.z);
+        this.transform.LookAt(targetPosition);
     }
 
 	public virtual void ChasePlayer()
@@ -163,7 +168,7 @@ public StateMachine<AI> stateMachine { get; set; }
 	public IEnumerator FireWeapon ()
 	{
 		yield return new WaitForSeconds (EnemyAttackSpeed);
-		Instantiate (EnemyWeapons [WeaponValue], transform.position, transform.rotation);
+		Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
 
         if (IsFiring == false)
         {

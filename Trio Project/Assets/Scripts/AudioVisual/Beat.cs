@@ -17,7 +17,7 @@ public class Beat : MonoBehaviour {
 
         playlistHolder = GetComponent<PlaylistHolder>();
         //GameObject[] eShots;
-        eShots = GameObject.FindGameObjectsWithTag("eProjectile");
+        //eShots = GameObject.FindGameObjectsWithTag("eProjectile");
 
         //eShot = GameObject.FindWithTag("eProjectile");
         //var eShot = GameObject.FindWithTag("eProjectile");
@@ -36,7 +36,7 @@ public class Beat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        eShots = GameObject.FindGameObjectsWithTag("eProjectile");
+        //eShots = GameObject.FindGameObjectsWithTag("eProjectile");
         //Beats();
         //int number = i;
         //if(Beats.i )

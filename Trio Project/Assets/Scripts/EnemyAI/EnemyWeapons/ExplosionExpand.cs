@@ -70,7 +70,7 @@ private Vector3 targetScale;
         }
         else if (thingHitTag == "Wall")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
 
     }

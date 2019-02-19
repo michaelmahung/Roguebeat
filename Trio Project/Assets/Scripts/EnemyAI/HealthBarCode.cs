@@ -8,22 +8,24 @@ public class HealthBarCode : MonoBehaviour {
 	[SerializeField]
 	private Image foregroundImage;
 	[SerializeField]
-	private float updateSpeedSeconds = 0.5f;
+	//private float updateSpeedSeconds = 0.2f;
 
 
-private void Awake()
+/* private void Awake()
 {
 GetComponentInParent<AI>().OnHealthPctChanged += HandleHealthChanged;
 
 }
+*/
 
-private void HandleHealthChanged(float pct)
+/*private void HandleHealthChanged(float pct)
 {
 StartCoroutine(ChangeToPct(pct));
 
 }
+*/
 
-private IEnumerator ChangeToPct(float pct)
+/*private IEnumerator ChangeToPct(float pct)
 {
 	float preChangePct = foregroundImage.fillAmount;
 	float elapsed = 0f;
@@ -36,6 +38,11 @@ private IEnumerator ChangeToPct(float pct)
 		}
 
 		foregroundImage.fillAmount = pct;
+}
+*/
+
+public void HealthChange(float percentage){
+	foregroundImage.fillAmount = percentage;
 }
 
 private void LateUpdate()

@@ -335,7 +335,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276288036413350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.11556, y: 0.9, z: 3.8211555}
+  m_LocalPosition: {x: -56.517433, y: 0.9, z: -5.053734}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4699139228472142}
@@ -1070,6 +1070,8 @@ MonoBehaviour:
   EnemyWeapons: []
   Hero: {fileID: 0}
   AIRigidbody: {fileID: 0}
+  FiringPoint: {fileID: 0}
+  HealthBar: {fileID: 114774116320707838}
   MoveSpeed: 0
   EnemyHealth: 0
   HealthPercentage: 0
@@ -1098,7 +1100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foregroundImage: {fileID: 114942315038628056}
-  updateSpeedSeconds: 0.5
 --- !u!114 &114942315038628056
 MonoBehaviour:
   m_ObjectHideFlags: 1

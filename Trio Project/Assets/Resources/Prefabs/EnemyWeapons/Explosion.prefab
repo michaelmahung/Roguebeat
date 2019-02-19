@@ -96,12 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0855274e8dbd644e84e0ecd868e7d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
   initialSize: 2
   maxSize: 5
   expandSpeed: 2
   Explosion: 4.77
   Changing: 0
   Unchanged: 0
+  missile: {fileID: 0}
 --- !u!135 &135210151397612822
 SphereCollider:
   m_ObjectHideFlags: 1
