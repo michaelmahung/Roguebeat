@@ -8,7 +8,7 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public MainController controller;
     public GameObject body;
     public Image healthBar;
-    public GameObject healthBG;
+    //public GameObject healthBG;
     public GameObject healthCanvas;
 
     public float health;
@@ -30,6 +30,9 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
     public GameObject Tbody;
     public GameObject cap;
     public GameObject barrel;
+    public Material nBlue;
+    public Material nRed;
+    public Material nBlack;
 
     public bool p1fire;
     public bool p2fire;
@@ -120,18 +123,18 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
         }
         if(disabled == true)
         {
-            Tbody.GetComponent<MeshRenderer>().material.color = Color.black;
-            cap.GetComponent<MeshRenderer>().material.color = Color.black;
+            Tbody.GetComponent<MeshRenderer>().material = nBlack;
+            cap.GetComponent<MeshRenderer>().material = nBlack;
         }
         if(disabled == false && changeColor == false)
         {
-            Tbody.GetComponent<MeshRenderer>().material.color = Color.blue;
-            cap.GetComponent<MeshRenderer>().material.color = Color.blue;
+            Tbody.GetComponent<MeshRenderer>().material = nBlue;
+            cap.GetComponent<MeshRenderer>().material = nBlue;
         }
         if(changeColor == true)
         {
-            Tbody.GetComponent<MeshRenderer>().material.color = Color.red;
-            cap.GetComponent<MeshRenderer>().material.color = Color.red;
+            Tbody.GetComponent<MeshRenderer>().material = nRed;
+            cap.GetComponent<MeshRenderer>().material = nRed;
             Invoke("ChangeBack", .1f);
         }
 
@@ -222,13 +225,13 @@ public class SideTurret : MonoBehaviour, IDamageable<float> {
         cap.SetActive(false);
         barrel.SetActive(false);
         spawn.SetActive(false);
-        healthBG.SetActive(false);
+        //healthBG.SetActive(false);
     }
 
     public void ChangeBack()
     {
-        Tbody.GetComponent<MeshRenderer>().material.color = Color.blue;
-        cap.GetComponent<MeshRenderer>().material.color = Color.blue;
+        Tbody.GetComponent<MeshRenderer>().material = nBlue;
+        cap.GetComponent<MeshRenderer>().material = nBlue;
         changeColor = false;
     }
 }

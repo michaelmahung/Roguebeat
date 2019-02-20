@@ -8,6 +8,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public string MyRoomName { get; set; }
     public RoomSetter MyRoom { get; set; }
     public Transform player;
+
     public int Difficulty;
     public float speed;
     public int speedMultiplyer;
@@ -17,6 +18,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public string phase;
     public int maxAttackPhase;
     public int attackPhase = 1;
+
     public ShieldController shieldControl;
     public SideTurret rTurret;
     public SideTurret lTurret;
@@ -24,6 +26,10 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public GameObject cenCap;
     public GameObject cenBody;
     public GameObject BossInfo;
+    public Material regBody;
+    public Material nRed;
+    public Material nWhite;
+    public Material nBlack;
     public bool inRoom;
 
 	// Use this for initialization
@@ -92,20 +98,20 @@ public class MainController : MonoBehaviour, ITrackRooms {
         }
         if ((attackPhase == 4 || (phase == "Attack" && head.tooClose == true)) && head.changeColor == false)
         {
-
-            cenBody.GetComponent<Renderer>().material.color = Color.red;
-            cenCap.GetComponent<Renderer>().material.color = Color.red;
+            //print("I should be red");
+            cenBody.GetComponent<MeshRenderer>().material = nRed;
+            cenCap.GetComponent<MeshRenderer>().material = nRed;
         }
 
-        if(attackPhase != 4 && ((phase != "Attack" || head.tooClose == false) || head.changeColor == false))
+        if(attackPhase != 4 && ((phase != "Attack" || head.tooClose == false) /*|| head.changeColor == false*/))
         {
-            cenBody.GetComponent<Renderer>().material.color = Color.blue;
-            cenCap.GetComponent<Renderer>().material.color = Color.blue;
+            cenBody.GetComponent<MeshRenderer>().material = regBody;
+            cenCap.GetComponent<MeshRenderer>().material = regBody;
         }
         if(phase == "Attack" && attackPhase == maxAttackPhase && head.changeColor == true)
         {
-            cenBody.GetComponent<Renderer>().material.color = Color.red;
-            cenCap.GetComponent<Renderer>().material.color = Color.red;
+            cenBody.GetComponent<MeshRenderer>().material = nRed;
+            cenCap.GetComponent<MeshRenderer>().material = nRed;
         }
 
         if((head.tooClose == true && head.changeColor == true) || (attackPhase == maxAttackPhase && head.changeColor == true))
@@ -113,8 +119,8 @@ public class MainController : MonoBehaviour, ITrackRooms {
 
             if (maxAttackPhase == 4)
             {
-                cenBody.GetComponent<Renderer>().material.color = Color.white;
-                cenCap.GetComponent<Renderer>().material.color = Color.white;
+                cenBody.GetComponent<MeshRenderer>().material = nWhite;
+                cenCap.GetComponent<MeshRenderer>().material = nWhite;
             }
         }
 
@@ -244,7 +250,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         lTurret.spawn.SetActive(true);
         if (Difficulty <= 1)
         {
-            lTurret.healthBG.SetActive(true);
+            //lTurret.healthBG.SetActive(true);
         }
         lTurret.disabled = false;
         lTurret.dead = false;
@@ -261,7 +267,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         rTurret.spawn.SetActive(true);
         if (Difficulty <= 1)
         {
-            rTurret.healthBG.SetActive(true);
+            //rTurret.healthBG.SetActive(true);
         }
         rTurret.disabled = false;
         rTurret.dead = false;
