@@ -81,7 +81,7 @@ private int RandomChance;
     {
         if (gameObject.activeInHierarchy == true)
         {
-            if (GameManager.Instance.PlayerRoom == MyRoomName)
+            if (GameManager.Instance.PlayerRoomName == MyRoomName)
             {
                 StartSpawns();
             }

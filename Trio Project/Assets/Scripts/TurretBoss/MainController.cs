@@ -293,7 +293,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
    public void CheckPlayerRoom()
     {
         //Debug.Log(MyRoomName);
-        if (GameManager.Instance.PlayerRoom == MyRoomName)
+        if (GameManager.Instance.PlayerRoomName == MyRoomName)
         {
             // Debug.Log("HE'S HERE!!!!");
             inRoom = true;

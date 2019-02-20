@@ -1,8 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+//Struct to initialize our level in inspector
+[System.Serializable]
+public struct LevelValues
+{
+    public int GridFactor;
+    public int MaximumRooms;
+    public bool GridBasedSpawns;
+    public bool LinearSpawns;
+    public bool DoubleBack;
+}
+
 //TODO -- REFACTOR ALL OF THIS
 public class LevelSpawning : MonoBehaviour {
+
+    public LevelValues levelValues;
 
     LevelFactory TestLevel;
     RoomFactory roomFactory;
@@ -10,12 +23,9 @@ public class LevelSpawning : MonoBehaviour {
     Vector3 startRoomLocation;
     Vector3 endRoomLocation;
     int rowSpawnCount;
-    //bool levelStartRoomSpawned;
-    //bool levelEndRoomSpawned;
-    //bool levelCanEndSpawn;
 
-    public enum RoomSpawnTypes { StartingRoom, OpenRoom, BossRoom, LRRoom, LRTRoom, LRBRoom, RandomRoom, DefaultState};
-    public RoomSpawnTypes RoomToSpawn;
+    public enum RoomSpawnTypes { StartingRoom, OpenRoom, BossRoom, EnemyRoom, RandomRoom, DefaultState};
+    private RoomSpawnTypes RoomToSpawn;
 
     Vector3
         North = new Vector3(0, 0, 1),
@@ -32,15 +42,10 @@ public class LevelSpawning : MonoBehaviour {
 
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
         //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
-        TestLevel = new LevelFactory(4, 15, true, false, false);
+
+        TestLevel = new LevelFactory(levelValues.GridFactor, levelValues.MaximumRooms, levelValues.GridBasedSpawns, levelValues.LinearSpawns, levelValues.DoubleBack);
 
         roomFactory = GetComponent<RoomFactory>();
-
-        /*Spawning should happen in the following order
-         * Find an open location to spawn a room in
-         * Figure out which room type to spawn
-         * Spawn the room
-         */
 
         FindNextRoomLocation(TestLevel);
         StartCoroutine(StartSpawning());
@@ -49,7 +54,7 @@ public class LevelSpawning : MonoBehaviour {
     //Coroutine that will handle spawning rooms slowly - so we can see the level creation process.
     IEnumerator StartSpawning()
     {
-        yield return new WaitForSeconds(0.10f);
+        yield return new WaitForSeconds(0.001f);
         if (!TestLevel.EndRoomSpawned)
         {
             FindNextRoomLocation(TestLevel);
@@ -60,6 +65,17 @@ public class LevelSpawning : MonoBehaviour {
             FinishedSpawningRooms();
             StopAllCoroutines();
         }
+    }
+
+    void SpawnLevelRooms(LevelFactory level)
+    {
+        while (!level.EndRoomSpawned)
+        {
+            FindNextRoomLocation(level);
+            SpawnRoom(currentLocation, level);
+        }
+
+        FinishedSpawningRooms();
     }
 
     //If we are just starting off, we want to pick a random location in the first row and spawn a starting room.
@@ -106,14 +122,6 @@ public class LevelSpawning : MonoBehaviour {
         currentLocation += CurrentMoveDirection;
     }
 
-    void SpawnLevelRooms()
-    {
-        while (!TestLevel.EndRoomSpawned)
-        {
-
-        }
-    }
-
     //Does as it says, which room should I be spawning?
     RoomSpawnTypes CalculateRoomToSpawn(LevelFactory level)
     {
@@ -127,7 +135,7 @@ public class LevelSpawning : MonoBehaviour {
         //If im in my max row or at my max amount of rooms, spawn a boss room
         else if (level.CanSpawnEnd || level.CurrentRoomCount == level.MaxRooms)
         {
-            Debug.Log("Spawning end room");
+            //Debug.Log("Spawning end room");
             level.EndRoomSpawned = true;
             return RoomSpawnTypes.BossRoom;
         }
@@ -312,7 +320,7 @@ public class LevelSpawning : MonoBehaviour {
                 else
                 {
                     level.CanSpawnEnd = true;
-                    Debug.Log("preparing to spawn last room");
+                    //Debug.Log("preparing to spawn last room");
                 }
             }
         }

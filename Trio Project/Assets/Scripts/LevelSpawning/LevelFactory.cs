@@ -34,7 +34,7 @@ public class LevelFactory
     public int MaxRooms { get { return _maxRooms - 1; } set { _maxRooms = value; }}//How many rooms maximum do we want to spawn?
     public int CurrentRoomCount { get { return SpawnedRooms.Count; } } //How many rooms have we spawned so far?
 
-    public bool GridBasedSpawns { get; set; } //Should we only spawn within the grid bounds (Min/Max X/Z?
+    public bool GridBasedSpawns { get; set; } //Should we only spawn within the grid bounds (Min/Max X/Z?)
     public bool LinearSpawns { get; set; } //Do we want to spawn rooms linearly?
     public bool CanDoubleBack { get; set; } //Should this level be able to double back when spawning rooms?
     public bool StartRoomSpawned { get; set; } //Has the beginning room been spawned?

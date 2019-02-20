@@ -26,7 +26,7 @@ public class Randocube : DamageableObject
     public void CheckPlayerRoom()
     {
         //If the players current room is also my room
-        if (GameManager.Instance.PlayerRoom == MyRoomName)
+        if (GameManager.Instance.PlayerRoomName == MyRoomName)
         {
             UnFreeze();
         } else

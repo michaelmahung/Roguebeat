@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781e39530b4b87d4f8b8b1dd89fab897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minScale: 1
+  minScale: 2
   maxScale: 5
 --- !u!114 &114402960069147774
 MonoBehaviour:
@@ -154,9 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Armor: 0
-  ArmorClip: {fileID: 8300000, guid: a618487dcecf47d4f8e8482d35c574b9, type: 3}
-  DamageClip: {fileID: 8300000, guid: 1f2cae82f2d96f04f989c67b5cc7fc20, type: 3}
-  KillClip: {fileID: 8300000, guid: b8021157f3053e94d987d2466ece8326, type: 3}
 --- !u!114 &114697496711829250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,5 +176,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e4f6b2014015f4eaf3e25f046069d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHeight: 60
-  MinHeight: 50
+  MaxHeight: 100
+  MinHeight: 35

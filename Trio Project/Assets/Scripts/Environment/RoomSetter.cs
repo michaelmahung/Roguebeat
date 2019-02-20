@@ -36,8 +36,9 @@ public class RoomSetter : MonoBehaviour {
     public int EnemyCount;
     public int EnemyCap;
     public string RoomName;
-    //public BaseDoor[] MyDoors;
     public List<BaseDoor> MyDoors = new List<BaseDoor>();
+
+    public bool IsCleared { get; private set; }
 
     public SpawnEnemies[] MySpawners;
     public RoomSpawnPoint[] MyOpenWalls;
@@ -52,20 +53,21 @@ public class RoomSetter : MonoBehaviour {
 
     void Awake()
     {
-        LevelSpawning.FinishedSpawningRooms += TempName;
+        LevelSpawning.FinishedSpawningRooms += FinalizeRoom;
+        camController = FindObjectOfType<CameraController2>();
+
+        cam = camController.gameObject;
     }
 
     void Start () {
 
-		if (string.IsNullOrEmpty(RoomName))
+        if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
-            camController = FindObjectOfType<CameraController2>();
-            cam = camController.gameObject;
         }
     }
 
-    void TempName()
+    void FinalizeRoom()
     {
         MyOpenWalls = GetComponentsInChildren<RoomSpawnPoint>();
 
@@ -103,7 +105,6 @@ public class RoomSetter : MonoBehaviour {
             UpdatePlayer();
             
         }
-        //Debug.Log(other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
@@ -114,6 +115,7 @@ public class RoomSetter : MonoBehaviour {
         }
 
         if(other.tag == "Player"){
+
             if (myLight != null)
             {
                 myLight.ToggleLight(false);
@@ -123,7 +125,8 @@ public class RoomSetter : MonoBehaviour {
 
     public void UpdatePlayer()
     {
-        GameManager.Instance.PlayerRoom = RoomName;
+        GameManager.Instance.PlayerRoomName = RoomName;
+        GameManager.Instance.PlayerRoom = this;
 
         if (UpdatePlayerRoom != null)
         {
@@ -148,6 +151,11 @@ public class RoomSetter : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public void RoomCleared()
+    {
+        IsCleared = true;
     }
 
     void FindComponents()

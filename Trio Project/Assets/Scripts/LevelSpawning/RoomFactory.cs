@@ -13,9 +13,7 @@ public class RoomFactory : MonoBehaviour {
     [SerializeField] private GameObject[] OpenRooms;
     [SerializeField] private GameObject[] BossRooms;
     [SerializeField] private GameObject[] StartingRooms;
-    [SerializeField] private GameObject[] LRRooms;
-    [SerializeField] private GameObject[] LRTRooms;
-    [SerializeField] private GameObject[] LRBRooms;
+    [SerializeField] private GameObject[] EnemyRooms;
     [SerializeField] private GameObject[][] AllRooms; //We need an array to hold all of our arrays in order to generate a random room type.
 
     private void Awake()
@@ -25,11 +23,9 @@ public class RoomFactory : MonoBehaviour {
         OpenRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/Open Rooms");
         BossRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/Boss Rooms");
         StartingRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/Starting Rooms");
-        LRRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/LR Rooms");
-        LRTRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/LRT Rooms");
-        LRBRooms = Resources.LoadAll<GameObject>("LevelSpawningRooms/LRB Rooms");
+        EnemyRooms = Resources.LoadAll<GameObject>("LevelSpawningRoms/Enemy Rooms");
 
-        AllRooms = new GameObject[][] { OpenRooms, BossRooms, StartingRooms, LRRooms, LRTRooms, LRBRooms };
+        AllRooms = new GameObject[][] { OpenRooms, BossRooms, StartingRooms, EnemyRooms };
     }
 
     //Generate random numbers and grab a random room from a random room array
@@ -38,7 +34,6 @@ public class RoomFactory : MonoBehaviour {
         int rand = Random.Range(0, AllRooms.Length);
         int rand2 = Random.Range(0, AllRooms[rand].Length);
 
-        //Debug.Log(rand + " " + rand2);
         return AllRooms[rand][rand2];
     }
 
@@ -55,14 +50,8 @@ public class RoomFactory : MonoBehaviour {
             case LevelSpawning.RoomSpawnTypes.BossRoom:
                 return BossRooms[Random.Range(0, BossRooms.Length)];
 
-            case LevelSpawning.RoomSpawnTypes.LRBRoom:
-                return LRBRooms[Random.Range(0, LRBRooms.Length)];
-
-            case LevelSpawning.RoomSpawnTypes.LRTRoom:
-                return LRTRooms[Random.Range(0, LRTRooms.Length)];
-
-            case LevelSpawning.RoomSpawnTypes.LRRoom:
-                return LRRooms[Random.Range(0, LRRooms.Length)];
+            case LevelSpawning.RoomSpawnTypes.EnemyRoom:
+                return EnemyRooms[Random.Range(0, EnemyRooms.Length)];
 
             case LevelSpawning.RoomSpawnTypes.RandomRoom:
                 return GrabRandomRoom();
