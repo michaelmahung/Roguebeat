@@ -66,10 +66,18 @@ private Vector3 targetScale;
 
             }
             otherDamageable.Damage(Damage);
-            Destroy(this.gameObject);
+            if (other.tag != "Player")
+            {
+                Destroy(this.gameObject);
+            }
         }
         else if (thingHitTag == "Wall")
         {
+            //Destroy(this.gameObject);
+        }
+        if(other.name == "RotBase")
+        {
+            this.GetComponent<Collider>().enabled = false;
             //Destroy(this.gameObject);
         }
 

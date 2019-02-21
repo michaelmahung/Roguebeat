@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 20745168652906650}
   - component: {fileID: 124356266164717878}
   - component: {fileID: 114741468392462708}
+  - component: {fileID: 114423490176584430}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1062,7 +1063,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.097
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2604,9 +2605,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScore: 0
   HighScores: []
-  PlayerRoom: 
+  PlayerRoomName: 
+  PlayerRoom: {fileID: 0}
   UI: {fileID: 0}
-  PlayerSpawnPosition: {x: -112.5, y: 0, z: 0}
+  PlayerSpawnPosition: {x: -49, y: 0, z: -2}
   CameraShaker: {fileID: 114165671707682518}
   Difficulty: 0
 --- !u!114 &114378059473888058
@@ -2756,7 +2758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf39c7157e0b3a4ab8f40a401577fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScale: 3.5
+  maxScale: 25
   isBroke: 0
 --- !u!114 &114403531694993328
 MonoBehaviour:
@@ -2888,6 +2890,18 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114423490176584430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519761527985654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 1a7f29806bfedeb45bc93b83a48c2f7c, type: 2}
 --- !u!114 &114439923079574730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3287,9 +3301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fc47c8a3d47704f8b7719b979f48b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowAhead: 5
-  Smoothing: 4
-  TargetPosition: {x: 0, y: 0, z: 0}
+  followAhead: 5
+  smoothing: 4
+  targetPosition: {x: 0, y: 0, z: 0}
+  cameraHeight: 0
 --- !u!114 &114747879283517442
 MonoBehaviour:
   m_ObjectHideFlags: 1

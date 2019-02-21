@@ -23,6 +23,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
     public SideTurret rTurret;
     public SideTurret lTurret;
     public MainTurret head;
+    public MainTurretRotation rot;
     public GameObject cenCap;
     public GameObject cenBody;
     public GameObject BossInfo;
@@ -241,6 +242,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         head.changeColor = false;
         head.trueOnce = false;
         head.p3Start = true;
+        rot.head.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         //Left turret info
         lTurret.health = lTurret.maxHealth;

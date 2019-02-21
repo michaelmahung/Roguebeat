@@ -2711,11 +2711,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808565053217616}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000006, y: 22.24333, z: 1.0000007}
-  m_Center: {x: 0.0000005241833, y: 10.121663, z: -0.00000011648518}
+  m_Size: {x: 0.18136844, y: 148.97014, z: 0.9261801}
+  m_Center: {x: 0.36917108, y: 73.48507, z: 0.003018158}
 --- !u!65 &65201811139690296
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3111,6 +3111,7 @@ MonoBehaviour:
   rTurret: {fileID: 114632225790878610}
   lTurret: {fileID: 114968200582575500}
   head: {fileID: 114750650401337032}
+  rot: {fileID: 114460812508321004}
   cenCap: {fileID: 1556684910737480}
   cenBody: {fileID: 1668851289467664}
   BossInfo: {fileID: 1744400597666438}
