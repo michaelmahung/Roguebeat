@@ -8,7 +8,7 @@ public class Bruiser_New : AI{
 	// Use this for initialization
 	public override void Start () {
 	base.Start();
-		MoveSpeed = 10.0f * GameManager.Instance.Difficulty; // assigns base enemy move speed per Trooper
+		MoveSpeed = 3.0f * GameManager.Instance.Difficulty; // assigns base enemy move speed per Trooper
 		EnemyHealth = 10.0f * GameManager.Instance.Difficulty; // assigns base enemy health per Trooper
 		EnemyAttackSpeed = 0.2f * GameManager.Instance.Difficulty; // assigns base enemy attack speed per Trooper
 		WeaponValue = 2; // assigns int value to 1 in reading the EnemyWeapons gameobject array in grandparent class EnemyDataModel, which reads from EnemyWeapons Folder
