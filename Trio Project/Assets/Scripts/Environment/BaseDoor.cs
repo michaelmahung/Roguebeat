@@ -114,4 +114,9 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
             OpenDoor();
         }
     }
+
+    public virtual void MiniBossKilled()
+    {
+        OpenDoor();
+    }
 }

@@ -7,7 +7,7 @@ public class DamageableObject : DamageableEnvironmentItemParent
     public new void Start()
     {
         base.Start();
-        itemType = ItemType.Metal;
+        ItemType = myItemType.Metal;
         KillPoints = 75;
     }
 

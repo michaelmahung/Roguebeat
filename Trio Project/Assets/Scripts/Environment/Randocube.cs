@@ -12,7 +12,7 @@ public class Randocube : DamageableObject
     {
         //Again, base.Start(); says I want to do what my parent does but I also want to do the stuff beneath it.
         base.Start();
-        itemType = ItemType.Wood;
+        ItemType = myItemType.Wood;
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         KillPoints = 10;
@@ -21,12 +21,13 @@ public class Randocube : DamageableObject
         //Hey room setter, whenever you run your UpdatePlayerRoom event, also run this CheckPlayerRoom function.
 
         RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        LevelSpawning.FinishedSpawningRooms += CheckPlayerRoom;
     }
 
     public void CheckPlayerRoom()
     {
         //If the players current room is also my room
-        if (GameManager.Instance.PlayerRoomName == MyRoomName)
+        if (GameManager.Instance.PlayerRoom == MyRoom)
         {
             UnFreeze();
         } else
@@ -54,6 +55,7 @@ public class Randocube : DamageableObject
     public override void Kill()
     {
         //Unsubscribe from the event - ensures the CheckPlayerRoom function wont get called on a destroyed object.
+        LevelSpawning.FinishedSpawningRooms -= CheckPlayerRoom;
         RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
         base.Kill();
     }

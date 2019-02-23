@@ -86,8 +86,10 @@ public class RoomSetter : MonoBehaviour {
         if (roomTracker != null)
         {
             roomTracker.MyRoomName = RoomName;
+
             if (roomTracker.MyRoom == null)
             {
+                //Debug.Log(other.gameObject.name);
                 roomTracker.MyRoom = this;
             }
         }

@@ -61,7 +61,21 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     }
 
     [SerializeField]
-    protected float Health;
+    protected float CurrentHealth;
+
+    [SerializeField]
+    protected float BaseHealth;
+
+    private float maxHealth
+    {
+        get { return BaseHealth * GameManager.Instance.Difficulty; }
+    }
+
+    [SerializeField]
+    protected float HealthPercent
+    {
+        get { return CurrentHealth / maxHealth; }
+    }
 
     //Armor in this context is simple damage reduction.
     [SerializeField]
@@ -74,13 +88,14 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected Color currentColor;
     protected Renderer objectRenderer;
 
-    protected enum ItemType
+    protected enum myItemType
     {
+        Default,
         Wood,
         Metal
     }
 
-    protected ItemType itemType;
+    protected myItemType ItemType;
 
     public string MyRoomName { get; set; } //Because I take the ITrackRooms interface, I need to add this.
     public RoomSetter MyRoom { get; set; }
@@ -88,6 +103,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
 
     protected virtual void Start()
     {
+        CurrentHealth = maxHealth;
         KillPoints = 5;
         reactDuration = 1;
         objectRenderer = gameObject.GetComponent<Renderer>();
@@ -109,17 +125,20 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         }
     }
 
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         damageTaken = (damage - Armor);
 
         if (damageTaken > 0)
         {
-            Health -= damageTaken;
+            CurrentHealth -= damageTaken;
 
-            if (Health <= 0)
+            if (CurrentHealth <= 0)
             {
-                SFXManager.Instance.PlaySound(itemType.ToString() + "Break");
+                if (ItemType != myItemType.Default)
+                {
+                    SFXManager.Instance.PlaySound(ItemType.ToString() + "Break");
+                }
                 Kill();
             } else
             {
@@ -128,7 +147,10 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
                 //This way, stronger weapons have a more lasting reaction than weaker ones - up to a cap of 2 seconds.
 
                 objectRenderer.material.color = hurtColor;
-                SFXManager.Instance.PlaySound(itemType.ToString() + "Hit");
+                if (ItemType != myItemType.Default)
+                {
+                    SFXManager.Instance.PlaySound(ItemType.ToString() + "Hit");
+                }
                 reactDuration = 0;
                 duration = damageTaken;
             }
@@ -139,7 +161,10 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
             //If the damage weve taken is negated by our armor, flash yellow instead.
 
             objectRenderer.material.color = armorColor;
-            SFXManager.Instance.PlaySound(itemType.ToString() + "Armor");
+            if (ItemType != myItemType.Default)
+            {
+                SFXManager.Instance.PlaySound(ItemType.ToString() + "Armor");
+            }
             reactDuration = 0;
             duration = 0.5f;
         }

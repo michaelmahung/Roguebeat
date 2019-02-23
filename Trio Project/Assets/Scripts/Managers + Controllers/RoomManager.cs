@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
 
-    public enum KillType { Object, Enemy };
+    public enum KillType { Object, Enemy, MiniBoss };
     public static RoomManager Instance;
 
     private void Awake()
@@ -51,6 +51,12 @@ public class RoomManager : MonoBehaviour {
                     foreach (BaseDoor door in room.MyDoors)
                     {
                         door.EnemyKilled();
+                    }
+                    break;
+                case KillType.MiniBoss:
+                    foreach (BaseDoor door in room.MyDoors)
+                    {
+                        door.MiniBossKilled();
                     }
                     break;
                 default:
