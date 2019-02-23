@@ -28,6 +28,11 @@ public class CloseRangeScript : MonoBehaviour {
         {
             head.tooClose = false;
         }*/
+        /*if (other.name == "MissileExplosion (Clone)")
+        {
+            print("supress blast");
+            Destroy(other);
+        }*/
     }
 
     private void OnTriggerExit(Collider other)
@@ -38,5 +43,11 @@ public class CloseRangeScript : MonoBehaviour {
             head.p3Start = true;
             //head.attacking = false;
         }
+        
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        
     }
 }

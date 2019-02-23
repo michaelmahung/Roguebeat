@@ -124,8 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4b33aae0986e4ebd19d2e618b361c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  CurrentHealth: 0
+  BaseHealth: 40
   Armor: 1
-  ArmorClip: {fileID: 8300000, guid: 4cb9dd363063037428c24d7eae3f0bc2, type: 3}
-  DamageClip: {fileID: 8300000, guid: cb8faa7a3c7a4744ea84062c741c254a, type: 3}
-  KillClip: {fileID: 8300000, guid: a9206f76d24d3474aad614f532615762, type: 3}

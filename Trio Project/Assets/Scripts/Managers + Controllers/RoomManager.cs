@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿///dark yet darker
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
 
+    public enum KillType { Object, Enemy, MiniBoss };
     public static RoomManager Instance;
 
     private void Awake()
@@ -19,25 +19,48 @@ public class RoomManager : MonoBehaviour {
 
     public void RemoveSpawners(RoomSetter room)
     {
-        try
+        if (room.IsCleared) //Make sure room is ready to be cleared before doing so.
         {
-            foreach (SpawnEnemies spawner in room.MySpawners)
+            try
             {
-                spawner.gameObject.SetActive(false);
+                foreach (SpawnEnemies spawner in room.MySpawners)
+                {
+                    spawner.gameObject.SetActive(false);
+                }
             }
-        } catch
-        {
-            Debug.Log("Error deleting spawners in room: " + room.RoomName);
+            catch
+            {
+                Debug.Log("Error deleting spawners in room: " + room.RoomName);
+            }
         }
     }
 
-    public void AddToDoor(RoomSetter room)
+    public void AddToDoor(RoomSetter room, KillType type)
     {
         if (room.MyDoors != null)
         {
-            foreach(BaseDoor door in room.MyDoors)
+            switch (type)
             {
-                door.AddToDoor();
+                case KillType.Object:
+                    foreach (BaseDoor door in room.MyDoors)
+                    {
+                        door.ObjectDestroyed();
+                    }
+                    break;
+                case KillType.Enemy:
+                    foreach (BaseDoor door in room.MyDoors)
+                    {
+                        door.EnemyKilled();
+                    }
+                    break;
+                case KillType.MiniBoss:
+                    foreach (BaseDoor door in room.MyDoors)
+                    {
+                        door.MiniBossKilled();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }

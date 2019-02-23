@@ -1098,8 +1098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114153074628507622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1216,8 +1217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114387832731246346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1351,8 +1353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114693683854257448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1364,8 +1367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114707504754813584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1388,8 +1392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114723150683338616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,8 +1432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114820177185582564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1453,8 +1459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114850011927390762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1501,8 +1508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1
 --- !u!114 &114871751744348756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1549,5 +1557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d880ccd0ff0aa74fa17ef0ca42c38b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  Armor: 0
+  CurrentHealth: 0
+  BaseHealth: 6
+  Armor: 1

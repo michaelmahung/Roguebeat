@@ -128,7 +128,7 @@ public StateMachine<AI> stateMachine { get; set; }
             }
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
-            RoomManager.Instance.AddToDoor(MyRoom);
+            RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.KillType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.
             //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
             Destroy(gameObject);
         }

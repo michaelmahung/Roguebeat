@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 //Abstract classes are not able to be attached to GameObjects.
-//To me, abstract classes are simply blueprints for their child classes, and do not need to function on their own.
+//To me, abstract classes are simply blueprints for their child classes, and are not meant to function on their own.
 
 public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 {
@@ -14,9 +14,11 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     [SerializeField] private moveAxis MoveAxis = moveAxis.Y;
     [SerializeField] private int OpenPoints;
     [SerializeField] private float moveAmount = 10;
-    [SerializeField] private int thingsRequired = 3;
+    [SerializeField] private int objectsRequired = 3;
+    [SerializeField] private int killsRequired = 5;
 
-    protected int thingsDestroyed;
+    protected int objectsDestroyed;
+    protected int killCount;
     protected Vector3 moveDirection;
     protected bool doorMoved;
 
@@ -80,7 +82,10 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
         if (!doorMoved)
         {
             doorMoved = true;
-            RoomManager.Instance.RemoveSpawners(MyRoom);//TODO - make this only get called in the room the player is in
+            RoomSetter _playerRoom = GameManager.Instance.PlayerRoom;
+
+            _playerRoom.RoomCleared();
+            RoomManager.Instance.RemoveSpawners(_playerRoom);
             transform.localPosition += moveDirection;
             GameManager.Instance.AddScore(OpenPoints);
             //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
@@ -90,13 +95,28 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     //I also want to make this virtual because I know I might want to change what the door requires in order to open.
 
-    public virtual void AddToDoor()
+    public virtual void ObjectDestroyed()
     {
-        thingsDestroyed++;
+        objectsDestroyed++;
 
-        if (thingsDestroyed >= thingsRequired && !doorMoved)
+        if (objectsDestroyed >= objectsRequired && !doorMoved)
         {
             OpenDoor();
         }
+    }
+
+    public virtual void EnemyKilled()
+    {
+        killCount++;
+
+        if (killCount >= killsRequired && !doorMoved)
+        {
+            OpenDoor();
+        }
+    }
+
+    public virtual void MiniBossKilled()
+    {
+        OpenDoor();
     }
 }

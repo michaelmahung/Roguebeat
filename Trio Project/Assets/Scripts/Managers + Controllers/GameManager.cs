@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<float> HighScores = new List<float>();
 
     [Header("Global Script References")]
-    public string PlayerRoom;
+    public string PlayerRoomName;
+    public RoomSetter PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
     public Shaker CameraShaker;
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour
     {
         playerHealthReference = FindObjectOfType<PlayerHealth>();
         PlayerObject = playerHealthReference.gameObject;
-        PlayerRoom = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
+        PlayerRoomName = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
         UI = FindObjectOfType<UIController>();
     }
 
