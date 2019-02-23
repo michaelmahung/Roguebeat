@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
 
 public class Roamer : DamageableEnvironmentItemParent {
 
@@ -8,10 +9,12 @@ public class Roamer : DamageableEnvironmentItemParent {
     [SerializeField] private int baseMineDelay = 2;
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private Image healthBarImage;
+    [SerializeField] private Animator[] animators;
     private float mineDelay { get { return baseMineDelay / GameManager.Instance.Difficulty; } }
     private bool chasing;
     private bool canDropMine;
     private float timer;
+    private bool engagedPlayer;
 
     new void Start ()
     {
@@ -36,14 +39,42 @@ public class Roamer : DamageableEnvironmentItemParent {
     {
         if (GameManager.Instance.PlayerRoom == MyRoom && MyRoom != null)
         {
-            canDropMine = false;
-            chasing = true;
+            EngagePlayer();
             return;
         }
 
-        StopAllCoroutines();
         chasing = false;
         return;
+    }
+
+    void EngagePlayer()
+    {
+        if (!engagedPlayer)
+        {
+            foreach (Animator anim in animators)
+            {
+                anim.SetBool("EngagingPlayer", true);
+            }
+
+            StartCoroutine(EngageTimer());
+
+        } else
+        {
+            canDropMine = false;
+            chasing = true;
+        }
+    }
+
+    IEnumerator EngageTimer()
+    {
+        yield return new WaitForSeconds(1);
+
+        engagedPlayer = true;
+        canDropMine = false;
+        chasing = true;
+
+        StopCoroutine(EngageTimer());
+        yield break;
     }
 
     public override void Damage(float damage)

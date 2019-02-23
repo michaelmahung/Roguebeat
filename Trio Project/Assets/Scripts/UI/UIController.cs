@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
 
     public void UpdateScoreText()
     {
-        ScoreText.text = "Current Score: " + GameManager.Instance.CurrentScore;
+        ScoreText.text = GameManager.Instance.CurrentScore.ToString();
     }
 
 	public void UpdateUIText()

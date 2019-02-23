@@ -5,9 +5,14 @@ using UnityEngine;
 public class RoamerSpikes : DamageableEnvironmentItemParent {
 
     [SerializeField] private int rotationIncreaseAmount = 40;
-    [SerializeField] private float speedIncreaseAmount = 0.4f;
+    [SerializeField] private float baseSpeedIncrease = 0.3f;
     [SerializeField] private float baseDamage = 10;
     [SerializeField] private Roamer myRoamer;
+
+    private float speedIncrease
+    {
+        get { return baseSpeedIncrease * GameManager.Instance.Difficulty; }
+    }
 
     private float damage
     {
@@ -25,7 +30,7 @@ public class RoamerSpikes : DamageableEnvironmentItemParent {
 
     public override void Kill()
     {
-        myRoamer.IncrementMoveSpeed(speedIncreaseAmount);
+        myRoamer.IncrementMoveSpeed(speedIncrease);
         myRoamer.IncrementRotationSpeed(rotationIncreaseAmount);
         base.Kill();
     }

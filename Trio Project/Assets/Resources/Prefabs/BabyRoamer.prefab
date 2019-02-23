@@ -615,7 +615,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -650,7 +650,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -685,7 +685,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -720,7 +720,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -755,7 +755,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -790,7 +790,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -825,7 +825,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -860,7 +860,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -895,7 +895,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -930,7 +930,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0cda39228f7f84e499c8cbb7650d17d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -965,7 +965,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1000,7 +1000,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1035,7 +1035,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: 5bdd85f960b8e57438eb8a59658b0961, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114015950016689014
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114058138656440536
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114286422264507412
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114293285041330260
@@ -2577,7 +2577,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114330878304308248
@@ -3551,7 +3551,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114485624094365112
@@ -3573,6 +3573,7 @@ MonoBehaviour:
   baseMineDelay: 3
   minePrefab: {fileID: 1930745232304576, guid: b3232480cf41dd943974a884168d88c9, type: 2}
   healthBarImage: {fileID: 114711526387688344}
+  animators: []
 --- !u!114 &114513911259163782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4093,7 +4094,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114565551012453996
@@ -4583,7 +4584,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114581727569371312
@@ -4613,7 +4614,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114613962459411590
@@ -6574,7 +6575,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114831216245829636
@@ -6592,7 +6593,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114833700660880238
@@ -6610,7 +6611,7 @@ MonoBehaviour:
   BaseHealth: 6
   Armor: 0
   rotationIncreaseAmount: 40
-  speedIncreaseAmount: 0.4
+  baseSpeedIncrease: 0.3
   baseDamage: 6
   myRoamer: {fileID: 114485624094365112}
 --- !u!114 &114844047165690126
