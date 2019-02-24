@@ -69,19 +69,13 @@ public StateMachine<AI> stateMachine { get; set; }
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
         RoomSetter.UpdatePlayerRoom += CheckRoom;
-        Invoke("FindMyRoom", 0.1f);
+        Invoke("CheckRoom", 0.1f);
     }
 
     private void Update()
     {
         stateMachine.Update();
     }
-
-    void FindMyRoom()
-    {
-        MyRoom = GameObject.Find(MyRoomName).GetComponent<RoomSetter>();
-    }
-
 
    //Handles Enemies getting hurt, dying, changing colors
    //***********************************************************************************************************************

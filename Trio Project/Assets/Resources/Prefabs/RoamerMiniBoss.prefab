@@ -1521,6 +1521,7 @@ MonoBehaviour:
   moveSpeed: 13
   rotationSpeed: 120
   baseMineDelay: 2
+  minimumDistance: 10
   minePrefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 2}
   healthBarImage: {fileID: 114677603204633138}
   animators:

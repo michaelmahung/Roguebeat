@@ -7,14 +7,17 @@ public class Roamer : DamageableEnvironmentItemParent {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private int rotationSpeed = 100;
     [SerializeField] private int baseMineDelay = 2;
+    [SerializeField] private int minimumDistance = 10;
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Animator[] animators;
+
     private float mineDelay { get { return baseMineDelay / GameManager.Instance.Difficulty; } }
     private bool chasing;
     private bool canDropMine;
     private float timer;
     private bool engagedPlayer;
+    private int pingCount;
 
     new void Start ()
     {
@@ -43,6 +46,7 @@ public class Roamer : DamageableEnvironmentItemParent {
             return;
         }
 
+        StopAllCoroutines();
         chasing = false;
         return;
     }
@@ -51,30 +55,56 @@ public class Roamer : DamageableEnvironmentItemParent {
     {
         if (!engagedPlayer)
         {
+            engagedPlayer = true;
+
             foreach (Animator anim in animators)
             {
                 anim.SetBool("EngagingPlayer", true);
             }
 
             StartCoroutine(EngageTimer());
+            return;
 
         } else
         {
             canDropMine = false;
             chasing = true;
+            return;
         }
     }
 
     IEnumerator EngageTimer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2f);
 
-        engagedPlayer = true;
-        canDropMine = false;
-        chasing = true;
+        if (GameManager.Instance.PlayerRoom == MyRoom)
+        {
+            canDropMine = false;
+            chasing = true;
+        }
 
-        StopCoroutine(EngageTimer());
         yield break;
+    }
+
+    void PingPlayer()
+    {
+        float distance = Vector3.Distance(transform.position, GameManager.Instance.PlayerObject.transform.position);
+        //Debug.Log(distance);
+
+        if (distance <= minimumDistance)
+        {
+            pingCount += 1;
+        } else
+        {
+            pingCount = 0;
+        }
+
+        if (pingCount >= 3)
+        {
+            Debug.Log("Selfdestruct " + Time.time);
+        }
+
+        Debug.Log("pingcount is: " + pingCount);
     }
 
     public override void Damage(float damage)
@@ -97,6 +127,7 @@ public class Roamer : DamageableEnvironmentItemParent {
             timer = 0;
             canDropMine = true;
             DropMine();
+            PingPlayer();
         }
     }
 

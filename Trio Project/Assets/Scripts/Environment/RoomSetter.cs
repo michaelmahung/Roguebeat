@@ -83,7 +83,7 @@ public class RoomSetter : MonoBehaviour {
     {
         ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
 
-        if (roomTracker != null)
+        if (roomTracker != null && other.tag != "Enemy")
         {
             roomTracker.MyRoomName = RoomName;
 
