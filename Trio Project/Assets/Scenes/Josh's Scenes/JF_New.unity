@@ -1474,7 +1474,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-752052
+  m_Name: pb_Mesh-18150
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1812,6 +1812,10 @@ Prefab:
     - target: {fileID: 114804136356675038, guid: c51f2cb9d26816345b7084fd737a17bb,
         type: 2}
       propertyPath: BulletSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5506,11 +5510,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114750650401337032, guid: 6dfee752de0c88b4c979fc2acbb5a057,
-        type: 2}
-      propertyPath: mngr
-      value: 
-      objectReference: {fileID: 1360756861}
     - target: {fileID: 114018383101007896, guid: 6dfee752de0c88b4c979fc2acbb5a057,
         type: 2}
       propertyPath: pHealth
@@ -5521,6 +5520,11 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 951044449}
+    - target: {fileID: 114750650401337032, guid: 6dfee752de0c88b4c979fc2acbb5a057,
+        type: 2}
+      propertyPath: mngr
+      value: 
+      objectReference: {fileID: 1360756861}
     - target: {fileID: 224706809534211562, guid: 6dfee752de0c88b4c979fc2acbb5a057,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -6459,6 +6463,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 456162867}
+    - target: {fileID: 1808906537624202, guid: 48aa41c9823f42d4a8f54bf8f0cbd98f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48aa41c9823f42d4a8f54bf8f0cbd98f, type: 2}
   m_IsPrefabAsset: 0
@@ -7390,7 +7398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114387986720676610, guid: fc8a37db2a0465643bee99e78f80da5e,
         type: 2}
