@@ -134,6 +134,7 @@ private int RandomChance;
         {
             if (GameManager.Instance.PlayerRoom == MyRoom)
             {
+                //Debug.Log("Start spawning");
                 StartSpawns();
             }
             else

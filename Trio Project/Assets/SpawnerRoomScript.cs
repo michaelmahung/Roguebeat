@@ -34,6 +34,12 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
     {
         RoomSetter.UpdatePlayerRoom += ToggleSpawning;
         MyRoom = GetComponentInParent<RoomSetter>();
+        
+        foreach(SpawnEnemies spawner in AllSpawners)
+        {
+            spawner.MyRoom = MyRoom;
+        }
+
         MyRoom.MySpawners = AllSpawners;
     }
 

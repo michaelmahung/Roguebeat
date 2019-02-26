@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 //Basic room script for collision detection
 
@@ -29,7 +30,7 @@ using System.Collections.Generic;
 //The benefit from this is that we can create a static event - making it accessable to any other script.
 //In this case we will make a global event called UpdatePlayerRoom that will alert any script that wants to listen to it whenever the player enters a new room.
 
-    //TODO clean up or split this class up - maybe rename?
+//TODO clean up or split this class up - maybe rename?
 
 public class RoomSetter : MonoBehaviour {
 
@@ -61,6 +62,8 @@ public class RoomSetter : MonoBehaviour {
 
     void Start () {
 
+        PlayerHealth.PlayerKilled += OpenDoors;
+
         if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
@@ -77,6 +80,27 @@ public class RoomSetter : MonoBehaviour {
         }
 
         FindComponents();
+    }
+
+    private IEnumerator CloseDoors()
+    {
+        yield return new WaitForSeconds(1f);
+
+        foreach (BaseDoor door in MyDoors)
+        {
+            door.CloseDoor();
+        }
+
+        yield break;
+    }
+
+    private void OpenDoors()
+    {
+        foreach(BaseDoor door in MyDoors)
+        {
+            if (door.DoorMoved)
+            door.OpenDoor();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -105,7 +129,7 @@ public class RoomSetter : MonoBehaviour {
 
             //If the player is found entering a new room, Update everyone listening thats listening for that event. 
             UpdatePlayer();
-            
+            StartCoroutine(CloseDoors());
         }
     }
 
