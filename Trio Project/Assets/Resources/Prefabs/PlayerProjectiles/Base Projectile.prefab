@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4819675137506712}
   - component: {fileID: 33174134755625862}
   - component: {fileID: 23205069262295348}
-  - component: {fileID: 65683372961519188}
   - component: {fileID: 114120312034699156}
+  - component: {fileID: 135076477348559566}
   m_Layer: 0
   m_Name: Base Projectile
   m_TagString: PlayerBaseShot
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067714494650928}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -101.73668, y: 0.11, z: -17.95}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,19 +84,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067714494650928}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65683372961519188
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067714494650928}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114120312034699156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,3 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc7f83585dcd114b8c9795e25b6e476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135076477348559566
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067714494650928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

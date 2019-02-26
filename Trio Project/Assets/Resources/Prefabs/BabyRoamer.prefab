@@ -1499,6 +1499,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -1517,6 +1519,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -1584,6 +1588,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -1602,6 +1608,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -2576,6 +2584,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -3550,6 +3560,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -3568,9 +3580,12 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 20
   Armor: 1
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  armorColor: {r: 1, g: 1, b: 0, a: 1}
   moveSpeed: 8
   rotationSpeed: 100
   baseMineDelay: 3
+  minimumDistance: 10
   minePrefab: {fileID: 1930745232304576, guid: b3232480cf41dd943974a884168d88c9, type: 2}
   healthBarImage: {fileID: 114711526387688344}
   animators: []
@@ -4093,6 +4108,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -4583,6 +4600,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -4613,6 +4632,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -6574,6 +6595,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -6592,6 +6615,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6
@@ -6610,6 +6635,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 6
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 6

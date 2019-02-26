@@ -23,14 +23,17 @@ public class RoomManager : MonoBehaviour {
         {
             try
             {
+                //Debug.Log("Removing spawners in " + room.name);
+
                 foreach (SpawnEnemies spawner in room.MySpawners)
                 {
+                    spawner.StopAllCoroutines();
                     spawner.gameObject.SetActive(false);
                 }
             }
             catch
             {
-                Debug.Log("Error deleting spawners in room: " + room.RoomName);
+                Debug.LogError("Error deleting spawners in room: " + room.RoomName);
             }
         }
     }

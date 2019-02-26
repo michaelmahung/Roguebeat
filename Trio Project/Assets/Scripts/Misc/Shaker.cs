@@ -40,7 +40,7 @@ public class Shaker : MonoBehaviour {
 
         yield return new WaitForSeconds(ShakeTime);
         shaking = false;
-        transform.position = originalPos;
+        transform.position = Vector3.Slerp(transform.position, originalPos, 1);
     }
 
 }

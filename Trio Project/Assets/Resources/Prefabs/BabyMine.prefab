@@ -237,6 +237,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 10
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   baseDamage: 8
   lifeTime: 40
 --- !u!135 &135708846475442984

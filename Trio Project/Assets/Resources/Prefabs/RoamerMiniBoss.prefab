@@ -1475,6 +1475,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1518,9 +1520,12 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 70
   Armor: 2
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  armorColor: {r: 1, g: 1, b: 0, a: 1}
   moveSpeed: 13
   rotationSpeed: 120
   baseMineDelay: 2
+  minimumDistance: 10
   minePrefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 2}
   healthBarImage: {fileID: 114677603204633138}
   animators:
@@ -1546,6 +1551,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1564,6 +1571,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1582,6 +1591,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1600,6 +1611,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1630,6 +1643,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -1660,6 +1675,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10
@@ -3178,6 +3195,8 @@ MonoBehaviour:
   CurrentHealth: 0
   BaseHealth: 15
   Armor: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  armorColor: {r: 0, g: 0, b: 0, a: 0}
   rotationIncreaseAmount: 40
   baseSpeedIncrease: 0.3
   baseDamage: 10

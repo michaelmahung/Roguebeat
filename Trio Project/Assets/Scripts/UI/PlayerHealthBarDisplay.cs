@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerHealthBarDisplay : MonoBehaviour
 {
+    [SerializeField] private Color lowHealthColor;
+    [SerializeField] private Color mediumHealthColor;
+    [SerializeField] private Color highHealthColor;
     [SerializeField] private Image healthBarImage;
     private PlayerHealth playerHealth;
     private Slider playerHealthBar;
@@ -26,17 +29,17 @@ public class PlayerHealthBarDisplay : MonoBehaviour
 
         if (playerHealthBar.normalizedValue >= 0.7f)
         {
-            healthBarImage.color = Color.green;
+            healthBarImage.color = highHealthColor;
         }
 
         if (playerHealthBar.normalizedValue < .7f && playerHealthBar.normalizedValue >= .4f)
         {
-            healthBarImage.color = Color.yellow;
+            healthBarImage.color = mediumHealthColor;
         }
 
         if (playerHealthBar.normalizedValue < 0.4f)
         {
-            healthBarImage.color = Color.red;
+            healthBarImage.color = lowHealthColor;
         }
     }
 }

@@ -83,7 +83,7 @@ public class RoomSetter : MonoBehaviour {
     {
         ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
 
-        if (roomTracker != null)
+        if (roomTracker != null && other.tag != "Enemy")
         {
             roomTracker.MyRoomName = RoomName;
 
@@ -109,7 +109,7 @@ public class RoomSetter : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (UpdatePlayerRoom != null)
         {
@@ -123,7 +123,7 @@ public class RoomSetter : MonoBehaviour {
                 myLight.ToggleLight(false);
             }
         }
-    }
+    }*/
 
     public void UpdatePlayer()
     {
