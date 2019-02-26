@@ -32,12 +32,13 @@ public class IdleState : State<AI> {
     public override void EnterState(AI _owner)
     {
         idleTimer = 0;
+        _owner.HasRammed = false;
     }
 
     public override void UpdateState(AI _owner)
     {
         idleTimer += Time.deltaTime;
-        if (idleTimer > 0.5)
+        if (idleTimer > 1.0)
         {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
         }

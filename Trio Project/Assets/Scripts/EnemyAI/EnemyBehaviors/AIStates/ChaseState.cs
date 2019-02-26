@@ -37,8 +37,12 @@ public class ChaseState : State<AI> {
     public override void UpdateState(AI _owner)
     {
         float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
+        if(_owner.gameObject.GetComponent<Bruiser_New>() && distance < _owner.RamRange)
+        {
+            _owner.stateMachine.ChangeState(RamState.Instance);
+        }
 
-        if (distance < _owner.AttackRange)
+        else if (!_owner.gameObject.GetComponent<Bruiser_New>() && distance < _owner.AttackRange)
         {
             _owner.stateMachine.ChangeState(AttackState.Instance);
         }
