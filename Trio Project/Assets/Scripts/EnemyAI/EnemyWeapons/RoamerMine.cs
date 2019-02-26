@@ -13,6 +13,11 @@ public class RoamerMine : DamageableEnvironmentItemParent {
         get { return baseDamage * GameManager.Instance.Difficulty; }
     }
 
+    protected override void SetColors()
+    {
+
+    }
+
     new void Start()
     {
         base.Start();

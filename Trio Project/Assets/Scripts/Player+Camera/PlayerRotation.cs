@@ -3,6 +3,7 @@
 public class PlayerRotation : MonoBehaviour 
 {
     public Camera mainCam;
+    public Quaternion PlayerLookDirection { get; private set; }
     [SerializeField] private float rotationSpeed = 7f;
 
     void Update () 
@@ -26,7 +27,8 @@ public class PlayerRotation : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
             targetRotation.x = 0;
             targetRotation.z = 0;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime).normalized;
+            PlayerLookDirection = transform.rotation;
         }
     }
 }

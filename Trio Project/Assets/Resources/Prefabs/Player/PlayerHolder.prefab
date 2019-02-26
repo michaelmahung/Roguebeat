@@ -1285,7 +1285,7 @@ TrailRenderer:
   m_Time: 0.45
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 2
+    widthMultiplier: 2.3083813
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1358,7 +1358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e782e1c2bfba402c8792a30a4726e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  currentHealth: 100
+  DamageShakeAmount: 40
+  DamageShakeDuration: 0.25
 --- !u!114 &114075020785020660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1370,16 +1372,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 1.5
-  fireRate: 0.1
+  weaponDamage: 1.05
+  fireRate: 0.15
   swapTime: 0.25
+  RecoilAmount: 5
+  ScreenShakeAmount: 2.5
+  ScreenShakeDuration: 0.25
   projectileSpawnAmount: 50
   projectileSpeed: 15
   projectileLife: 1
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 2}
   fireSound: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
-  icon: {fileID: 0}
-  weaponActive: 0
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  weaponActive: 1
   weaponCost: 250
 --- !u!114 &114082730242121330
 MonoBehaviour:
@@ -1452,6 +1457,7 @@ MonoBehaviour:
   maxDashDistance: 5
   minDashSpeed: 10
   dashCooldown: 2
+  dashUI: {fileID: 0}
 --- !u!114 &114367809422015438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1491,13 +1497,16 @@ MonoBehaviour:
   weaponDamage: 4
   fireRate: 0.25
   swapTime: 0.25
+  RecoilAmount: 20
+  ScreenShakeAmount: 5
+  ScreenShakeDuration: 0.2
   projectileSpawnAmount: 20
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
-  icon: {fileID: 0}
-  weaponActive: 0
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  weaponActive: 1
   weaponCost: 0
 --- !u!114 &114505403501578842
 MonoBehaviour:
@@ -1513,13 +1522,16 @@ MonoBehaviour:
   weaponDamage: 12
   fireRate: 0.35
   swapTime: 0.35
+  RecoilAmount: 75
+  ScreenShakeAmount: 9
+  ScreenShakeDuration: 0.2
   projectileSpawnAmount: 10
   projectileSpeed: 50
   projectileLife: 3
   projectile: {fileID: 1193101994180480, guid: 1bd358743c1469244a66591172f50536, type: 2}
   fireSound: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
-  weaponActive: 0
+  weaponActive: 1
   weaponCost: 100
 --- !u!114 &114544196771942496
 MonoBehaviour:
@@ -1546,13 +1558,16 @@ MonoBehaviour:
   weaponDamage: 1.5
   fireRate: 0.1
   swapTime: 0.25
+  RecoilAmount: 15
+  ScreenShakeAmount: 4
+  ScreenShakeDuration: 0.175
   projectileSpawnAmount: 150
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
-  icon: {fileID: 0}
-  weaponActive: 0
+  icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
+  weaponActive: 1
   weaponCost: 150
 --- !u!114 &114867912818294176
 MonoBehaviour:
@@ -1581,13 +1596,16 @@ MonoBehaviour:
   weaponDamage: 6
   fireRate: 1.25
   swapTime: 0.25
+  RecoilAmount: 400
+  ScreenShakeAmount: 12
+  ScreenShakeDuration: 0.215
   projectileSpawnAmount: 50
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 2}
   fireSound: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
-  weaponActive: 0
+  weaponActive: 1
   weaponCost: 50
 --- !u!135 &135417182029872792
 SphereCollider:

@@ -65,6 +65,9 @@ public class Flamethrower : BaseWeapon
         {
             ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
         }
+
+        GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);
+        GameManager.Instance.CameraShaker.ShakeMe(ScreenShakeAmount, ScreenShakeDuration);
     }
 
     public override void OnEnable()

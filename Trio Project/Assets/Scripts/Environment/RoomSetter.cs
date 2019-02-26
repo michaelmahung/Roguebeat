@@ -109,7 +109,7 @@ public class RoomSetter : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (UpdatePlayerRoom != null)
         {
@@ -123,7 +123,7 @@ public class RoomSetter : MonoBehaviour {
                 myLight.ToggleLight(false);
             }
         }
-    }
+    }*/
 
     public void UpdatePlayer()
     {

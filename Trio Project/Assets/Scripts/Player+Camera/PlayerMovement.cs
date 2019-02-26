@@ -18,6 +18,17 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 7)]
     [SerializeField] private int dashCooldown = 2;
 
+    [SerializeField] private PlayerDashUI dashUI;
+
+    private float dashCooldownPercentage
+    {
+        get
+        {
+            return dashTimer / dashCooldown;
+        }
+    }
+
+    private float dashTimer;
     private bool canDash;
     private int dashDistance;
     private Rigidbody rb;
@@ -35,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         GameManager.Instance.PlayerRespawned += SetDash;
         SetDash();
 	}
+
+    public void PushBackPlayer(float amount)
+    {
+        rb.AddForce(transform.forward * -1 * amount);
+    }
 
     public void SetDash()
     {
@@ -76,15 +92,30 @@ public class PlayerMovement : MonoBehaviour
             if (rb.velocity.magnitude > minDashSpeed && canDash)
             {
                 //Debug.Log(rb.velocity.magnitude + " " + canDash);
-                StartCoroutine("StartDashCooldown");
+                //StartCoroutine("StartDashCooldown");
+                canDash = false;
                 Dash();
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (dashTimer < dashCooldown)
+        {
+            //Debug.Log(dashTimer);
+            dashTimer += Time.deltaTime;
+            dashUI.SetPercentage(dashCooldownPercentage);
+        } else
+        {
+            canDash = true;
         }
     }
 
     void Dash()
     {
         //Get the velocity of the player in a direction
+        dashTimer = 0;
 
         dashDirection = rb.velocity.normalized;
         RaycastHit hit;
