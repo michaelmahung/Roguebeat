@@ -20,16 +20,18 @@ public class SpawnerRoomScript : MonoBehaviour
 		{
 			spawners.gameObject.SetActive(false);
 		} 
+        SelectSpawnDoors();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        /*if (Input.GetKeyDown(KeyCode.H))
         {
             SelectSpawnDoors();
         }
+        */
 
     }
 
