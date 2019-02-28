@@ -46,7 +46,6 @@ public class RamState : State<AI>
         {
             _owner.IsRamming = false;
 			_owner.lookAtPlayer();
-			Debug.Log("getting here");
             _owner.stateMachine.ChangeState(IdleState.Instance);
         }
 
@@ -56,7 +55,6 @@ public class RamState : State<AI>
         if (_owner.gameObject.GetComponent<Bruiser_New>() && _owner.HasRammed == false)
         {
             _owner.StartCoroutine(_owner.RamPlayers());
-            Debug.Log(_owner.storeTime);
 			if(_owner.storeTime >= _owner.RamTime){
             _owner.HasRammed = true;
 			}
