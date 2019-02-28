@@ -133,6 +133,7 @@ RandomSpawnTime = Random.Range(MinSpawnRangeTime, MaxSpawnRangeTime);
         {
             if (GameManager.Instance.PlayerRoom == MyRoom)
             {
+                //Debug.Log("Start spawning");
                 StartSpawns();
             }
             else

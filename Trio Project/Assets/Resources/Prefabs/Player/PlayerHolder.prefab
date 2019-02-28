@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 4667349118397326}
   - component: {fileID: 33794879064507470}
   - component: {fileID: 23395826314998490}
+  - component: {fileID: 114454571780196256}
   m_Layer: 10
   m_Name: FireLocation
   m_TagString: Untagged
@@ -244,6 +245,7 @@ GameObject:
   - component: {fileID: 4800651011696302}
   - component: {fileID: 33165746399662102}
   - component: {fileID: 23328586571266140}
+  - component: {fileID: 114873993651210958}
   m_Layer: 10
   m_Name: FireLocation2
   m_TagString: Untagged
@@ -366,6 +368,7 @@ GameObject:
   - component: {fileID: 4196320736457908}
   - component: {fileID: 33752102384720830}
   - component: {fileID: 23809949659116092}
+  - component: {fileID: 114889128131675036}
   m_Layer: 10
   m_Name: FireLocation3
   m_TagString: Untagged
@@ -513,7 +516,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260481718491756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.84, y: 0, z: -21.57}
+  m_LocalPosition: {x: -101.84, y: 0.5, z: -21.57}
   m_LocalScale: {x: 1.25, y: 1, z: 1.25}
   m_Children:
   - {fileID: 4926813048333852}
@@ -1483,6 +1486,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d56849cfc73ed4f92aae6941dd4605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114454571780196256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1306027974094844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745fbf24d4d5c994c96cce69ddb94663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMat: {fileID: 2100000, guid: 4518ad6eeb7f2aa4294f515d18ccfa1d, type: 2}
+  endMat: {fileID: 2100000, guid: b2961a82c74bec94b8f0267a0d758a4b, type: 2}
 --- !u!114 &114466940198253686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1569,6 +1585,10 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 150
+  heatLimit: 5
+  _currentHeat: 0
+  overheated: 0
+  myEmissions: []
 --- !u!114 &114867912818294176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1582,6 +1602,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   rotationSpeed: 7
+--- !u!114 &114873993651210958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677720347579250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745fbf24d4d5c994c96cce69ddb94663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMat: {fileID: 2100000, guid: 4518ad6eeb7f2aa4294f515d18ccfa1d, type: 2}
+  endMat: {fileID: 2100000, guid: b2961a82c74bec94b8f0267a0d758a4b, type: 2}
+--- !u!114 &114889128131675036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985657630720778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745fbf24d4d5c994c96cce69ddb94663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMat: {fileID: 2100000, guid: 4518ad6eeb7f2aa4294f515d18ccfa1d, type: 2}
+  endMat: {fileID: 2100000, guid: b2961a82c74bec94b8f0267a0d758a4b, type: 2}
 --- !u!114 &114931861658291242
 MonoBehaviour:
   m_ObjectHideFlags: 1
