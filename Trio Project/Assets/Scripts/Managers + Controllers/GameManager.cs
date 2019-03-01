@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlayerRespawn();
     public event OnPlayerRespawn PlayerRespawned;
 
+    public PlayerMovement PlayerMovementReference { get; private set; }
+
     private bool canRespawn;
     private PlayerHealth playerHealthReference;
 
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         playerHealthReference = FindObjectOfType<PlayerHealth>();
         PlayerObject = playerHealthReference.gameObject;
+        PlayerMovementReference = PlayerObject.GetComponent<PlayerMovement>();
         PlayerRoomName = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
         UI = FindObjectOfType<UIController>();
     }

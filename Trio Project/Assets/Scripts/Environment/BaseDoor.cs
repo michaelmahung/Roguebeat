@@ -10,6 +10,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     [SerializeField] private List<RoomSetter> myRooms = new List<RoomSetter>();
     public RoomSetter MyRoom { get; set; }
     public enum moveAxis { X, Y, Z }
+    public bool DoorMoved { get; private set; }
 
     [SerializeField] private moveAxis MoveAxis = moveAxis.Y;
     [SerializeField] private int OpenPoints;
@@ -20,7 +21,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     protected int objectsDestroyed;
     protected int killCount;
     protected Vector3 moveDirection;
-    protected bool doorMoved;
+    protected bool doorOpen;
 
 
     public void Start()
@@ -54,6 +55,12 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     }
 
+    void ResetDoor()
+    {
+        objectsDestroyed = 0;
+        killCount = 0;
+    }
+
 
     //Virtual functions are functions that I know I will want to change the functionality of for the children of this class.
     //For instance, if I didnt want a door to be removed from the GameManagers list I could do the following in a child class:
@@ -79,16 +86,36 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void OpenDoor()
     {
-        if (!doorMoved)
+        if (!doorOpen)
         {
-            doorMoved = true;
+            DoorMoved = true;
+            doorOpen = true;
             RoomSetter _playerRoom = GameManager.Instance.PlayerRoom;
 
-            _playerRoom.RoomCleared();
-            RoomManager.Instance.RemoveSpawners(_playerRoom);
+            if (!_playerRoom.IsCleared)
+            {
+                _playerRoom.RoomCleared();
+                RoomManager.Instance.RemoveSpawners(_playerRoom);
+                GameManager.Instance.AddScore(OpenPoints);
+            }
+
             transform.localPosition += moveDirection;
-            GameManager.Instance.AddScore(OpenPoints);
             //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
+        }
+    }
+
+    public virtual void CloseDoor()
+    {
+        if (doorOpen)
+        {
+            RoomSetter _playerRoom = GameManager.Instance.PlayerRoom;
+
+            if (!_playerRoom.IsCleared)
+            {
+                doorOpen = false;
+                ResetDoor();
+                transform.localPosition -= moveDirection;
+            }
         }
     }
 
@@ -99,7 +126,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         objectsDestroyed++;
 
-        if (objectsDestroyed >= objectsRequired && !doorMoved)
+        if (objectsDestroyed >= objectsRequired && !doorOpen)
         {
             OpenDoor();
         }
@@ -109,7 +136,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         killCount++;
 
-        if (killCount >= killsRequired && !doorMoved)
+        if (killCount >= killsRequired && !doorOpen)
         {
             OpenDoor();
         }

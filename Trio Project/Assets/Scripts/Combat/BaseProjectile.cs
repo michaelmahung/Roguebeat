@@ -11,6 +11,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     protected float RaycastHitLength { get; set; } //How far ahead of the projectile will it check for objects.
     protected float RayHitDelay { get; set; } //How long to wait after hitting something with a raycast to react to it
+    protected string[] DisableList { get; set; }
 
     Collider thisCollider;
     protected string hitTag;

@@ -24,6 +24,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
     public int KillPoints { get; set; }
 
+    [SerializeField] private float DamageShakeAmount;
+    [SerializeField] private float DamageShakeDuration;
+
     public delegate void OnPlayerDamaged();
     public static event OnPlayerDamaged UpdateHealth;
     public static event OnPlayerDamaged PlayerDamaged;
@@ -53,7 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
         if (GameManager.Instance.CameraShaker != null)
         {
-            GameManager.Instance.CameraShaker.ShakeMe(80, 0.1f);
+            GameManager.Instance.CameraShaker.ShakeMe(DamageShakeAmount, DamageShakeDuration);
         }
 
         PlayerDamaged();

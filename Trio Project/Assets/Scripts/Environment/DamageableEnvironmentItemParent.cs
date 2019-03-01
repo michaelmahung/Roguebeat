@@ -82,7 +82,9 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     protected int Armor;
 
     protected bool dead;
+    [SerializeField]
     protected Color hurtColor;
+    [SerializeField]
     protected Color armorColor;
     protected Color startColor;
     protected Color currentColor;
@@ -108,13 +110,18 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
         reactDuration = 1;
         objectRenderer = gameObject.GetComponent<Renderer>();
         startColor = objectRenderer.material.color;
-        armorColor = Color.yellow;
-        hurtColor = Color.red;
+        SetColors();
 
         if (gameObject.tag == null)
         {
             gameObject.tag = "Damageable";
         }
+    }
+
+    protected virtual void SetColors()
+    {
+        armorColor = Color.yellow;
+        hurtColor = Color.red;
     }
 
     protected virtual void Update()

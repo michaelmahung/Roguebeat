@@ -31,6 +31,13 @@ public float HurtDuration = 0.5f; // duration of hurt visual
 [Tooltip("Incremental Change Rate For Damage Visual")]
 public float SmoothColor = 0.10f; //rate of color change for hurt visual
 public float AttackRange = 30;
+public float RamRange = 15;
+public float RamSpeed = 30;
+public float RamTime = 5.0f;
+public float storeTime;
+public float RamDamage;
+
+protected IDamageable<float> PlayerDamage;
 //Floats
 
 
@@ -49,6 +56,8 @@ public bool Enraged;
 public bool IsEnabled;
 public bool SwitchState = false;
 public bool Dead;
+public bool HasRammed;
+public bool IsRamming;
 public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 //Bools
 
@@ -75,6 +84,7 @@ public StateMachine<AI> stateMachine { get; set; }
     private void Update()
     {
         stateMachine.Update();
+        Debug.Log(stateMachine.currentState);
     }
 
    //Handles Enemies getting hurt, dying, changing colors
@@ -144,6 +154,18 @@ public StateMachine<AI> stateMachine { get; set; }
     {
         transform.localPosition += transform.forward * MoveSpeed * Time.deltaTime;
     }
+
+public IEnumerator RamPlayers()
+{
+    //yield return new WaitForSeconds(RamTime);
+    storeTime += Time.deltaTime;
+    if(storeTime <= RamTime)
+    {
+        transform.localPosition += transform.forward * RamSpeed * Time.deltaTime;
+        yield return new WaitForSeconds(RamTime);
+        StopAllCoroutines();
+    }
+}
 
 	public virtual void Enrage()
     {

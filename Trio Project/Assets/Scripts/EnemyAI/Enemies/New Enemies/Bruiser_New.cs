@@ -15,7 +15,21 @@ public class Bruiser_New : AI{
         KillPoints = 10;
 		currentHealth = EnemyHealth;
 		HealthPercentage = (currentHealth / EnemyHealth) * 100;
-		
+		RamDamage = 2.0f * GameManager.Instance.Difficulty;
 	}
 
-}
+	private void OnTriggerEnter(Collider other)
+	{
+        PlayerDamage = other.gameObject.GetComponent<IDamageable<float>>();
+        if(PlayerDamage != null && other.tag != "Enemy" && other.tag != "Shield" && other.tag != "Untagged" && other.tag != "eProjectile" && IsRamming == true)
+        {
+            PlayerDamage.Damage(gameObject.GetComponent<Bruiser_New>().RamDamage);
+			IsRamming = false;
+			HasRammed = true;
+        }
+        else if (other.tag == "Wall")
+        {
+            
+        }
+    }
+	}

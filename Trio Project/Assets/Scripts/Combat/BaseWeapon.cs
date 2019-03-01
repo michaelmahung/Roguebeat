@@ -17,6 +17,12 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     [SerializeField] protected float fireRate = 0.5f;
     [Range(0.01f, 0.5f)]
     [SerializeField] protected float swapTime = 0.25f;
+    [Range(0, 800)]
+    [SerializeField] protected int RecoilAmount = 50;
+    [Range(2, 20)]
+    [SerializeField] protected float ScreenShakeAmount = 8f;
+    [Range(0.01f, .5f)]
+    [SerializeField] protected float ScreenShakeDuration = 0.15f;
 
     [Header("Projectile Information")]
     [Range(5, 150)]
@@ -30,6 +36,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     [SerializeField] protected GameObject projectile;
     [SerializeField] protected AudioClip fireSound;
     [SerializeField] protected Texture2D icon;
+
     public bool WeaponActive
     {
         get { return weaponActive; }
@@ -134,6 +141,9 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
             //Boo this function, need to refactor - Spawn an object from the pool and pass the weapons values down to the projectile.
             ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
         }
+
+        GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);
+        GameManager.Instance.CameraShaker.ShakeMe(ScreenShakeAmount, ScreenShakeDuration);
     }
 
     //May switch these to update as they create a little bit of garbage

@@ -15,8 +15,8 @@ public class Roamer : DamageableEnvironmentItemParent {
     private float mineDelay { get { return baseMineDelay / GameManager.Instance.Difficulty; } }
     private bool chasing;
     private bool canDropMine;
-    private float timer;
     private bool engagedPlayer;
+    private float timer;
     private int pingCount;
 
     new void Start ()
@@ -30,6 +30,12 @@ public class Roamer : DamageableEnvironmentItemParent {
         RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         healthBarImage.fillAmount = HealthPercent;
 	}
+
+    protected override void SetColors()
+    {
+        //Override and dont let the default colors to be assigned (leave empty)
+        //We will need to assign colors for this object in the inspector
+    }
 
     public override void Kill()
     {
@@ -75,6 +81,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     IEnumerator EngageTimer()
     {
+        chasing = false;
         yield return new WaitForSeconds(2f);
 
         if (GameManager.Instance.PlayerRoom == MyRoom)
@@ -89,7 +96,6 @@ public class Roamer : DamageableEnvironmentItemParent {
     void PingPlayer()
     {
         float distance = Vector3.Distance(transform.position, GameManager.Instance.PlayerObject.transform.position);
-        //Debug.Log(distance);
 
         if (distance <= minimumDistance)
         {
@@ -103,21 +109,25 @@ public class Roamer : DamageableEnvironmentItemParent {
         {
             Debug.Log("Selfdestruct " + Time.time);
         }
-
-        Debug.Log("pingcount is: " + pingCount);
     }
 
     public override void Damage(float damage)
     {
         base.Damage(damage);
-        healthBarImage.fillAmount = HealthPercent;
+
+        if (damageTaken > 0)
+        {
+            healthBarImage.fillAmount = HealthPercent;
+            GameManager.Instance.CameraShaker.ShakeMe(8, .15f);
+            //System.Threading.Thread.Sleep(15);
+        }
     }
 
     new void Update()
     {
         base.Update();
 
-        if (chasing)
+        if (chasing == true)
         {
             timer += Time.deltaTime;
         }
@@ -142,7 +152,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     void FixedUpdate()
     {
-        if (chasing)
+        if (chasing == true)
         {
             float step = moveSpeed * Time.deltaTime;
 

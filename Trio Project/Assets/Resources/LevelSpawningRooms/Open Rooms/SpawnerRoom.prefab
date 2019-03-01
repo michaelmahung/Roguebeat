@@ -25,8 +25,8 @@ GameObject:
   - component: {fileID: 114687281560428592}
   - component: {fileID: 54321157434205980}
   m_Layer: 0
-  m_Name: SpawnDoor (11)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 114672778825113878}
   - component: {fileID: 54275292635408116}
   m_Layer: 0
-  m_Name: SpawnDoor (13)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,8 +65,8 @@ GameObject:
   - component: {fileID: 114846776708318974}
   - component: {fileID: 54556588057732392}
   m_Layer: 0
-  m_Name: SpawnDoor (10)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,8 @@ GameObject:
   - component: {fileID: 114173160641431806}
   - component: {fileID: 54309902504275484}
   m_Layer: 0
-  m_Name: SpawnDoor (3)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,8 +105,8 @@ GameObject:
   - component: {fileID: 114433376653340758}
   - component: {fileID: 54689443522786914}
   m_Layer: 0
-  m_Name: SpawnDoor (2)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,8 +215,8 @@ GameObject:
   - component: {fileID: 114773785733156732}
   - component: {fileID: 54542972459042584}
   m_Layer: 0
-  m_Name: SpawnDoor (5)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,8 +327,8 @@ GameObject:
   - component: {fileID: 114482043401364794}
   - component: {fileID: 54520941392119420}
   m_Layer: 0
-  m_Name: SpawnDoor (4)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,8 +347,8 @@ GameObject:
   - component: {fileID: 114894881077827448}
   - component: {fileID: 54754437168178298}
   m_Layer: 0
-  m_Name: SpawnDoor (8)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,8 +385,8 @@ GameObject:
   - component: {fileID: 114088834371255546}
   - component: {fileID: 54077960024505652}
   m_Layer: 0
-  m_Name: SpawnDoor (12)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,8 +405,8 @@ GameObject:
   - component: {fileID: 114840767082179956}
   - component: {fileID: 54655952634902546}
   m_Layer: 0
-  m_Name: SpawnDoor (1)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -557,8 +557,8 @@ GameObject:
   - component: {fileID: 114504453500445900}
   - component: {fileID: 54637465496341008}
   m_Layer: 0
-  m_Name: SpawnDoor (6)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,8 +613,8 @@ GameObject:
   - component: {fileID: 114493660153914000}
   - component: {fileID: 54512984461048700}
   m_Layer: 0
-  m_Name: SpawnDoor (9)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,8 +633,8 @@ GameObject:
   - component: {fileID: 114014699016927980}
   - component: {fileID: 54313284480017858}
   m_Layer: 0
-  m_Name: SpawnDoor (15)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,8 +671,8 @@ GameObject:
   - component: {fileID: 114091328498205960}
   - component: {fileID: 54025776243897770}
   m_Layer: 0
-  m_Name: SpawnDoor (7)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,8 +706,8 @@ GameObject:
   - component: {fileID: 114509599261804852}
   - component: {fileID: 54300003601259544}
   m_Layer: 0
-  m_Name: SpawnDoor (14)
-  m_TagString: Untagged
+  m_Name: SpawnDoor
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 54164537393097142}
   m_Layer: 0
   m_Name: SpawnDoor
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1618,7 +1618,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1734544059141460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 156.02632, y: -0.5, z: 51.374035}
+  m_LocalPosition: {x: -101.64546, y: -0.5, z: 101.78534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4153652441335848}
@@ -3401,7 +3401,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!54 &54503189358146024
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3461,7 +3461,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!54 &54542972459042584
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3581,7 +3581,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!54 &54741068679962074
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3626,7 +3626,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!54 &54806649551341274
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -4232,15 +4232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1856568937931998}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114088834371255546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4252,15 +4248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1593624747056198}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114091328498205960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4272,15 +4264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1576937779246816}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114136011557939604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4305,7 +4293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a3812a3da77004098163eae50ffac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ceilingColorFull: {r: 1, g: 1, b: 1, a: 1}
+  ceilingColorFull: {r: 0, g: 0, b: 0, a: 1}
   ceilingColorClear: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114173160641431806
 MonoBehaviour:
@@ -4318,15 +4306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1145196477615690}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114214892129464414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5118,15 +5102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1714781563473998}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114433376653340758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5138,15 +5118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1921637120426024}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114466057883653806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5182,15 +5158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1973673684936734}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114489319489424414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5214,15 +5186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1711734343800410}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114504453500445900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5234,15 +5202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1098679978332114}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114509599261804852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5254,15 +5218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1127041604103778}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114630588930729936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6008,15 +5968,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1173762310721126}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114687281560428592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6028,15 +5984,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1770399695293654}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114768492390693220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6799,15 +6751,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1745912156391216}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114840767082179956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6819,15 +6767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1501309111261946}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114846776708318974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6839,15 +6783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1852518303310720}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114894881077827448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6859,15 +6799,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2d6a17a04457449916fc2b518f795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnTimer: 5
   IsSpawning: 0
-  SpawnerTransition: 0
-  SpawnMovementSpeed: 10
-  SpawnMover: 0
-  StartPosition: {fileID: 0}
-  EndPosition: {fileID: 0}
   EnemyTypes: []
   SpawnPoint: {fileID: 1382578535759768}
+  MinSpawnRangeTime: 3
+  MaxSpawnRangeTime: 15
 --- !u!114 &114913158920387072
 MonoBehaviour:
   m_ObjectHideFlags: 1

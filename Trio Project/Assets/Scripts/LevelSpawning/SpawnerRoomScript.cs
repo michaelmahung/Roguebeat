@@ -27,6 +27,7 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
 		{
 			spawners.gameObject.SetActive(false);
 		} 
+        SelectSpawnDoors();
 
     }
 
@@ -34,6 +35,12 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
     {
         RoomSetter.UpdatePlayerRoom += ToggleSpawning;
         MyRoom = GetComponentInParent<RoomSetter>();
+        
+        foreach(SpawnEnemies spawner in AllSpawners)
+        {
+            spawner.MyRoom = MyRoom;
+        }
+
         MyRoom.MySpawners = AllSpawners;
     }
 
@@ -65,10 +72,11 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        /*if (Input.GetKeyDown(KeyCode.H))
         {
             SelectSpawnDoors();
         }
+        */
 
     }
 
