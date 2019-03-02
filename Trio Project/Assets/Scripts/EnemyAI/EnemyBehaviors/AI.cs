@@ -84,7 +84,7 @@ public StateMachine<AI> stateMachine { get; set; }
     private void Update()
     {
         stateMachine.Update();
-        Debug.Log(stateMachine.currentState);
+        //Debug.Log(stateMachine.currentState); *Turned off to improve performance
     }
 
    //Handles Enemies getting hurt, dying, changing colors
@@ -132,7 +132,7 @@ public StateMachine<AI> stateMachine { get; set; }
             }
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
-            RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.KillType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.
+            RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.
             //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
             Destroy(gameObject);
         }

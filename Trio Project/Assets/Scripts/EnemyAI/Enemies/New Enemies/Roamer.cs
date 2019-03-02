@@ -39,7 +39,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     public override void Kill()
     {
-        RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.KillType.MiniBoss); //We want to tell every door in the room the player is in that a miniboss died
+        RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.MiniBoss); //We want to tell every door in the room the player is in that a miniboss died
         RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
         base.Kill();
     }

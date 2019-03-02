@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
 
-    public enum KillType { Object, Enemy, MiniBoss };
+    public enum RoomType { Object, Enemy, MiniBoss, Timed };
     public static RoomManager Instance;
 
     private void Awake()
@@ -38,28 +38,34 @@ public class RoomManager : MonoBehaviour {
         }
     }
 
-    public void AddToDoor(RoomSetter room, KillType type)
+    public void AddToDoor(RoomSetter room, RoomType type)
     {
         if (room.MyDoors != null)
         {
             switch (type)
             {
-                case KillType.Object:
+                case RoomType.Object:
                     foreach (BaseDoor door in room.MyDoors)
                     {
                         door.ObjectDestroyed();
                     }
                     break;
-                case KillType.Enemy:
+                case RoomType.Enemy:
                     foreach (BaseDoor door in room.MyDoors)
                     {
                         door.EnemyKilled();
                     }
                     break;
-                case KillType.MiniBoss:
+                case RoomType.MiniBoss:
                     foreach (BaseDoor door in room.MyDoors)
                     {
                         door.MiniBossKilled();
+                    }
+                    break;
+                case RoomType.Timed:
+                    foreach (BaseDoor door in room.MyDoors)
+                    {
+                        door.OpenDoor();
                     }
                     break;
                 default:

@@ -13,7 +13,7 @@ public class DamageableObject : DamageableEnvironmentItemParent
 
     public override void Kill()
     {
-        RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.KillType.Object);
+        RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.Object);
         base.Kill();
     }
 }
