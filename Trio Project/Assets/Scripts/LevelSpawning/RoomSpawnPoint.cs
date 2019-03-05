@@ -26,7 +26,7 @@ public class RoomSpawnPoint : MonoBehaviour {
     [SerializeField] private byte flexFactor;
     [SerializeField] public bool ObjectSpawned { get; private set; }
 
-    Collider myCollider;
+    //Collider myCollider;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class RoomSpawnPoint : MonoBehaviour {
 
     void Start () 
     {
-        myCollider = GetComponent<Collider>();
+        //myCollider = GetComponent<Collider>();
 	}
 
     public void SetMyRoom(RoomSetter room)

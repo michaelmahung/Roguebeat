@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log(dashTimer);
             dashTimer += Time.deltaTime;
-            dashUI.SetPercentage(dashCooldownPercentage);
+//            dashUI.SetPercentage(dashCooldownPercentage);
         } else
         {
             canDash = true;
