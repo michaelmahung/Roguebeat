@@ -131,8 +131,10 @@ RandomSpawnTime = Random.Range(MinSpawnRangeTime, MaxSpawnRangeTime);
     {
         if (gameObject.activeInHierarchy == true)
         {
+            print("getting here");
             if (GameManager.Instance.PlayerRoom == MyRoom)
             {
+print ("also got here");
                 //Debug.Log("Start spawning");
                 StartSpawns();
             }
