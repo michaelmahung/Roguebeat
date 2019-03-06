@@ -40,7 +40,7 @@ public class RamState : State<AI>
 
     public override void UpdateState(AI _owner)
     {
-        float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
+//        float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
         _owner.storeTime += Time.deltaTime;
         if (_owner.HasRammed == true &&  _owner.gameObject.GetComponent<Bruiser_New>())
         {
