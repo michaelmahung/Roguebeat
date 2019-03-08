@@ -48,6 +48,7 @@ public class LevelSpawning : MonoBehaviour {
         roomFactory = GetComponent<RoomFactory>();
 
         FindNextRoomLocation(TestLevel);
+        //SpawnLevelRooms(TestLevel);
         StartCoroutine(StartSpawning());
     }
 

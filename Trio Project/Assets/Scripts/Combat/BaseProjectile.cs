@@ -16,16 +16,27 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     Collider thisCollider;
     protected string hitTag;
     protected IDamageable<float> thingHit;
+    private float activerTimer;
 
     void FixedUpdate()
     {
         if (gameObject.activeInHierarchy)
         {
-            FireRay();
+            //FireRay();
             transform.position += transform.forward * ProjectileSpeed * Time.deltaTime;
         }
 
         return;
+    }
+
+    protected void Update()
+    {
+        activerTimer += Time.deltaTime;
+
+        if (activerTimer > ActiveTime)
+        {
+            Deactivate();
+        }
     }
 
     public void Deactivate()
@@ -37,6 +48,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             {
                 thisCollider.enabled = false;
             }
+            activerTimer = 0;
             gameObject.SetActive(false);
             hitTag = null;
             thingHit = null;
@@ -54,14 +66,14 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     public void OnObjectSpawn()
     {
         thisCollider.enabled = true;
-        Invoke("Deactivate", ActiveTime);
+        //Invoke("Deactivate", ActiveTime);
     }
 
     //Due to bullets phasing through walls when traveling at high enough speeds, I decided to add a function that will cause each projectile
     //To fire a Raycast forwards while moving - The distance that the raycast will be fired can be set using RaycastHitLength.
     //Im not sure about this performance-wise, but it has helped significantly - Unity will release a new version with better
     //collision detection but I don't think we wan't to upgrade versions in the middle of development.
-    virtual protected void FireRay()
+    /*virtual protected void FireRay()
     {
         RaycastHit hit;
 
@@ -82,7 +94,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             //Debug.Log(hitTag);
             Invoke("Deactivate", RayHitDelay);
         }
-    }
+    }*/
 
     virtual protected void DealDamage(IDamageable<float> thingToDamage)
     {
