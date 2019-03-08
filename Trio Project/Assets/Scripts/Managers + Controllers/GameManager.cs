@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         LevelSpawning.FinishedSpawningRooms += FindStartLocation;
 
         //If there isnt a default spawn position set, make where the player starts in the scene the spawn position.
-        if (PlayerSpawnPosition == null)
+        if (PlayerSpawnPosition == Vector3.zero)
         {
             PlayerSpawnPosition = PlayerObject.transform.position;
         }

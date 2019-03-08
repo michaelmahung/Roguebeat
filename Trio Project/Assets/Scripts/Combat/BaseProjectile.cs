@@ -121,7 +121,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             DealDamage(thingHit);
         }
 
-        else if (hitTag == "Wall" || hitTag == "Shield" || hitTag == "eProjectile")
+        else if (hitTag == "Wall" || hitTag == "Shield")
         {
             Deactivate();
         }

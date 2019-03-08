@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965ae6db344bc4d22bdefd0beeeb923d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 5
-  fireRate: 0.1875
+  weaponDamage: 4.5
+  fireRate: 0.19
   swapTime: 0.25
   RecoilAmount: 20
   ScreenShakeAmount: 5
-  ScreenShakeDuration: 0.2
+  ScreenShakeDuration: 0.1
   projectileSpawnAmount: 20
   projectileSpeed: 30
   projectileLife: 5
@@ -601,8 +601,8 @@ MonoBehaviour:
   fireRate: 0.125
   swapTime: 0.25
   RecoilAmount: 5
-  ScreenShakeAmount: 2.5
-  ScreenShakeDuration: 0.25
+  ScreenShakeAmount: 2
+  ScreenShakeDuration: 0.1
   projectileSpawnAmount: 50
   projectileSpeed: 15
   projectileLife: 1
