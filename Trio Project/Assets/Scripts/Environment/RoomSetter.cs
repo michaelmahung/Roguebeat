@@ -72,6 +72,7 @@ public class RoomSetter : MonoBehaviour {
 
     void FinalizeRoom()
     {
+        LevelSpawning.FinishedSpawningRooms -= FinalizeRoom;
         MyOpenWalls = GetComponentsInChildren<RoomSpawnPoint>();
 
         foreach (RoomSpawnPoint point in MyOpenWalls)
@@ -106,6 +107,7 @@ public class RoomSetter : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
+        //Debug.Log("My room is: " + RoomName);
 
         if (roomTracker != null && other.tag != "Enemy")
         {
@@ -153,6 +155,7 @@ public class RoomSetter : MonoBehaviour {
     {
         GameManager.Instance.PlayerRoomName = RoomName;
         GameManager.Instance.PlayerRoom = this;
+        //Debug.Log("Player room is: " + GameManager.Instance.PlayerRoom);
 
         if (UpdatePlayerRoom != null)
         {
