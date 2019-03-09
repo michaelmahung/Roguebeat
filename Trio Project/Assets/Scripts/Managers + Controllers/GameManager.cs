@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Shaker CameraShaker;
     public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
+    public TagManager Tags = new TagManager();
 
     [Header("Difficulty Settings")]
     //Difficulty Multiplier work by Sam

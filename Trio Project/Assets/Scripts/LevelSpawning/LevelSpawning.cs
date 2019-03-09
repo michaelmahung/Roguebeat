@@ -63,6 +63,7 @@ public class LevelSpawning : MonoBehaviour {
             StartCoroutine(StartSpawning());
         }else
         {
+            System.GC.Collect(); // Manually collect any extra garbage
             FinishedSpawningRooms();
             StopAllCoroutines();
         }

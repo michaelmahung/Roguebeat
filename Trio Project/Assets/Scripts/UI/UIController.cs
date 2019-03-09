@@ -66,6 +66,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
         if (Input.GetKeyDown(KeyCode.Z))
         {
             PauseGame();
+            System.GC.Collect();
         }
     }
 
