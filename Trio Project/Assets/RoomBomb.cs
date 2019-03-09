@@ -6,6 +6,7 @@ public class RoomBomb : MonoBehaviour
 {
     public float bombTimer;
 	public GameObject expandExplosion;
+    public int DestroyPoints;
 
 
     // Use this for initialization
@@ -17,18 +18,34 @@ public class RoomBomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bombTimer -= Time.deltaTime;
         if (bombTimer <= 0)
         {
-			Instantiate(expandExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+Explosion();
         }
-        bombTimer -= Time.deltaTime;
     }
 
 
     void Explosion()
     {
+Instantiate(expandExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+    }
 
+    void OnCollisionEnter (Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player")){
+            Explosion();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("PlayerBaseShot")){
+            print ("hitting");
+            GameManager.Instance.AddScore(DestroyPoints);
+            Explosion();
+        }
     }
 
 }

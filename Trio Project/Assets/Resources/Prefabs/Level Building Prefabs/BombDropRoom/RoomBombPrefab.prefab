@@ -241,7 +241,7 @@ SphereCollider:
   m_GameObject: {fileID: 1384687089058222}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -289,14 +289,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887743437041398}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!135 &135684738987334382
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -325,3 +325,4 @@ MonoBehaviour:
   bombTimer: 5
   expandExplosion: {fileID: 1519971338207426, guid: dcdd4aa8123ef674bbbfc55ba147186e,
     type: 3}
+  DestroyPoints: 10

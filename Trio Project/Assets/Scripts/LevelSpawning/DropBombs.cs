@@ -33,9 +33,10 @@ public class DropBombs : MonoBehaviour
         else
         {
 WaitToSpawn += Time.deltaTime;
-if(WaitToSpawn >= 6.0f){
+if(WaitToSpawn >= 0.5f){
             int random = Random.Range(0, Bombspawners.Length);
 			GameObject bomb = Instantiate(BombPrefab, Bombspawners[random].transform.position, Bombspawners[random].transform.rotation);
+            bomb.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * 20000);
 			CurrentBombs++;
 			WaitToSpawn = 0;
 }
