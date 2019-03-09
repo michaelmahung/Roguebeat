@@ -26,11 +26,12 @@ public class Flamethrower : BaseWeapon
     {
         base.Start();
         SetWeaponActive(true);
-        //GetWeaponActive();
     }
 
     public override void Update()
     {
+        base.Update();
+
         //Mouse input needs to be updated to allow for various controllers
         if (Input.GetMouseButton(0))
         {
@@ -49,7 +50,8 @@ public class Flamethrower : BaseWeapon
         if (canFire && !GameManager.Instance.UI.GamePaused)
         {
             canFire = false;
-            StartCoroutine(WeaponCooldown());
+            fireTimer = fireRate;
+
             if (!firing)
             {
                 SFXManager.Instance.PlaySound(fireSound.name);

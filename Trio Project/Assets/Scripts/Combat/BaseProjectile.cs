@@ -18,6 +18,8 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     protected IDamageable<float> thingHit;
     private float activerTimer;
 
+    TagManager Tags;
+
     void FixedUpdate()
     {
         if (gameObject.activeInHierarchy)
@@ -57,6 +59,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
 
     virtual protected void Awake()
     {
+        Tags = GameManager.Instance.Tags;
         thisCollider = GetComponent<Collider>();
         RaycastHitLength = 0.25f;
         RayHitDelay = 0.75f;
@@ -69,44 +72,11 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         //Invoke("Deactivate", ActiveTime);
     }
 
-    //Due to bullets phasing through walls when traveling at high enough speeds, I decided to add a function that will cause each projectile
-    //To fire a Raycast forwards while moving - The distance that the raycast will be fired can be set using RaycastHitLength.
-    //Im not sure about this performance-wise, but it has helped significantly - Unity will release a new version with better
-    //collision detection but I don't think we wan't to upgrade versions in the middle of development.
-    /*virtual protected void FireRay()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, RaycastHitLength))
-        {
-            hitTag = hit.transform.tag;
-            thingHit = hit.transform.gameObject.GetComponent<IDamageable<float>>();
-        }
-
-        if (thingHit != null && hitTag != "Player" && hitTag != "Untagged" && hitTag != "PlayerBaseShot")
-        {
-            StartCoroutine(LateDamage(thingHit, RayHitDelay));
-            //thingHit.Damage(projectileDamage);
-        }
-
-        else if (hitTag == "Wall" || hitTag == "Shield" || hitTag == "eProjectile")
-        {
-            //Debug.Log(hitTag);
-            Invoke("Deactivate", RayHitDelay);
-        }
-    }*/
-
     virtual protected void DealDamage(IDamageable<float> thingToDamage)
     {
         //Debug.Log(thingToDamage);
         Deactivate();
         thingToDamage.Damage(ProjectileDamage);
-    }
-
-    virtual protected IEnumerator LateDamage(IDamageable<float> thingToDamage, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        DealDamage(thingToDamage);
     }
 
     //Collider-based hit detection, may still be used to very fast objects as insurance.
@@ -116,7 +86,16 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         hitTag = other.gameObject.tag;
         thingHit = other.gameObject.GetComponent <IDamageable<float>>();
         
-        if (thingHit != null && hitTag != "Player" && hitTag != "Untagged")
+        if (thingHit != null && !other.CompareTag(Tags.PlayerTag) && !other.CompareTag(Tags.Untagged))
+        {
+            DealDamage(thingHit);
+        }
+        else if (other.CompareTag(Tags.WallTag) || other.CompareTag(Tags.ShieldTag))
+        {
+            Deactivate();
+        }
+
+        /*if (thingHit != null && hitTag != "Player" && hitTag != "Untagged")
         {
             DealDamage(thingHit);
         }
@@ -124,6 +103,6 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
         else if (hitTag == "Wall" || hitTag == "Shield")
         {
             Deactivate();
-        }
+        }*/
     }
 }

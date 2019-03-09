@@ -17,7 +17,7 @@ public class PlayerRotation : MonoBehaviour
         //Shoot a ray into the plane and make the player look at the ray hit position
 
         Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
         float hitDist = 0.0f;
 
         if (playerPlane.Raycast(ray, out hitDist))

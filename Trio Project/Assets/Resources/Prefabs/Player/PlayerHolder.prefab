@@ -127,7 +127,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: 0.45
   m_Parameters:
     serializedVersion: 3
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 1.35
+  weaponDamage: 1.5
   fireRate: 0.125
   swapTime: 0.25
   RecoilAmount: 5
