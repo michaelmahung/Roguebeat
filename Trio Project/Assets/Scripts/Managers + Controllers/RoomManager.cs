@@ -72,5 +72,10 @@ public class RoomManager : MonoBehaviour {
                     break;
             }
         }
+
+        else
+        {
+            Debug.Log("no doors");
+        }
     }
 }
