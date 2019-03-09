@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
     public CameraShake CameraShaker;
+    public WeaponAudio WeaponSounds;
     public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
     public TagManager Tags = new TagManager();

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//New Garbage-Reduced screen shake script - showing much better performance and control than the previous one. 
+
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] private float maxShakeDuration = 0.75f;
@@ -67,7 +69,7 @@ public class CameraShake : MonoBehaviour
     public void HeavyShake()
     {
         shaking = true;
-        duration = 0.5f;
+        duration = 0.4f;
         magnitude = 75f;
         SetRandomPosition();
     }
@@ -75,7 +77,7 @@ public class CameraShake : MonoBehaviour
     public void Shake()
     {
         shaking = true;
-        duration = 0.5f;
+        duration = 0.3f;
         magnitude = 40f;
         SetRandomPosition();
     }

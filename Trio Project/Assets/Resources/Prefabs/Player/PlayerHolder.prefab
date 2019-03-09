@@ -54,10 +54,16 @@ MonoBehaviour:
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 3}
-  fireSound: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 0
+  fireSoundInfo:
+    clip: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
+    minPitch: 1.05
+    maxPitch: 0.95
+    volume: 0.5
+    randomizePitch: 1
+    loop: 0
 --- !u!1 &1219638501700850
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,10 +613,16 @@ MonoBehaviour:
   projectileSpeed: 15
   projectileLife: 1
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 3}
-  fireSound: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 250
+  fireSoundInfo:
+    clip: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
+    minPitch: 1
+    maxPitch: 1
+    volume: 0.75
+    randomizePitch: 0
+    loop: 1
 --- !u!1 &1450978787416338
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,10 +677,16 @@ MonoBehaviour:
   projectileSpeed: 50
   projectileLife: 3
   projectile: {fileID: 1193101994180480, guid: 1bd358743c1469244a66591172f50536, type: 3}
-  fireSound: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 100
+  fireSoundInfo:
+    clip: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
+    minPitch: 1.2
+    maxPitch: 0.8
+    volume: 0.5
+    randomizePitch: 1
+    loop: 0
 --- !u!1 &1456851921379444
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,14 +743,22 @@ MonoBehaviour:
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 3}
-  fireSound: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 150
-  heatLimit: 5
+  fireSoundInfo:
+    clip: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
+    minPitch: 1.05
+    maxPitch: 0.95
+    volume: 0.5
+    randomizePitch: 1
+    loop: 0
+  heatLimit: 6
+  myEmissions:
+  - {fileID: 114454571780196256}
+  - {fileID: 114873993651210958}
+  - {fileID: 114889128131675036}
   _currentHeat: 0
-  overheated: 0
-  myEmissions: []
 --- !u!1 &1487271178251222
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,10 +894,16 @@ MonoBehaviour:
   projectileSpeed: 30
   projectileLife: 5
   projectile: {fileID: 1067714494650928, guid: 9992f7dd91af97a4a9775c00fcef8728, type: 3}
-  fireSound: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
   weaponCost: 50
+  fireSoundInfo:
+    clip: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
+    minPitch: 1.2
+    maxPitch: 0.8
+    volume: 0.5
+    randomizePitch: 1
+    loop: 0
 --- !u!1 &1539818606755802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1068,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4788392912037924}
   - component: {fileID: 114544196771942496}
+  - component: {fileID: 6817165566036436926}
+  - component: {fileID: 2294623700714559595}
   m_Layer: 10
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -1074,6 +1108,121 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1eec541ebe748cfb4ab238a49d7966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &6817165566036436926
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639727651787838}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.862
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2294623700714559595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639727651787838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857909779bcc45b458877b098b390441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentInfo:
+    clip: {fileID: 0}
+    minPitch: 0
+    maxPitch: 0
+    volume: 0
+    randomizePitch: 0
+    loop: 0
 --- !u!1 &1677720347579250
 GameObject:
   m_ObjectHideFlags: 0

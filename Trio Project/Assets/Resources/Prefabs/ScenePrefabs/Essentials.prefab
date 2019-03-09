@@ -1190,51 +1190,6 @@ MonoBehaviour:
     loop: 0
     randomizePitch: 1
     audioSource: {fileID: 0}
-  - name: DefaultSound
-    clip: {fileID: 8300000, guid: bffe27692cb119f4fa18bc843e130bcb, type: 3}
-    volume: 0.25
-    pitch: 0
-    minPitch: 0.975
-    maxPitch: 1.025
-    loop: 0
-    randomizePitch: 1
-    audioSource: {fileID: 0}
-  - name: Flamethrower
-    clip: {fileID: 8300000, guid: c7981798a1a0e4ed7bea883fe38f8c9a, type: 3}
-    volume: 0.4
-    pitch: 0
-    minPitch: 0.9
-    maxPitch: 1.1
-    loop: 1
-    randomizePitch: 1
-    audioSource: {fileID: 0}
-  - name: Laser Rifle
-    clip: {fileID: 8300000, guid: bc37ab3e929ec45af8a519ff5773a1bb, type: 3}
-    volume: 0.25
-    pitch: 0
-    minPitch: 0.85
-    maxPitch: 1.1
-    loop: 0
-    randomizePitch: 1
-    audioSource: {fileID: 0}
-  - name: Pea Shooter
-    clip: {fileID: 8300000, guid: 77e7d67ffb8b444ccb30fd38401b6a49, type: 3}
-    volume: 0.25
-    pitch: 0
-    minPitch: 0.95
-    maxPitch: 1.05
-    loop: 0
-    randomizePitch: 1
-    audioSource: {fileID: 0}
-  - name: Shotgun
-    clip: {fileID: 8300000, guid: c7504aafae79842bf90ffbb2f00f2fba, type: 3}
-    volume: 0.3
-    pitch: 0
-    minPitch: 0.85
-    maxPitch: 1.2
-    loop: 0
-    randomizePitch: 1
-    audioSource: {fileID: 0}
   AudioPlayer: {fileID: 82413045218225562}
   Filter: {fileID: 0}
 --- !u!1 &1078035064376912
@@ -4573,7 +4528,8 @@ MonoBehaviour:
   PlayerRoom: {fileID: 0}
   UI: {fileID: 0}
   PlayerSpawnPosition: {x: -49, y: 0, z: -2}
-  CameraShaker: {fileID: 0}
+  CameraShaker: {fileID: 4621231385875591968}
+  WeaponSounds: {fileID: 0}
   Difficulty: 0
 --- !u!114 &114166703440935076
 MonoBehaviour:

@@ -8,9 +8,10 @@ public class TriShot : BaseWeapon
     public static TriShot Instance { get { return _instance; } }
 
     [SerializeField] private float heatLimit = 5;
-    [SerializeField] private float _currentHeat;
-    [SerializeField] private bool overheated;
     [SerializeField] private List<EmissionColor> myEmissions;
+    [SerializeField] private float _currentHeat;
+    [SerializeField] private float emissionTimer = 1;
+    private bool overheated;
     private float currentHeat { get { return _currentHeat; } set { if (value <= 0) { value = 0; } _currentHeat = value; } }
     private float overheatPercent { get { return currentHeat / heatLimit; } }
     bool holdingFire;
@@ -26,30 +27,46 @@ public class TriShot : BaseWeapon
             _instance = this;
         }
 
-        base.Awake();
-        
-        foreach(GameObject ob in fireLocations)
+        foreach (GameObject ob in fireLocations)
         {
             myEmissions.Add(ob.GetComponent<EmissionColor>());
         }
 
+        base.Awake();
     }
 
     public override void Update()
     {
         base.Update();
 
+        if (emissionTimer > 1)
+        {
+            emissionTimer = 0;
+            SetColor();
+        }
+
+        emissionTimer += Time.deltaTime;
+
         if (Input.GetMouseButton(0) && !overheated)
         {
             holdingFire = true;
             currentHeat += Time.deltaTime;
-            //Debug.Log(currentHeat);
-            Fire();
+            
+            if (canFire)
+            {
+                Fire();
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             holdingFire = false;
+        }
+
+        if (currentHeat >= heatLimit)
+        {
+            overheated = true;
+            canFire = false;
         }
 
         if (!holdingFire)
@@ -58,6 +75,7 @@ public class TriShot : BaseWeapon
             {
                 if (overheated)
                 {
+                    canFire = false;
                     currentHeat -= Time.deltaTime * 0.75f;
                 }
                 else
@@ -72,16 +90,12 @@ public class TriShot : BaseWeapon
                 }
             }
         }
+    }
 
-        if (currentHeat >= heatLimit)
-        {
-            overheated = true;
-            canFire = false;
-        }
-
+    void SetColor()
+    {
         foreach (EmissionColor emis in myEmissions)
         {
-            //Debug.Log(overheatPercent);
             emis.SetColor(overheatPercent);
         }
     }

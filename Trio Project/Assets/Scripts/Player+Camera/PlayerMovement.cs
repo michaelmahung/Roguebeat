@@ -42,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start () 
     {
+        if (dashUI == null)
+        {
+            dashUI = GameObject.FindObjectOfType<PlayerDashUI>();
+        }
+
         rb = GetComponent<Rigidbody>();
         GameManager.Instance.PlayerRespawned += SetDash;
         SetDash();

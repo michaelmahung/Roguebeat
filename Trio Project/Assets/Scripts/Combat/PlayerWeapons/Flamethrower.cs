@@ -41,7 +41,7 @@ public class Flamethrower : BaseWeapon
         if (Input.GetMouseButtonUp(0))
         {
             firing = false;
-            SFXManager.Instance.StopSound(fireSound.name);
+            GameManager.Instance.WeaponSounds.StopAudio();
         }
     }
 
@@ -54,10 +54,11 @@ public class Flamethrower : BaseWeapon
 
             if (!firing)
             {
-                SFXManager.Instance.PlaySound(fireSound.name);
+                GameManager.Instance.WeaponSounds.PlayClip(fireSoundInfo);
                 firing = true;
             }
             ShootWeapon();
+
         } 
     }
 
@@ -80,7 +81,7 @@ public class Flamethrower : BaseWeapon
 
     public override void OnDisable()
     {
-        SFXManager.Instance.StopSound(fireSound.name);
+        GameManager.Instance.WeaponSounds.StopAudio();
         base.OnDisable();
     }
 

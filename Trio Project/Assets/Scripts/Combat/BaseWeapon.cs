@@ -34,8 +34,10 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
 
     [Header("Misc")]
     [SerializeField] protected GameObject projectile;
-    [SerializeField] protected AudioClip fireSound;
     [SerializeField] protected Texture2D icon;
+    [SerializeField] protected bool weaponActive;
+    [SerializeField] protected int weaponCost;
+    [SerializeField] protected AudioInfo fireSoundInfo;
 
     public bool WeaponActive
     {
@@ -47,11 +49,6 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         get { return weaponCost; }
         private set { weaponCost = value; }
     }
-
-    [SerializeField]
-    protected bool weaponActive;
-    [SerializeField]
-    protected int weaponCost;
 
     protected float fireTimer;
     protected float swapTimer;
@@ -78,9 +75,9 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         }
 
         //If no unique fire sound it set, load the default fire sound
-        if (fireSound == null)
+        if (fireSoundInfo.clip == null)
         {
-            fireSound = Resources.Load<AudioClip>("ProjectileSounds/DefaultSound");
+            fireSoundInfo.clip = Resources.Load<AudioClip>("ProjectileSounds/DefaultSound");
         }
 
         //For every child object of this GameObject that has the word FireLocation in it's name..
@@ -145,7 +142,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         {
             fireTimer = fireRate;
             canFire = false;
-            SFXManager.Instance.PlaySound(fireSound.name);
+            GameManager.Instance.WeaponSounds.PlayClip(fireSoundInfo);
             ShootWeapon();
         } 
     }

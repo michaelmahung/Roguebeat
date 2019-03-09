@@ -1748,6 +1748,16 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 907087358}
+    - target: {fileID: 114075020785020660, guid: 3c6466c8494909a4e8371bc27df18e48,
+        type: 3}
+      propertyPath: fireSoundInfo.loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114598444720080750, guid: 3c6466c8494909a4e8371bc27df18e48,
+        type: 3}
+      propertyPath: heatLimit
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6466c8494909a4e8371bc27df18e48, type: 3}
 --- !u!43 &248034678
@@ -2550,6 +2560,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &617670162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2294623700714559595, guid: 3c6466c8494909a4e8371bc27df18e48,
+    type: 3}
+  m_PrefabInstance: {fileID: 233064339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857909779bcc45b458877b098b390441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &724736489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4952126149208302, guid: 9510edc534cfbf94b9968cbe42890330,
@@ -8044,18 +8066,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1905792085 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4621231385875591968, guid: 92d13d8050912e94499a3c791f2e25eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1959892339}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e4cc15b7078fa44b3a58f6972ea1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1915574990
 Mesh:
   m_ObjectHideFlags: 0
@@ -8591,9 +8601,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114368918179582784, guid: 92d13d8050912e94499a3c791f2e25eb,
         type: 3}
-      propertyPath: CameraShaker
+      propertyPath: WeaponSounds
       value: 
-      objectReference: {fileID: 1905792085}
+      objectReference: {fileID: 617670162}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d13d8050912e94499a3c791f2e25eb, type: 3}
 --- !u!1 &1968985748

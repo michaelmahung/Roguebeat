@@ -6,6 +6,14 @@ public class PlayerRotation : MonoBehaviour
     public Quaternion PlayerLookDirection { get; private set; }
     [SerializeField] private float rotationSpeed = 7f;
 
+    private void Start()
+    {
+        if (mainCam == null)
+        {
+            mainCam = GameObject.FindObjectOfType<CameraShake>().GetComponent<Camera>();
+        }
+    }
+
     void Update () 
     {
         RotateToMousePosition();
