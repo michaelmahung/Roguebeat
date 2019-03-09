@@ -103,9 +103,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashTimer < dashCooldown)
         {
-            //Debug.Log(dashTimer);
             dashTimer += Time.deltaTime;
-//            dashUI.SetPercentage(dashCooldownPercentage);
+            dashUI.SetPercentage(dashCooldownPercentage);
         } else
         {
             canDash = true;
@@ -125,21 +124,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(dashRay, out hit, dashDistance))
         {
-            if (hit.collider.tag == "Wall")
+            if (hit.collider.CompareTag(GameManager.Instance.Tags.WallTag))
             {
                 dashDistance = (int)hit.distance;
             }
         }
+
         GameManager.Instance.CameraShaker.ShakeMe(30, 0.1f);
         rb.MovePosition(transform.position += dashDirection * dashDistance);
         dashDistance = maxDashDistance;
-    }
-
-    IEnumerator StartDashCooldown()
-    {
-        canDash = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-        yield break;
     }
 }

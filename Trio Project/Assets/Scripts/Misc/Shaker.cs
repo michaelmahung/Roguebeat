@@ -26,9 +26,10 @@ public class Shaker : MonoBehaviour {
     {
         ShakeAmount = amount;
         ShakeTime = time;
-        StartCoroutine("Shake");
+        StartCoroutine(Shake());
     }
 
+    //TODO -- Remove Coroutine to reduce GC
     IEnumerator Shake()
     {
         Vector3 originalPos = transform.position;

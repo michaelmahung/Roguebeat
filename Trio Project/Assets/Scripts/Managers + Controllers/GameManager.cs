@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public Shaker CameraShaker;
     public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
+    public TagManager Tags = new TagManager();
 
     [Header("Difficulty Settings")]
     //Difficulty Multiplier work by Sam
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
         LevelSpawning.FinishedSpawningRooms += FindStartLocation;
 
         //If there isnt a default spawn position set, make where the player starts in the scene the spawn position.
-        if (PlayerSpawnPosition == null)
+        if (PlayerSpawnPosition == Vector3.zero)
         {
             PlayerSpawnPosition = PlayerObject.transform.position;
         }

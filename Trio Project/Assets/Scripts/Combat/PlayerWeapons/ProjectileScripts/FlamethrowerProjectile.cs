@@ -32,10 +32,10 @@ public class FlamethrowerProjectile : BaseProjectile
         }
     }
 
-    protected override void FireRay()
+    /*protected override void FireRay()
     {
         
-    }
+    }*/
 
     /*public override void OnTriggerEnter(Collider other)
     {
@@ -45,7 +45,7 @@ public class FlamethrowerProjectile : BaseProjectile
 
         if (thingHit != null && hitTag != "Player")
         {
-            thingHit.Damage(projectileDamage);
+            thingHit.Damage(ProjectileDamage);
             if (hitTag == "Wall")
             {
                 Deactivate();

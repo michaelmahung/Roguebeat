@@ -48,6 +48,7 @@ public class LevelSpawning : MonoBehaviour {
         roomFactory = GetComponent<RoomFactory>();
 
         FindNextRoomLocation(TestLevel);
+        //SpawnLevelRooms(TestLevel);
         StartCoroutine(StartSpawning());
     }
 
@@ -62,6 +63,7 @@ public class LevelSpawning : MonoBehaviour {
             StartCoroutine(StartSpawning());
         }else
         {
+            System.GC.Collect(); // Manually collect any extra garbage
             FinishedSpawningRooms();
             StopAllCoroutines();
         }

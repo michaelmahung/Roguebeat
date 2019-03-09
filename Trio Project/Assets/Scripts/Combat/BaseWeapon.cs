@@ -53,6 +53,8 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     [SerializeField]
     protected int weaponCost;
 
+    protected float fireTimer;
+    protected float swapTimer;
 
     public virtual void Awake()
     {
@@ -119,14 +121,29 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         {
             Fire();
         }
+
+        if (fireTimer > 0)
+        {
+            fireTimer -= Time.deltaTime;
+            canFire = false;
+        } else
+        {
+            canFire = true;
+        }
+
+        if (swapTimer > 0)
+        {
+            swapTimer -= Time.deltaTime;
+            canFire = false;
+        }
     }
 
     public virtual void Fire()
     {
         if (canFire && !GameManager.Instance.UI.GamePaused)
         {
+            fireTimer = fireRate;
             canFire = false;
-            StartCoroutine(WeaponCooldown());
             SFXManager.Instance.PlaySound(fireSound.name);
             ShootWeapon();
         } 
@@ -146,31 +163,16 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         GameManager.Instance.CameraShaker.ShakeMe(ScreenShakeAmount, ScreenShakeDuration);
     }
 
-    //May switch these to update as they create a little bit of garbage
-    public virtual IEnumerator WeaponCooldown()
-    {
-        yield return new WaitForSeconds(fireRate);
-        canFire = true;
-        yield break;
-    }
-
-    public virtual IEnumerator SwapCooldown()
-    {
-        yield return new WaitForSeconds(swapTime);
-        canFire = true;
-        yield break;
-    }
-
     public virtual void OnEnable()
     {
         canFire = false;
-        StartCoroutine(SwapCooldown());
+        swapTimer = swapTime;
     }
 
     public virtual void OnDisable()
     {
         canFire = false;
-        StopAllCoroutines();
+        swapTimer = swapTime;
     }
 
     public void SetWeaponActive(bool value)
