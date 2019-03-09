@@ -5,12 +5,15 @@ using System.Collections;
 public class Roamer : DamageableEnvironmentItemParent {
 
     [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private float maxMoveSpeed = 20f;
+    [SerializeField] private float speedIncreaseAmount = 0.25f;
     [SerializeField] private int rotationSpeed = 100;
     [SerializeField] private int baseMineDelay = 2;
     [SerializeField] private int minimumDistance = 10;
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Animator[] animators;
+
 
     private float mineDelay { get { return baseMineDelay / GameManager.Instance.Difficulty; } }
     private bool chasing;
@@ -138,6 +141,9 @@ public class Roamer : DamageableEnvironmentItemParent {
             canDropMine = true;
             DropMine();
             PingPlayer();
+
+            if (moveSpeed < maxMoveSpeed)
+                IncrementMoveSpeed(speedIncreaseAmount);
         }
     }
 

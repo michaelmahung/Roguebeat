@@ -16,7 +16,7 @@ public class TileRoom : MonoBehaviour, ITrackRooms {
 
     bool incrementTimer;
     int tilesHeated = 0;
-    [SerializeField] float tileTimer = 0;
+    float tileTimer = 0;
 
 	void Start () {
 

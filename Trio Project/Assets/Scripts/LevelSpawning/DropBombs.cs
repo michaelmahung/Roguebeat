@@ -27,7 +27,7 @@ public class DropBombs : MonoBehaviour
     {
         if (CurrentBombs >= TotalBombs)
         {
-            print(CurrentBombs);
+            //print(CurrentBombs);
         }
 
         else

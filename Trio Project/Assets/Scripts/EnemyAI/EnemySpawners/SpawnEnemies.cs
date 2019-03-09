@@ -63,13 +63,13 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     {
         RandomSpawnTime = Random.Range(MinSpawnRangeTime, MaxSpawnRangeTime);
         yield return new WaitForSeconds(RandomSpawnTime);
-        Debug.Log("doopy");
-        Debug.Log(MyRoom.EnemiesCapped());
+        //Debug.Log("doopy");
+        //Debug.Log(MyRoom.EnemiesCapped());
 
 
         if (MyRoom.EnemiesCapped() == false)
         {
-            Debug.Log("enemycaps");
+            //Debug.Log("enemycaps");
             RandomChance = Random.Range(1, 100);
             //print (RandomChance);
             if (RandomChance <= 40)
@@ -89,7 +89,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                     GameObject go = Instantiate(EnemyTypes[2], SpawnPoint.transform.position, transform.rotation);
                     ITrackRooms room = go.GetComponent<ITrackRooms>();
                     room.MyRoom = MyRoom;
-                    Debug.Log("found it");
+                    //Debug.Log("found it");
                 }
             }
 
@@ -138,10 +138,10 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     {
         if (gameObject.activeInHierarchy == true)
         {
-            print("getting here");
+            //print("getting here");
             if (GameManager.Instance.PlayerRoom == MyRoom)
             {
-                print("also got here");
+                //print("also got here");
                 //Debug.Log("Start spawning");
                 StartSpawns();
             }
