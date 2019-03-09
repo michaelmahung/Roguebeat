@@ -64,6 +64,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         SetWeaponActive(true);
 
         //Automatically setting weapons active while testing
+
         //TODO make sure all but base weapon will be disabled for demo
         if (!DataManager.HasPref(weaponName))
         {

@@ -20,7 +20,7 @@ public class LevelFactory
     public int GridSize; //The amount of cells per row/column
     public int RoomOffset = ROOMOFFSET; //The distance between each room cell
 
-    public Vector3 LevelStartPoint { get { return Vector3.zero; } } //TODO - make start point changable per level
+    public Vector3 LevelStartPoint { get { return Vector3.zero; } }
     public RoomInformation CurrentRoom { get; set; }
     public RoomInformation PreviousRoom { get; set; }
 
