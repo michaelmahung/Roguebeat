@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        GameManager.Instance.CameraShaker.ShakeMe(30, 0.1f);
+        GameManager.Instance.CameraShaker.HeavyShake();
         rb.MovePosition(transform.position += dashDirection * dashDistance);
         dashDistance = maxDashDistance;
     }

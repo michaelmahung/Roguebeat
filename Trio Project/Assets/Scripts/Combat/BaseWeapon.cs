@@ -19,9 +19,9 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     [SerializeField] protected float swapTime = 0.25f;
     [Range(0, 800)]
     [SerializeField] protected int RecoilAmount = 50;
-    [Range(2, 20)]
-    [SerializeField] protected float ScreenShakeAmount = 8f;
-    [Range(0.01f, .5f)]
+    [Range(0, 500)]
+    [SerializeField] protected float ScreenShakeAmount = 20f;
+    [Range(0.01f, .75f)]
     [SerializeField] protected float ScreenShakeDuration = 0.15f;
 
     [Header("Projectile Information")]
@@ -161,7 +161,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         }
 
         GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);
-        GameManager.Instance.CameraShaker.ShakeMe(ScreenShakeAmount, ScreenShakeDuration);
+        GameManager.Instance.CameraShaker.CustomShake(ScreenShakeDuration, ScreenShakeAmount);
     }
 
     public virtual void OnEnable()

@@ -69,7 +69,7 @@ public class Flamethrower : BaseWeapon
         }
 
         GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);
-        GameManager.Instance.CameraShaker.ShakeMe(ScreenShakeAmount, ScreenShakeDuration);
+        GameManager.Instance.CameraShaker.CustomShake(ScreenShakeDuration, ScreenShakeAmount);
     }
 
     public override void OnEnable()

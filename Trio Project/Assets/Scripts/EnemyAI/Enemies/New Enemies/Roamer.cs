@@ -121,7 +121,7 @@ public class Roamer : DamageableEnvironmentItemParent {
         if (damageTaken > 0)
         {
             healthBarImage.fillAmount = HealthPercent;
-            GameManager.Instance.CameraShaker.ShakeMe(8, .15f);
+            GameManager.Instance.CameraShaker.Shake();
             //System.Threading.Thread.Sleep(15);
         }
     }

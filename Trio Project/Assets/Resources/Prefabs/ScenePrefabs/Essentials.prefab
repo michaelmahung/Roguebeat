@@ -4573,7 +4573,7 @@ MonoBehaviour:
   PlayerRoom: {fileID: 0}
   UI: {fileID: 0}
   PlayerSpawnPosition: {x: -49, y: 0, z: -2}
-  CameraShaker: {fileID: 114165671707682518}
+  CameraShaker: {fileID: 0}
   Difficulty: 0
 --- !u!114 &114166703440935076
 MonoBehaviour:
@@ -5183,7 +5183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4331846083126936}
-  - component: {fileID: 114165671707682518}
+  - component: {fileID: 4621231385875591968}
   m_Layer: 0
   m_Name: CameraShaker
   m_TagString: Untagged
@@ -5206,7 +5206,7 @@ Transform:
   m_Father: {fileID: 4802185575795520}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114165671707682518
+--- !u!114 &4621231385875591968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5215,11 +5215,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1675953170573646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74a8c6849eaa2e43b74add3d8163df0, type: 3}
+  m_Script: {fileID: 11500000, guid: 75e4cc15b7078fa44b3a58f6972ea1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeAmount: 80
-  ShakeTime: 0.1
+  maxShakeDuration: 0.75
+  maxShakeMagnitude: 500
+  _duration: 0
+  _magnitude: 0
+  shaking: 0
 --- !u!1 &1698611361007384
 GameObject:
   m_ObjectHideFlags: 0

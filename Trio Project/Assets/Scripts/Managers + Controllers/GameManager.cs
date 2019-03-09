@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public RoomSetter PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
-    public Shaker CameraShaker;
+    public CameraShake CameraShaker;
     public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
     public TagManager Tags = new TagManager();

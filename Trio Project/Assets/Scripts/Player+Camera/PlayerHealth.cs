@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
 
         if (GameManager.Instance.CameraShaker != null)
         {
-            GameManager.Instance.CameraShaker.ShakeMe(DamageShakeAmount, DamageShakeDuration);
+            GameManager.Instance.CameraShaker.HeavyShake();
         }
 
         PlayerDamaged();
