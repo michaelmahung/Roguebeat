@@ -42,7 +42,7 @@ Instantiate(expandExplosion, transform.position, transform.rotation);
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("PlayerBaseShot")){
-            print ("hitting");
+            //print ("hitting");
             GameManager.Instance.AddScore(DestroyPoints);
             Explosion();
         }

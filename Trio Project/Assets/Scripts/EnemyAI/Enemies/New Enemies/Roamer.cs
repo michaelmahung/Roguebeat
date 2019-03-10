@@ -30,7 +30,7 @@ public class Roamer : DamageableEnvironmentItemParent {
         Armor = 2;
         KillPoints = 100;
         //maxHealth = 75 * GameManager.Instance.Difficulty;
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         healthBarImage.fillAmount = HealthPercent;
 	}
 
@@ -43,11 +43,22 @@ public class Roamer : DamageableEnvironmentItemParent {
     public override void Kill()
     {
         RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.MiniBoss); //We want to tell every door in the room the player is in that a miniboss died
-        RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
         base.Kill();
     }
 
-    public void CheckPlayerRoom()
+    public void ChasePlayer()
+    {
+        EngagePlayer();
+    }
+
+    public void StopChasing()
+    {
+        StopAllCoroutines();
+        chasing = false;
+    }
+
+    /*public void CheckPlayerRoom()
     {
         if (GameManager.Instance.PlayerRoom == MyRoom && MyRoom != null)
         {
@@ -58,7 +69,7 @@ public class Roamer : DamageableEnvironmentItemParent {
         StopAllCoroutines();
         chasing = false;
         return;
-    }
+    }*/
 
     void EngagePlayer()
     {
@@ -87,11 +98,8 @@ public class Roamer : DamageableEnvironmentItemParent {
         chasing = false;
         yield return new WaitForSeconds(2f);
 
-        if (GameManager.Instance.PlayerRoom == MyRoom)
-        {
-            canDropMine = false;
-            chasing = true;
-        }
+        canDropMine = false;
+        chasing = true;
 
         yield break;
     }
@@ -121,8 +129,6 @@ public class Roamer : DamageableEnvironmentItemParent {
         if (damageTaken > 0)
         {
             healthBarImage.fillAmount = HealthPercent;
-            GameManager.Instance.CameraShaker.Shake();
-            //System.Threading.Thread.Sleep(15);
         }
     }
 

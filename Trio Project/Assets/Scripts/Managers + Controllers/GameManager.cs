@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<float> HighScores = new List<float>();
 
     [Header("Global Script References")]
-    public string PlayerRoomName;
     public RoomSetter PlayerRoom;
     public UIController UI;
     public Vector3 PlayerSpawnPosition;
@@ -130,10 +129,10 @@ public class GameManager : MonoBehaviour
     //Basically the start function
     private void SetComponents()
     {
+        WeaponSounds = FindObjectOfType<WeaponAudio>();
         playerHealthReference = FindObjectOfType<PlayerHealth>();
         PlayerObject = playerHealthReference.gameObject;
         PlayerMovementReference = PlayerObject.GetComponent<PlayerMovement>();
-        PlayerRoomName = PlayerObject.GetComponent<PlayerStats>().MyRoomName;
         UI = FindObjectOfType<UIController>();
     }
 

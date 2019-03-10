@@ -20,16 +20,27 @@ public class TileBehaviour : MonoBehaviour
             return baseDamage * GameManager.Instance.Difficulty;
         }
     }
+
     private Material myMat;
     private Renderer myRend;
 
     IDamageable<float> damageable;
+
+
 
     void Start()
     {
         TileSelected = false;
         myRend = GetComponent<Renderer>();
         myMat = myRend.material;
+    }
+
+    public void ResetTile()
+    {
+        StopAllCoroutines();
+        myRend.material = startMat;
+        HasOverheated = false;
+        TileSelected = false;
     }
 
     private void OnTriggerEnter(Collider other)

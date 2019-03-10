@@ -40,12 +40,19 @@ public class WeaponAudio : MonoBehaviour
             MySource.pitch = Random.Range(audio.minPitch, audio.maxPitch);
         }
 
-        MySource.Play();
+        if (MySource != null)
+        {
+            MySource.Play();
+        } 
+
         currentInfo = audio;
     }
 
     public void StopAudio()
     {
-        MySource.Stop();
+        if (MySource != null)
+        {
+            MySource.Stop();
+        }
     }
 }

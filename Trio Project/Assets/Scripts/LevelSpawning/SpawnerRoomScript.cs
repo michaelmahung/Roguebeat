@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
+public class SpawnerRoomScript : MonoBehaviour, ITrackRooms, IRoomBehaviour
 {
+    public int EnemyCount = 0;
+    public int EnemyCap = 6;
 
-    public string MyRoomName { get; set; }
+    
     public RoomSetter MyRoom { get; set; }
+    public bool RoomActive { get; set; } //Adding to allow for new interface
 
     [SerializeField]
     SpawnEnemies[] AllSpawners;
@@ -16,7 +19,6 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
 
     bool spawnersActivated;
 
-    // Use this for initialization
     void Start()
     {
         LevelSpawning.FinishedSpawningRooms += SetComponents;
@@ -27,13 +29,12 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
 		{
 			spawners.gameObject.SetActive(false);
 		} 
-        SelectSpawnDoors();
 
+        SelectSpawnDoors();
     }
 
     void SetComponents()
     {
-        RoomSetter.UpdatePlayerRoom += ToggleSpawning;
         MyRoom = GetComponentInParent<RoomSetter>();
         
         foreach(SpawnEnemies spawner in AllSpawners)
@@ -44,40 +45,12 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
         MyRoom.MySpawners = AllSpawners;
     }
 
-    void ToggleSpawning()
-    {
-        if (!spawnersActivated)
-        {
-            spawnersActivated = true;
-            SelectSpawnDoors();
-        }
-
-        /*if (GameManager.Instance.PlayerRoom == MyRoom)
-        {
-            foreach(SpawnEnemies spawner in AllSpawners)
-            {
-                if (spawner.gameObject.activeInHierarchy)
-                spawner.IsSpawning = true;
-            }
-        } else
-        {
-            foreach(SpawnEnemies spawner in AllSpawners)
-            {
-                if (spawner.gameObject.activeInHierarchy)
-                spawner.IsSpawning = false;
-            }
-        }*/
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
             SetComponents();
         }
-        
-
     }
 
     void SelectSpawnDoors()
@@ -85,8 +58,6 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
         while (ActiveDoors < DesiredDoors)
         {
             int random = Random.Range(0, AllSpawners.Length);
-
-            //Debug.Log(random);
 
             if (!AllSpawners[random].gameObject.activeInHierarchy)
             {
@@ -99,5 +70,53 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms
             }
         }
 		return;
+    }
+
+    public bool EnemiesCapped()
+    {
+        if (EnemyCount >= EnemyCap)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void AddEnemy()
+    {
+        EnemyCount++;
+    }
+
+    public void RemoveEnemy()
+    {
+        EnemyCount--;
+    }
+
+    //Adding logic below for new interface
+
+    public void StartBehaviour()
+    {
+        RoomActive = true;
+
+        foreach(SpawnEnemies spawner in AllSpawners)
+        {
+            if (spawner.gameObject.activeInHierarchy && spawner != null)
+            {
+                spawner.StartSpawns();
+            }
+        }
+    }
+
+    public void StopBehaviour()
+    {
+        RoomActive = false;
+
+        foreach (SpawnEnemies spawner in AllSpawners)
+        {
+            if (spawner != null)
+            {
+                spawner.StopSpawns();
+            }
+        }
     }
 }

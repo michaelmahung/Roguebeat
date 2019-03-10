@@ -5,6 +5,5 @@
 
 public class PlayerStats : MonoBehaviour, ITrackRooms
 {
-    public string MyRoomName { get; set; }
     public RoomSetter MyRoom { get; set; }
 }

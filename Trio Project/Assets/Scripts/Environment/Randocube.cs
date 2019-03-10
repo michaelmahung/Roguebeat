@@ -20,6 +20,7 @@ public class Randocube : DamageableObject
         //Check out the RoomSetter class to see where this logic exists. What I'm doing here is saying, 
         //Hey room setter, whenever you run your UpdatePlayerRoom event, also run this CheckPlayerRoom function.
 
+        //TODO - roomsetter will control the behavior of the room - not individual components
         RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         LevelSpawning.FinishedSpawningRooms += CheckPlayerRoom;
     }

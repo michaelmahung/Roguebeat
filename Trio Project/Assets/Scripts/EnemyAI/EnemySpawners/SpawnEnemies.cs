@@ -14,7 +14,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     //public Transform EndPosition;
     public GameObject[] EnemyTypes;
     public GameObject SpawnPoint;
-    public string MyRoomName { get; set; }
+    public SpawnerRoomScript MyRoomBehaviour;
     public RoomSetter MyRoom { get; set; }
     private int RandomChance; // Spawning chance of enemy types
     private float RandomSpawnTime; // small random timer for rooms to spawn enemies at different times
@@ -29,7 +29,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     void Start()
     {
         //Subscribe to these events, spawners want to know when the player enters their room and when the player dies.
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom; Now handled by SpawnerRoomScript
         PlayerHealth.PlayerKilled += StopSpawns;
         //SpawnMover = false;
         EnemyTypes = Resources.LoadAll<GameObject>("Prefabs/Enemies");
@@ -67,7 +67,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
         //Debug.Log(MyRoom.EnemiesCapped());
 
 
-        if (MyRoom.EnemiesCapped() == false)
+        if (MyRoomBehaviour.EnemiesCapped() == false)
         {
             //Debug.Log("enemycaps");
             RandomChance = Random.Range(1, 100);
@@ -130,11 +130,12 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
 
             }
         }
+
         StartCoroutine(BeginSpawning());
-        MyRoom.AddEnemy();
+        MyRoomBehaviour.AddEnemy();
     }
 
-    void CheckPlayerRoom()
+    /*void CheckPlayerRoom()
     {
         if (gameObject.activeInHierarchy == true)
         {
@@ -150,15 +151,15 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 StopSpawns();
             }
         }
-    }
+    }*/
 
-    void StartSpawns()
+    public void StartSpawns()
     {
         IsSpawning = true;
         StartCoroutine(BeginSpawning());
     }
 
-    void StopSpawns()
+    public void StopSpawns()
     {
         IsSpawning = false;
         StopAllCoroutines();

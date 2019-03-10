@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MainController : MonoBehaviour, ITrackRooms {
 
-    public string MyRoomName { get; set; }
     public RoomSetter MyRoom { get; set; }
     public Transform player;
 
@@ -52,7 +51,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
         head.maxHealth = 100 * (maxAttackPhase - 1);
         head.health = head.maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom; //Now handled by the bossroom script
 	}
 	
 	// Update is called once per frame
@@ -230,7 +229,7 @@ public class MainController : MonoBehaviour, ITrackRooms {
             Invoke("Attack", 1);
         }
     }
-    void SetValues()
+    public void SetValues()
     {
         // Debug.Log("SetValues");
         //main turret info
@@ -298,10 +297,10 @@ public class MainController : MonoBehaviour, ITrackRooms {
 
     }
 
-   public void CheckPlayerRoom()
+   /*public void CheckPlayerRoom()
     {
         //Debug.Log(MyRoomName);
-        if (GameManager.Instance.PlayerRoomName == MyRoomName)
+        if (GameManager.Instance.PlayerRoom == MyRoom)
         {
             // Debug.Log("HE'S HERE!!!!");
             inRoom = true;
@@ -315,6 +314,6 @@ public class MainController : MonoBehaviour, ITrackRooms {
             attackPhase = 0;
             //Idle();
         }
-    }
+    }*/
 
 }

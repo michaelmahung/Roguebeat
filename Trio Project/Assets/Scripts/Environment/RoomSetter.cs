@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Collections;
 
-//TODO clean up or split this class up - maybe rename?
-
 public class RoomSetter : MonoBehaviour {
 
-    public int EnemyCount;
-    public int EnemyCap;
     public string RoomName;
     public List<BaseDoor> MyDoors = new List<BaseDoor>();
 
@@ -18,6 +14,7 @@ public class RoomSetter : MonoBehaviour {
     [SerializeField] private Transform camPlacement;
     [SerializeField] private GameObject cam;
 
+    public IRoomBehaviour RoomBehaviour { get; private set; }
     private CameraController2 camController;
     private RoomLight myLight;
     TagManager Tags;
@@ -36,6 +33,8 @@ public class RoomSetter : MonoBehaviour {
 
     void Start () {
 
+        RoomBehaviour = GetComponent<IRoomBehaviour>();
+
         PlayerHealth.PlayerKilled += OpenDoors;
 
         if (string.IsNullOrEmpty(RoomName))
@@ -47,6 +46,7 @@ public class RoomSetter : MonoBehaviour {
     void FinalizeRoom()
     {
         LevelSpawning.FinishedSpawningRooms -= FinalizeRoom;
+        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         MyOpenWalls = GetComponentsInChildren<RoomSpawnPoint>();
 
         foreach (RoomSpawnPoint point in MyOpenWalls)
@@ -80,22 +80,10 @@ public class RoomSetter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
-        //Debug.Log("My room is: " + RoomName);
-
-        if (roomTracker != null && !other.CompareTag(Tags.EnemyTag))
-        {
-            roomTracker.MyRoomName = RoomName;
-
-            if (roomTracker.MyRoom == null)
-            {
-                //Debug.Log(other.gameObject.name);
-                roomTracker.MyRoom = this;
-            }
-        }
-
         if (other.CompareTag(Tags.PlayerTag))
         {
+            ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
+
             camController.SetFocalPoint(camPlacement.gameObject);
 
             if (myLight != null)
@@ -103,17 +91,18 @@ public class RoomSetter : MonoBehaviour {
                 myLight.ToggleLight(true);
             }
 
-            //If the player is found entering a new room, Update everyone listening thats listening for that event. 
+            if (IsCleared == false)
+            {
+                StartCoroutine(CloseDoors());
+            }
+
             UpdatePlayer();
-            StartCoroutine(CloseDoors());
         }
     }
 
     public void UpdatePlayer()
     {
-        GameManager.Instance.PlayerRoomName = RoomName;
         GameManager.Instance.PlayerRoom = this;
-        //Debug.Log("Player room is: " + GameManager.Instance.PlayerRoom);
 
         if (UpdatePlayerRoom != null)
         {
@@ -121,25 +110,24 @@ public class RoomSetter : MonoBehaviour {
         }
     }
 
-
-    //TODO -- move this to spawner room logic
-    public void AddEnemy()
+    void CheckPlayerRoom()
     {
-        EnemyCount++;
-    }
-
-    public void RemoveEnemy()
-    {
-        EnemyCount--;
-    }
-
-    public bool EnemiesCapped()
-    {
-        if (EnemyCount >= EnemyCap)
+        if (RoomBehaviour != null)
         {
-            return true;
+
+            if (GameManager.Instance.PlayerRoom == this)
+            {
+                RoomBehaviour.StartBehaviour();
+            }
+            else
+            {
+                if (RoomBehaviour.RoomActive)
+                {
+                    RoomBehaviour.StopBehaviour();
+                }
+            }
+
         }
-        return false;
     }
 
     public void RoomCleared()

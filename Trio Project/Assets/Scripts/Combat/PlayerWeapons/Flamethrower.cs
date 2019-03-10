@@ -81,7 +81,11 @@ public class Flamethrower : BaseWeapon
 
     public override void OnDisable()
     {
-        GameManager.Instance.WeaponSounds.StopAudio();
+        if (GameManager.Instance.WeaponSounds != null)
+        {
+            GameManager.Instance.WeaponSounds.StopAudio();
+        }
+
         base.OnDisable();
     }
 

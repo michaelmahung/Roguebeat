@@ -9,7 +9,6 @@ public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 
 public GameObject[] EnemyWeapons;
 public Transform Hero; // Transform variable used to acquire the player.
-public string MyRoomName { get; set; } // What room is the enemy in.
 public RoomSetter MyRoom { get; set; }
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
@@ -38,6 +37,7 @@ public float storeTime;
 public float RamDamage;
 
 protected IDamageable<float> PlayerDamage;
+protected SpawnerRoomScript SpawnerRoom;
 //Floats
 
 
@@ -70,6 +70,7 @@ public StateMachine<AI> stateMachine { get; set; }
 
     public virtual void Start()
     {
+        SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
@@ -126,10 +127,12 @@ public StateMachine<AI> stateMachine { get; set; }
         if (!Dead)
         {
             Dead = true;
-            if (MyRoom != null)
+
+            if (MyRoom != null && SpawnerRoom != null)
             {
-                MyRoom.RemoveEnemy();
+                SpawnerRoom.RemoveEnemy(); //Changed to talk to the room behaviour
             }
+
             RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.

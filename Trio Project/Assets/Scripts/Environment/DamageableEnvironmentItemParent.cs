@@ -99,7 +99,6 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
 
     protected myItemType ItemType;
 
-    public string MyRoomName { get; set; } //Because I take the ITrackRooms interface, I need to add this.
     public RoomSetter MyRoom { get; set; }
     public int KillPoints { get; set; } // Killable requires us to assign how many points for dying.
 

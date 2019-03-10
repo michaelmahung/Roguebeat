@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileRoom : MonoBehaviour, ITrackRooms {
+public class TileRoom : MonoBehaviour, ITrackRooms, IRoomBehaviour {
 
     public bool RoomCleared { get; private set; }
     [SerializeField] TileBehaviour[] myTiles;
     [SerializeField] float timeToHeat = 3.0f;
-    //[SerializeField] float stayHeatedTime = 15.0f;
     [SerializeField] float delayTime = 1f;
     [SerializeField] int tilesNeeded = 12;
 
     public RoomSetter MyRoom { get; set; }
-    public string MyRoomName { get; set; }
 
+    public bool RoomActive { get; set; }
     bool incrementTimer;
     int tilesHeated = 0;
     float tileTimer = 0;
@@ -87,7 +86,29 @@ public class TileRoom : MonoBehaviour, ITrackRooms {
         }
     }
 
-    void CheckPlayerRoom()
+    public void StartBehaviour()
+    {
+        RoomActive = true;
+        incrementTimer = true;
+    }
+
+    public void StopBehaviour()
+    {
+        RoomActive = false;
+        incrementTimer = false;
+    }
+
+    public void ResetBehaviour()
+    {
+        tilesHeated = 0;
+
+        foreach (TileBehaviour tile in myTiles)
+        {
+            tile.ResetTile();
+        }
+    }
+
+    /*void CheckPlayerRoom()
     {
         if (GameManager.Instance.PlayerRoom == MyRoom)
         {
@@ -96,11 +117,11 @@ public class TileRoom : MonoBehaviour, ITrackRooms {
         {
             incrementTimer = false;
         }
-    }
+    }*/
 
     void SetComponents()
     {
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         MyRoom = GetComponent<RoomSetter>();
         myTiles = GetComponentsInChildren<TileBehaviour>();
         foreach (TileBehaviour quad in myTiles)

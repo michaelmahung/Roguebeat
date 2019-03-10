@@ -32,6 +32,13 @@ public interface IChangeSong
 
 public interface ITrackRooms
 {
-    string MyRoomName { get; set; }
     RoomSetter MyRoom{get;set;}
+}
+
+public interface IRoomBehaviour
+{
+    void StartBehaviour();
+    void StopBehaviour();
+
+    bool RoomActive { get; set; }
 }

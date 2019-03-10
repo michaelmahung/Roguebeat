@@ -98,6 +98,12 @@ public class CameraShake : MonoBehaviour
             {
                 duration -= Time.deltaTime;
                 magnitude -= (magnitude / duration) * Time.deltaTime;
+
+                if (magnitude < 0)
+                {
+                    magnitude = 0;
+                }
+
                 SetRandomPosition();
             } else
             {
@@ -119,7 +125,7 @@ public class CameraShake : MonoBehaviour
     void SetRandomPosition()
     {
         Vector3 newPos = startingPos + (Random.insideUnitSphere * (Time.deltaTime * magnitude));
-        newPos.y = transform.position.y;
+        newPos.y = startingPos.y;
 
         transform.position = newPos;
     }

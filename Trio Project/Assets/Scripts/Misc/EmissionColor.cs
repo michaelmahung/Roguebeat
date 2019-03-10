@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EmissionColor : MonoBehaviour {
 
-    [SerializeField] Material startMat;
-    [SerializeField] Material endMat;
+    [SerializeField] private Material startMat;
+    [SerializeField] private Material endMat;
     Material currentMaterial;
     Renderer myRenderer;
 

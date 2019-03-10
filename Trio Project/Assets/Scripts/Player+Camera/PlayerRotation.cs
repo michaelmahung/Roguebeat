@@ -10,7 +10,7 @@ public class PlayerRotation : MonoBehaviour
     {
         if (mainCam == null)
         {
-            mainCam = GameObject.FindObjectOfType<CameraShake>().GetComponent<Camera>();
+            mainCam = Camera.main;
         }
     }
 

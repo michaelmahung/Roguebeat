@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 {
-    public string MyRoomName { get; set; }
     [SerializeField] private List<RoomSetter> myRooms = new List<RoomSetter>();
     public RoomSetter MyRoom { get; set; }
     public enum moveAxis { X, Y, Z }

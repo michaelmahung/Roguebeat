@@ -49,7 +49,7 @@ MonoBehaviour:
   swapTime: 0.25
   RecoilAmount: 20
   ScreenShakeAmount: 20
-  ScreenShakeDuration: 0.2
+  ScreenShakeDuration: 0.4
   projectileSpawnAmount: 20
   projectileSpeed: 30
   projectileLife: 5
@@ -607,8 +607,8 @@ MonoBehaviour:
   fireRate: 0.125
   swapTime: 0.25
   RecoilAmount: 5
-  ScreenShakeAmount: 10
-  ScreenShakeDuration: 0.1
+  ScreenShakeAmount: 2
+  ScreenShakeDuration: 0.4
   projectileSpawnAmount: 50
   projectileSpeed: 15
   projectileLife: 1
@@ -737,8 +737,8 @@ MonoBehaviour:
   fireRate: 0.1
   swapTime: 0.25
   RecoilAmount: 15
-  ScreenShakeAmount: 10
-  ScreenShakeDuration: 0.175
+  ScreenShakeAmount: 5
+  ScreenShakeDuration: 0.5
   projectileSpawnAmount: 150
   projectileSpeed: 30
   projectileLife: 5
@@ -759,6 +759,7 @@ MonoBehaviour:
   - {fileID: 114873993651210958}
   - {fileID: 114889128131675036}
   _currentHeat: 0
+  emissionTimer: 1
 --- !u!1 &1487271178251222
 GameObject:
   m_ObjectHideFlags: 0
