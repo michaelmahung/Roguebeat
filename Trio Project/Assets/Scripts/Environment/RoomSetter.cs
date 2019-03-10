@@ -82,7 +82,7 @@ public class RoomSetter : MonoBehaviour {
     {
         if (other.CompareTag(Tags.PlayerTag))
         {
-            ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
+            //ITrackRooms roomTracker = other.GetComponent<ITrackRooms>();
 
             camController.SetFocalPoint(camPlacement.gameObject);
 
@@ -107,11 +107,16 @@ public class RoomSetter : MonoBehaviour {
         if (UpdatePlayerRoom != null)
         {
             UpdatePlayerRoom();
+        } else
+        {
+            CheckPlayerRoom();
         }
     }
 
     void CheckPlayerRoom()
     {
+        //Debug.Log(RoomBehaviour);
+
         if (RoomBehaviour != null)
         {
 

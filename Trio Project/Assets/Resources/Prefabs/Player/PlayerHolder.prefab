@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 1.6
+  weaponDamage: 2.1
   fireRate: 0.125
   swapTime: 0.25
   RecoilAmount: 5

@@ -4002,6 +4002,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7016669805905338691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7018973381932762964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccee88d1c1f4814aa57d12d2282fb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 4565358892010346386}
 --- !u!1 &6520645501281814790
 GameObject:
   m_ObjectHideFlags: 0
@@ -5833,11 +5846,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
-        type: 3}
-      propertyPath: camPlacement
-      value: 
-      objectReference: {fileID: 3105037717729495622}
     - target: {fileID: 8850176607603616392, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: m_Mesh
@@ -5878,6 +5886,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: camPlacement
+      value: 
+      objectReference: {fileID: 3105037717729495622}
     - target: {fileID: 4544954511205349042, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: SpawnPointType
@@ -5888,12 +5901,12 @@ PrefabInstance:
       propertyPath: SpawnPointType
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8401876578735519145, guid: 48ba2b1fd522de64a912b33873df561f,
+    - target: {fileID: 249231893057925174, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: SpawnPointType
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 249231893057925174, guid: 48ba2b1fd522de64a912b33873df561f,
+    - target: {fileID: 8401876578735519145, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: SpawnPointType
       value: 2
@@ -5903,6 +5916,12 @@ PrefabInstance:
 --- !u!4 &2439980942005777057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572282042056078666, guid: 48ba2b1fd522de64a912b33873df561f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6280921297065887723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7018973381932762964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3909748716160549055, guid: 48ba2b1fd522de64a912b33873df561f,
     type: 3}
   m_PrefabInstance: {fileID: 6280921297065887723}
   m_PrefabAsset: {fileID: 0}

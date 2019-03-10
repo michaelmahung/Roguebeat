@@ -36,6 +36,7 @@ public class DropBombs : MonoBehaviour, IRoomBehaviour
 
     public void StartBehaviour()
     {
+        //Debug.Log("Dropping bombs");
         RoomActive = true;
     }
 
