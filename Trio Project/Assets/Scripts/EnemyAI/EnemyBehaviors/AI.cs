@@ -36,6 +36,8 @@ public float RamTime = 5.0f;
 public float storeTime;
 public float RamDamage;
 
+WaitForSeconds AttackSpeed = new WaitForSeconds(1.0f);
+
 protected IDamageable<float> PlayerDamage;
 protected SpawnerRoomScript SpawnerRoom;
 //Floats
@@ -46,6 +48,8 @@ protected SpawnerRoomScript SpawnerRoom;
 public int KillPoints;
 public int seconds = 0;
 // Ints
+
+protected TagManager Tags; // Reference the Tag Manager script
 
 
 //Bools
@@ -71,9 +75,11 @@ public StateMachine<AI> stateMachine { get; set; }
     public virtual void Start()
     {
         SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
+        Debug.Log("got here");
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
+        Tags = GameManager.Instance.Tags;
         //HealthPercentage = (currentHealth / EnemyHealth) * 100; *****Moved to specific enemy starts As their assignments of stats happens AFTER this call, making it null
         Hero = GameManager.Instance.PlayerObject.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
@@ -82,7 +88,7 @@ public StateMachine<AI> stateMachine { get; set; }
         Invoke("CheckRoom", 0.1f);
     }
 
-    private void Update()
+     private void Update()
     {
         stateMachine.Update();
         //Debug.Log(stateMachine.currentState); *Turned off to improve performance
@@ -186,7 +192,7 @@ public IEnumerator RamPlayers()
 
 	public IEnumerator FireWeapon ()
 	{
-		yield return new WaitForSeconds (EnemyAttackSpeed);
+		yield return(AttackSpeed);
 		Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
 
         if (IsFiring == false)

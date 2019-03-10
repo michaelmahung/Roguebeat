@@ -37,6 +37,7 @@ public class IdleState : State<AI> {
 
     public override void UpdateState(AI _owner)
     {
+        Debug.Log("Staying here");
         idleTimer += Time.deltaTime;
         if (idleTimer > 1.0)
         {

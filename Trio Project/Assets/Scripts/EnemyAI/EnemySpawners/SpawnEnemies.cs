@@ -36,8 +36,8 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
         /*float step = SpawnMovementSpeed * Time.deltaTime;
             if (SpawnMover == false) {
                 transform.position = Vector3.MoveTowards(transform.position, EndPosition.position, step);
@@ -57,7 +57,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 }
             }
             */
-    }
+   // }
 
     IEnumerator BeginSpawning()
     {

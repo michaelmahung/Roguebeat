@@ -21,13 +21,13 @@ public class Bruiser_New : AI{
 	private void OnTriggerEnter(Collider other)
 	{
         PlayerDamage = other.gameObject.GetComponent<IDamageable<float>>();
-        if(PlayerDamage != null && other.tag != "Enemy" && other.tag != "Shield" && other.tag != "Untagged" && other.tag != "eProjectile" && IsRamming == true)
+        if(PlayerDamage != null && !other.CompareTag(Tags.EnemyTag) && !other.CompareTag(Tags.ShieldTag) && !other.CompareTag(Tags.ShieldTag) && !other.CompareTag(Tags.EnemyProjectileTag) && IsRamming == true)
         {
             PlayerDamage.Damage(gameObject.GetComponent<Bruiser_New>().RamDamage);
 			IsRamming = false;
 			HasRammed = true;
         }
-        else if (other.tag == "Wall")
+        else if (other.CompareTag(Tags.WallTag))
         {
             
         }
