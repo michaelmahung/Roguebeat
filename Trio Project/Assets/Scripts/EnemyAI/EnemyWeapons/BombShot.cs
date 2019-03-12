@@ -6,10 +6,13 @@ public class BombShot : MonoBehaviour {
 public float BombLife = 1.0f;
 public float BombSpeed = 20.0f;
 public GameObject BigBoom;
+protected TagManager Tags;
 
  
 	// Use this for initialization
 	void Start () {
+
+		Tags = GameManager.Instance.Tags;
 	}
 	
 	// Update is called once per frame
@@ -28,7 +31,7 @@ public GameObject BigBoom;
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Player" || other.tag == "Wall") {
+		if (other.CompareTag(Tags.PlayerTag) || other.CompareTag(Tags.WallTag)) {
             //print("I got'em!");
 			callExplosion ();
 		}

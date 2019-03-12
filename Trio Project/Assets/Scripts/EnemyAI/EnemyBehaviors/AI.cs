@@ -8,15 +8,15 @@ public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 {
 
 public GameObject[] EnemyWeapons;
+public GameObject FiringPoint; // Gameobject that represents the firing point of the enemy, if applicable
 public Transform Hero; // Transform variable used to acquire the player.
 public RoomSetter MyRoom { get; set; }
 private Color EnemyBaseColor; //Handles Color change on damage to enemy
 public Rigidbody AIRigidbody;
-
-public GameObject FiringPoint;
 public HealthBarCode HealthBar;
 
-//Floats
+
+//Floats*****************************************************************************************************************
 [Tooltip("Movement Speed Of Enemy")]
 public float MoveSpeed; // base variable for all enemy movespeeds; is uniquely set on specific enemy class
 [Tooltip("Amount Of Enemy Health")]
@@ -30,13 +30,18 @@ public float HurtDuration = 0.5f; // duration of hurt visual
 [Tooltip("Incremental Change Rate For Damage Visual")]
 public float SmoothColor = 0.10f; //rate of color change for hurt visual
 public float AttackRange = 30;
+
+    //float variables spefically for the Bruiser enemy class
 public float RamRange = 15;
 public float RamSpeed = 30;
-public float RamTime = 5.0f;
+public float EnemyRamTime;
 public float storeTime;
 public float RamDamage;
+//Floats*****************************************************************************************************************
 
-WaitForSeconds AttackSpeed = new WaitForSeconds(1.0f);
+WaitForSeconds AttackSpeed;
+WaitForSeconds RamTime;
+
 
 protected IDamageable<float> PlayerDamage;
 protected SpawnerRoomScript SpawnerRoom;
@@ -47,12 +52,13 @@ protected SpawnerRoomScript SpawnerRoom;
 [Tooltip("How Many Points This Enemy Is Worth On Death")]
 public int KillPoints;
 public int seconds = 0;
+public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
 // Ints
 
 protected TagManager Tags; // Reference the Tag Manager script
 
 
-//Bools
+//Bools***********************************************************************************************************************************
 public bool IsFiring; // bool created to assist a Coroutine of enemy fire and wait time before firing again, used in Enemy Engagement Class
 public bool? Flees;
 public bool HasFleed;
@@ -60,10 +66,11 @@ public bool Enraged;
 public bool IsEnabled;
 public bool SwitchState = false;
 public bool Dead;
+
+    //Variables specifically for the Bruiser enemy class
 public bool HasRammed;
 public bool IsRamming;
-public int WeaponValue; // int to allow selection of enemy weapon prefabs within the EnemyWeapons array, used in Enemy Engagement Class
-//Bools
+//Bools************************************************************************************************************************************
 
 //Public Event
 public event Action<float> OnHealthPctChanged = delegate {};
@@ -75,12 +82,12 @@ public StateMachine<AI> stateMachine { get; set; }
     public virtual void Start()
     {
         SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
-        Debug.Log("got here");
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
         Tags = GameManager.Instance.Tags;
-        //HealthPercentage = (currentHealth / EnemyHealth) * 100; *****Moved to specific enemy starts As their assignments of stats happens AFTER this call, making it null
+        AttackSpeed = new WaitForSeconds(EnemyAttackSpeed);
+        RamTime = new WaitForSeconds(EnemyRamTime);
         Hero = GameManager.Instance.PlayerObject.transform;
 		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
@@ -91,7 +98,6 @@ public StateMachine<AI> stateMachine { get; set; }
      private void Update()
     {
         stateMachine.Update();
-        //Debug.Log(stateMachine.currentState); *Turned off to improve performance
     }
 
    //Handles Enemies getting hurt, dying, changing colors
@@ -105,7 +111,7 @@ public StateMachine<AI> stateMachine { get; set; }
             currentHealth -= damage;
             float currentHealthPct = (float)currentHealth/(float)EnemyHealth;
             OnHealthPctChanged(currentHealthPct);
-            //StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
+            StartCoroutine(LerpColor()); // begin lerping color to show damage to enemy
             UpdateHealthPercentage();
             HealthBar.HealthChange(currentHealthPct);
             if (currentHealth <= 0)
@@ -168,10 +174,11 @@ public IEnumerator RamPlayers()
 {
     //yield return new WaitForSeconds(RamTime);
     storeTime += Time.deltaTime;
-    if(storeTime <= RamTime)
+    if(storeTime <= EnemyRamTime)
     {
         transform.localPosition += transform.forward * RamSpeed * Time.deltaTime;
-        yield return new WaitForSeconds(RamTime);
+        yield return (RamTime);
+        //yield return new WaitForSeconds(RamTime);//SEETHIS
         StopAllCoroutines();
     }
 }

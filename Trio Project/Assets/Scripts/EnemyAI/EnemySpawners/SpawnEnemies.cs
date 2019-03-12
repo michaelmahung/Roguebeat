@@ -23,6 +23,9 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     [Tooltip("Maximum time to wait to be spawned")]
     public float MaxSpawnRangeTime;
 
+    protected TagManager Tags;
+    WaitForSeconds SpawnWait;
+
 
 
     // Use this for initialization
@@ -31,6 +34,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
         //Subscribe to these events, spawners want to know when the player enters their room and when the player dies.
         //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom; Now handled by SpawnerRoomScript
         PlayerHealth.PlayerKilled += StopSpawns;
+        Tags = GameManager.Instance.Tags;
         //SpawnMover = false;
         EnemyTypes = Resources.LoadAll<GameObject>("Prefabs/Enemies");
     }
@@ -38,43 +42,39 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     // Update is called once per frame
     //void Update()
     //{
-        /*float step = SpawnMovementSpeed * Time.deltaTime;
-            if (SpawnMover == false) {
-                transform.position = Vector3.MoveTowards(transform.position, EndPosition.position, step);
+    /*float step = SpawnMovementSpeed * Time.deltaTime;
+        if (SpawnMover == false) {
+            transform.position = Vector3.MoveTowards(transform.position, EndPosition.position, step);
 
-                //Since floats are never really equal to each other I just said, if the distance between the two floats is small.
-                //Was running into issues where the spawner would stop on one end or the other.
-                if (Vector3.Distance(transform.position, EndPosition.position) < 0.01f) {
+            //Since floats are never really equal to each other I just said, if the distance between the two floats is small.
+            //Was running into issues where the spawner would stop on one end or the other.
+            if (Vector3.Distance(transform.position, EndPosition.position) < 0.01f) {
 
-                    SpawnMover = true;
-                }
+                SpawnMover = true;
             }
+        }
 
-            if (SpawnMover == true) {
-                transform.position = Vector3.MoveTowards(transform.position, StartPosition.position, step);
-                if (Vector3.Distance(transform.position, StartPosition.position) < 0.01f) {
-                    SpawnMover = false;
-                }
+        if (SpawnMover == true) {
+            transform.position = Vector3.MoveTowards(transform.position, StartPosition.position, step);
+            if (Vector3.Distance(transform.position, StartPosition.position) < 0.01f) {
+                SpawnMover = false;
             }
-            */
-   // }
+        }
+        */
+    // }
 
     IEnumerator BeginSpawning()
     {
         RandomSpawnTime = Random.Range(MinSpawnRangeTime, MaxSpawnRangeTime);
-        yield return new WaitForSeconds(RandomSpawnTime);
-        //Debug.Log("doopy");
-        //Debug.Log(MyRoom.EnemiesCapped());
-
+        SpawnWait = new WaitForSeconds(RandomSpawnTime);
+        yield return(SpawnWait);
 
         if (MyRoomBehaviour.EnemiesCapped() == false)
         {
-            //Debug.Log("enemycaps");
             RandomChance = Random.Range(1, 100);
-            //print (RandomChance);
             if (RandomChance <= 40)
             {
-                if (gameObject.name != "SpawnDoor")
+                if (!gameObject.CompareTag("Spawner"))
                 { // For Crane Spawning Room- Will work on later- Sam
 
                     //Caching the object spawned so we can tell it what room to assign itself to - Mike
@@ -84,7 +84,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                     // ITrackRooms room = go.GetComponent<ITrackRooms>();
                     // room.MyRoom = MyRoom;
                 }
-                else if (gameObject.name == "SpawnDoor")
+                else if (gameObject.CompareTag("Spawner"))
                 {
                     GameObject go = Instantiate(EnemyTypes[2], SpawnPoint.transform.position, transform.rotation);
                     ITrackRooms room = go.GetComponent<ITrackRooms>();
@@ -92,37 +92,34 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                     //Debug.Log("found it");
                 }
             }
-
         }
 
 
-        if (RandomChance > 40 && RandomChance < 80)
+        if (RandomChance > 40 && RandomChance < 70)
         {
-            if (gameObject.name != "SpawnDoor")
+            if (!gameObject.CompareTag("Spawner"))
             { // For Crane Spawning Room- Will work on later- Sam
               // GameObject go = Instantiate(EnemyTypes[1], transform.position, transform.rotation);
               // ITrackRooms room = go.GetComponent<ITrackRooms>();
               // room.MyRoom = MyRoom;
             }
-            else if (gameObject.name == "SpawnDoor")
+            else if (gameObject.CompareTag("Spawner"))
             {
                 GameObject go = Instantiate(EnemyTypes[1], SpawnPoint.transform.position, transform.rotation);
                 ITrackRooms room = go.GetComponent<ITrackRooms>();
                 room.MyRoom = MyRoom;
             }
-
-
         }
 
-        if (RandomChance >= 80)
+        if (RandomChance >= 70)
         {
-            if (gameObject.name != "SpawnDoor")
+            if (!gameObject.CompareTag("Spawner"))
             { // For Crane Spawning Room- Will work on later- Sam
               //GameObject go = Instantiate(EnemyTypes[0], transform.position, transform.rotation);
               // ITrackRooms room = go.GetComponent<ITrackRooms>();
               // room.MyRoom = MyRoom;
             }
-            else if (gameObject.name == "SpawnDoor")
+            else if (gameObject.CompareTag("Spawner"))
             {
                 GameObject go = Instantiate(EnemyTypes[0], SpawnPoint.transform.position, transform.rotation);
                 ITrackRooms room = go.GetComponent<ITrackRooms>();
@@ -134,25 +131,6 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
         StartCoroutine(BeginSpawning());
         MyRoomBehaviour.AddEnemy();
     }
-
-    /*void CheckPlayerRoom()
-    {
-        if (gameObject.activeInHierarchy == true)
-        {
-            //print("getting here");
-            if (GameManager.Instance.PlayerRoom == MyRoom)
-            {
-                //print("also got here");
-                //Debug.Log("Start spawning");
-                StartSpawns();
-            }
-            else
-            {
-                StopSpawns();
-            }
-        }
-    }*/
-
     public void StartSpawns()
     {
         IsSpawning = true;

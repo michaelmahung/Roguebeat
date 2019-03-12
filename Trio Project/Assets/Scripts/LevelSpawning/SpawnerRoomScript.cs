@@ -21,7 +21,7 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms, IRoomBehaviour
 
     void Start()
     {
-        LevelSpawning.FinishedSpawningRooms += SetComponents;
+        //LevelSpawning.FinishedSpawningRooms += SetComponents;
 
         AllSpawners = GetComponentsInChildren<SpawnEnemies>();
 
@@ -29,6 +29,7 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms, IRoomBehaviour
 		{
 			spawners.gameObject.SetActive(false);
 		} 
+        SetComponents();
 
         SelectSpawnDoors();
     }
@@ -43,14 +44,6 @@ public class SpawnerRoomScript : MonoBehaviour, ITrackRooms, IRoomBehaviour
         }
 
         MyRoom.MySpawners = AllSpawners;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            SetComponents();
-        }
     }
 
     void SelectSpawnDoors()

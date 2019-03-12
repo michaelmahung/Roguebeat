@@ -34,34 +34,35 @@ public class RamState : State<AI>
     {
         _owner.HasRammed = false;
         _owner.lookAtPlayer();
-		_owner.storeTime = 0;
+        _owner.storeTime = 0;
         _owner.IsRamming = true;
     }
 
     public override void UpdateState(AI _owner)
     {
-//        float distance = Vector3.Distance(_owner.transform.position, _owner.Hero.position);
+        //    
         _owner.storeTime += Time.deltaTime;
-        if (_owner.HasRammed == true &&  _owner.gameObject.GetComponent<Bruiser_New>())
+        if (_owner.HasRammed == true && _owner.gameObject.GetComponent<Bruiser_New>())
         {
             _owner.IsRamming = false;
-			_owner.lookAtPlayer();
+            _owner.lookAtPlayer();
             _owner.stateMachine.ChangeState(IdleState.Instance);
         }
 
-		else
+        else
 
-		{
-        if (_owner.gameObject.GetComponent<Bruiser_New>() && _owner.HasRammed == false)
         {
-            _owner.StartCoroutine(_owner.RamPlayers());
-			if(_owner.storeTime >= _owner.RamTime){
-            _owner.HasRammed = true;
-			}
+            if (_owner.gameObject.GetComponent<Bruiser_New>() && _owner.HasRammed == false)
+            {
+                _owner.StartCoroutine(_owner.RamPlayers());
+                if (_owner.storeTime >= _owner.EnemyRamTime)
+                {
+                    _owner.HasRammed = true;
+                }
+            }
+
         }
-        
     }
-	}
 
     public override void ExitState(AI _owner)
     {

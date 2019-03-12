@@ -13,4 +13,5 @@ public class TagManager
     public readonly string DamageableTag = "Damageable";
     public readonly string FloorTag = "Floor";
     public readonly string Untagged = "Untagged";
+    public readonly string SpawnerTag = "Spawner";
 }
