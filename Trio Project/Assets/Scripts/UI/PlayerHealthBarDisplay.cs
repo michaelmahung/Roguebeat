@@ -27,17 +27,17 @@ public class PlayerHealthBarDisplay : MonoBehaviour
             print("No health bar found");
         }
 
-        if (playerHealthBar.normalizedValue >= 0.7f)
+        if (playerHealthBar.normalizedValue >= PlayerStats.HIGHHPMIN)
         {
             healthBarImage.color = highHealthColor;
         }
 
-        if (playerHealthBar.normalizedValue < .7f && playerHealthBar.normalizedValue >= .4f)
+        if (playerHealthBar.normalizedValue < PlayerStats.HIGHHPMIN && playerHealthBar.normalizedValue >= PlayerStats.MEDHPMIN)
         {
             healthBarImage.color = mediumHealthColor;
         }
 
-        if (playerHealthBar.normalizedValue < 0.4f)
+        if (playerHealthBar.normalizedValue < PlayerStats.MEDHPMIN)
         {
             healthBarImage.color = lowHealthColor;
         }

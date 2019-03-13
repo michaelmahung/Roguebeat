@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement PlayerMovementReference { get; private set; }
 
     private bool canRespawn;
-    private PlayerHealth playerHealthReference;
+    public PlayerHealth playerHealthReference;
 
     public void AddScore(int score)
     {

@@ -7,10 +7,12 @@ public class Roamer : DamageableEnvironmentItemParent {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float maxMoveSpeed = 20f;
     [SerializeField] private float speedIncreaseAmount = 0.25f;
+    [SerializeField] private float explosionTime = 2.5f;
     [SerializeField] private int rotationSpeed = 100;
     [SerializeField] private int baseMineDelay = 2;
     [SerializeField] private int minimumDistance = 10;
     [SerializeField] private GameObject minePrefab;
+    [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Animator[] animators;
 
@@ -21,6 +23,8 @@ public class Roamer : DamageableEnvironmentItemParent {
     private bool engagedPlayer;
     private float timer;
     private int pingCount;
+    private bool exploding;
+    private float explosionTimer;
 
     new void Start ()
     {
@@ -29,8 +33,6 @@ public class Roamer : DamageableEnvironmentItemParent {
         ItemType = myItemType.Wood;
         Armor = 2;
         KillPoints = 100;
-        //maxHealth = 75 * GameManager.Instance.Difficulty;
-        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         healthBarImage.fillAmount = HealthPercent;
 	}
 
@@ -42,8 +44,8 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     public override void Kill()
     {
+        healthBarImage.enabled = false;
         RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.MiniBoss); //We want to tell every door in the room the player is in that a miniboss died
-        //RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
         base.Kill();
     }
 
@@ -57,19 +59,6 @@ public class Roamer : DamageableEnvironmentItemParent {
         StopAllCoroutines();
         chasing = false;
     }
-
-    /*public void CheckPlayerRoom()
-    {
-        if (GameManager.Instance.PlayerRoom == MyRoom && MyRoom != null)
-        {
-            EngagePlayer();
-            return;
-        }
-
-        StopAllCoroutines();
-        chasing = false;
-        return;
-    }*/
 
     void EngagePlayer()
     {
@@ -118,7 +107,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
         if (pingCount >= 3)
         {
-            Debug.Log("Selfdestruct " + Time.time);
+            exploding = true;
         }
     }
 
@@ -151,6 +140,24 @@ public class Roamer : DamageableEnvironmentItemParent {
             if (moveSpeed < maxMoveSpeed)
                 IncrementMoveSpeed(speedIncreaseAmount);
         }
+
+        if (exploding)
+        {
+            explosionTimer += Time.deltaTime / explosionTime;
+
+            objectRenderer.material.color = Color.Lerp(currentColor, Color.white, explosionTimer);
+
+            if (explosionTimer >= explosionTime)
+            {
+                Explode();
+            }
+        }
+    }
+
+    void Explode()
+    {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Kill();
     }
 
     void DropMine()

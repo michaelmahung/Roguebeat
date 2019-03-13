@@ -20,15 +20,18 @@ public class AudioPeer : MonoBehaviour
     public static float _Amplitude, _AmplitudeBuffer;
     float _AmplitudeHighest;
 
-
-
-    // Use this for initialization
     void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = DynamicMusic_Alt.ActiveAudioSource;
+
+        PlayerHealth.PlayerDamaged += GetActiveAudioSource;
     }
 
-    // Update is called once per frame
+    void GetActiveAudioSource()
+    {
+        _audioSource = DynamicMusic_Alt.ActiveAudioSource;
+    }
+
     void Update()
     {
         GetSpectrumAudioSource();

@@ -1664,10 +1664,13 @@ MonoBehaviour:
   moveSpeed: 13
   maxMoveSpeed: 20
   speedIncreaseAmount: 0.25
+  explosionTime: 2.5
   rotationSpeed: 120
-  baseMineDelay: 2
+  baseMineDelay: 1
   minimumDistance: 10
   minePrefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 3}
+  explosionPrefab: {fileID: 5637069907125816121, guid: 629ab55ab44bed241b15d1b1486a75aa,
+    type: 3}
   healthBarImage: {fileID: 114677603204633138}
   animators:
   - {fileID: 95833081904693892}

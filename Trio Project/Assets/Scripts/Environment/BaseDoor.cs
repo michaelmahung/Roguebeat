@@ -60,24 +60,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
         killCount = 0;
     }
 
-
-    //Virtual functions are functions that I know I will want to change the functionality of for the children of this class.
-    //For instance, if I didnt want a door to be removed from the GameManagers list I could do the following in a child class:
-    /*
-    public override void OpenDoor()
-    {
-        doorMoved = true;
-        transform.localPosition += moveDirection;
-    }
-
-    //Another example could be how different people read. If I had a Human class that had a Read() function.
-    //The Westeners would do Read(Left to Right)
-    //And the Easterners would do Read(Right to Left)
-    //Both can read, but they way they go about reading is different.
-    */
-
-    //Doing this allows me to redefine what opening the door means for the child.
-
     public void AddRoom(RoomSetter room)
     {
         myRooms.Add(room);
@@ -99,7 +81,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
             }
 
             transform.localPosition += moveDirection;
-            //When this door is open, remove it from the total list of active doors, this will make it easier to find the other doors when searching.
         }
     }
 
@@ -117,9 +98,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
             }
         }
     }
-
-
-    //I also want to make this virtual because I know I might want to change what the door requires in order to open.
 
     public virtual void ObjectDestroyed()
     {

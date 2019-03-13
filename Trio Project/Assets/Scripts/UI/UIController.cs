@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class UIController : MonoBehaviour, IWeaponSwap {
 
@@ -10,19 +11,17 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     [SerializeField] private GameObject PauseScreen;
     [SerializeField] private Text UIText;
     [SerializeField] private Text ScoreText;
+    [SerializeField] AudioMixerGroup MasterGroup;
 
     private string weaponName;
     private string songName;
-    private AudioLowPassFilter filter;
 
 	void Start ()
     {
         FindComponents();
-        filter = SFXManager.Instance.Filter;
         PauseScreen.SetActive(false);
         UpdateUIText();
 
-        PlayerHealth.PlayerKilled += PlayerKilledText;
         GameManager.Instance.PlayerRespawned += UpdateUIText;
         GameManager.Instance.ScoreAdded += UpdateScoreText;
 	}
@@ -31,12 +30,6 @@ public class UIController : MonoBehaviour, IWeaponSwap {
     {
         weaponName = GameManager.Instance.PlayerObject.GetComponent<PlayerWeapon>().playerWeapon.name;
         UpdateUIText();
-    }
-
-    public void PlayerKilledText()
-    {
-        UIText.fontSize = 60;
-        UIText.text = "Press 'R' to respawn";
     }
 
     public void UpdateScoreText()
@@ -80,14 +73,14 @@ public class UIController : MonoBehaviour, IWeaponSwap {
                 GamePaused = true;
                 PauseScreen.SetActive(true);
                 Time.timeScale = 0;
-                filter.enabled = true;
+                MasterGroup.audioMixer.SetFloat("CutoffFreq", 400);
             }
             else
             {
                 PauseScreen.SetActive(false);
                 GamePaused = false;
                 Time.timeScale = 1;
-                filter.enabled = false;
+                MasterGroup.audioMixer.SetFloat("CutoffFreq", 22000);
             }
         }
         catch
@@ -95,7 +88,7 @@ public class UIController : MonoBehaviour, IWeaponSwap {
             PauseScreen.SetActive(false);
             GamePaused = false;
             Time.timeScale = 1;
-            filter.enabled = false;
+            MasterGroup.audioMixer.SetFloat("CutoffFreq", 22000);
         }
 
     }
