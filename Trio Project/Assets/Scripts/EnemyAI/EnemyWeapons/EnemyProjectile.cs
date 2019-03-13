@@ -9,12 +9,12 @@ public class EnemyProjectile : MonoBehaviour
 
     protected TagManager Tags;
 
-    void Awake()
+    virtual protected void Awake()
     {
         Tags = GameManager.Instance.Tags;
     }
 
-    private void OnTriggerEnter(Collider other)
+    virtual protected void OnTriggerEnter(Collider other)
     {
         thingHitTag = other.tag;
         otherDamageable = other.gameObject.GetComponent<IDamageable<float>>();

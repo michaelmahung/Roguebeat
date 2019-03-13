@@ -16,7 +16,7 @@ public GameObject missile;
 private Vector3 targetScale;
 
 	// Use this for initialization
-	void Awake () {
+	override protected void Awake () {
 		Tags = GameManager.Instance.Tags;
         Damage = 10 * GameManager.Instance.Difficulty;
 	Changing = false;
@@ -54,7 +54,7 @@ private Vector3 targetScale;
 		}
 	}
 
-    private void OnTriggerEnter(Collider other)
+    new protected void OnTriggerEnter(Collider other)
     {
         thingHitTag = other.tag;
         otherDamageable = other.gameObject.GetComponent<IDamageable<float>>();

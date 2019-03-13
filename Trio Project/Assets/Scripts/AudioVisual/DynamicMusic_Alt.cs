@@ -10,10 +10,8 @@ public class DynamicMusic_Alt : MonoBehaviour
     int currentClipIndex = 0;
     int clipIndexMax;
 
-    void Start()
+    private void Awake()
     {
-        PlayerHealth.PlayerKilled += ResetMusic;
-        PlayerHealth.PlayerDamaged += CheckPlayerHealth;
         audioSources = GetComponents<AudioSource>();
         clipIndexMax = audioSources.Length - 1;
 
@@ -27,6 +25,12 @@ public class DynamicMusic_Alt : MonoBehaviour
 
         ActiveAudioSource = audioSources[0];
         audioSources[0].volume = clipVolume;
+    }
+
+    void Start()
+    {
+        PlayerHealth.PlayerKilled += ResetMusic;
+        PlayerHealth.PlayerDamaged += CheckPlayerHealth;
     }
 
     void CheckPlayerHealth()

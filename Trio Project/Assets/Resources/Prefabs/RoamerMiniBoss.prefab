@@ -1662,12 +1662,12 @@ MonoBehaviour:
   hurtColor: {r: 1, g: 1, b: 1, a: 1}
   armorColor: {r: 1, g: 1, b: 0, a: 1}
   moveSpeed: 13
-  maxMoveSpeed: 20
+  maxMoveSpeed: 21.5
   speedIncreaseAmount: 0.25
-  explosionTime: 2.5
+  explosionTime: 1
   rotationSpeed: 120
   baseMineDelay: 1
-  minimumDistance: 10
+  minimumDistance: 8
   minePrefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 3}
   explosionPrefab: {fileID: 5637069907125816121, guid: 629ab55ab44bed241b15d1b1486a75aa,
     type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 144352139087993467}
   - component: {fileID: 2179368341971348523}
   - component: {fileID: 6185506382617961995}
-  - component: {fileID: 599128860091900883}
+  - component: {fileID: 2173514487225164132}
   m_Layer: 0
   m_Name: RoamerExplosion
   m_TagString: eProjectile
@@ -92,7 +92,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &599128860091900883
+--- !u!114 &2173514487225164132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,14 +101,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5637069907125816121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0855274e8dbd644e84e0ecd868e7d00, type: 3}
+  m_Script: {fileID: 11500000, guid: 5110fdf7bd5c95341a213506ca610107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
-  initialSize: 5
-  maxSize: 8
-  expandSpeed: 2
-  Explosion: 4.77
-  Changing: 0
-  Unchanged: 0
-  missile: {fileID: 0}
+  Damage: 25
+  startScale: 8
+  endScale: 40
+  scaleTime: 0.75
+  stayTime: 0.125
