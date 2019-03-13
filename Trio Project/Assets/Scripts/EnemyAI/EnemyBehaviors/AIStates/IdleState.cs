@@ -37,9 +37,8 @@ public class IdleState : State<AI> {
 
     public override void UpdateState(AI _owner)
     {
-        //Debug.Log("Staying here");
         idleTimer += Time.deltaTime;
-        if (idleTimer > 1.0)
+        if (idleTimer > 0.5)
         {
             _owner.stateMachine.ChangeState(ChaseState.Instance);
         }

@@ -16,7 +16,8 @@ public GameObject missile;
 private Vector3 targetScale;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		Tags = GameManager.Instance.Tags;
         Damage = 10 * GameManager.Instance.Difficulty;
 	Changing = false;
 	Unchanged = true;
@@ -58,7 +59,7 @@ private Vector3 targetScale;
         thingHitTag = other.tag;
         otherDamageable = other.gameObject.GetComponent<IDamageable<float>>();
 
-        if (otherDamageable != null && other.tag != "Enemy" && other.tag != "Shield" && other.tag != "Untagged")
+        if (otherDamageable != null && !other.CompareTag(Tags.EnemyTag) && !other.CompareTag(Tags.ShieldTag) && !other.CompareTag(Tags.Untagged))
         {
             if (other == missile)
             {
@@ -66,7 +67,7 @@ private Vector3 targetScale;
 
             }
             otherDamageable.Damage(Damage);
-            if (other.tag != "Player")
+            if (!other.CompareTag(Tags.PlayerTag))
             {
                 Destroy(this.gameObject);
             }

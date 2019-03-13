@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomBomb : MonoBehaviour
 {
     public float bombTimer;
-	public GameObject expandExplosion;
+    public GameObject expandExplosion;
     public int DestroyPoints;
 
 
@@ -21,28 +21,29 @@ public class RoomBomb : MonoBehaviour
         bombTimer -= Time.deltaTime;
         if (bombTimer <= 0)
         {
-Explosion();
+            Explosion();
         }
     }
 
 
     void Explosion()
     {
-Instantiate(expandExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+        Instantiate(expandExplosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
-    void OnCollisionEnter (Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player")){
+        if (collision.gameObject.CompareTag("Player"))
+        {
             Explosion();
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("PlayerBaseShot")){
-            //print ("hitting");
+        if (other.gameObject.CompareTag("PlayerBaseShot"))
+        {
             GameManager.Instance.AddScore(DestroyPoints);
             Explosion();
         }

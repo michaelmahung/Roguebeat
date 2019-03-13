@@ -9,9 +9,9 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float maxShakeDuration = 0.75f;
     [SerializeField] private float maxShakeMagnitude = 500;
 
-    [SerializeField] float _duration = 0;
-    [SerializeField] float _magnitude = 0;
-    [SerializeField] bool shaking = false;
+    float _duration = 0;
+    float _magnitude = 0;
+    bool shaking = false;
 
     float duration
     {
