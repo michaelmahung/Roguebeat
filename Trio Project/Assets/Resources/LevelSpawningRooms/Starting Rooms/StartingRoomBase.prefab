@@ -2083,11 +2083,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
-        type: 3}
-      propertyPath: camPlacement
-      value: 
-      objectReference: {fileID: 5154085618793474485}
     - target: {fileID: 8850176607603616392, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: m_Mesh
@@ -2128,28 +2123,84 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: camPlacement
+      value: 
+      objectReference: {fileID: 5154085618793474485}
+    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: StartRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8107700778373239606, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: DoorManager
+      value: 
+      objectReference: {fileID: 5658129567454197342}
     - target: {fileID: 4544954511205349042, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: SpawnPointType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544954511205349042, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: _mySpawnableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 9120796319509373410, guid: c80b3041e2e02334dae6c265b394d6d7,
+        type: 3}
+    - target: {fileID: 1114458181391047685, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: SpawnPointType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1114458181391047685, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
-      propertyPath: SpawnPointType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401876578735519145, guid: 48ba2b1fd522de64a912b33873df561f,
+      propertyPath: _mySpawnableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 9120796319509373410, guid: c80b3041e2e02334dae6c265b394d6d7,
+        type: 3}
+    - target: {fileID: 249231893057925174, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
       propertyPath: SpawnPointType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 249231893057925174, guid: 48ba2b1fd522de64a912b33873df561f,
         type: 3}
+      propertyPath: _mySpawnableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 9120796319509373410, guid: c80b3041e2e02334dae6c265b394d6d7,
+        type: 3}
+    - target: {fileID: 8401876578735519145, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
       propertyPath: SpawnPointType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8401876578735519145, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: _mySpawnableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 9120796319509373410, guid: c80b3041e2e02334dae6c265b394d6d7,
+        type: 3}
+    - target: {fileID: 8448283079669649990, guid: 48ba2b1fd522de64a912b33873df561f,
+        type: 3}
+      propertyPath: StartRoom
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ba2b1fd522de64a912b33873df561f, type: 3}
+--- !u!114 &5658129567454197342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8448283079669649990, guid: 48ba2b1fd522de64a912b33873df561f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4304282831571051544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f933e22374f8f40ab367a4281e707a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5570178095730430290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8572282042056078666, guid: 48ba2b1fd522de64a912b33873df561f,

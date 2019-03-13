@@ -62,7 +62,7 @@ MonoBehaviour:
   OtherRoom: {fileID: 0}
   otherSpawnPoint: {fileID: 0}
   _mySpawnableObjects:
-  - {fileID: 1679714198051170, guid: 1f380e15a265b274681eed5001b58659, type: 3}
+  - {fileID: 4310381683195905468, guid: 36ccb814340d8aa4c9ac4c22b2e1ab3c, type: 3}
   flexFactor: 0
 --- !u!54 &54276225000132698
 Rigidbody:
@@ -2911,10 +2911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa513d12627bdc4d8ffebda8f451357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyCount: 0
-  EnemyCap: 0
   RoomName: 
   MyDoors: []
+  StartRoom: 0
   MySpawners: []
   MyOpenWalls: []
   camPlacement: {fileID: 4446686309647436}
@@ -5714,7 +5713,7 @@ MonoBehaviour:
   OtherRoom: {fileID: 0}
   otherSpawnPoint: {fileID: 0}
   _mySpawnableObjects:
-  - {fileID: 1679714198051170, guid: 1f380e15a265b274681eed5001b58659, type: 3}
+  - {fileID: 4310381683195905468, guid: 36ccb814340d8aa4c9ac4c22b2e1ab3c, type: 3}
   flexFactor: 0
 --- !u!54 &54571732758303884
 Rigidbody:
@@ -9387,7 +9386,7 @@ MonoBehaviour:
   OtherRoom: {fileID: 0}
   otherSpawnPoint: {fileID: 0}
   _mySpawnableObjects:
-  - {fileID: 1679714198051170, guid: 1f380e15a265b274681eed5001b58659, type: 3}
+  - {fileID: 4310381683195905468, guid: 36ccb814340d8aa4c9ac4c22b2e1ab3c, type: 3}
   flexFactor: 0
 --- !u!54 &54189496057412968
 Rigidbody:
@@ -10103,7 +10102,7 @@ MonoBehaviour:
   OtherRoom: {fileID: 0}
   otherSpawnPoint: {fileID: 0}
   _mySpawnableObjects:
-  - {fileID: 1679714198051170, guid: 1f380e15a265b274681eed5001b58659, type: 3}
+  - {fileID: 4310381683195905468, guid: 36ccb814340d8aa4c9ac4c22b2e1ab3c, type: 3}
   flexFactor: 0
 --- !u!54 &54317479094068518
 Rigidbody:

@@ -9,5 +9,5 @@ public class PlayerStats : MonoBehaviour, ITrackRooms
 
     public const float HIGHHPMIN = .7f;
     public const float MEDHPMIN = 0.4f;
-    public const float LOWHPMIN = 0.15f;
+    public const float LOWHPMIN = 0.1f;
 }

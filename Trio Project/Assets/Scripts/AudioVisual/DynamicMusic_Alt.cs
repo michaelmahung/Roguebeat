@@ -35,17 +35,17 @@ public class DynamicMusic_Alt : MonoBehaviour
 
     void CheckPlayerHealth()
     {
-        if (GameManager.Instance.playerHealthReference.HealthPercent < PlayerStats.HIGHHPMIN && GameManager.Instance.playerHealthReference.HealthPercent >= PlayerStats.MEDHPMIN)
+        if (GameManager.Instance.PlayerHealthRef.HealthPercent < PlayerStats.HIGHHPMIN && GameManager.Instance.PlayerHealthRef.HealthPercent >= PlayerStats.MEDHPMIN)
         {
             ChangeMainTrack(1);
         }
 
-        else if (GameManager.Instance.playerHealthReference.HealthPercent < PlayerStats.MEDHPMIN && GameManager.Instance.playerHealthReference.HealthPercent >= PlayerStats.LOWHPMIN)
+        else if (GameManager.Instance.PlayerHealthRef.HealthPercent < PlayerStats.MEDHPMIN && GameManager.Instance.PlayerHealthRef.HealthPercent >= PlayerStats.LOWHPMIN)
         {
             ChangeMainTrack(2);
         }
 
-        else if (GameManager.Instance.playerHealthReference.HealthPercent <= PlayerStats.LOWHPMIN)
+        else if (GameManager.Instance.PlayerHealthRef.HealthPercent <= PlayerStats.LOWHPMIN)
         {
             ChangeMainTrack(3);
         }

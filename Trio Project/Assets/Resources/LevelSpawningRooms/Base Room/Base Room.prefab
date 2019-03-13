@@ -2219,10 +2219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa513d12627bdc4d8ffebda8f451357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyCount: 0
-  EnemyCap: 0
   RoomName: 
   MyDoors: []
+  StartRoom: 0
+  EndRoom: 0
   MySpawners: []
   MyOpenWalls: []
   camPlacement: {fileID: 8952346810982632877}

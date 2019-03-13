@@ -141,17 +141,17 @@ public class DynamicMusic : MonoBehaviour
 
     void CheckTransition()
     {
-        if (GameManager.Instance.playerHealthReference.HealthPercent >= PlayerStats.HIGHHPMIN)
+        if (GameManager.Instance.PlayerHealthRef.HealthPercent >= PlayerStats.HIGHHPMIN)
         {
             Debug.Log("Player has high HP");
         }
 
-        else if (GameManager.Instance.playerHealthReference.HealthPercent < PlayerStats.HIGHHPMIN && GameManager.Instance.playerHealthReference.HealthPercent >= PlayerStats.MEDHPMIN)
+        else if (GameManager.Instance.PlayerHealthRef.HealthPercent < PlayerStats.HIGHHPMIN && GameManager.Instance.PlayerHealthRef.HealthPercent >= PlayerStats.MEDHPMIN)
         {
             Debug.Log("Player has medium HP");
         }
 
-        else if (GameManager.Instance.playerHealthReference.HealthPercent < PlayerStats.MEDHPMIN)
+        else if (GameManager.Instance.PlayerHealthRef.HealthPercent < PlayerStats.MEDHPMIN)
         {
             Debug.Log("Player has low HP");
         }

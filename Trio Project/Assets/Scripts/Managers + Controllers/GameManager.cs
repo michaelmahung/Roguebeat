@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public Vector3 PlayerSpawnPosition;
     public CameraShake CameraShaker;
     public WeaponAudio WeaponSounds;
-    public bool IsPlayerDead { get { return playerHealthReference.IsPlayerDead; } }
+    public bool IsPlayerDead { get { return PlayerHealthRef.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
     public TagManager Tags = new TagManager();
 
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public PlayerMovement PlayerMovementReference { get; private set; }
 
     private bool canRespawn;
-    public PlayerHealth playerHealthReference;
+    public PlayerHealth PlayerHealthRef;
 
     public void AddScore(int score)
     {
@@ -130,8 +130,8 @@ public class GameManager : MonoBehaviour
     private void SetComponents()
     {
         WeaponSounds = FindObjectOfType<WeaponAudio>();
-        playerHealthReference = FindObjectOfType<PlayerHealth>();
-        PlayerObject = playerHealthReference.gameObject;
+        PlayerHealthRef = FindObjectOfType<PlayerHealth>();
+        PlayerObject = PlayerHealthRef.gameObject;
         PlayerMovementReference = PlayerObject.GetComponent<PlayerMovement>();
         UI = FindObjectOfType<UIController>();
     }

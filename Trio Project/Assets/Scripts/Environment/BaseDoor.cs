@@ -9,10 +9,13 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     [SerializeField] private List<RoomSetter> myRooms = new List<RoomSetter>();
     public RoomSetter MyRoom { get; set; }
     public enum moveAxis { X, Y, Z }
-    public bool DoorMoved { get; private set; }
+    public bool DoorOpen { get; private set; }
+    public bool DoorMovedOnce { get; private set; }
 
     [SerializeField] private moveAxis MoveAxis = moveAxis.Y;
-    [SerializeField] private int OpenPoints;
+    [SerializeField] protected int OpenPoints;
+
+    //These should be dictated by the room itself, will change once i stabilize the new starting room logic TODO
     [SerializeField] private float moveAmount = 10;
     [SerializeField] private int objectsRequired = 3;
     [SerializeField] private int killsRequired = 5;
@@ -20,7 +23,8 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     protected int objectsDestroyed;
     protected int killCount;
     protected Vector3 moveDirection;
-    protected bool doorOpen;
+    protected bool doorCompleted;
+    protected RoomSetter playerRoom;
 
 
     public void Start()
@@ -49,13 +53,12 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
                 moveDirection = new Vector3(0, 0, moveAmount);
                 break;
         }
-
-        OpenPoints = 150;
-
     }
 
     void ResetDoor()
     {
+        doorCompleted = false;
+        //DoorMoved = false;
         objectsDestroyed = 0;
         killCount = 0;
     }
@@ -67,33 +70,38 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void OpenDoor()
     {
-        if (!doorOpen)
+        DoorMovedOnce = true;
+
+        if (!DoorOpen)
         {
-            DoorMoved = true;
-            doorOpen = true;
-            RoomSetter _playerRoom = GameManager.Instance.PlayerRoom;
-
-            if (!_playerRoom.IsCleared)
-            {
-                _playerRoom.RoomCleared();
-                RoomManager.Instance.RemoveSpawners(_playerRoom);
-                GameManager.Instance.AddScore(OpenPoints);
-            }
-
+            DoorOpen = true;
             transform.localPosition += moveDirection;
+
+            playerRoom = GameManager.Instance.PlayerRoom;
+            //Debug.Log(playerRoom);
+
+            if (!playerRoom.IsCleared && !doorCompleted && playerRoom != null)
+            {
+                doorCompleted = true;
+                playerRoom.RoomCleared();
+                RoomManager.Instance.RemoveSpawners(playerRoom);
+                GameManager.Instance.AddScore(OpenPoints);
+                ResetDoor();
+            }
         }
     }
 
     public virtual void CloseDoor()
     {
-        if (doorOpen)
+        if (DoorOpen)
         {
-            RoomSetter _playerRoom = GameManager.Instance.PlayerRoom;
+            playerRoom = GameManager.Instance.PlayerRoom;
 
-            if (!_playerRoom.IsCleared)
+            //Debug.Log(playerRoom.IsCleared + " door completed " + doorCompleted);
+
+            if (!playerRoom.IsCleared && !doorCompleted)
             {
-                doorOpen = false;
-                ResetDoor();
+                DoorOpen = false;
                 transform.localPosition -= moveDirection;
             }
         }
@@ -103,7 +111,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         objectsDestroyed++;
 
-        if (objectsDestroyed >= objectsRequired && !doorOpen)
+        if (objectsDestroyed >= objectsRequired && !DoorOpen)
         {
             OpenDoor();
         }
@@ -113,7 +121,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         killCount++;
 
-        if (killCount >= killsRequired && !doorOpen)
+        if (killCount >= killsRequired && !DoorOpen)
         {
             OpenDoor();
         }
@@ -121,6 +129,9 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void MiniBossKilled()
     {
-        OpenDoor();
+        if (!DoorOpen)
+        {
+            OpenDoor();
+        }
     }
 }

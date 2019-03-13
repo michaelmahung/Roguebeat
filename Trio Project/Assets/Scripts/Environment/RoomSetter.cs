@@ -7,6 +7,8 @@ public class RoomSetter : MonoBehaviour {
     public string RoomName;
     public List<BaseDoor> MyDoors = new List<BaseDoor>();
 
+    public bool StartRoom;
+    public bool EndRoom;
     public bool IsCleared { get; private set; }
 
     public SpawnEnemies[] MySpawners;
@@ -35,7 +37,7 @@ public class RoomSetter : MonoBehaviour {
 
         RoomBehaviour = GetComponent<IRoomBehaviour>();
 
-        PlayerHealth.PlayerKilled += OpenDoors;
+        PlayerHealth.PlayerKilled += OpenClearedDoors;
 
         if (string.IsNullOrEmpty(RoomName))
         {
@@ -60,21 +62,42 @@ public class RoomSetter : MonoBehaviour {
     private IEnumerator CloseDoors()
     {
         yield return new WaitForSeconds(1f);
+        //Debug.Log("Closing Doors");
 
         foreach (BaseDoor door in MyDoors)
         {
-            door.CloseDoor();
+            if (door != null)
+            {
+                door.CloseDoor();
+            }
         }
 
         yield break;
+    }
+
+    private void OpenClearedDoors()
+    {
+        foreach(BaseDoor door in MyDoors)
+        {
+            if (door != null && door.DoorMovedOnce)
+            {
+                door.OpenDoor();
+            }
+        }
     }
 
     private void OpenDoors()
     {
         foreach(BaseDoor door in MyDoors)
         {
-            if (door.DoorMoved)
-            door.OpenDoor();
+            if (door != null)
+            {
+                if (!door.DoorOpen)
+                {
+                    door.OpenDoor();
+                    //Debug.Log("Opening Doors");
+                }
+            }
         }
     }
 
@@ -91,7 +114,7 @@ public class RoomSetter : MonoBehaviour {
                 myLight.ToggleLight(true);
             }
 
-            if (IsCleared == false)
+            if (!IsCleared)
             {
                 StartCoroutine(CloseDoors());
             }
@@ -146,7 +169,10 @@ public class RoomSetter : MonoBehaviour {
 
         foreach(BaseDoor baseDoor in _doors)
         {
-            MyDoors.Add(baseDoor);
+            if (baseDoor != null)
+            {
+                MyDoors.Add(baseDoor);
+            }
         }
 
         MySpawners = GetComponentsInChildren<SpawnEnemies>();
@@ -174,6 +200,30 @@ public class RoomSetter : MonoBehaviour {
         foreach (RoomSpawnPoint point in MyOpenWalls)
         {
             point.SpawnRandom();
+        }
+
+        if (StartRoom || EndRoom)
+        {
+            foreach(RoomSpawnPoint point in MyOpenWalls)
+            {
+                if (point.OtherRoom != null)
+                {
+                    StartDoor door = point.GetComponentInChildren<StartDoor>();
+
+                    if (door != null)
+                    {
+                        //Debug.Log("Opening door");
+                        door.AddRoom(this);
+                        MyDoors.Add(door);
+                        point.OtherRoom.MyDoors.Add(door);
+
+                        if (StartRoom)
+                        {
+                            door.Invoke("OpenDoor", 2);
+                        }
+                    }
+                }
+            }
         }
     }
 }

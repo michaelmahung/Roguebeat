@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 54447530146125004}
   - component: {fileID: 114151535851234970}
   m_Layer: 0
-  m_Name: DestroyEnvironmentDoor
+  m_Name: RoomDoor
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRooms: []
   MoveAxis: 1
-  OpenPoints: 0
+  OpenPoints: 150
   moveAmount: 10
   objectsRequired: 3
   killsRequired: 5

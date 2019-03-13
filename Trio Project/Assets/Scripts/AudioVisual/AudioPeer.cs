@@ -25,6 +25,12 @@ public class AudioPeer : MonoBehaviour
         _audioSource = DynamicMusic_Alt.ActiveAudioSource;
 
         PlayerHealth.PlayerDamaged += GetActiveAudioSource;
+        PlayerHealth.PlayerKilled += DelayedAudioSource;
+    }
+
+    void DelayedAudioSource()
+    {
+        Invoke("GetActiveAudioSource", 0.01f);
     }
 
     void GetActiveAudioSource()
