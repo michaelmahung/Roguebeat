@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int dashCooldown = 2;
 
     [SerializeField] private PlayerDashUI dashUI;
+    [SerializeField] private PlayerDashUI [] dashUIGlow;
 
     private float dashCooldownPercentage
     {
@@ -42,10 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start () 
     {
-        if (dashUI == null)
+        if (dashUIGlow == null)
         {
-            dashUI = GameObject.FindObjectOfType<PlayerDashUI>();
+            dashUIGlow = GameObject.FindObjectsOfType<PlayerDashUI>();
         }
+
 
         rb = GetComponent<Rigidbody>();
         GameManager.Instance.PlayerRespawned += SetDash;
@@ -109,7 +111,11 @@ public class PlayerMovement : MonoBehaviour
         if (dashTimer < dashCooldown)
         {
             dashTimer += Time.deltaTime;
-            dashUI.SetPercentage(dashCooldownPercentage);
+            //dashUI.SetPercentage(dashCooldownPercentage);
+            foreach(PlayerDashUI ui in dashUIGlow)
+            {
+                ui.SetPercentage(dashCooldownPercentage);
+            }
         } else
         {
             canDash = true;
