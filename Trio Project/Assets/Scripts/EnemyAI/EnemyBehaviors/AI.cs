@@ -176,6 +176,7 @@ public IEnumerator RamPlayers()
     storeTime += Time.deltaTime;
     if(storeTime <= EnemyRamTime)
     {
+        //AIRigidbody.AddForce(transform.forward * RamSpeed);
         transform.localPosition += transform.forward * RamSpeed * Time.deltaTime;
         yield return (RamTime);
         //yield return new WaitForSeconds(RamTime);//SEETHIS

@@ -29,7 +29,13 @@ public class Bruiser_New : AI{
         }
         else if (other.CompareTag(Tags.WallTag))
         {
-            
-        }
-    }
+			 if (stateMachine.currentState == RamState.Instance)
+            {
+                IsRamming = false;
+                HasRammed = true;
+                StopAllCoroutines();
+                stateMachine.ChangeState(IdleState.Instance);
+			}
+		}
 	}
+}
