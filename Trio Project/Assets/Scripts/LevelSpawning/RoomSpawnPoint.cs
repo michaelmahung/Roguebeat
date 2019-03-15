@@ -60,7 +60,7 @@ public class RoomSpawnPoint : MonoBehaviour {
 
             if (otherSpawnPoint != null)
             {
-                if (otherSpawnPoint.SpawnPointType == spawnPointType.Start) //If im overlapping doors with the spawn room, make the room open so the player can leave it.
+                if (otherSpawnPoint.SpawnPointType == spawnPointType.Start || otherSpawnPoint.SpawnPointType == spawnPointType.Boss) //If im overlapping doors with the spawn room, make the room open so the player can leave it.
                 {
                     //Destroy(otherSpawnPoint.gameObject);
                     Destroy(gameObject);

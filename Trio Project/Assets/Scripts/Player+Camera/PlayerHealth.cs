@@ -81,6 +81,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable<float>, IKillable
     {
         if (!IsPlayerDead)
         {
+            System.GC.Collect();
             GameManager.Instance.AddScore(KillPoints);
             IsPlayerDead = true;
             PlayerKilled();

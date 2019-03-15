@@ -2914,6 +2914,7 @@ MonoBehaviour:
   RoomName: 
   MyDoors: []
   StartRoom: 0
+  EndRoom: 1
   MySpawners: []
   MyOpenWalls: []
   camPlacement: {fileID: 4446686309647436}

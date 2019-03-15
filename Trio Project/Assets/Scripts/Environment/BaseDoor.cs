@@ -109,21 +109,27 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void ObjectDestroyed()
     {
-        objectsDestroyed++;
-
-        if (objectsDestroyed >= objectsRequired && !DoorOpen)
+        if (!DoorOpen)
         {
-            OpenDoor();
+            objectsDestroyed++;
+
+            if (objectsDestroyed >= objectsRequired && !DoorOpen)
+            {
+                OpenDoor();
+            }
         }
     }
 
     public virtual void EnemyKilled()
     {
-        killCount++;
-
-        if (killCount >= killsRequired && !DoorOpen)
+        if (!DoorOpen)
         {
-            OpenDoor();
+            killCount++;
+
+            if (killCount >= killsRequired && !DoorOpen)
+            {
+                OpenDoor();
+            }
         }
     }
 

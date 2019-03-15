@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Collections;
 
-public class RoomSetter : MonoBehaviour {
+public class RoomSetter : MonoBehaviour
+{
 
     public string RoomName;
     public List<BaseDoor> MyDoors = new List<BaseDoor>();
@@ -33,7 +34,8 @@ public class RoomSetter : MonoBehaviour {
         cam = camController.gameObject;
     }
 
-    void Start () {
+    void Start()
+    {
 
         RoomBehaviour = GetComponent<IRoomBehaviour>();
 
@@ -77,7 +79,7 @@ public class RoomSetter : MonoBehaviour {
 
     private void OpenClearedDoors()
     {
-        foreach(BaseDoor door in MyDoors)
+        foreach (BaseDoor door in MyDoors)
         {
             if (door != null && door.DoorMovedOnce)
             {
@@ -88,7 +90,7 @@ public class RoomSetter : MonoBehaviour {
 
     private void OpenDoors()
     {
-        foreach(BaseDoor door in MyDoors)
+        foreach (BaseDoor door in MyDoors)
         {
             if (door != null)
             {
@@ -130,7 +132,8 @@ public class RoomSetter : MonoBehaviour {
         if (UpdatePlayerRoom != null)
         {
             UpdatePlayerRoom();
-        } else
+        }
+        else
         {
             CheckPlayerRoom();
         }
@@ -167,7 +170,7 @@ public class RoomSetter : MonoBehaviour {
     {
         BaseDoor[] _doors = GetComponentsInChildren<BaseDoor>();
 
-        foreach(BaseDoor baseDoor in _doors)
+        foreach (BaseDoor baseDoor in _doors)
         {
             if (baseDoor != null)
             {
@@ -202,26 +205,57 @@ public class RoomSetter : MonoBehaviour {
             point.SpawnRandom();
         }
 
-        if (StartRoom || EndRoom)
+        if (EndRoom)
         {
-            foreach(RoomSpawnPoint point in MyOpenWalls)
+            FinishEndRoom();
+            return;
+        }
+
+        if (StartRoom)
+        {
+            FinishStartRoom();
+            return;
+        }
+    }
+
+    void FinishStartRoom()
+    {
+        foreach (RoomSpawnPoint point in MyOpenWalls)
+        {
+            if (point.OtherRoom != null)
             {
-                if (point.OtherRoom != null)
+                StartDoor door = point.GetComponentInChildren<StartDoor>();
+
+                if (door != null)
                 {
-                    StartDoor door = point.GetComponentInChildren<StartDoor>();
+                    //Debug.Log("Opening door");
+                    door.AddRoom(this);
+                    MyDoors.Add(door);
+                    point.OtherRoom.MyDoors.Add(door);
 
-                    if (door != null)
+                    if (StartRoom)
                     {
-                        //Debug.Log("Opening door");
-                        door.AddRoom(this);
-                        MyDoors.Add(door);
-                        point.OtherRoom.MyDoors.Add(door);
-
-                        if (StartRoom)
-                        {
-                            door.Invoke("OpenDoor", 2);
-                        }
+                        door.Invoke("OpenDoor", 2);
                     }
+                }
+            }
+        }
+    }
+    void FinishEndRoom()
+    {
+        //Debug.Log("Finishing End Room");
+
+        foreach (RoomSpawnPoint point in MyOpenWalls)
+        {
+            if (point.OtherRoom != null)
+            {
+                EndDoor door = point.GetComponentInChildren<EndDoor>();
+
+                if (door != null)
+                {
+                    door.AddRoom(this);
+                    MyDoors.Add(door);
+                    point.OtherRoom.MyDoors.Add(door);
                 }
             }
         }

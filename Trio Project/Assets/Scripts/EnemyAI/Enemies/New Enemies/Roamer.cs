@@ -5,10 +5,11 @@ using System.Collections;
 public class Roamer : DamageableEnvironmentItemParent {
 
     [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private int rotationSpeed = 100;
     [SerializeField] private float maxMoveSpeed = 20f;
     [SerializeField] private float speedIncreaseAmount = 0.25f;
     [SerializeField] private float explosionTime = 2.5f;
-    [SerializeField] private int rotationSpeed = 100;
+    [SerializeField] WaitForSeconds engageWaitTime;
     [SerializeField] private int baseMineDelay = 2;
     [SerializeField] private int minimumDistance = 10;
     [SerializeField] private GameObject minePrefab;
@@ -28,6 +29,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     new void Start ()
     {
+        engageWaitTime = new WaitForSeconds(2);
         base.Start();
         timer = 0;
         ItemType = myItemType.Wood;
@@ -85,7 +87,7 @@ public class Roamer : DamageableEnvironmentItemParent {
     IEnumerator EngageTimer()
     {
         chasing = false;
-        yield return new WaitForSeconds(2f);
+        yield return engageWaitTime;
 
         canDropMine = false;
         chasing = true;

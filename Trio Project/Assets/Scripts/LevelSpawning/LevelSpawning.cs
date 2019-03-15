@@ -15,14 +15,18 @@ public struct LevelValues
 //TODO -- REFACTOR ALL OF THIS
 public class LevelSpawning : MonoBehaviour {
 
+    [SerializeField] float waitTime = 0.001f;
     public LevelValues levelValues;
 
+    WaitForSeconds WaitTime;
     LevelFactory TestLevel;
     RoomFactory roomFactory;
     Vector3 currentLocation;
     Vector3 startRoomLocation;
     Vector3 endRoomLocation;
     int rowSpawnCount;
+    float spawnTimer;
+    bool doneSpawning;
 
     public enum RoomSpawnTypes { StartingRoom, OpenRoom, BossRoom, EnemyRoom, RandomRoom, DefaultState};
     private RoomSpawnTypes RoomToSpawn;
@@ -40,6 +44,8 @@ public class LevelSpawning : MonoBehaviour {
 
     void Start () {
 
+        //WaitTime = new WaitForSeconds(waitTime);
+
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
         //if it should spawn more linear rooms, and whether or not the spawns should double back on each other - in that order
 
@@ -49,13 +55,41 @@ public class LevelSpawning : MonoBehaviour {
 
         FindNextRoomLocation(TestLevel);
         //SpawnLevelRooms(TestLevel);
-        StartCoroutine(StartSpawning());
+        //StartCoroutine(StartSpawning());
+    }
+
+    private void Update()
+    {
+        if (!TestLevel.EndRoomSpawned && !doneSpawning)
+        {
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer > waitTime)
+            {
+                //Debug.Log(spawnTimer);
+                spawnTimer = 0;
+                FindNextRoomLocation(TestLevel);
+                SpawnRoom(currentLocation, TestLevel);
+            }
+        } else if (!doneSpawning)
+        {
+            CleanUp();
+            //Debug.Log("Finished Spawning");
+        }
+    }
+
+    void CleanUp()
+    {
+        doneSpawning = true;
+        StopAllCoroutines();
+        FinishedSpawningRooms();
+        System.GC.Collect();
     }
 
     //Coroutine that will handle spawning rooms slowly - so we can see the level creation process.
     IEnumerator StartSpawning()
     {
-        yield return new WaitForSeconds(0.001f);
+        yield return WaitTime;
         if (!TestLevel.EndRoomSpawned)
         {
             FindNextRoomLocation(TestLevel);
