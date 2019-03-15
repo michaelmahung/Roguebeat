@@ -110,7 +110,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1770399695293654}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54321157434205980
 Rigidbody:
@@ -238,7 +238,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1173762310721126}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54275292635408116
 Rigidbody:
@@ -366,7 +366,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1852518303310720}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54556588057732392
 Rigidbody:
@@ -494,7 +494,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1145196477615690}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54309902504275484
 Rigidbody:
@@ -622,7 +622,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1921637120426024}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54689443522786914
 Rigidbody:
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1745912156391216}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54542972459042584
 Rigidbody:
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1973673684936734}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54520941392119420
 Rigidbody:
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1382578535759768}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54754437168178298
 Rigidbody:
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1593624747056198}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54077960024505652
 Rigidbody:
@@ -2968,7 +2968,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1501309111261946}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54655952634902546
 Rigidbody:
@@ -5258,7 +5258,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1098679978332114}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54637465496341008
 Rigidbody:
@@ -5340,6 +5340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomName: 
   MyDoors: []
+  StartRoom: 0
+  EndRoom: 0
   MySpawners:
   - {fileID: 114415705633968870}
   - {fileID: 114840767082179956}
@@ -5577,7 +5579,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1711734343800410}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54512984461048700
 Rigidbody:
@@ -5705,7 +5707,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1856568937931998}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54313284480017858
 Rigidbody:
@@ -5924,7 +5926,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1576937779246816}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54025776243897770
 Rigidbody:
@@ -6086,7 +6088,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1127041604103778}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54300003601259544
 Rigidbody:
@@ -6550,7 +6552,7 @@ MonoBehaviour:
   EnemyTypes: []
   SpawnPoint: {fileID: 1714781563473998}
   MyRoomBehaviour: {fileID: 114136011557939604}
-  MinSpawnRangeTime: 3
+  MinSpawnRangeTime: 2
   MaxSpawnRangeTime: 15
 --- !u!54 &54164537393097142
 Rigidbody:

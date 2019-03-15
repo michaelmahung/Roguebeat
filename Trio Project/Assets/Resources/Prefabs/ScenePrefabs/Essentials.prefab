@@ -844,7 +844,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1842774850}
   m_OnClick:
     m_PersistentCalls:
@@ -4750,7 +4750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: -7.5, y: -125}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222081760658176332
@@ -4794,7 +4794,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Weapon Cost:'
+  m_Text: 
 --- !u!1 &1622462026254650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,7 +4991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: -7.499977, y: -125}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222564324983983844
@@ -5035,7 +5035,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Weapon Cost:'
+  m_Text: 
 --- !u!1 &1675953170573646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.80000305, y: -32.5}
+  m_AnchoredPosition: {x: -1.4000015, y: -32.5}
   m_SizeDelta: {x: -54.400013, y: -65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222331070980972784
@@ -6106,6 +6106,7 @@ MonoBehaviour:
   PurchaseUI: {fileID: 1351962932990954}
   WeaponScreenActive: 0
   WeaponCostText: {fileID: 114739510742267682}
+  WeaponCostText1: {fileID: 114782787940140656}
 --- !u!1 &1745012791135426
 GameObject:
   m_ObjectHideFlags: 0
@@ -8882,11 +8883,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4802185575795520}
     m_Modifications:
-    - target: {fileID: 8328599372037515573, guid: ea4183bcb36f95440a27421afd6b44f7,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
     - target: {fileID: 8322869784697165205, guid: ea4183bcb36f95440a27421afd6b44f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8941,6 +8937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8328599372037515573, guid: ea4183bcb36f95440a27421afd6b44f7,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8216269603749734977, guid: ea4183bcb36f95440a27421afd6b44f7,
         type: 3}

@@ -284,7 +284,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15116
+  m_Name: pb_Mesh-98706
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -72409,7 +72409,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -75242,7 +75242,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15068
+  m_Name: pb_Mesh-98690
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -75402,7 +75402,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15086
+  m_Name: pb_Mesh-98692
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -77710,7 +77710,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15088
+  m_Name: pb_Mesh-98694
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -78645,6 +78645,26 @@ PrefabInstance:
     - target: {fileID: 54760689415931964, guid: 4cdacc7e1d8518c47a27adc608087a03,
         type: 3}
       propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23298482229923220, guid: 4cdacc7e1d8518c47a27adc608087a03,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23650360585663976, guid: 4cdacc7e1d8518c47a27adc608087a03,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23268918759926362, guid: 4cdacc7e1d8518c47a27adc608087a03,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 23789206281830290, guid: 4cdacc7e1d8518c47a27adc608087a03,
+        type: 3}
+      propertyPath: m_SelectedEditorRenderState
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

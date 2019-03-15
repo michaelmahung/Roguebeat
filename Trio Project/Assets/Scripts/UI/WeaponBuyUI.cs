@@ -8,6 +8,7 @@ public class WeaponBuyUI : MonoBehaviour {
 	[SerializeField] private GameObject PurchaseUI;
     [SerializeField] private bool WeaponScreenActive;
     [SerializeField] private Text WeaponCostText;
+    [SerializeField] private Text WeaponCostText1;
 
     private GameObject Player;
     private AudioLowPassFilter filter;
@@ -93,6 +94,8 @@ public class WeaponBuyUI : MonoBehaviour {
     void UpdateWeaponText()
     {
         WeaponCostText.text = string.Format("{0} costs {1} points", selectedWeapon.name, selectedWeapon.WeaponCost);
+        WeaponCostText1.text = string.Format("{0} costs {1} points", selectedWeapon.name, selectedWeapon.WeaponCost);
+
     }
 
     void FindComponents()
@@ -105,6 +108,7 @@ public class WeaponBuyUI : MonoBehaviour {
         if (WeaponCostText == null)
         {
             WeaponCostText = GameObject.Find("Weapon Cost Text").GetComponent<Text>();
+            WeaponCostText1 = GameObject.Find("Weapon Cost Text1").GetComponent<Text>();
         }
     }
 }
