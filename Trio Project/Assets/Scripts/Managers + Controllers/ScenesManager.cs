@@ -10,7 +10,8 @@ public class ScenesManager: MonoBehaviour
 
     public void Load(string scene)
     {
-        SceneManager.LoadScene(scene);
+        //SceneManager.LoadScene(scene);
+        SceneManager.LoadSceneAsync(scene);
     }
 
 }
