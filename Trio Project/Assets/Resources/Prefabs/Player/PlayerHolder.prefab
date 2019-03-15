@@ -48,7 +48,7 @@ MonoBehaviour:
   fireRate: 0.19
   swapTime: 0.25
   RecoilAmount: 20
-  ScreenShakeAmount: 20
+  ScreenShakeAmount: 10
   ScreenShakeDuration: 0.4
   projectileSpawnAmount: 20
   projectileSpeed: 30
@@ -333,6 +333,9 @@ MonoBehaviour:
   minDashSpeed: 10
   dashCooldown: 2
   dashUI: {fileID: 0}
+  dashUIGlow:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114433151429425124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,15 +606,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 2.1
+  weaponDamage: 2.5
   fireRate: 0.125
   swapTime: 0.25
   RecoilAmount: 5
   ScreenShakeAmount: 2
-  ScreenShakeDuration: 0.4
+  ScreenShakeDuration: 0.5
   projectileSpawnAmount: 50
   projectileSpeed: 15
-  projectileLife: 1
+  projectileLife: 1.5
   projectile: {fileID: 1328958666017412, guid: 9b0dc1694453c4e7ab98ba4ac5e276a2, type: 3}
   icon: {fileID: 2800000, guid: 531c4b8073380d047836154ef2940e19, type: 3}
   weaponActive: 1
@@ -733,7 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b8632c42e1d4c999082a72f2fa6c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 1.5
+  weaponDamage: 1.85
   fireRate: 0.1
   swapTime: 0.25
   RecoilAmount: 15
@@ -753,7 +756,7 @@ MonoBehaviour:
     volume: 0.5
     randomizePitch: 1
     loop: 0
-  heatLimit: 6
+  heatLimit: 8
   myEmissions:
   - {fileID: 114454571780196256}
   - {fileID: 114873993651210958}
