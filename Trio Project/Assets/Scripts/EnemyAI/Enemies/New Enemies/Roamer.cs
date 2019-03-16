@@ -167,7 +167,11 @@ public class Roamer : DamageableEnvironmentItemParent {
         if (canDropMine)
         {
             canDropMine = false;
-            Instantiate(minePrefab, transform.position, Quaternion.identity);
+            //Instantiate(minePrefab, transform.position, Quaternion.identity);
+            GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.RoamerMine);
+            go.transform.position = transform.position;
+            go.transform.rotation = transform.rotation;
+            go.SetActive(true);
         }
     }
 

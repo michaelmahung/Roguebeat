@@ -15,8 +15,10 @@ public class RoamerExplosion : EnemyProjectile
     Vector3 endScaleValues;
     float scaleTimer;
 
-    protected void OnEnable()
+    override protected void OnEnable()
     {
+        myCol.enabled = true;
+        base.OnEnable();
         transform.localScale = new Vector3(startScale, startScale, startScale);
     }
 
@@ -65,7 +67,7 @@ public class RoamerExplosion : EnemyProjectile
     {
         if (this.gameObject != null)
         {
-            Destroy(this.gameObject);
+            DisableObject();
         }
     }
 }

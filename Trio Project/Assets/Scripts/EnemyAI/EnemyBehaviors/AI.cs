@@ -7,6 +7,7 @@ using System; // to use public event Actions
 public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 {
 
+    public PooledObject MyWeapon;
 public GameObject[] EnemyWeapons;
 public GameObject FiringPoint; // Gameobject that represents the firing point of the enemy, if applicable
 public Transform Hero; // Transform variable used to acquire the player.
@@ -201,7 +202,16 @@ public IEnumerator RamPlayers()
 	public IEnumerator FireWeapon ()
 	{
 		yield return(AttackSpeed);
-		Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
+
+        if (gameObject.activeInHierarchy)
+        {
+            GameObject go = GenericPooler.Instance.GrabPrefab(MyWeapon);
+            go.transform.position = FiringPoint.transform.position;
+            go.transform.rotation = FiringPoint.transform.rotation;
+            go.SetActive(true);
+        }
+
+        //Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
 
         if (IsFiring == false)
         {

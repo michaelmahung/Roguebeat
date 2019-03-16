@@ -48,7 +48,7 @@ private Vector3 targetScale;
 			if (Explosion <= 0.0f) {
 				Explosion = 0.0f;
 				Changing = false;
-				Destroy(gameObject);
+                DisableObject();
 
 			}
 		}
@@ -69,7 +69,7 @@ private Vector3 targetScale;
             otherDamageable.Damage(Damage);
             if (!other.CompareTag(Tags.PlayerTag))
             {
-                Destroy(this.gameObject);
+                DisableObject();
             }
         }
         else if (thingHitTag == "Wall")

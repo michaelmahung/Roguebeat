@@ -66,7 +66,7 @@ public abstract class DamageableEnvironmentItemParent : MonoBehaviour, IDamageab
     [SerializeField]
     protected float BaseHealth;
 
-    private float maxHealth
+    protected float maxHealth
     {
         get { return BaseHealth * GameManager.Instance.Difficulty; }
     }

@@ -15007,6 +15007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564f79569262390498e3a0cafb91f5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyWeapon: 5
   EnemyWeapons: []
   FiringPoint: {fileID: 1530464122713450}
   Hero: {fileID: 0}
@@ -15021,7 +15022,7 @@ MonoBehaviour:
   AttackRange: 30
   RamRange: 15
   RamSpeed: 30
-  RamTime: 5
+  EnemyRamTime: 0
   storeTime: 0
   RamDamage: 0
   KillPoints: 0

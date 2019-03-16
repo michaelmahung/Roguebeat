@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cd05093f064a941bcf17c27ee3ff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyWeapon: 11
   EnemyWeapons: []
   FiringPoint: {fileID: 1964319001700274}
   Hero: {fileID: 0}

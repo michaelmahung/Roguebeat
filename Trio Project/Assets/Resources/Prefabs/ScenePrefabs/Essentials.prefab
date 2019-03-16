@@ -74,6 +74,141 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &243702243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243702245}
+  - component: {fileID: 243702244}
+  m_Layer: 0
+  m_Name: Generic Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243702245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243702243}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4802185575795520}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &243702244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243702243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb2f35666f9341dc923e533df03891b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectPool:
+  - Name: Trooper
+    Prefab: {fileID: 1276288036413350, guid: b1919da810de8c244aa140befcc251cb, type: 3}
+    PrefabKey: 0
+    PoolSize: 3
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Bruiser
+    Prefab: {fileID: 1022228219283506, guid: a4b92482265957b42bbc4ee3c7b4cc5a, type: 3}
+    PrefabKey: 1
+    PoolSize: 3
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Boomer
+    Prefab: {fileID: 1403636497350428, guid: a452d02f0601b244da476f7554eacdc3, type: 3}
+    PrefabKey: 2
+    PoolSize: 3
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Baby Roamer
+    Prefab: {fileID: 1848077481571112, guid: b9cea815d9fe4654699bb4eb781e8e58, type: 3}
+    PrefabKey: 3
+    PoolSize: 3
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Bomb Shot
+    Prefab: {fileID: 1120584098789986, guid: 76ebb219b75645343aec0fb5c32db5ad, type: 3}
+    PrefabKey: 4
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Boomer Bomb
+    Prefab: {fileID: 1808906537624202, guid: 48aa41c9823f42d4a8f54bf8f0cbd98f, type: 3}
+    PrefabKey: 5
+    PoolSize: 3
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Enemy Fire 1
+    Prefab: {fileID: 1120584098789986, guid: c51f2cb9d26816345b7084fd737a17bb, type: 3}
+    PrefabKey: 6
+    PoolSize: 10
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Enemy Fire Shotgun
+    Prefab: {fileID: 1710786956358272, guid: 82abe7998a2db2644ba1663d4f4a0e46, type: 3}
+    PrefabKey: 7
+    PoolSize: 10
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Explosion
+    Prefab: {fileID: 1519971338207426, guid: dcdd4aa8123ef674bbbfc55ba147186e, type: 3}
+    PrefabKey: 8
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Missle Explosion
+    Prefab: {fileID: 1519971338207426, guid: 3e34978df4e746a4e96cb03225460fc3, type: 3}
+    PrefabKey: 9
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: PT Missile
+    Prefab: {fileID: 1064160030186146, guid: fc8a37db2a0465643bee99e78f80da5e, type: 3}
+    PrefabKey: 10
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Trooper Shot
+    Prefab: {fileID: 1188145419689378, guid: cc0834ad5c1ddae42855f4ebc4dc8d17, type: 3}
+    PrefabKey: 11
+    PoolSize: 10
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Roamer Mine
+    Prefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 3}
+    PrefabKey: 12
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Baby Roamer Mine
+    Prefab: {fileID: 1930745232304576, guid: b3232480cf41dd943974a884168d88c9, type: 3}
+    PrefabKey: 13
+    PoolSize: 5
+    ExpandPool: 1
+    SpawnedPrefabs: []
+  - Name: Roamer Explosion
+    Prefab: {fileID: 5637069907125816121, guid: 629ab55ab44bed241b15d1b1486a75aa,
+      type: 3}
+    PrefabKey: 14
+    PoolSize: 2
+    ExpandPool: 1
+    SpawnedPrefabs: []
 --- !u!1 &571522655
 GameObject:
   m_ObjectHideFlags: 0
@@ -6088,6 +6223,7 @@ Transform:
   - {fileID: 4805789161963446}
   - {fileID: 4139451677523856}
   - {fileID: 3902783256056599840}
+  - {fileID: 243702245}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8883,6 +9019,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4802185575795520}
     m_Modifications:
+    - target: {fileID: 8328599372037515573, guid: ea4183bcb36f95440a27421afd6b44f7,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8322869784697165205, guid: ea4183bcb36f95440a27421afd6b44f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8937,11 +9078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328599372037515573, guid: ea4183bcb36f95440a27421afd6b44f7,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8216269603749734977, guid: ea4183bcb36f95440a27421afd6b44f7,
         type: 3}

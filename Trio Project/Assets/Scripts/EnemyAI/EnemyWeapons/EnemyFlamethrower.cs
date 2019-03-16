@@ -5,9 +5,15 @@ using UnityEngine;
 public class EnemyFlamethrower : EnemyProjectile
 {
 
-    public float Life = 1.0f;
+    //public float Life = 1.0f;
     public float Speed = 15.0f;
     public GameObject missile;
+
+    protected override void Awake()
+    {
+        ProjectileLife = 1.0f;
+        base.Awake();
+    }
 
     private void Start()
     {
@@ -16,12 +22,12 @@ public class EnemyFlamethrower : EnemyProjectile
 
     private void Update()
     {
-        Life -= Time.deltaTime;
-        if (Life <= 0)
+        currentLife -= Time.deltaTime;
+        if (currentLife <= 0)
         {
-            Destroy(gameObject);
+            DisableObject();
         }
-        if (Life > 0)
+        if (currentLife > 0)
         {
             transform.position += transform.forward * Speed * Time.deltaTime;
         }
