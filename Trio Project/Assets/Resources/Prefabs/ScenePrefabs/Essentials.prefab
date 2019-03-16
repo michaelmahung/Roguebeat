@@ -209,6 +209,12 @@ MonoBehaviour:
     PoolSize: 2
     ExpandPool: 1
     SpawnedPrefabs: []
+  - Name: Room Bomb
+    Prefab: {fileID: 1887743437041398, guid: 083d120c80912a44fa03e4aabeb376a7, type: 3}
+    PrefabKey: 15
+    PoolSize: 15
+    ExpandPool: 1
+    SpawnedPrefabs: []
 --- !u!1 &571522655
 GameObject:
   m_ObjectHideFlags: 0

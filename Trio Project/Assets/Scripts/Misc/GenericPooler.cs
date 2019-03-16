@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum PooledObject
-{Trooper, Bruiser, Boomer, BabyRoamer,
- BombShot, BoomerBomb, EnemyFire1, EnemyFireShotgun,
- Explosion, MissileExplosion, PTMissile, TrooperShot,
- RoamerMine, BabyRoamerMine, RoamerExplosion
+{
+    Trooper, Bruiser, Boomer, BabyRoamer,
+    BombShot, BoomerBomb, EnemyFire1, EnemyFireShotgun,
+    Explosion, MissileExplosion, PTMissile, TrooperShot,
+    RoamerMine, BabyRoamerMine, RoamerExplosion, RoomBomb
 }
 
 [System.Serializable]

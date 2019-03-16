@@ -7,19 +7,28 @@ public class RoomBomb : MonoBehaviour
     public float bombTimer;
     public GameObject expandExplosion;
     public int DestroyPoints;
+    public float Force = 20000;
+    float currentTimer;
+    Rigidbody rb;
 
 
-    // Use this for initialization
-    void Start()
+
+    private void OnEnable()
     {
+        currentTimer = bombTimer;
+        rb.AddRelativeForce(transform.up * Force);
+    }
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bombTimer -= Time.deltaTime;
-        if (bombTimer <= 0)
+        currentTimer -= Time.deltaTime;
+        if (currentTimer <= 0)
         {
             Explosion();
         }
@@ -28,8 +37,14 @@ public class RoomBomb : MonoBehaviour
 
     void Explosion()
     {
-        Instantiate(expandExplosion, transform.position, transform.rotation);
-        Destroy(gameObject);
+        GameObject explosion = GenericPooler.Instance.GrabPrefab(PooledObject.Explosion);
+        explosion.transform.position = transform.position;
+        explosion.transform.rotation = transform.rotation;
+        explosion.SetActive(true);
+
+        gameObject.SetActive(false);
+        //Instantiate(expandExplosion, transform.position, transform.rotation);
+        //Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -47,6 +62,17 @@ public class RoomBomb : MonoBehaviour
             GameManager.Instance.AddScore(DestroyPoints);
             Explosion();
         }
+    }
+
+    void DisableObject()
+    {
+        GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.Explosion);
+        go.transform.position = transform.position;
+        go.transform.rotation = transform.rotation;
+
+        go.SetActive(true);
+
+        gameObject.SetActive(false);
     }
 
 }

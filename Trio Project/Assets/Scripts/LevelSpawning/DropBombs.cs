@@ -67,8 +67,14 @@ public class DropBombs : MonoBehaviour, IRoomBehaviour
                 if (WaitToSpawn >= 0.5f)
                 {
                     int random = Random.Range(0, Bombspawners.Length);
-                    GameObject bomb = Instantiate(BombPrefab, Bombspawners[random].transform.position, Bombspawners[random].transform.rotation);
-                    bomb.GetComponent<Rigidbody>().AddRelativeForce(transform.up * 20000);
+
+                    GameObject bomb = GenericPooler.Instance.GrabPrefab(PooledObject.RoomBomb);
+                    bomb.transform.position = Bombspawners[random].transform.position;
+                    bomb.transform.rotation = Bombspawners[random].transform.rotation;
+                    bomb.SetActive(true);
+
+                    //GenericPooler(BombPrefab, Bombspawners[random].transform.position, Bombspawners[random].transform.rotation);
+                    //bomb.GetComponent<Rigidbody>().AddRelativeForce(transform.up * 20000); //Done in the bombs 
                     CurrentBombs++;
                     WaitToSpawn = 0;
                 }

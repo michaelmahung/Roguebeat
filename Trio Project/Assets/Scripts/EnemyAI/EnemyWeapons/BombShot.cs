@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class BombShot : MonoBehaviour {
 public float BombLife = 1.0f;
+    float currentLife;
 public float BombSpeed = 20.0f;
 public GameObject BigBoom;
 protected TagManager Tags;
 
- 
-	// Use this for initialization
-	void Start () {
+
+    private void OnEnable()
+    {
+        currentLife = BombLife;
+    }
+
+    private void Awake()
+    {
+
+    }
+    // Use this for initialization
+    void Start () {
 
 		Tags = GameManager.Instance.Tags;
 	}
@@ -18,13 +28,13 @@ protected TagManager Tags;
 	// Update is called once per frame
 	void Update ()
 	{
-		BombLife -= Time.deltaTime;
-		  if (BombLife <= 0) {
+		currentLife -= Time.deltaTime;
+		  if (currentLife <= 0) {
 		callExplosion();
 		
 		}
 
-		if (BombLife > 0) {
+		if (currentLife > 0) {
 			transform.position += transform.forward * BombSpeed * Time.deltaTime;
 		}
 	}
@@ -39,7 +49,13 @@ protected TagManager Tags;
 
 	void callExplosion ()
 	{
-		Instantiate (BigBoom, transform.position, transform.rotation);
-			Destroy (gameObject);
+        GameObject explosion = GenericPooler.Instance.GrabPrefab(PooledObject.Explosion);
+        explosion.transform.position = transform.position;
+        explosion.transform.rotation = transform.rotation;
+        explosion.SetActive(true);
+
+        gameObject.SetActive(false);
+		/*Instantiate (BigBoom, transform.position, transform.rotation);
+			Destroy (gameObject);*/
 			}
 			}

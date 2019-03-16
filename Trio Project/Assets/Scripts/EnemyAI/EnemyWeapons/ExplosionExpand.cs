@@ -12,17 +12,27 @@ public bool Changing;
 public bool Unchanged;
 public GameObject missile;
 
-
+    Vector3 startingScale;
 private Vector3 targetScale;
 
-	// Use this for initialization
-	override protected void Awake () {
+    protected override void OnEnable()
+    {
+        transform.localScale = startingScale;
+        Explosion = 0;
+        Changing = false;
+        Unchanged = true;
+        initialSize = gameObject.transform.localScale.x;
+        base.OnEnable();
+    }
+
+    // Use this for initialization
+    override protected void Awake () {
 		Tags = GameManager.Instance.Tags;
         Damage = 10 * GameManager.Instance.Difficulty;
 	Changing = false;
 	Unchanged = true;
 	initialSize = gameObject.transform.localScale.x;
-		
+        startingScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 	
 	// Update is called once per frame
