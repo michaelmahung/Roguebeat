@@ -15,6 +15,8 @@ public class RoomBomb : MonoBehaviour
 
     private void OnEnable()
     {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         currentTimer = bombTimer;
         rb.AddRelativeForce(transform.up * Force);
     }

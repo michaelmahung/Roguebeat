@@ -45,7 +45,7 @@ WaitForSeconds RamTime;
 
 
 protected IDamageable<float> PlayerDamage;
-protected SpawnerRoomScript SpawnerRoom;
+public SpawnerRoomScript SpawnerRoom;
 //Floats
 
 
@@ -80,9 +80,18 @@ public event Action<float> OnHealthPctChanged = delegate {};
 
 public StateMachine<AI> stateMachine { get; set; }
 
-    public virtual void Start()
+    protected virtual void OnEnable()
     {
-        SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
+        Dead = false;
+        currentHealth = EnemyHealth;
+        UpdateHealthPercentage();
+        HealthBar.HealthChange(HealthPercentage);
+        Invoke("CheckRoom", 0.1f);
+    }
+
+    public virtual void Awake()
+    {
+        //SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
@@ -90,10 +99,10 @@ public StateMachine<AI> stateMachine { get; set; }
         AttackSpeed = new WaitForSeconds(EnemyAttackSpeed);
         RamTime = new WaitForSeconds(EnemyRamTime);
         Hero = GameManager.Instance.PlayerObject.transform;
-		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
+		//EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
         RoomSetter.UpdatePlayerRoom += CheckRoom;
-        Invoke("CheckRoom", 0.1f);
+        //Invoke("CheckRoom", 0.1f);
     }
 
      private void Update()
@@ -146,11 +155,12 @@ public StateMachine<AI> stateMachine { get; set; }
                 SpawnerRoom.RemoveEnemy(); //Changed to talk to the room behaviour
             }
 
-            RoomSetter.UpdatePlayerRoom -= CheckRoom;
+            //RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.
             //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
     //**********************************************************************************************************************

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public Vector3 PlayerSpawnPosition;
     public CameraShake CameraShaker;
     public WeaponAudio WeaponSounds;
+    public PlayerHealth PlayerHealthRef;
     public bool IsPlayerDead { get { return PlayerHealthRef.IsPlayerDead; } }
     public GameObject PlayerObject { get; private set; }
     public TagManager Tags = new TagManager();
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     private readonly float[] multiplier = { 1.0f, 1.25f, 1.5f, 1.75f };
     public float Difficulty;
 
+    [Header("Misc")]
+    [SerializeField] CameraBlocker camBlock;
+
     public delegate void OnScoreAdded();
     public event OnScoreAdded ScoreAdded;
     public delegate void OnPlayerRespawn();
@@ -59,7 +63,6 @@ public class GameManager : MonoBehaviour
     public PlayerMovement PlayerMovementReference { get; private set; }
 
     private bool canRespawn;
-    public PlayerHealth PlayerHealthRef;
 
     public void AddScore(int score)
     {
@@ -124,6 +127,11 @@ public class GameManager : MonoBehaviour
     {
         PlayerSpawnPosition = GameObject.Find("PlayerSpawn").transform.position;
         ResetPlayerPosition();
+
+        if (camBlock != null)
+        {
+            camBlock.Invoke("UnBlockCamera", 0.5f);
+        }
     }
 
     //Basically the start function

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1770399695293654}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1173762310721126}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -364,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1852518303310720}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -492,6 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1145196477615690}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -620,6 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1921637120426024}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -1192,6 +1197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1745912156391216}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -2491,6 +2497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1973673684936734}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -2619,6 +2626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1382578535759768}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -2838,6 +2846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1593624747056198}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -2966,6 +2975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1501309111261946}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -5256,6 +5266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1098679978332114}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -5577,6 +5588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1711734343800410}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -5705,6 +5717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1856568937931998}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -5924,6 +5937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1576937779246816}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -6086,6 +6100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1127041604103778}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2
@@ -6550,6 +6565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSpawning: 0
   EnemyTypes: []
+  SpawnPool: 000000000100000002000000
   SpawnPoint: {fileID: 1714781563473998}
   MyRoomBehaviour: {fileID: 114136011557939604}
   MinSpawnRangeTime: 2

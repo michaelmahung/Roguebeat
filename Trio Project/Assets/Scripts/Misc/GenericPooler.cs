@@ -30,8 +30,12 @@ public class GenericPooler : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        LevelSpawning.FinishedSpawningRooms += GeneratePools;
+        //LevelSpawning.FinishedSpawningRooms += GeneratePools;
+    }
 
+    private void Start()
+    {
+        GeneratePools();
     }
 
     void GeneratePools()

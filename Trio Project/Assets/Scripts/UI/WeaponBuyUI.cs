@@ -77,18 +77,18 @@ public class WeaponBuyUI : MonoBehaviour {
         {
             if (GameManager.Instance.CurrentScore >= selectedWeapon.WeaponCost)
             {
-                Debug.Log("Purchased " + selectedWeapon.name);
+                //Debug.Log("Purchased " + selectedWeapon.name);
                 selectedWeapon.SetWeaponActive(true);
                 return;
             }
             else
             {
-                Debug.LogFormat("{0} costs {1} points! You need {2} more.", selectedWeapon.name, selectedWeapon.WeaponCost, (selectedWeapon.WeaponCost - GameManager.Instance.CurrentScore));
+                //Debug.LogFormat("{0} costs {1} points! You need {2} more.", selectedWeapon.name, selectedWeapon.WeaponCost, (selectedWeapon.WeaponCost - GameManager.Instance.CurrentScore));
                 return;
             }
         }
 
-        Debug.Log("You already own " + selectedWeapon.name);
+        //Debug.Log("You already own " + selectedWeapon.name);
     }
 
     void UpdateWeaponText()
