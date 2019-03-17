@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerDashUI dashUI;
     [SerializeField] private PlayerDashUI [] dashUIGlow;
 
+    public GameObject QuitButton;
+    public GameObject Instructions;
+    public GameObject Instructionskey;
+
     private float dashCooldownPercentage
     {
         get
@@ -52,6 +56,9 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         GameManager.Instance.PlayerRespawned += SetDash;
         SetDash();
+
+        Instructionskey.SetActive(true);
+        Instructions.SetActive(false);
 	}
 
     public void PushBackPlayer(float amount)
@@ -120,8 +127,34 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = true;
         }
-    }
 
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (QuitButton.activeSelf)
+            {
+                QuitButton.SetActive(false);
+            }
+            else if (!QuitButton.activeSelf)
+            {
+                QuitButton.SetActive(true);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+
+            if (Instructionskey.activeSelf)
+            {
+                Instructionskey.SetActive(false);
+                Instructions.SetActive(true);
+            }
+            else if (!Instructionskey.activeSelf)
+            {
+                Instructionskey.SetActive(true);
+                Instructions.SetActive(false);
+            }
+        }
+    }
     void Dash()
     {
         //Get the velocity of the player in a direction
