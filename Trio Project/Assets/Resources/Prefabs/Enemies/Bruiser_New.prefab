@@ -54,7 +54,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &65694009615342696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65c2170856a5b64d8ac990961b3d95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyWeapon: 11
   EnemyWeapons: []
   FiringPoint: {fileID: 1277197240194200}
   Hero: {fileID: 0}
@@ -97,6 +98,7 @@ MonoBehaviour:
   EnemyRamTime: 2
   storeTime: 0
   RamDamage: 0
+  SpawnerRoom: {fileID: 0}
   KillPoints: 0
   seconds: 0
   WeaponValue: 0
@@ -108,7 +110,6 @@ MonoBehaviour:
   Dead: 0
   HasRammed: 0
   IsRamming: 0
-  stopRamming: 0
 --- !u!23 &23033435699981278
 MeshRenderer:
   m_ObjectHideFlags: 0

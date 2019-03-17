@@ -1,10 +1,13 @@
-﻿///dark yet darker
+﻿//dark yet darker
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour {
 
     public enum RoomType { Object, Enemy, MiniBoss, Timed };
     public static RoomManager Instance;
+
+    public delegate void UpdateRoomDelegate();
+    public static event UpdateRoomDelegate UpdatePlayerRoom;
 
     private void Awake()
     {
@@ -16,6 +19,12 @@ public class RoomManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public void UpdateRoom()
+    {
+        UpdatePlayerRoom();
+    }
+
 
     public void RemoveSpawners(RoomSetter room)
     {

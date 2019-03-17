@@ -9,6 +9,7 @@ public class RoamerRoom : MonoBehaviour, IRoomBehaviour
 
     public void StartBehaviour()
     {
+        //Debug.Log("Activating Roamer");
         RoomActive = true;
 
         if (myRoamer != null)
@@ -17,6 +18,7 @@ public class RoamerRoom : MonoBehaviour, IRoomBehaviour
 
     public void StopBehaviour()
     {
+        //Debug.Log("Deactivating Roamer");
         RoomActive = false;
 
         if (myRoamer != null)

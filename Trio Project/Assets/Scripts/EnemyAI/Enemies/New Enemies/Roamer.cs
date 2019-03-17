@@ -30,6 +30,7 @@ public class Roamer : DamageableEnvironmentItemParent {
     new void Start ()
     {
         engageWaitTime = new WaitForSeconds(2);
+        //Debug.Log(engageWaitTime);
         base.Start();
         timer = 0;
         ItemType = myItemType.Wood;
@@ -64,6 +65,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     void EngagePlayer()
     {
+        //Debug.Log(engagedPlayer);
         if (!engagedPlayer)
         {
             engagedPlayer = true;
@@ -86,6 +88,7 @@ public class Roamer : DamageableEnvironmentItemParent {
 
     IEnumerator EngageTimer()
     {
+        //Debug.Log("Slow engaging player");
         chasing = false;
         yield return engageWaitTime;
 
@@ -167,7 +170,11 @@ public class Roamer : DamageableEnvironmentItemParent {
         if (canDropMine)
         {
             canDropMine = false;
-            Instantiate(minePrefab, transform.position, Quaternion.identity);
+            //Instantiate(minePrefab, transform.position, Quaternion.identity);
+            GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.RoamerMine);
+            go.transform.position = transform.position;
+            go.transform.rotation = transform.rotation;
+            go.SetActive(true);
         }
     }
 

@@ -13,6 +13,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     //public Transform StartPosition;
     //public Transform EndPosition;
     public GameObject[] EnemyTypes;
+    public PooledObject[] SpawnPool;
     public GameObject SpawnPoint;
     public SpawnerRoomScript MyRoomBehaviour;
     public RoomSetter MyRoom { get; set; }
@@ -36,7 +37,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
         PlayerHealth.PlayerKilled += StopSpawns;
         Tags = GameManager.Instance.Tags;
         //SpawnMover = false;
-        EnemyTypes = Resources.LoadAll<GameObject>("Prefabs/Enemies");
+        //EnemyTypes = Resources.LoadAll<GameObject>("Prefabs/Enemies"); //Done through SpawnPool
     }
 
     // Update is called once per frame
@@ -67,7 +68,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
     {
         RandomSpawnTime = Random.Range(MinSpawnRangeTime, MaxSpawnRangeTime);
         SpawnWait = new WaitForSeconds(RandomSpawnTime);
-        yield return(SpawnWait);
+        yield return (SpawnWait);
 
         if (MyRoomBehaviour.EnemiesCapped() == false)
         {
@@ -86,50 +87,102 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 }
                 else if (gameObject.CompareTag("Spawner"))
                 {
-                    GameObject go = Instantiate(EnemyTypes[2], SpawnPoint.transform.position, transform.rotation);
-                    ITrackRooms room = go.GetComponent<ITrackRooms>();
-                    room.MyRoom = MyRoom;
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[0]);
+                    enemy.transform.position = SpawnPoint.transform.position;
+                    enemy.transform.rotation = SpawnPoint.transform.rotation;
+
+                    AI enemyBrain = enemy.GetComponent<AI>();
+
+                    if (enemyBrain != null)
+                    {
+                        enemyBrain.MyRoom = MyRoom;
+                        enemyBrain.SpawnerRoom = MyRoomBehaviour;
+                    }
+
+                    //ITrackRooms room = enemy.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
+
+                    enemy.SetActive(true);
+
+                    //GameObject go = Instantiate(EnemyTypes[2], SpawnPoint.transform.position, transform.rotation);
+                    //ITrackRooms room = go.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
                     //Debug.Log("found it");
                 }
-            }
-        }
-
-
-        if (RandomChance > 40 && RandomChance < 70)
-        {
-            if (!gameObject.CompareTag("Spawner"))
-            { // For Crane Spawning Room- Will work on later- Sam
-              // GameObject go = Instantiate(EnemyTypes[1], transform.position, transform.rotation);
-              // ITrackRooms room = go.GetComponent<ITrackRooms>();
-              // room.MyRoom = MyRoom;
-            }
-            else if (gameObject.CompareTag("Spawner"))
+            } 
+            else if (RandomChance > 40 && RandomChance < 70)
             {
-                GameObject go = Instantiate(EnemyTypes[1], SpawnPoint.transform.position, transform.rotation);
-                ITrackRooms room = go.GetComponent<ITrackRooms>();
-                room.MyRoom = MyRoom;
-            }
-        }
+                if (!gameObject.CompareTag("Spawner"))
+                { // For Crane Spawning Room- Will work on later- Sam
+                  // GameObject go = Instantiate(EnemyTypes[1], transform.position, transform.rotation);
+                  // ITrackRooms room = go.GetComponent<ITrackRooms>();
+                  // room.MyRoom = MyRoom;
+                }
+                else if (gameObject.CompareTag("Spawner"))
+                {
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[1]);
+                    enemy.transform.position = SpawnPoint.transform.position;
+                    enemy.transform.rotation = SpawnPoint.transform.rotation;
 
-        if (RandomChance >= 70)
-        {
-            if (!gameObject.CompareTag("Spawner"))
-            { // For Crane Spawning Room- Will work on later- Sam
-              //GameObject go = Instantiate(EnemyTypes[0], transform.position, transform.rotation);
-              // ITrackRooms room = go.GetComponent<ITrackRooms>();
-              // room.MyRoom = MyRoom;
+                    AI enemyBrain = enemy.GetComponent<AI>();
+
+                    if (enemyBrain != null)
+                    {
+                        enemyBrain.MyRoom = MyRoom;
+                        enemyBrain.SpawnerRoom = MyRoomBehaviour;
+                    }
+
+                    //ITrackRooms room = enemy.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
+
+                    enemy.SetActive(true);
+
+                    //GameObject go = Instantiate(EnemyTypes[1], SpawnPoint.transform.position, transform.rotation);
+                    //ITrackRooms room = go.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
+                }
             }
-            else if (gameObject.CompareTag("Spawner"))
+            else if (RandomChance >= 70)
             {
-                GameObject go = Instantiate(EnemyTypes[0], SpawnPoint.transform.position, transform.rotation);
-                ITrackRooms room = go.GetComponent<ITrackRooms>();
-                room.MyRoom = MyRoom;
+                if (!gameObject.CompareTag("Spawner"))
+                { // For Crane Spawning Room- Will work on later- Sam
+                  //GameObject go = Instantiate(EnemyTypes[0], transform.position, transform.rotation);
+                  // ITrackRooms room = go.GetComponent<ITrackRooms>();
+                  // room.MyRoom = MyRoom;
+                }
+                else if (gameObject.CompareTag("Spawner"))
+                {
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[2]);
+                    enemy.transform.position = SpawnPoint.transform.position;
+                    enemy.transform.rotation = SpawnPoint.transform.rotation;
 
+                    AI enemyBrain = enemy.GetComponent<AI>();
+
+                    if (enemyBrain != null)
+                    {
+                        enemyBrain.MyRoom = MyRoom;
+                        enemyBrain.SpawnerRoom = MyRoomBehaviour;
+                    }
+
+                    //ITrackRooms room = enemy.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
+
+                    enemy.SetActive(true);
+
+                    //GameObject go = Instantiate(EnemyTypes[0], SpawnPoint.transform.position, transform.rotation);
+                    //ITrackRooms room = go.GetComponent<ITrackRooms>();
+                    //room.MyRoom = MyRoom;
+
+                }
             }
-        }
 
-        StartCoroutine(BeginSpawning());
-        MyRoomBehaviour.AddEnemy();
+            StartCoroutine(BeginSpawning());
+            MyRoomBehaviour.AddEnemy();
+        }
+        else //Enemies are capped
+        {
+            StartCoroutine(BeginSpawning());
+        }
     }
     public void StartSpawns()
     {

@@ -7,6 +7,7 @@ using System; // to use public event Actions
 public abstract class AI : MonoBehaviour, ITrackRooms, IDamageable<float>
 {
 
+    public PooledObject MyWeapon;
 public GameObject[] EnemyWeapons;
 public GameObject FiringPoint; // Gameobject that represents the firing point of the enemy, if applicable
 public Transform Hero; // Transform variable used to acquire the player.
@@ -44,7 +45,7 @@ WaitForSeconds RamTime;
 
 
 protected IDamageable<float> PlayerDamage;
-protected SpawnerRoomScript SpawnerRoom;
+public SpawnerRoomScript SpawnerRoom;
 //Floats
 
 
@@ -79,9 +80,18 @@ public event Action<float> OnHealthPctChanged = delegate {};
 
 public StateMachine<AI> stateMachine { get; set; }
 
-    public virtual void Start()
+    protected virtual void OnEnable()
     {
-        SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
+        Dead = false;
+        currentHealth = EnemyHealth;
+        UpdateHealthPercentage();
+        HealthBar.HealthChange(HealthPercentage);
+        Invoke("CheckRoom", 0.1f);
+    }
+
+    public virtual void Awake()
+    {
+        //SpawnerRoom = MyRoom.GetComponent<SpawnerRoomScript>();
     	AIRigidbody = GetComponent<Rigidbody>();
         stateMachine = new StateMachine<AI>(this);
         stateMachine.ChangeState(IdleState.Instance);
@@ -89,10 +99,11 @@ public StateMachine<AI> stateMachine { get; set; }
         AttackSpeed = new WaitForSeconds(EnemyAttackSpeed);
         RamTime = new WaitForSeconds(EnemyRamTime);
         Hero = GameManager.Instance.PlayerObject.transform;
-		EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
+		//EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
-        RoomSetter.UpdatePlayerRoom += CheckRoom;
-        Invoke("CheckRoom", 0.1f);
+        //RoomSetter.UpdatePlayerRoom += CheckRoom;
+        RoomManager.UpdatePlayerRoom += CheckRoom;
+        //Invoke("CheckRoom", 0.1f);
     }
 
      private void Update()
@@ -145,11 +156,12 @@ public StateMachine<AI> stateMachine { get; set; }
                 SpawnerRoom.RemoveEnemy(); //Changed to talk to the room behaviour
             }
 
-            RoomSetter.UpdatePlayerRoom -= CheckRoom;
+            //RoomSetter.UpdatePlayerRoom -= CheckRoom;
             GameManager.Instance.AddScore(KillPoints);
             RoomManager.Instance.AddToDoor(GameManager.Instance.PlayerRoom, RoomManager.RoomType.Enemy); //Changed by Mike to specify what kind of addition was made to the door.
             //RoomManager.Instance.AddToDoor(CurrentRoom, BaseDoor.openCondition.Kills);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
     //**********************************************************************************************************************
@@ -201,7 +213,16 @@ public IEnumerator RamPlayers()
 	public IEnumerator FireWeapon ()
 	{
 		yield return(AttackSpeed);
-		Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
+
+        if (gameObject.activeInHierarchy)
+        {
+            GameObject go = GenericPooler.Instance.GrabPrefab(MyWeapon);
+            go.transform.position = FiringPoint.transform.position;
+            go.transform.rotation = FiringPoint.transform.rotation;
+            go.SetActive(true);
+        }
+
+        //Instantiate (EnemyWeapons [WeaponValue], FiringPoint.transform.position, FiringPoint.transform.rotation);
 
         if (IsFiring == false)
         {

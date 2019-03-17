@@ -19,7 +19,8 @@ public class TileRoom : MonoBehaviour, ITrackRooms, IRoomBehaviour {
 
 	void Start () {
 
-        LevelSpawning.FinishedSpawningRooms += SetComponents;
+        //LevelSpawning.FinishedSpawningRooms += SetComponents;
+        SetComponents();
 	}
 
     private void Update()

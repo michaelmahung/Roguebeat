@@ -43,7 +43,10 @@ public class LevelSpawning : MonoBehaviour {
     public static FinishedSpawning FinishedSpawningRooms;
 
     void Start () {
+    }
 
+    void Awake()
+    {
         //WaitTime = new WaitForSeconds(waitTime);
 
         //Constructor for a new level, specifies the grid size, the max amount of rooms, whether it adheres strictly to the bounds of the grid
@@ -56,6 +59,13 @@ public class LevelSpawning : MonoBehaviour {
         FindNextRoomLocation(TestLevel);
         //SpawnLevelRooms(TestLevel);
         //StartCoroutine(StartSpawning());
+        while(!TestLevel.EndRoomSpawned && !doneSpawning)
+        {
+            FindNextRoomLocation(TestLevel);
+            SpawnRoom(currentLocation, TestLevel);
+        }
+
+        CleanUp();
     }
 
     private void Update()
@@ -97,9 +107,9 @@ public class LevelSpawning : MonoBehaviour {
             StartCoroutine(StartSpawning());
         }else
         {
-            System.GC.Collect(); // Manually collect any extra garbage
             FinishedSpawningRooms();
             StopAllCoroutines();
+            System.GC.Collect(); // Manually collect any extra garbage
         }
     }
 

@@ -6,8 +6,8 @@ using StateStuff;
 public class Bruiser_New : AI{
 
 	// Use this for initialization
-	public override void Start () {
-	base.Start();
+	public override void Awake () {
+	base.Awake();
 		MoveSpeed = 3.0f * GameManager.Instance.Difficulty; // assigns base enemy move speed per Trooper
 		EnemyHealth = 10.0f * GameManager.Instance.Difficulty; // assigns base enemy health per Trooper
 		EnemyAttackSpeed = 0.2f * GameManager.Instance.Difficulty; // assigns base enemy attack speed per Trooper

@@ -22,35 +22,41 @@ public class RoomSetter : MonoBehaviour
     private RoomLight myLight;
     TagManager Tags;
 
-    public delegate void UpdateRoomDelegate();
-    public static event UpdateRoomDelegate UpdatePlayerRoom;
+    //public delegate void UpdateRoomDelegate();
+    //public static event UpdateRoomDelegate UpdatePlayerRoom;
 
     void Awake()
     {
-        LevelSpawning.FinishedSpawningRooms += FinalizeRoom;
-        camController = FindObjectOfType<CameraController2>();
-
-        Tags = GameManager.Instance.Tags;
-        cam = camController.gameObject;
-    }
-
-    void Start()
-    {
-
         RoomBehaviour = GetComponent<IRoomBehaviour>();
-
-        PlayerHealth.PlayerKilled += OpenClearedDoors;
 
         if (string.IsNullOrEmpty(RoomName))
         {
             RoomName = gameObject.name;
         }
+
+        camController = FindObjectOfType<CameraController2>();
+
+        Tags = GameManager.Instance.Tags;
+        cam = camController.gameObject;
+
+        LevelSpawning.FinishedSpawningRooms += DelayedStart;
+    }
+
+    void Start()
+    {
+        PlayerHealth.PlayerKilled += OpenClearedDoors;
+    }
+
+    void DelayedStart()
+    {
+        Invoke("FinalizeRoom", 0.0001f);
     }
 
     void FinalizeRoom()
     {
         LevelSpawning.FinishedSpawningRooms -= FinalizeRoom;
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        RoomManager.UpdatePlayerRoom += CheckPlayerRoom;
         MyOpenWalls = GetComponentsInChildren<RoomSpawnPoint>();
 
         foreach (RoomSpawnPoint point in MyOpenWalls)
@@ -121,21 +127,8 @@ public class RoomSetter : MonoBehaviour
                 StartCoroutine(CloseDoors());
             }
 
-            UpdatePlayer();
-        }
-    }
-
-    public void UpdatePlayer()
-    {
-        GameManager.Instance.PlayerRoom = this;
-
-        if (UpdatePlayerRoom != null)
-        {
-            UpdatePlayerRoom();
-        }
-        else
-        {
-            CheckPlayerRoom();
+            GameManager.Instance.PlayerRoom = this;
+            RoomManager.Instance.UpdateRoom();
         }
     }
 
@@ -164,6 +157,12 @@ public class RoomSetter : MonoBehaviour
     public void RoomCleared()
     {
         IsCleared = true;
+
+        foreach(BaseDoor door in MyDoors)
+        {
+            if (door != null)
+            door.ResetDoor();
+        }
     }
 
     void FindComponents()

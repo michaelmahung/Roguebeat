@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 7)]
     [SerializeField] private int dashCooldown = 2;
 
-    [SerializeField] private PlayerDashUI dashUI;
+    //[SerializeField] private PlayerDashUI dashUI;
     [SerializeField] private PlayerDashUI [] dashUIGlow;
 
     public GameObject QuitButton;

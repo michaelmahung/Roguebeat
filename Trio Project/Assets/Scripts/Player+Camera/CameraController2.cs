@@ -10,8 +10,6 @@ public class CameraController2 : MonoBehaviour {
     private GameObject focalPoint;
     private Vector3 cameraOffset;
 
-    
-
     void Start()
     {
         try

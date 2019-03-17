@@ -6,8 +6,14 @@ public class Enemy_Shotgun_Death : EnemyProjectile {
 
 	public float ShotgunLife = 6.1f;
 
-	// Use this for initialization
-	void Start () {
+    protected override void Awake()
+    {
+        ProjectileLife = 6.1f;
+        base.Awake();
+    }
+
+    // Use this for initialization
+    void Start () {
         Damage = 15;
 	}
 	
@@ -15,9 +21,9 @@ public class Enemy_Shotgun_Death : EnemyProjectile {
 	void Update ()
 	{
 
-		ShotgunLife -= Time.deltaTime;
-		if (ShotgunLife <= 0) {
-			Destroy (gameObject);
+		currentLife -= Time.deltaTime;
+		if (currentLife <= 0) {
+            DisableObject();
 		}
 	}
 }

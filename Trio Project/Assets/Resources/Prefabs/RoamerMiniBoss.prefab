@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4036126171029708
 Transform:
@@ -102,7 +102,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4191142262411002
 Transform:
@@ -834,7 +834,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4951764325780312
 Transform:
@@ -1446,7 +1446,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4859717608837944
 Transform:
@@ -1497,7 +1497,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4017768565903516
 Transform:
@@ -1662,10 +1662,10 @@ MonoBehaviour:
   hurtColor: {r: 1, g: 1, b: 1, a: 1}
   armorColor: {r: 1, g: 1, b: 0, a: 1}
   moveSpeed: 13
+  rotationSpeed: 120
   maxMoveSpeed: 21.5
   speedIncreaseAmount: 0.25
   explosionTime: 1
-  rotationSpeed: 120
   baseMineDelay: 1
   minimumDistance: 8
   minePrefab: {fileID: 1080955858292224, guid: ba82ff08c3ffddf40b0759f30dda57e8, type: 3}
@@ -1696,7 +1696,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4561978728475990
 Transform:
@@ -1785,7 +1785,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4726864976678782
 Transform:
@@ -1842,7 +1842,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4278230824895566
 Transform:
@@ -2460,7 +2460,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4010640728789854
 Transform:
@@ -3184,7 +3184,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4049221669475226
 Transform:
@@ -3802,7 +3802,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4955347527828658
 Transform:
@@ -4414,7 +4414,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4752038897487082
 Transform:
@@ -4471,7 +4471,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4781800322213822
 Transform:
@@ -5089,7 +5089,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4650061857297380
 Transform:
@@ -5701,7 +5701,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4093018550062520
 Transform:
@@ -5752,7 +5752,7 @@ GameObject:
   m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4777751908093256
 Transform:

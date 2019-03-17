@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class Bullet : EnemyProjectile {
 
-public float BulletLife = 6.0f;
+public float BulletLife = 6.0f; //Changed to current and projectile life
 public float BulletSpeed = 50.0f;
- 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+
+    protected override void Awake()
+    {
+        ProjectileLife = 6.0f;
+        base.Awake();
+    }
+
+    void Start () {
+        //ProjectileLife = 6.0f;
         Damage = 1 * GameManager.Instance.Difficulty;
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
 	{
-		BulletLife -= Time.deltaTime;
-		if (BulletLife <= 0) {
-			Destroy (gameObject);
+		currentLife -= Time.deltaTime;
+		if (currentLife <= 0) {
+            DisableObject();
 		}
-		if (BulletLife > 0) {
+		if (currentLife > 0) {
 			transform.position += transform.forward * BulletSpeed * Time.deltaTime;
 		}
 	}

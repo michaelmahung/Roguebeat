@@ -38,11 +38,6 @@ public class RoomSpawnPoint : MonoBehaviour {
         flexFactor = (byte)Random.Range(0, byte.MaxValue);
     }
 
-    void Start () 
-    {
-        //myCollider = GetComponent<Collider>();
-	}
-
     public void SetMyRoom(RoomSetter room)
     {
         MyRoom = room;

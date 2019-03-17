@@ -55,12 +55,18 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
         }
     }
 
-    void ResetDoor()
+    public void ResetDoor()
     {
         doorCompleted = false;
         //DoorMoved = false;
         objectsDestroyed = 0;
         killCount = 0;
+
+        if (!DoorOpen)
+        {
+            DoorOpen = true;
+            transform.localPosition += moveDirection;
+        }
     }
 
     public void AddRoom(RoomSetter room)
@@ -86,7 +92,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
                 playerRoom.RoomCleared();
                 RoomManager.Instance.RemoveSpawners(playerRoom);
                 GameManager.Instance.AddScore(OpenPoints);
-                ResetDoor();
+                //ResetDoor();
             }
         }
     }
@@ -109,9 +115,9 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void ObjectDestroyed()
     {
-        if (!DoorOpen)
+        if (!DoorOpen && !doorCompleted)
         {
-            objectsDestroyed++;
+;            objectsDestroyed++;
 
             if (objectsDestroyed >= objectsRequired && !DoorOpen)
             {
@@ -122,7 +128,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void EnemyKilled()
     {
-        if (!DoorOpen)
+        if (!DoorOpen && !doorCompleted)
         {
             killCount++;
 
@@ -135,7 +141,7 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
 
     public virtual void MiniBossKilled()
     {
-        if (!DoorOpen)
+        if (!DoorOpen && !doorCompleted)
         {
             OpenDoor();
         }

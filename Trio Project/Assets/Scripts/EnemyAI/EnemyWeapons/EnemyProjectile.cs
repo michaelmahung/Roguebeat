@@ -6,13 +6,22 @@ public class EnemyProjectile : MonoBehaviour
     public float Damage;
     protected IDamageable<float> otherDamageable;
     protected string thingHitTag;
+    protected float ProjectileLife;
+    protected float currentLife;
 
     protected TagManager Tags;
 
     virtual protected void Awake()
     {
         Tags = GameManager.Instance.Tags;
+        currentLife = ProjectileLife;
     }
+
+    virtual protected void OnEnable()
+    {
+        currentLife = ProjectileLife;
+    }
+
 
     virtual protected void OnTriggerEnter(Collider other)
     {
@@ -23,12 +32,19 @@ public class EnemyProjectile : MonoBehaviour
         //if(otherDamageable != null && other.tag != ("Enemy") && other.tag !=("Shield") && other.tag != ("Untagged") && other.tag != ("eProjectile"))
         {
             otherDamageable.Damage(Damage);
-            Destroy(this.gameObject);
+            DisableObject();
         }
         else if (thingHitTag == "Wall")
         {
-            Destroy(this.gameObject);
+            DisableObject();
         }
-
     }
+
+    virtual protected void DisableObject()
+    {
+        thingHitTag = null;
+        otherDamageable = null;
+        gameObject.SetActive(false);
+    }
+
 }

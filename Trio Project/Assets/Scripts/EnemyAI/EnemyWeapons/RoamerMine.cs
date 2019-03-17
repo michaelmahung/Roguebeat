@@ -8,6 +8,12 @@ public class RoamerMine : DamageableEnvironmentItemParent {
     [SerializeField] private int lifeTime = 60;
     IDamageable<float> damageable;
 
+
+    void OnEnable()
+    {
+        CurrentHealth = maxHealth;
+        lifeTime = 60;
+    }
     private float damage
     {
         get { return baseDamage * GameManager.Instance.Difficulty; }
@@ -39,7 +45,7 @@ public class RoamerMine : DamageableEnvironmentItemParent {
 
     void SelfDestruct()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
-
 }

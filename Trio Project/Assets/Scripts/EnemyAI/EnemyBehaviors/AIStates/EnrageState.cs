@@ -57,7 +57,7 @@ public class EnrageState : State<AI> {
 
     public override void ExitState(AI _owner)
     {
-        Debug.Log("Exiting Enrage State");
+        //Debug.Log("Exiting Enrage State");
     }
 
 }
