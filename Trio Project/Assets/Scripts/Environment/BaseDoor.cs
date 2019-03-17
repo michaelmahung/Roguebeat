@@ -61,8 +61,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
         //DoorMoved = false;
         objectsDestroyed = 0;
         killCount = 0;
-        Debug.Log(objectsDestroyed);
-        Debug.Log(killCount);
 
         if (!DoorOpen)
         {
@@ -119,7 +117,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         if (!DoorOpen && !doorCompleted)
         {
-            Debug.Log("Adding to door")
 ;            objectsDestroyed++;
 
             if (objectsDestroyed >= objectsRequired && !DoorOpen)
@@ -133,7 +130,6 @@ public abstract class BaseDoor : MonoBehaviour, ITrackRooms
     {
         if (!DoorOpen && !doorCompleted)
         {
-            Debug.Log("Adding to door");
             killCount++;
 
             if (killCount >= killsRequired && !DoorOpen)
