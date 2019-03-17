@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8322869784697165205}
   - component: {fileID: 8216269603749734977}
-  - component: {fileID: 8216191088837329317}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,16 +50,6 @@ MonoBehaviour:
   PlayerSpawnPosition: {x: -49, y: 0, z: -2}
   CameraShaker: {fileID: 0}
   WeaponSounds: {fileID: 0}
+  PlayerHealthRef: {fileID: 0}
   Difficulty: 0
---- !u!114 &8216191088837329317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8328599372037515573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29ff2f03aba174fbf85d32875804158b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  camBlock: {fileID: 0}

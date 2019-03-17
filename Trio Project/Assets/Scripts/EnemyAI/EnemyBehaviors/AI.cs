@@ -101,7 +101,8 @@ public StateMachine<AI> stateMachine { get; set; }
         Hero = GameManager.Instance.PlayerObject.transform;
 		//EnemyWeapons = Resources.LoadAll<GameObject> ("Prefabs/EnemyWeapons"); // Assigns the entire contents of the folder EnemyWeapons in the Resources folder to the EnemyWeapons array.
         EnemyBaseColor = gameObject.GetComponent<Renderer>().material.color;
-        RoomSetter.UpdatePlayerRoom += CheckRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckRoom;
+        RoomManager.UpdatePlayerRoom += CheckRoom;
         //Invoke("CheckRoom", 0.1f);
     }
 

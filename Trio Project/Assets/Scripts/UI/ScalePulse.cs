@@ -12,8 +12,6 @@ public class ScalePulse : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();
-        Debug.Log(minScale);
-        Debug.Log(addedScale);
     }
 
     // Update is called once per frame

@@ -108,12 +108,14 @@ public class GameManager : MonoBehaviour
         {
             //Load saved highscore array.
         }
+
+        LevelSpawning.FinishedSpawningRooms += FindStartLocation;
     }
 
     private void Start()
     {
         PlayerHealth.PlayerKilled += CanRespawn;
-        LevelSpawning.FinishedSpawningRooms += FindStartLocation;
+        
 
         //If there isnt a default spawn position set, make where the player starts in the scene the spawn position.
         if (PlayerSpawnPosition == Vector3.zero)

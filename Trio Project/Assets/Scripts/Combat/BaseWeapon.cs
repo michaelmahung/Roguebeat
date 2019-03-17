@@ -90,11 +90,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
                 fireLocations.Add(firelocation.gameObject);
             }
         }
-    }
 
-
-    public virtual void Start()
-    {
         //try / catch statements are just saying, I want to try doing this thing - if there are errors while trying to do it, do what's in the catch segment. 
         try
         {
@@ -111,6 +107,12 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
                 ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
             }
         }
+    }
+
+
+    public virtual void Start()
+    {
+
     }
 
     public virtual void Update()

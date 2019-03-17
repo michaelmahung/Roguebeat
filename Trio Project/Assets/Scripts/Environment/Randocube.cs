@@ -21,7 +21,8 @@ public class Randocube : DamageableObject
         //Hey room setter, whenever you run your UpdatePlayerRoom event, also run this CheckPlayerRoom function.
 
         //TODO - roomsetter will control the behavior of the room - not individual components
-        RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
+        RoomManager.UpdatePlayerRoom += CheckPlayerRoom;
         LevelSpawning.FinishedSpawningRooms += CheckPlayerRoom;
     }
 
@@ -57,7 +58,7 @@ public class Randocube : DamageableObject
     {
         //Unsubscribe from the event - ensures the CheckPlayerRoom function wont get called on a destroyed object.
         LevelSpawning.FinishedSpawningRooms -= CheckPlayerRoom;
-        RoomSetter.UpdatePlayerRoom -= CheckPlayerRoom;
+        RoomManager.UpdatePlayerRoom -= CheckPlayerRoom;
         base.Kill();
     }
 }

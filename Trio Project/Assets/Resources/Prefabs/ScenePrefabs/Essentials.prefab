@@ -121,19 +121,19 @@ MonoBehaviour:
   - Name: Trooper
     Prefab: {fileID: 1276288036413350, guid: b1919da810de8c244aa140befcc251cb, type: 3}
     PrefabKey: 0
-    PoolSize: 3
+    PoolSize: 5
     ExpandPool: 1
     SpawnedPrefabs: []
   - Name: Bruiser
     Prefab: {fileID: 1022228219283506, guid: a4b92482265957b42bbc4ee3c7b4cc5a, type: 3}
     PrefabKey: 1
-    PoolSize: 3
+    PoolSize: 5
     ExpandPool: 1
     SpawnedPrefabs: []
   - Name: Boomer
     Prefab: {fileID: 1403636497350428, guid: a452d02f0601b244da476f7554eacdc3, type: 3}
     PrefabKey: 2
-    PoolSize: 3
+    PoolSize: 5
     ExpandPool: 1
     SpawnedPrefabs: []
   - Name: Baby Roamer
@@ -4823,6 +4823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e32d80a5949451fb1850348c1fc2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockCam: 0
   myCam: {fileID: 20745168652906650}
 --- !u!1 &1543357062937252
 GameObject:
@@ -6407,6 +6408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4802185575795520}
   - component: {fileID: 114444775226268438}
+  - component: {fileID: 3836694187975919635}
   m_Layer: 0
   m_Name: Essentials
   m_TagString: Untagged
@@ -6457,6 +6459,19 @@ MonoBehaviour:
   WeaponScreenActive: 0
   WeaponCostText: {fileID: 114739510742267682}
   WeaponCostText1: {fileID: 114782787940140656}
+--- !u!114 &3836694187975919635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735196530565114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c496a992aa4c4c3f9a474ceb7e91cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTeture: {fileID: 2800000, guid: b4bd8ebd01b08da4a99b3f318d096075, type: 3}
 --- !u!1 &1745012791135426
 GameObject:
   m_ObjectHideFlags: 0
@@ -9303,7 +9318,8 @@ PrefabInstance:
       propertyPath: camBlock
       value: 
       objectReference: {fileID: 841934795}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8216191088837329317, guid: ea4183bcb36f95440a27421afd6b44f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea4183bcb36f95440a27421afd6b44f7, type: 3}
 --- !u!4 &4672622018423956 stripped
 Transform:

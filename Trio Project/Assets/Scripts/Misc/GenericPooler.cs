@@ -31,11 +31,12 @@ public class GenericPooler : MonoBehaviour
     {
         _instance = this;
         //LevelSpawning.FinishedSpawningRooms += GeneratePools;
+        GeneratePools();
     }
 
     private void Start()
     {
-        GeneratePools();
+        
     }
 
     void GeneratePools()
