@@ -63,7 +63,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         //healthCanvas.SetActive(false);
         Indicator.SetActive(false);
         health = maxHealth;
-        
+        DeathChecker = GameManager.Instance.PlayerMovementReference;
         
 
 	}
@@ -340,10 +340,13 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
 
     public void Dead()
     {
-        dead = true;
-        mngr.AddScore(killpoints);
-        DeathChecker.IsBossDead = true;
-        Destroy(masterBody);
+        if (!dead && masterBody != null)
+        {
+            dead = true;
+            mngr.AddScore(killpoints);
+            DeathChecker.IsBossDead = true;
+            Destroy(masterBody);
+        }
     }
 
     public void ChangeBack()

@@ -8451,8 +8451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 0.00001
   levelValues:
-    GridFactor: 10
-    MaximumRooms: 40
+    GridFactor: 5
+    MaximumRooms: 12
     GridBasedSpawns: 1
     LinearSpawns: 0
     DoubleBack: 0
