@@ -49,7 +49,7 @@ public class RoomSetter : MonoBehaviour
 
     void DelayedStart()
     {
-        Invoke("FinalizeRoom", 0.0001f);
+        Invoke("FinalizeRoom", 0.01f);
     }
 
     void FinalizeRoom()
@@ -219,6 +219,7 @@ public class RoomSetter : MonoBehaviour
 
     void FinishStartRoom()
     {
+        Debug.Log("Finalizing Start Room");
         foreach (RoomSpawnPoint point in MyOpenWalls)
         {
             if (point.OtherRoom != null)
@@ -242,7 +243,7 @@ public class RoomSetter : MonoBehaviour
     }
     void FinishEndRoom()
     {
-        //Debug.Log("Finishing End Room");
+        Debug.Log("Finalizing End Room");
 
         foreach (RoomSpawnPoint point in MyOpenWalls)
         {

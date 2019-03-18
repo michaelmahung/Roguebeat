@@ -107,7 +107,7 @@ TrailRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -332,10 +332,12 @@ MonoBehaviour:
   maxDashDistance: 5
   minDashSpeed: 10
   dashCooldown: 2
-  dashUI: {fileID: 0}
   dashUIGlow:
   - {fileID: 0}
   - {fileID: 0}
+  QuitButton: {fileID: 0}
+  Instructions: {fileID: 0}
+  Instructionskey: {fileID: 0}
 --- !u!114 &114433151429425124
 MonoBehaviour:
   m_ObjectHideFlags: 0

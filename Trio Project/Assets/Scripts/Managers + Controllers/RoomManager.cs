@@ -56,25 +56,29 @@ public class RoomManager : MonoBehaviour {
                 case RoomType.Object:
                     foreach (BaseDoor door in room.MyDoors)
                     {
-                        door.ObjectDestroyed();
+                        if (door != null)
+                            door.ObjectDestroyed();
                     }
                     break;
                 case RoomType.Enemy:
                     foreach (BaseDoor door in room.MyDoors)
                     {
-                        door.EnemyKilled();
+                        if (door != null)
+                            door.EnemyKilled();
                     }
                     break;
                 case RoomType.MiniBoss:
                     foreach (BaseDoor door in room.MyDoors)
                     {
-                        door.MiniBossKilled();
+                        if (door != null)
+                            door.MiniBossKilled();
                     }
                     break;
                 case RoomType.Timed:
                     foreach (BaseDoor door in room.MyDoors)
                     {
-                        door.OpenDoor();
+                        if (door != null)
+                            door.OpenDoor();
                     }
                     break;
                 default:
