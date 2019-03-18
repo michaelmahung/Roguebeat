@@ -49,7 +49,7 @@ public class RoomSetter : MonoBehaviour
 
     void DelayedStart()
     {
-        Invoke("FinalizeRoom", 0.01f);
+        Invoke("FinalizeRoom", 0.25f);
     }
 
     void FinalizeRoom()
@@ -235,7 +235,7 @@ public class RoomSetter : MonoBehaviour
 
                     if (StartRoom)
                     {
-                        door.Invoke("OpenDoor", 2);
+                        door.Invoke("OpenDoor", 1.5f);
                     }
                 }
             }

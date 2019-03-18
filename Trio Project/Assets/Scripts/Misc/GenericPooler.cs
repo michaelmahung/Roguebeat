@@ -34,11 +34,6 @@ public class GenericPooler : MonoBehaviour
         GeneratePools();
     }
 
-    private void Start()
-    {
-        
-    }
-
     void GeneratePools()
     {
         for (int i = 0; i < ObjectPool.Length; i++)

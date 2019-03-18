@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseProjectile : MonoBehaviour, IPooledObject
+public class BaseProjectile : MonoBehaviour
 {
     //All of these variables will be set by the weapon firing the projectile, no need to assign them.
     public float ProjectileDamage { get; set; }
     public float ProjectileSpeed { get; set; }
     public float ActiveTime { get; set; }
-
-    protected float RaycastHitLength { get; set; } //How far ahead of the projectile will it check for objects.
-    protected float RayHitDelay { get; set; } //How long to wait after hitting something with a raycast to react to it
-    protected string[] DisableList { get; set; }
 
     Collider thisCollider;
     protected string hitTag;
@@ -50,6 +46,7 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
             {
                 thisCollider.enabled = false;
             }
+
             activerTimer = 0;
             gameObject.SetActive(false);
             hitTag = null;
@@ -61,15 +58,11 @@ public class BaseProjectile : MonoBehaviour, IPooledObject
     {
         Tags = GameManager.Instance.Tags;
         thisCollider = GetComponent<Collider>();
-        RaycastHitLength = 0.25f;
-        RayHitDelay = 0.75f;
     }
 
-    //HAS to be public since its from the IPooledObject interface.
-    public void OnObjectSpawn()
+    virtual protected void OnEnable()
     {
         thisCollider.enabled = true;
-        //Invoke("Deactivate", ActiveTime);
     }
 
     virtual protected void DealDamage(IDamageable<float> thingToDamage)

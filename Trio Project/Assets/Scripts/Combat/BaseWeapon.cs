@@ -10,6 +10,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
     protected string weaponName;
     protected bool canFire = true;
 
+    [SerializeField] protected ProjectileTypes ProjectileKey;
     [Header("Weapon Information")]
     [Range(0.5f, 20)]
     [SerializeField] protected float weaponDamage = 1;
@@ -91,7 +92,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
             }
         }
 
-        //try / catch statements are just saying, I want to try doing this thing - if there are errors while trying to do it, do what's in the catch segment. 
+        /*//try / catch statements are just saying, I want to try doing this thing - if there are errors while trying to do it, do what's in the catch segment. 
         try
         {
             //Try adding our projectile to the projectile dictionary
@@ -99,6 +100,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         }
         catch
         {
+            Debug.LogWarning("Generating Projectile Pool Manager");
             //If there is no projectile dictionary, create one and add our projectile to it.
             if (ProjectilePoolManager.Instance == null)
             {
@@ -106,7 +108,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
                 go.AddComponent<ProjectilePoolManager>();
                 ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
             }
-        }
+        }*/
     }
 
 
@@ -155,8 +157,13 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         //All this is doing is positioning and spawning a projectile at each fire location
         for (int i = 0; i < fireLocations.Count; i++)
         {
-            //Boo this function, need to refactor - Spawn an object from the pool and pass the weapons values down to the projectile.
-            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
+            ProjectileProperties proj = NewProjectilePooler.Instance.GrabProjectile(ProjectileKey);
+            proj.Prefab.transform.position = fireLocations[i].transform.position;
+            proj.Prefab.transform.rotation = fireLocations[i].transform.rotation;
+            proj.PrefabBehaviour.ProjectileDamage = weaponDamage;
+            proj.PrefabBehaviour.ProjectileSpeed = projectileSpeed;
+            proj.PrefabBehaviour.ActiveTime = projectileLife;
+            proj.Prefab.SetActive(true);
         }
 
         GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿//-- OBSOLETE PROJECTILE POOLER - BOO BRACKEYS TUTORIALS --\\
+
+/*using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectilePoolManager : MonoBehaviour
@@ -92,3 +94,4 @@ public class ProjectilePoolManager : MonoBehaviour
         return objectToSpawn;
     }
 }
+*/

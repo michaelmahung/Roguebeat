@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965ae6db344bc4d22bdefd0beeeb923d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileKey: 0
   weaponDamage: 4.5
   fireRate: 0.19
   swapTime: 0.25
@@ -608,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2627dcf4f94274a32e2cf945343c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileKey: 2
   weaponDamage: 2.5
   fireRate: 0.125
   swapTime: 0.25
@@ -672,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e38d31a3d3845cf8819802abf0d525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileKey: 1
   weaponDamage: 12
   fireRate: 0.35
   swapTime: 0.35
@@ -738,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b8632c42e1d4c999082a72f2fa6c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileKey: 0
   weaponDamage: 1.85
   fireRate: 0.1
   swapTime: 0.25
@@ -890,6 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec885d82d5fd40518d030655e83decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileKey: 0
   weaponDamage: 6
   fireRate: 1.25
   swapTime: 0.1

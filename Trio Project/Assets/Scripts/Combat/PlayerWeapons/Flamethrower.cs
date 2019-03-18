@@ -62,17 +62,6 @@ public class Flamethrower : BaseWeapon
         } 
     }
 
-    public override void ShootWeapon()
-    {
-        for (int i = 0; i < fireLocations.Count; i++)
-        {
-            ProjectilePoolManager.Instance.SpawnFromPool(projectileName, fireLocations[i].transform.position, fireLocations[i].transform.rotation, weaponDamage, projectileSpeed, projectileLife);
-        }
-
-        GameManager.Instance.PlayerMovementReference.PushBackPlayer(RecoilAmount);
-        GameManager.Instance.CameraShaker.CustomShake(ScreenShakeDuration, ScreenShakeAmount);
-    }
-
     public override void OnEnable()
     {
         firing = false;
