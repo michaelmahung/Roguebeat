@@ -340,7 +340,7 @@ MonoBehaviour:
   MoveSpeed: 0
   EnemyHealth: 0
   HealthPercentage: 0
-  EnemyAttackSpeed: 0.1
+  EnemyAttackSpeed: 0.3
   HurtDuration: 0.5
   SmoothColor: 0.1
   AttackRange: 30

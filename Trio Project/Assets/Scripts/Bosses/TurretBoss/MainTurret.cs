@@ -52,6 +52,8 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     public bool changeColor;
     public bool restartHealth;
 
+    public PlayerMovement DeathChecker;
+
 
 	// Use this for initialization
 	void Start () {
@@ -340,6 +342,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
     {
         dead = true;
         mngr.AddScore(killpoints);
+        DeathChecker.IsBossDead = true;
         Destroy(masterBody);
     }
 

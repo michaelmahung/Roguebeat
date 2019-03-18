@@ -94,7 +94,7 @@ MonoBehaviour:
   SmoothColor: 0.1
   AttackRange: 30
   RamRange: 20
-  RamSpeed: 20
+  RamSpeed: 30
   EnemyRamTime: 2
   storeTime: 0
   RamDamage: 0

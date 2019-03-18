@@ -24,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject QuitButton;
     public GameObject Instructions;
     public GameObject Instructionskey;
+    public GameObject GameOverText;
+
+    public GameObject MainBoss;
+
+    public bool IsBossDead;
 
     private float dashCooldownPercentage
     {
@@ -59,6 +64,9 @@ public class PlayerMovement : MonoBehaviour
 
         Instructionskey.SetActive(true);
         Instructions.SetActive(false);
+        IsBossDead = false;
+        GameOverText.SetActive(false);
+        MainBoss = GameObject.Find("TurretBoss");
 	}
 
     public void PushBackPlayer(float amount)
@@ -132,11 +140,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (QuitButton.activeSelf)
             {
+                Time.timeScale = 1;
                 QuitButton.SetActive(false);
             }
             else if (!QuitButton.activeSelf)
             {
                 QuitButton.SetActive(true);
+                Time.timeScale = 0;
             }
 
         }
@@ -153,6 +163,13 @@ public class PlayerMovement : MonoBehaviour
                 Instructionskey.SetActive(true);
                 Instructions.SetActive(false);
             }
+        }
+
+        if(GameObject.Find("TurretBoss") == null){
+            GameOverText.SetActive(true);
+            Time.timeScale = 0;
+
+
         }
     }
     void Dash()
