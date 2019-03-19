@@ -689,10 +689,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 2
-  cloudProjectId: 660c9ad1-bd62-4693-a825-a7bea6eaa17a
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: New Project
-  organizationId: harugot
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
