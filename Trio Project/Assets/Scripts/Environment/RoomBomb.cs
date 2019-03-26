@@ -42,6 +42,7 @@ public class RoomBomb : MonoBehaviour
         GameObject explosion = GenericPooler.Instance.GrabPrefab(PooledObject.Explosion);
         explosion.transform.position = transform.position;
         explosion.transform.rotation = transform.rotation;
+        GameManager.Instance.CameraShaker.Shake();
         explosion.SetActive(true);
 
         gameObject.SetActive(false);

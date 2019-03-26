@@ -63,7 +63,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
 
         //Automatically setting weapons active while testing
 
-        //TODO make sure all but base weapon will be disabled for demo
+        //TODO make sure all but base weapon will be disabled for release
         if (!DataManager.HasPref(weaponName))
         {
             SetWeaponActive(true);
@@ -91,24 +91,6 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
                 fireLocations.Add(firelocation.gameObject);
             }
         }
-
-        /*//try / catch statements are just saying, I want to try doing this thing - if there are errors while trying to do it, do what's in the catch segment. 
-        try
-        {
-            //Try adding our projectile to the projectile dictionary
-            ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
-        }
-        catch
-        {
-            Debug.LogWarning("Generating Projectile Pool Manager");
-            //If there is no projectile dictionary, create one and add our projectile to it.
-            if (ProjectilePoolManager.Instance == null)
-            {
-                GameObject go = new GameObject("ProjectilePoolManager");
-                go.AddComponent<ProjectilePoolManager>();
-                ProjectilePoolManager.Instance.AddProjectileToDictionary(projectileName, projectile, projectileSpawnAmount);
-            }
-        }*/
     }
 
 

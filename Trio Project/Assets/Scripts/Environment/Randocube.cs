@@ -32,10 +32,10 @@ public class Randocube : DamageableObject
         if (GameManager.Instance.PlayerRoom == MyRoom)
         {
             UnFreeze();
-        } else
-        {
-            Freeze();
+            return;
         }
+
+        Freeze();
     }
 
     public void UnFreeze()

@@ -219,7 +219,7 @@ public class RoomSetter : MonoBehaviour
 
     void FinishStartRoom()
     {
-        Debug.Log("Finalizing Start Room");
+        //Debug.Log("Finalizing Start Room");
         foreach (RoomSpawnPoint point in MyOpenWalls)
         {
             if (point.OtherRoom != null)

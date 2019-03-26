@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        //DontDestroyOnLoad(gameObject); //TODO - make GameManager it's own object in scene.
 
         SetComponents();
         Difficulty = multiplier[3];

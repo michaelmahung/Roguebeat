@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Obsolete camera shaker, used coroutine and generated too much garbage
+//Also didnt offer much control in how it could be used
+
+/*using System.Collections;
 using UnityEngine;
 
 public class Shaker : MonoBehaviour {
@@ -29,7 +32,7 @@ public class Shaker : MonoBehaviour {
         StartCoroutine(Shake());
     }
 
-    //TODO -- Remove Coroutine to reduce GC
+    // -- Remove Coroutine to reduce GC
     IEnumerator Shake()
     {
         Vector3 originalPos = transform.position;
@@ -44,4 +47,4 @@ public class Shaker : MonoBehaviour {
         transform.position = Vector3.Slerp(transform.position, originalPos, 1);
     }
 
-}
+}*/

@@ -92,7 +92,7 @@ public class LevelSpawning : MonoBehaviour {
     {
         doneSpawning = true;
         StopAllCoroutines();
-        Debug.Log("Finished Spawning");
+        //Debug.Log("Finished Spawning");
         FinishedSpawningRooms();
         System.GC.Collect();
     }
