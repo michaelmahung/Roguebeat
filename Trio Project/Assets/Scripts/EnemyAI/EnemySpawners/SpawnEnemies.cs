@@ -88,7 +88,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 }
                 else if (gameObject.CompareTag("Spawner"))
                 {
-                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[0]);
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(PooledObject.Trooper);
                     enemy.transform.position = SpawnPoint.transform.position;
                     enemy.transform.rotation = SpawnPoint.transform.rotation;
 
@@ -121,7 +121,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 }
                 else if (gameObject.CompareTag("Spawner"))
                 {
-                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[1]);
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(PooledObject.Bruiser);
                     enemy.transform.position = SpawnPoint.transform.position;
                     enemy.transform.rotation = SpawnPoint.transform.rotation;
 
@@ -153,7 +153,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
                 }
                 else if (gameObject.CompareTag("Spawner"))
                 {
-                    GameObject enemy = GenericPooler.Instance.GrabPrefab(SpawnPool[2]);
+                    GameObject enemy = GenericPooler.Instance.GrabPrefab(PooledObject.Boomer);
                     enemy.transform.position = SpawnPoint.transform.position;
                     enemy.transform.rotation = SpawnPoint.transform.rotation;
 
