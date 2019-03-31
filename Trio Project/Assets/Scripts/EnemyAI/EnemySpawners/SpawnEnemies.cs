@@ -75,6 +75,7 @@ public class SpawnEnemies : MonoBehaviour, ITrackRooms
             RandomChance = Random.Range(1, 100);
             if (RandomChance <= 40)
             {
+                
                 if (!gameObject.CompareTag("Spawner"))
                 { // For Crane Spawning Room- Will work on later- Sam
 
