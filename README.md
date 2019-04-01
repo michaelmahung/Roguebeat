@@ -4,7 +4,7 @@
 
 Trio Games is a group comprised of three members from Black Engine Games.
 
-Trio is a project created to follow the dissolving of Slumber - and is planning to be released
+RogueBeat is a project created to follow the dissolving of Slumber - and is planning to be released
 on multiple platforms. 
 
 My role on this project is more varied than before. Since there is a smaller team, we all are
@@ -14,7 +14,7 @@ The game is going to be a roguelike with arcade inspiration. The game will inclu
 enemy and boss types, as well as an array of weapons and powerups for the player to use.
 
 We have also decided to use the Audio Visiualization project I made previously as a core
-component with this project, and my friend who made music for KARMA! is making music for Trio.
+component with this project, and my friend who made music for KARMA! is making music for RogueBeat.
 
 https://www.youtube.com/watch?v=QdEsnSVSj_Q&feature=youtu.be
 
