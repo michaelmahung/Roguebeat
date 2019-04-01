@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI
 
-public class MainController : MonoBehaviour, ITrackRooms {
+    //Inhereiting from BossController to make the room able to track multiple boss types - Mike
+public class MainController : BossController, ITrackRooms {
 
     public RoomSetter MyRoom { get; set; }
     public Transform player;
@@ -53,6 +54,21 @@ public class MainController : MonoBehaviour, ITrackRooms {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom; //Now handled by the bossroom script
 	}
+
+    //Needed to inhereit from BossController
+    public override void StartBoss()
+    {
+        inRoom = true;
+        SetValues();
+    }
+
+    //Needed to inhereit from BossController
+    public override void StopBoss()
+    {
+        inRoom = false;
+        phase = "idle";
+        attackPhase = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -109,20 +109,8 @@ public class TileRoom : MonoBehaviour, ITrackRooms, IRoomBehaviour {
         }
     }
 
-    /*void CheckPlayerRoom()
-    {
-        if (GameManager.Instance.PlayerRoom == MyRoom)
-        {
-            incrementTimer = true;
-        } else
-        {
-            incrementTimer = false;
-        }
-    }*/
-
     void SetComponents()
     {
-        //RoomSetter.UpdatePlayerRoom += CheckPlayerRoom;
         MyRoom = GetComponent<RoomSetter>();
         myTiles = GetComponentsInChildren<TileBehaviour>();
         foreach (TileBehaviour quad in myTiles)
