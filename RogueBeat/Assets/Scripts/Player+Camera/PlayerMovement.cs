@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour 
 {
@@ -20,15 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     //[SerializeField] private PlayerDashUI dashUI;
     [SerializeField] private PlayerDashUI [] dashUIGlow;
-
-    public GameObject QuitButton;
-    public GameObject Instructions;
-    public GameObject Instructionskey;
-    public GameObject GameOverText;
-
-    public GameObject MainBoss;
-
-    public bool IsBossDead;
 
     private float dashCooldownPercentage
     {
@@ -61,12 +53,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         GameManager.Instance.PlayerRespawned += SetDash;
         SetDash();
-
-        Instructionskey.SetActive(true);
-        Instructions.SetActive(false);
-        IsBossDead = false;
-        GameOverText.SetActive(false);
-        MainBoss = GameObject.Find("TurretBoss");
 	}
 
     public void PushBackPlayer(float amount)
@@ -134,42 +120,6 @@ public class PlayerMovement : MonoBehaviour
         } else
         {
             canDash = true;
-        }
-
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            if (QuitButton.activeSelf)
-            {
-                Time.timeScale = 1;
-                QuitButton.SetActive(false);
-            }
-            else if (!QuitButton.activeSelf)
-            {
-                QuitButton.SetActive(true);
-                Time.timeScale = 0;
-            }
-
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-
-            if (Instructionskey.activeSelf)
-            {
-                Instructionskey.SetActive(false);
-                Instructions.SetActive(true);
-            }
-            else if (!Instructionskey.activeSelf)
-            {
-                Instructionskey.SetActive(true);
-                Instructions.SetActive(false);
-            }
-        }
-
-        if(GameObject.Find("TurretBoss") == null){
-            SceneGenerator sg = FindObjectOfType<SceneGenerator>();
-            //Time.timeScale = 0;
-
-            sg.LoadNextLevel();
         }
     }
     void Dash()

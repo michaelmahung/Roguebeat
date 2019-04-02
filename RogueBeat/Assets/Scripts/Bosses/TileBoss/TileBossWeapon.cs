@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossTiles : MonoBehaviour
+public class TileBossWeapon : MonoBehaviour
 {
+
+    public void SetValues()
+    {
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

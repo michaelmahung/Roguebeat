@@ -24,7 +24,7 @@ public class LaserRifle : BaseWeapon
     new void Start()
     {
         base.Start();
-        SetWeaponActive(true);
+        //SetWeaponActive(true);
         GetWeaponActive();
     }
 }

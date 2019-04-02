@@ -2711,6 +2711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206d4a0014e67624db19a4689924a27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainBoss: 1
   player: {fileID: 0}
   Difficulty: 3
   speed: 3
