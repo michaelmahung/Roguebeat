@@ -16,7 +16,7 @@ public class TileBossController : BossController, IBossController
     public float TileAttackDelay = 5;
     public float WeaponAttackDelay = 5;
     TileBossHealth bossHealth;
-    TileBossWeapon weapon;
+    TileBossWeaponController weapon;
     TileController tileController;
     float weaponAttackTimer;
     float tileDelayTimer;
@@ -27,7 +27,7 @@ public class TileBossController : BossController, IBossController
         tileDelayTimer = TileAttackDelay / 2;
         tileController = GetComponent<TileController>();
         bossHealth = GetComponent<TileBossHealth>();
-        weapon = GetComponent<TileBossWeapon>();
+        weapon = GetComponent<TileBossWeaponController>();
     }
 
     public override void PlayerEnteredRoom()
@@ -66,7 +66,7 @@ public class TileBossController : BossController, IBossController
             if (weaponAttackTimer >= WeaponAttackDelay)
             {
                 weaponAttackTimer = 0;
-                weapon.Attack(CurrentState);
+                weapon.Attack(CurrentState, WeaponAttackDelay);
             }
         }
     }

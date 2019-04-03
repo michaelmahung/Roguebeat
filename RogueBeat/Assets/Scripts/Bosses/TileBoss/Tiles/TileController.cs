@@ -70,16 +70,16 @@ public class TileController : MonoBehaviour
                 Debug.Log("Invalid attack selected");
                 break;
             case TileAttacks.HorizontalEven:
-                HorizontalAttackEven();
+                HorizontalAttackEven(0);
                 break;
             case TileAttacks.HorizontalOdd:
-                HorizontalAttackOdd();
+                HorizontalAttackOdd(1);
                 break;
             case TileAttacks.VerticalEven:
-                VerticalAttackEven();
+                VerticalAttackEven(0);
                 break;
             case TileAttacks.VerticalOdd:
-                VerticalAttackOdd();
+                VerticalAttackOdd(1);
                 break;
             case TileAttacks.Spiral:
                 Debug.Log("Spiral attack go!");
@@ -101,85 +101,65 @@ public class TileController : MonoBehaviour
 
 
 
-    void VerticalAttackEven()
+    //TODO -- I can consolidate these into one encompassing function
+
+    void VerticalAttackEven(int index)
     {
         for (int i = 0; i < allTiles.GetLength(0); i++)
         {
-            allTiles[i, 0].Activate(TimeToActivateTile);
+            allTiles[i, index].Activate(TimeToActivateTile);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
+        if ((index + 2) < tileGridSize)
         {
-            allTiles[i, 2].Activate(TimeToActivateTile);
+            VerticalAttackEven(index + 2);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[i, 4].Activate(TimeToActivateTile);
-        }
-
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[i, 6].Activate(TimeToActivateTile);
-        }
+        return;
     }
 
-    void HorizontalAttackEven()
+    void VerticalAttackOdd(int index)
     {
         for (int i = 0; i < allTiles.GetLength(0); i++)
         {
-            allTiles[0, i].Activate(TimeToActivateTile);
+            allTiles[i, index].Activate(TimeToActivateTile);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
+        if ((index + 2) < tileGridSize)
         {
-            allTiles[2, i].Activate(TimeToActivateTile);
+            VerticalAttackOdd(index + 2);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[4, i].Activate(TimeToActivateTile);
-        }
-
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[6, i].Activate(TimeToActivateTile);
-        }
+        return;
     }
 
-    void VerticalAttackOdd()
+    void HorizontalAttackEven(int index)
     {
         for (int i = 0; i < allTiles.GetLength(0); i++)
         {
-            allTiles[i, 1].Activate(TimeToActivateTile);
+            allTiles[index, i].Activate(TimeToActivateTile);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
+        if ((index + 2) < tileGridSize)
         {
-            allTiles[i, 3].Activate(TimeToActivateTile);
+            HorizontalAttackEven(index + 2);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[i, 5].Activate(TimeToActivateTile);
-        }
+        return;
     }
 
-    void HorizontalAttackOdd()
+    void HorizontalAttackOdd(int index)
     {
         for (int i = 0; i < allTiles.GetLength(0); i++)
         {
-            allTiles[1, i].Activate(TimeToActivateTile);
+            allTiles[index, i].Activate(TimeToActivateTile);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
+        if ((index + 2) < tileGridSize)
         {
-            allTiles[3, i].Activate(TimeToActivateTile);
+            HorizontalAttackOdd(index + 2);
         }
 
-        for (int i = 0; i < allTiles.GetLength(0); i++)
-        {
-            allTiles[5, i].Activate(TimeToActivateTile);
-        }
+        return;
     }
 }

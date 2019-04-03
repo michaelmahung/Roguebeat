@@ -2,28 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FireStates
+{
+    Idle,
+    Firing,
+    Reloading
+}
+
+//Similar to the tiles, each weapon will handle its own states
+//I need to create an update loop that will check the attack speed fed in, and fire + reload within that time frame.
+//Doing so will allow me to change the main controller fire speed, and each weapon will follow suit
+
 public class TileBossWeapon : MonoBehaviour
 {
+    [SerializeField] TileBossWeaponController controller;
+    FireStates currentState;
 
-    public void Attack(BossStates state)
+    public void Fire(float speed)
     {
-        //Debug.Log("Attacking " + state);
+        currentState = FireStates.Firing;
     }
 
-    public void SetValues()
+    void Reload()
     {
-
+        currentState = FireStates.Reloading;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        
+        switch (currentState)
+        {
+            case FireStates.Idle:
+                break;
+            case FireStates.Firing:
+                break;
+            case FireStates.Reloading:
+                break;
+            default:
+                break;
+        }
     }
 }
