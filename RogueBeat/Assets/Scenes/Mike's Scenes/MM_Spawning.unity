@@ -635,7 +635,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4540
+  m_Name: pb_Mesh-4514
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1740,7 +1740,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4522
+  m_Name: pb_Mesh-4496
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3518,7 +3518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4538
+  m_Name: pb_Mesh-4512
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5941,7 +5941,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4552
+  m_Name: pb_Mesh-4526
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7737,26 +7737,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 742987860}
-    - target: {fileID: 103490356756379337, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: TileAttackDelay
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: glowColor.r
-      value: 0.5669995
-      objectReference: {fileID: 0}
-    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: glowColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: glowColor.b
-      value: 0.745283
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9ee7ce7949ad44faaa732106367d7a, type: 3}
 --- !u!4 &1671816763 stripped

@@ -13,16 +13,13 @@ public class TileBossWeaponController : MonoBehaviour
 
     public void SetValues()
     {
+        foreach(TileBossWeapon wep in Phase3Weapons)
+        {
+            wep.ResetWeapon();
+        }
+
         currentWeapon = null;
         previousWeapon = null;
-    }
-
-    private void Update()
-    {
-        if (active)
-        {
-
-        }
     }
 
     public void Attack(BossStates state, float attackSpeed)

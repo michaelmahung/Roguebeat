@@ -15,33 +15,71 @@ public enum FireStates
 
 public class TileBossWeapon : MonoBehaviour
 {
+    [SerializeField] Transform[] fireLocations;
     [SerializeField] TileBossWeaponController controller;
     FireStates currentState;
 
-    public void Fire(float speed)
+    float fireSpeed;
+
+    float fireTimer;
+
+    public void ResetWeapon()
     {
+        currentState = FireStates.Idle;
+        fireSpeed = 0;
+        fireTimer = 0;
+    }
+
+    public virtual void Fire(float speed)
+    {
+        fireSpeed = speed;
         currentState = FireStates.Firing;
     }
 
-    void Reload()
+    protected virtual void FireWeapon(Transform location)
+    {
+        GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.EnemyFire1);
+        location.LookAt(GameManager.Instance.PlayerObject.transform.position);
+        go.transform.position = location.transform.position;
+        go.transform.rotation = location.transform.rotation;
+        go.SetActive(true);
+        Reload();
+    }
+
+    protected virtual void Reload()
     {
         currentState = FireStates.Reloading;
     }
 
-
-
-    private void Update()
+    protected virtual void Update()
     {
         switch (currentState)
         {
             case FireStates.Idle:
                 break;
             case FireStates.Firing:
+                BeginFiring();
                 break;
             case FireStates.Reloading:
+                currentState = FireStates.Idle;
                 break;
             default:
                 break;
         }
+    }
+
+    void BeginFiring()
+    {
+        fireTimer += Time.deltaTime / fireSpeed;
+
+        if (fireTimer < 1)
+            return;
+
+        foreach (Transform loc in fireLocations)
+        {
+            FireWeapon(loc);
+        }
+
+        fireTimer = 0;
     }
 }
