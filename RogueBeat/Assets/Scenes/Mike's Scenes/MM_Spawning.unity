@@ -241,47 +241,47 @@ PrefabInstance:
     - target: {fileID: 224800576431422458, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224800576431422458, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224800576431422458, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224621277313064312, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224621277313064312, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224621277313064312, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224399978737263438, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224399978737263438, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224399978737263438, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224859728470803748, guid: 9510edc534cfbf94b9968cbe42890330,
         type: 3}
@@ -635,7 +635,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4522
+  m_Name: pb_Mesh-4540
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1420,7 +1420,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-906482
+  m_Name: pb_Mesh-1180
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1740,7 +1740,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4504
+  m_Name: pb_Mesh-4522
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3518,7 +3518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4520
+  m_Name: pb_Mesh-4538
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3690,7 +3690,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-906450
+  m_Name: pb_Mesh-1148
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5941,7 +5941,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4534
+  m_Name: pb_Mesh-4552
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6261,7 +6261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-906484
+  m_Name: pb_Mesh-1182
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7476,7 +7476,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-906478
+  m_Name: pb_Mesh-1176
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7739,54 +7739,23 @@ PrefabInstance:
       objectReference: {fileID: 742987860}
     - target: {fileID: 103490356756379337, guid: 4b9ee7ce7949ad44faaa732106367d7a,
         type: 3}
-      propertyPath: tilePrefab
-      value: 
-      objectReference: {fileID: 6240680168667151314, guid: 4be0e520343e0b64c95ed7ab21e3f7ad,
+      propertyPath: TileAttackDelay
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
         type: 3}
-    - target: {fileID: 103490356899212720, guid: 4b9ee7ce7949ad44faaa732106367d7a,
+      propertyPath: glowColor.r
+      value: 0.5669995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f4b07296a756d540be192c3a7eb9f1a, type: 2}
-    - target: {fileID: 103490355252217193, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
+      propertyPath: glowColor.g
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 103490355313584866, guid: 4b9ee7ce7949ad44faaa732106367d7a,
+    - target: {fileID: 1392184129927536615, guid: 4b9ee7ce7949ad44faaa732106367d7a,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490355777884880, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490355857574021, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490355878345228, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490356018069649, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490356348999583, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 103490357209281856, guid: 4b9ee7ce7949ad44faaa732106367d7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: glowColor.b
+      value: 0.745283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9ee7ce7949ad44faaa732106367d7a, type: 3}

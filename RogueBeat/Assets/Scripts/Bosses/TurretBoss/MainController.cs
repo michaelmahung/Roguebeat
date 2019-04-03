@@ -56,14 +56,14 @@ public class MainController : BossController, ITrackRooms {
 	}
 
     //Needed to inhereit from BossController
-    public override void StartBoss()
+    public override void PlayerEnteredRoom()
     {
         inRoom = true;
         SetValues();
     }
 
     //Needed to inhereit from BossController
-    public override void StopBoss()
+    public override void PlayerExitedRoom()
     {
         inRoom = false;
         phase = "idle";

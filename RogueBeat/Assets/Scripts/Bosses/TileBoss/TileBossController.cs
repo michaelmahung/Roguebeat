@@ -2,46 +2,72 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BossStates
+{
+    Phase1,
+    Phase2,
+    Phase3,
+    Default
+}
+
 public class TileBossController : BossController, IBossController
 {
-    [SerializeField] int tileGridSize = 11;
-    [SerializeField] TileSpawner tileSpawner;
-    [SerializeField] BossTiles[,] allTiles;
-    [SerializeField] TileBossHealth bossHealth;
-    [SerializeField] TileBossWeapon weapon;
-
-    public override void StartBoss()
-    {
-        Debug.Log("Starting Tile Boss");
-
-        bossHealth.SetValues();
-        weapon.SetValues();
-    }
-
-    public override void StopBoss()
-    {
-        Debug.Log("Stopping Tile Boss");
-    }
+    public BossStates CurrentState;
+    public float TileAttackDelay = 5;
+    public float WeaponAttackDelay = 5;
+    TileBossHealth bossHealth;
+    TileBossWeapon weapon;
+    TileController tileController;
+    float weaponAttackTimer;
+    float tileDelayTimer;
+    bool active;
 
     void Awake()
     {
-        tileSpawner = GetComponent<TileSpawner>();
-        allTiles = tileSpawner.SpawnTiles(tileGridSize);
-
+        tileDelayTimer = TileAttackDelay / 2;
+        tileController = GetComponent<TileController>();
         bossHealth = GetComponent<TileBossHealth>();
         weapon = GetComponent<TileBossWeapon>();
     }
 
-    void Start()
+    public override void PlayerEnteredRoom()
     {
-        for (int i = 0; i < allTiles.GetLength(0); i ++)
-        {
-            Debug.Log(allTiles[i, 0].Position.xPos);
-        }
+        Debug.Log("Starting Tile Boss");
+
+        active = true;
+
+        CurrentState = BossStates.Phase1;
+
+        bossHealth.SetValues();
+        weapon.SetValues();
+        tileController.SetValues();
+    }
+
+    public override void PlayerExitedRoom()
+    {
+        Debug.Log("Stopping Tile Boss");
+
+        active = false;
     }
 
     void Update()
     {
-        
+        if(active)
+        {
+            tileDelayTimer += Time.deltaTime;
+            weaponAttackTimer += Time.deltaTime;
+
+            if (tileDelayTimer >= TileAttackDelay)
+            {
+                tileDelayTimer = 0;
+                tileController.ActivateTiles(CurrentState);
+            }
+
+            if (weaponAttackTimer >= WeaponAttackDelay)
+            {
+                weaponAttackTimer = 0;
+                weapon.Attack(CurrentState);
+            }
+        }
     }
 }

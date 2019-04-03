@@ -45,6 +45,6 @@ public interface IRoomBehaviour
 
 public interface IBossController
 {
-    void StartBoss();
-    void StopBoss();
+    void PlayerEnteredRoom();
+    void PlayerExitedRoom();
 }

@@ -14,7 +14,7 @@ public class BossRoom : MonoBehaviour, IRoomBehaviour
 
         if (bossController != null)
         {
-            bossController.StartBoss();
+            bossController.PlayerEnteredRoom();
         }
     }
 
@@ -24,7 +24,7 @@ public class BossRoom : MonoBehaviour, IRoomBehaviour
 
         if (bossController != null)
         {
-            bossController.StopBoss();
+            bossController.PlayerExitedRoom();
         }
     }
 }

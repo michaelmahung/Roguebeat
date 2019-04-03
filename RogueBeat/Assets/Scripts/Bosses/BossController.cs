@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class BossController : MonoBehaviour, IBossController
 {
-    public bool MainBoss;
+    public bool IsMainBoss;
 
-    public abstract void StartBoss();
+    public abstract void PlayerEnteredRoom();
 
-    public abstract void StopBoss();
+    public abstract void PlayerExitedRoom();
 }

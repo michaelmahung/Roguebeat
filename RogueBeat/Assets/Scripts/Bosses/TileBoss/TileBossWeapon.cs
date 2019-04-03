@@ -5,6 +5,11 @@ using UnityEngine;
 public class TileBossWeapon : MonoBehaviour
 {
 
+    public void Attack(BossStates state)
+    {
+        //Debug.Log("Attacking " + state);
+    }
+
     public void SetValues()
     {
 

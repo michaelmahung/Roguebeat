@@ -98,7 +98,7 @@ public class BossManager : MonoBehaviour
 
         foreach (BossController bc in bossControllers)
         {
-            if (bc.MainBoss == true)
+            if (bc.IsMainBoss == true)
             {
                 MainBosses.Add(bc);
             }
