@@ -15,6 +15,7 @@ public class TileBossWeaponController : MonoBehaviour
     {
         foreach(TileBossWeapon wep in Phase3Weapons)
         {
+            if (wep != null)
             wep.ResetWeapon();
         }
 

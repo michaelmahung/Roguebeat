@@ -2,16 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class BossLaserRifle : TileBossWeapon
 {
+    [SerializeField] float laserLead = 0.1f;
+    [SerializeField] float laserLength = 1000;
     [SerializeField] float laserBuffer = 0.10f;
-    [SerializeField] float laserChargePercentage = 0.3f;
+    [SerializeField] float laserChargePercentage = 0.25f;
+    [SerializeField] float laserTrackSpeed = 0.95f;
     [SerializeField] float laserTimer;
+    [SerializeField] float laserDamage = 0.10f;
+    float trackLoc;
+    Vector3 laserStartPosition;
+    LineRenderer lr;
+    RaycastHit hit;
+    IDamageable<float> playerDamage;
+
+    private void Awake()
+    {
+        playerDamage = GameManager.Instance.PlayerHealthRef.GetComponent<IDamageable<float>>();
+        lr = GetComponent<LineRenderer>();
+        lr.SetPosition(0, fireLocations[0].transform.position);
+        lr.enabled = false;
+    }
 
     public override void Fire(float speed)
     {
         fireSpeed = speed - laserBuffer;
-
+        lr.enabled = true;
+        lr.SetPosition(1, fireLocations[0].transform.position + Vector3.forward * 2);
+        laserStartPosition = GameManager.Instance.PlayerObject.transform.position;
         currentState = FireStates.Firing;
     }
 
@@ -40,21 +60,45 @@ public class BossLaserRifle : TileBossWeapon
 
     protected override void Reload()
     {
+        lr.enabled = false;
         currentState = FireStates.Reloading;
         fireTimer = 0;
+        trackLoc = 0;
     }
 
     protected override void FireWeapon(Transform location)
     {
-        GameObject go = GenericPooler.Instance.GrabPrefab(myProjectile);
-        location.LookAt(GameManager.Instance.PlayerObject.transform.position);
-        go.transform.position = location.transform.position;
-        go.transform.rotation = location.transform.rotation;
-        go.SetActive(true);
+        trackLoc += (Time.deltaTime * laserTrackSpeed) / fireSpeed;
+        Debug.Log(trackLoc);
+        location.LookAt(Vector3.Slerp(laserStartPosition, GameManager.Instance.PlayerObject.transform.position, (trackLoc + laserLead)));
+
+        if (Physics.Raycast(location.transform.position, location.transform.forward, out hit))
+        {
+            if (hit.collider)
+            {
+                lr.SetPosition(1, hit.point);
+
+                if (hit.collider.CompareTag("Player"))
+                {
+                    playerDamage.Damage(laserDamage);
+                    return;
+                }
+
+                if (hit.collider.CompareTag("Floor"))
+                {
+                    var hitRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.LaserDecal);
+                    go.transform.position = hit.point;
+                    go.transform.rotation = hitRotation;
+                    go.SetActive(true);
+                    return;
+                }
+            }
+        }
     }
 
     void ChargeLaser()
     {
-        Debug.Log("CHARGING");
+        //Debug.Log("CHARGING");
     }
 }
