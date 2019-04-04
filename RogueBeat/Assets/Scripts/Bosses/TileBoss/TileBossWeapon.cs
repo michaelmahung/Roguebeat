@@ -13,17 +13,18 @@ public enum FireStates
 //I need to create an update loop that will check the attack speed fed in, and fire + reload within that time frame.
 //Doing so will allow me to change the main controller fire speed, and each weapon will follow suit
 
-public class TileBossWeapon : MonoBehaviour
+public abstract class TileBossWeapon : MonoBehaviour
 {
-    [SerializeField] Transform[] fireLocations;
-    [SerializeField] TileBossWeaponController controller;
-    FireStates currentState;
+    [SerializeField] protected PooledObject myProjectile;
+    [SerializeField] protected Transform[] fireLocations;
+    [SerializeField] protected TileBossWeaponController controller;
+    protected FireStates currentState;
 
-    float fireSpeed;
+    protected float fireSpeed;
 
-    float fireTimer;
+    protected float fireTimer;
 
-    public void ResetWeapon()
+    public virtual void ResetWeapon()
     {
         currentState = FireStates.Idle;
         fireSpeed = 0;
@@ -38,7 +39,7 @@ public class TileBossWeapon : MonoBehaviour
 
     protected virtual void FireWeapon(Transform location)
     {
-        GameObject go = GenericPooler.Instance.GrabPrefab(PooledObject.EnemyFire1);
+        GameObject go = GenericPooler.Instance.GrabPrefab(myProjectile);
         location.LookAt(GameManager.Instance.PlayerObject.transform.position);
         go.transform.position = location.transform.position;
         go.transform.rotation = location.transform.rotation;
@@ -68,7 +69,7 @@ public class TileBossWeapon : MonoBehaviour
         }
     }
 
-    void BeginFiring()
+    protected virtual void BeginFiring()
     {
         fireTimer += Time.deltaTime / fireSpeed;
 
