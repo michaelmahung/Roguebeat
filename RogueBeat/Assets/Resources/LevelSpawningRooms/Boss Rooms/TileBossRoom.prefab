@@ -3457,8 +3457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsMainBoss: 1
   CurrentState: 0
-  TileAttackDelay: 8
-  WeaponAttackDelay: 2
+  TileAttackDelay: 5
+  WeaponAttackDelay: 4
 --- !u!114 &651605833216822550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,7 +3492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5643e723924048348961aa9e323b00c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 1000
+  baseHealth: 650
   currentHealth: 0
 --- !u!114 &3387289673502889157
 MonoBehaviour:
@@ -3523,12 +3523,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeToActivateTile: 1
-  Phase1Attacks: 01000000020000000300000004000000
-  Phase2Attacks: 080000000700000001000000020000000300000004000000
-  Phase3Attacks: 05000000060000000700000008000000
-  PreviousAttack: 0
+  SpiralAttackSpeed: 0
+  WaveAttackSpeed: 0
   tileGridSize: 7
-  tileSpawner: {fileID: 0}
+  spiralAttackTime: 6
+  Phase1Attacks: 01000000020000000300000004000000
+  Phase2Attacks: 010000000200000003000000040000000500000006000000
+  Phase3Attacks: 05000000060000000700000008000000
 --- !u!1 &103490356778160783
 GameObject:
   m_ObjectHideFlags: 0

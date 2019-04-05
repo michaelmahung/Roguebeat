@@ -2,32 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TileAttackStates
+{
+    Default,
+    Spiral,
+    Wave
+}
+
+[RequireComponent(typeof(TileSpawner))]
 public class TileController : MonoBehaviour
 {
     public float TimeToActivateTile = 1;
-
+    public float SpiralAttackSpeed;
+    public float WaveAttackSpeed;
+    [SerializeField] int tileGridSize = 7;
+    [SerializeField] float spiralAttackTime = 5f;
     [SerializeField] TileAttacks[] Phase1Attacks;
     [SerializeField] TileAttacks[] Phase2Attacks;
     [SerializeField] TileAttacks[] Phase3Attacks;
-    [SerializeField] TileAttacks PreviousAttack;
-    [SerializeField] int tileGridSize = 7;
-    [SerializeField] TileSpawner tileSpawner;
-    [SerializeField] BossTiles[,] allTiles;
+    FireStates currentAttackState;
+    TileSpawner tileSpawner;
+    TileAttackStates currentTileState;
+    TileAttacks previousAttack;
+    BossTiles[,] allTiles;
+    float spiralFireTime;
+    float attackTimer;
     int randomInt;
+    int loopCount;
+    int spiralMax;
+    int spiralMin;
+    int spiralCutoff;
+
+    //TODO -- break tile attacks up into their own classes
 
     private void Awake()
     {
         tileSpawner = GetComponent<TileSpawner>();
         allTiles = tileSpawner.SpawnTiles(tileGridSize);
+        spiralFireTime = spiralAttackTime / 3;
     }
 
     public void SetValues()
     {
-        PreviousAttack = TileAttacks.Default;
+        attackTimer = 0;
+        spiralMax = tileGridSize - 1;
+        spiralMin = 0;
+        spiralCutoff = (tileGridSize + 1) / 2;
+        currentTileState = TileAttackStates.Default;
+        previousAttack = TileAttacks.Default;
     }
 
     public void ActivateTiles(BossStates state)
     {
+        if (currentAttackState == FireStates.Firing)
+            return;
+
         switch (state)
         {
             case BossStates.Phase1:
@@ -50,20 +79,30 @@ public class TileController : MonoBehaviour
 
     void SelectPhaseAttack(TileAttacks[] phaseArray)
     {
+        currentAttackState = FireStates.Firing;
         randomInt = Random.Range(0, phaseArray.Length);
 
-        if (phaseArray[randomInt] != PreviousAttack)
+        if (loopCount > 2)
         {
-            PreviousAttack = phaseArray[randomInt];
             SelectTileAttack(phaseArray[randomInt]);
             return;
         }
 
+        if (phaseArray[randomInt] != previousAttack)
+        {
+            previousAttack = phaseArray[randomInt];
+            SelectTileAttack(phaseArray[randomInt]);
+            return;
+        }
+
+        loopCount++;
         SelectPhaseAttack(phaseArray);
     }
 
     void SelectTileAttack(TileAttacks attack)
     {
+        loopCount = 0;
+
         switch (attack)
         {
             case TileAttacks.Default:
@@ -82,16 +121,17 @@ public class TileController : MonoBehaviour
                 VerticalAttackOdd(1);
                 break;
             case TileAttacks.Spiral:
-                Debug.Log("Spiral attack go!");
+                currentTileState = TileAttackStates.Spiral;
                 break;
             case TileAttacks.Grid:
                 Debug.Log("Grid attack go!");
+                currentAttackState = FireStates.Idle;
                 break;
             case TileAttacks.VerticalWave:
-                Debug.Log("Vertical Wave go!");
+                currentTileState = TileAttackStates.Wave;
                 break;
             case TileAttacks.HorizontalWave:
-                Debug.Log("Horizontal Wave go!");
+                currentTileState = TileAttackStates.Wave;
                 break;
             default:
                 Debug.Log("Something went wrong with attacking");
@@ -99,7 +139,86 @@ public class TileController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        switch (currentTileState)
+        {
+            case TileAttackStates.Default:
+                break;
+            case TileAttackStates.Spiral:
+                SpiralUpdateLoop();
+                break;
+            case TileAttackStates.Wave:
+                currentTileState = TileAttackStates.Default;
+                WaveAttackUpdate();
+                break;
+            default:
+                break;
+        }
+    }
 
+    void SpiralUpdateLoop()
+    {
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer < spiralFireTime)
+            return;
+
+        attackTimer = 0;
+        SpiralAttack(spiralMax, spiralMin);
+    }
+
+    void SpiralAttack(int max, int min)
+    {
+        int x = min;
+        int y = min;
+
+        while(x < max)
+        {
+            ActivateTile(allTiles, x, y);
+            x++;
+        }
+
+        while (y < max)
+        {
+            ActivateTile(allTiles, x, y);
+            y++;
+        }
+
+        while (x > min)
+        {
+            ActivateTile(allTiles, x, y);
+            x--;
+        }
+
+        while(y > min)
+        {
+            ActivateTile(allTiles, x, y);
+            y--;
+        }
+
+        if (spiralMax > spiralCutoff)
+        {
+            spiralMin++;
+            spiralMax--;
+            return;
+        }
+
+        currentAttackState = FireStates.Idle;
+        currentTileState = TileAttackStates.Default;
+        spiralMax = tileGridSize - 1;
+        spiralMin = 0;
+    }
+
+    void ActivateTile(BossTiles[,] tileSelection, int x, int y)
+    {
+        tileSelection[x, y].Activate(TimeToActivateTile);
+    }
+
+    void WaveAttackUpdate()
+    {
+        currentAttackState = FireStates.Idle;
+    }
 
     //TODO -- I can consolidate these into one encompassing function
 
@@ -115,6 +234,7 @@ public class TileController : MonoBehaviour
             VerticalAttackEven(index + 2);
         }
 
+        currentAttackState = FireStates.Idle;
         return;
     }
 
@@ -130,6 +250,7 @@ public class TileController : MonoBehaviour
             VerticalAttackOdd(index + 2);
         }
 
+        currentAttackState = FireStates.Idle;
         return;
     }
 
@@ -145,6 +266,7 @@ public class TileController : MonoBehaviour
             HorizontalAttackEven(index + 2);
         }
 
+        currentAttackState = FireStates.Idle;
         return;
     }
 
@@ -160,6 +282,7 @@ public class TileController : MonoBehaviour
             HorizontalAttackOdd(index + 2);
         }
 
+        currentAttackState = FireStates.Idle;
         return;
     }
 }

@@ -7737,6 +7737,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 742987860}
+    - target: {fileID: 103490356756379337, guid: 4b9ee7ce7949ad44faaa732106367d7a,
+        type: 3}
+      propertyPath: TileAttackDelay
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9ee7ce7949ad44faaa732106367d7a, type: 3}
 --- !u!4 &1671816763 stripped

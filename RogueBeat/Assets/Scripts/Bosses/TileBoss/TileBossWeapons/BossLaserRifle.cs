@@ -68,8 +68,10 @@ public class BossLaserRifle : TileBossWeapon
 
     protected override void FireWeapon(Transform location)
     {
+        //TODO - make laser move a set amount between old - new position per frame -- use Vector3.normalized to find angle to move in.
+        
         trackLoc += (Time.deltaTime * laserTrackSpeed) / fireSpeed;
-        Debug.Log(trackLoc);
+  
         location.LookAt(Vector3.Slerp(laserStartPosition, GameManager.Instance.PlayerObject.transform.position, (trackLoc + laserLead)));
 
         if (Physics.Raycast(location.transform.position, location.transform.forward, out hit))

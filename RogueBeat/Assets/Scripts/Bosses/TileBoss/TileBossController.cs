@@ -32,8 +32,6 @@ public class TileBossController : BossController, IBossController
 
     public override void PlayerEnteredRoom()
     {
-        Debug.Log("Starting Tile Boss");
-
         active = true;
 
         CurrentState = BossStates.Phase1;
@@ -45,8 +43,6 @@ public class TileBossController : BossController, IBossController
 
     public override void PlayerExitedRoom()
     {
-        Debug.Log("Stopping Tile Boss");
-
         active = false;
     }
 
