@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridAttack : MonoBehaviour
+public class GridAttack : TileAttack
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Attack(TileController.OnAttackFinished listener, BossTiles[,] tiles)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void SetValues()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

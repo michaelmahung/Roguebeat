@@ -17,6 +17,8 @@ public class SpiralAttack : TileAttack
         _listener = listener;
         tileGridSize = tiles.GetLength(0);
         SetValues();
+        currentState = TileAttackStates.Active;
+        running = true;
     }
 
     protected override void SetValues()
@@ -30,10 +32,21 @@ public class SpiralAttack : TileAttack
 
     protected override void Update()
     {
-        if (!running)
-            return;
-
-        SpiralUpdateLoop();
+        switch (currentState)
+        {
+            case TileAttackStates.Default:
+                break;
+            case TileAttackStates.Idle:
+                break;
+            case TileAttackStates.Active:
+                SpiralUpdateLoop();
+                break;
+            case TileAttackStates.Buffer:
+                BufferLoop();
+                break;
+            default:
+                break;
+        }
     }
 
     void SpiralUpdateLoop()
@@ -87,6 +100,6 @@ public class SpiralAttack : TileAttack
         spiralMax = tileGridSize - 1;
         spiralMin = 0;
         running = false;
-        AttackFinished();
+        currentState = TileAttackStates.Buffer;
     }
 }

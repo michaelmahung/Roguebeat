@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-enum TileActiveStates
+enum BossTileStates
 {
     Idle,
     Activating,
@@ -22,7 +22,7 @@ public class BossTiles : MonoBehaviour
     [SerializeField] Material endMat;
     [SerializeField] Color glowColor;
 
-    TileActiveStates currentState;
+    BossTileStates currentState;
     IDamageable<float> playerDamage;
 
     bool tileActive;
@@ -41,13 +41,13 @@ public class BossTiles : MonoBehaviour
 
     public void Activate(float time)
     {
-        currentState = TileActiveStates.Activating;
+        currentState = BossTileStates.Activating;
         activeTimer = time;
     }
 
     public void Deactivate(float time)
     {
-        currentState = TileActiveStates.Deactivating;
+        currentState = BossTileStates.Deactivating;
         activeTimer = time;
     }
 
@@ -55,15 +55,15 @@ public class BossTiles : MonoBehaviour
     {
         switch (currentState)
         {
-            case TileActiveStates.Idle:
+            case BossTileStates.Idle:
                 break;
-            case TileActiveStates.Activating:
+            case BossTileStates.Activating:
                 StartActivating();
                 break;
-            case TileActiveStates.Holding:
+            case BossTileStates.Holding:
                 StayActive();
                 break;
-            case TileActiveStates.Deactivating:
+            case BossTileStates.Deactivating:
                 StartDeactivating();
                 break;
             default:
@@ -80,7 +80,7 @@ public class BossTiles : MonoBehaviour
         if (timer > activeTimer)
         {
             tileActive = true;
-            currentState = TileActiveStates.Holding;
+            currentState = BossTileStates.Holding;
             myRend.material.SetColor("_EmissionColor", glowColor * glowColorBrightness);
         }
     }
@@ -93,7 +93,7 @@ public class BossTiles : MonoBehaviour
         {
             tileActive = false;
             timeActive = 0;
-            currentState = TileActiveStates.Deactivating;
+            currentState = BossTileStates.Deactivating;
         }
     }
 
@@ -104,7 +104,7 @@ public class BossTiles : MonoBehaviour
 
         if (timer <= 0)
         {
-            currentState = TileActiveStates.Idle;
+            currentState = BossTileStates.Idle;
         }
     }
 

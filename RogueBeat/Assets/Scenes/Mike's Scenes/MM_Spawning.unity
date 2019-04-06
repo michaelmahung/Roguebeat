@@ -1740,7 +1740,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4492
+  m_Name: pb_Mesh-4494
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3518,7 +3518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4508
+  m_Name: pb_Mesh-4510
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7741,6 +7741,16 @@ PrefabInstance:
         type: 3}
       propertyPath: TileAttackDelay
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 153554809955304841, guid: 4b9ee7ce7949ad44faaa732106367d7a,
+        type: 3}
+      propertyPath: Phase2Attacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 153554809955304841, guid: 4b9ee7ce7949ad44faaa732106367d7a,
+        type: 3}
+      propertyPath: Phase3Attacks.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b9ee7ce7949ad44faaa732106367d7a, type: 3}

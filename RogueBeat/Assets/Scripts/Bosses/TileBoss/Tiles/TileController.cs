@@ -18,10 +18,10 @@ public class TileController : MonoBehaviour
     BossTiles[,] allTiles;
     int randomInt;
     int loopCount;
-    //TODO -- break tile attacks up into their own classes
 
     private void Awake()
     {
+        AttackFinished += FinishedAttacking;
         tileSpawner = GetComponent<TileSpawner>();
         allTiles = tileSpawner.SpawnTiles(tileGridSize);
     }
@@ -58,6 +58,7 @@ public class TileController : MonoBehaviour
 
     void SelectPhaseAttack(TileAttack[] phaseArray)
     {
+        currentAttackState = FireStates.Firing;
         randomInt = Random.Range(0, phaseArray.Length);
 
         if (loopCount < 2)
@@ -74,5 +75,10 @@ public class TileController : MonoBehaviour
         }
 
         phaseArray[randomInt].Attack(AttackFinished, allTiles);
+    }
+
+    void FinishedAttacking()
+    {
+        currentAttackState = FireStates.Idle;
     }
 }
