@@ -25,7 +25,8 @@ public class Flamethrower : BaseWeapon
     new void Start()
     {
         base.Start();
-        SetWeaponActive(true);
+        GetWeaponActive();
+        //SetWeaponActive(true);
     }
 
     public override void Update()

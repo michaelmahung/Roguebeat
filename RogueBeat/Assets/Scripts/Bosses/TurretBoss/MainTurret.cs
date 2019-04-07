@@ -344,7 +344,7 @@ public class MainTurret : MonoBehaviour, IDamageable<float> {
         {
             dead = true;
             mngr.AddScore(killpoints);
-            DeathChecker.IsBossDead = true;
+            BossManager.Instance.RemoveBoss(controller);
             Destroy(masterBody);
         }
     }

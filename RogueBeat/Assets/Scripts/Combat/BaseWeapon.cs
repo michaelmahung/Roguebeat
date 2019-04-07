@@ -66,7 +66,7 @@ public abstract class BaseWeapon: MonoBehaviour //Another abstract class, we don
         //TODO make sure all but base weapon will be disabled for release
         if (!DataManager.HasPref(weaponName))
         {
-            SetWeaponActive(true);
+            SetWeaponActive(false);
         }
 
         //If no unique icon is set, simply load the default icon

@@ -13,13 +13,7 @@ public class TileBehaviour : MonoBehaviour
     [SerializeField] Material endMat;
     [SerializeField] float baseDamage = 0.2f;
 
-    float damage
-    {
-        get
-        {
-            return baseDamage * GameManager.Instance.Difficulty;
-        }
-    }
+    float damage;
 
     private Material myMat;
     private Renderer myRend;
@@ -30,6 +24,7 @@ public class TileBehaviour : MonoBehaviour
 
     void Start()
     {
+        damage = baseDamage * GameManager.Instance.Difficulty;
         TileSelected = false;
         myRend = GetComponent<Renderer>();
         myMat = myRend.material;
@@ -45,7 +40,7 @@ public class TileBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             damageable = other.GetComponent<IDamageable<float>>();
         }
@@ -53,7 +48,7 @@ public class TileBehaviour : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player" && Overheating)
+        if (other.gameObject.CompareTag("Player") && Overheating)
         damageable.Damage(damage);
     }
 

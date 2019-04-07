@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
 
     private void LoadScores()
     {
-        Debug.Log("Loading Scores");
         CurrentScore = PlayerPrefs.GetInt(ScoreKey);
         ScoreAdded();
     }

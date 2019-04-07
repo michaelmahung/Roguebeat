@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BossRoom : MonoBehaviour, IRoomBehaviour
 {
-    [SerializeField] MainController controller;
+    [SerializeField] BossController bossController;
+
     public bool RoomActive { get; set; }
 
     public void StartBehaviour()
     {
         RoomActive = true;
 
-        if (controller != null)
+        if (bossController != null)
         {
-            controller.inRoom = true;
-            controller.SetValues();
+            bossController.PlayerEnteredRoom();
         }
     }
 
@@ -22,11 +22,9 @@ public class BossRoom : MonoBehaviour, IRoomBehaviour
     {
         RoomActive = false;
 
-        if (controller != null)
+        if (bossController != null)
         {
-            controller.inRoom = false;
-            controller.phase = "idle";
-            controller.attackPhase = 0;
+            bossController.PlayerExitedRoom();
         }
     }
 }

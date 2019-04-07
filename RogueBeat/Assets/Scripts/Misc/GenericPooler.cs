@@ -7,7 +7,8 @@ public enum PooledObject
     Trooper, Bruiser, Boomer, BabyRoamer,
     BombShot, BoomerBomb, EnemyFire1, EnemyFireShotgun,
     Explosion, MissileExplosion, PTMissile, TrooperShot,
-    RoamerMine, BabyRoamerMine, RoamerExplosion, RoomBomb
+    RoamerMine, BabyRoamerMine, RoamerExplosion, RoomBomb,
+    LaserDecal
 }
 
 [System.Serializable]

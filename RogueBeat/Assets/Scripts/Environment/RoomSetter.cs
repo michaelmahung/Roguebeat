@@ -244,8 +244,6 @@ public class RoomSetter : MonoBehaviour
     }
     void FinishEndRoom()
     {
-        Debug.Log("Finalizing End Room");
-
         foreach (RoomSpawnPoint point in MyOpenWalls)
         {
             if (point.OtherRoom != null)

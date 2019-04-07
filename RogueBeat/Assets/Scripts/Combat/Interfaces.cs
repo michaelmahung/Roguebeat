@@ -42,3 +42,9 @@ public interface IRoomBehaviour
 
     bool RoomActive { get; set; }
 }
+
+public interface IBossController
+{
+    void PlayerEnteredRoom();
+    void PlayerExitedRoom();
+}
