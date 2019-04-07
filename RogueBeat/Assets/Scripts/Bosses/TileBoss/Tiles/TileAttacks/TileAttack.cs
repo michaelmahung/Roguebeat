@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum TileAttackStates
 {
@@ -24,11 +22,6 @@ public abstract class TileAttack : MonoBehaviour
     protected bool running;
 
     public abstract void Attack(TileController.OnAttackFinished listener, BossTiles[,] tiles);
-
-    protected virtual void Update()
-    {
-
-    }
 
     protected abstract void SetValues();
 

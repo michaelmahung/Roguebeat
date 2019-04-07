@@ -22,23 +22,42 @@ public class TileBossController : BossController, IBossController
     float tileDelayTimer;
     bool active;
 
+    void RemoveReferences()
+    {
+        PlayerHealth.PlayerKilled -= ResetBoss;
+        SceneGenerator.LoadingNextLevel -= RemoveReferences;
+    }
+
     void Awake()
     {
         tileDelayTimer = TileAttackDelay / 2;
         tileController = GetComponent<TileController>();
         bossHealth = GetComponent<TileBossHealth>();
         weapon = GetComponent<TileBossWeaponController>();
+        PlayerHealth.PlayerKilled += ResetBoss;
+        SceneGenerator.LoadingNextLevel += RemoveReferences;
+    }
+
+    public void ResetBoss()
+    {
+        PlayerExitedRoom();
+        bossHealth.SetValues();
+        weapon.SetValues();
+        tileController.SetValues();
     }
 
     public override void PlayerEnteredRoom()
     {
-        active = true;
-
-        CurrentState = BossStates.Phase1;
+        weaponAttackTimer = 0;
+        tileDelayTimer = 0;
 
         bossHealth.SetValues();
         weapon.SetValues();
         tileController.SetValues();
+
+        active = true;
+
+        CurrentState = BossStates.Phase1;
     }
 
     public override void PlayerExitedRoom()

@@ -26,6 +26,14 @@ public class BossLaserRifle : TileBossWeapon
         lr.enabled = false;
     }
 
+    public override void ResetWeapon()
+    {
+        base.ResetWeapon();
+        laserTimer = 0;
+        trackLoc = 0;
+        lr.enabled = false;
+    }
+
     public override void Fire(float speed)
     {
         fireSpeed = speed - laserBuffer;

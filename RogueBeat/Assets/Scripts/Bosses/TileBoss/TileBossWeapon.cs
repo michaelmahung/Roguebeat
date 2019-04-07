@@ -5,6 +5,7 @@ using UnityEngine;
 public enum FireStates
 {
     Idle,
+    Charging,
     Firing,
     Reloading
 }

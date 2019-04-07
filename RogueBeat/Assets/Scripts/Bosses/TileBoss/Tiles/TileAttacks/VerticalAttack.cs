@@ -1,20 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class VerticalAttack : TileAttack
+﻿public class VerticalAttack : TileAttack
 {
+    bool even;
+
     public override void Attack(TileController.OnAttackFinished listener, BossTiles[,] tiles)
     {
-        throw new System.NotImplementedException();
+        allTiles = tiles;
+        _listener = listener;
+        tileGridSize = tiles.GetLength(0);
+        SetValues();
+        currentState = TileAttackStates.Active;
+
+        if (even)
+        {
+           VerticalAttackLogic(0);
+           return;
+        }
+
+        VerticalAttackLogic(1);
     }
 
     protected override void SetValues()
     {
-        throw new System.NotImplementedException();
+        even = !even;
     }
 
-    void VerticalAttackLogic(int index = default(int))
+    void VerticalAttackLogic(int index)
     {
         for (int i = 0; i < allTiles.GetLength(0); i++)
         {
@@ -26,6 +36,25 @@ public class VerticalAttack : TileAttack
             VerticalAttackLogic(index + 2);
         }
 
+        currentState = TileAttackStates.Buffer;
         return;
+    }
+
+    void Update()
+    {
+        switch (currentState)
+        {
+            case TileAttackStates.Default:
+                break;
+            case TileAttackStates.Idle:
+                break;
+            case TileAttackStates.Active:
+                break;
+            case TileAttackStates.Buffer:
+                BufferLoop();
+                break;
+            default:
+                break;
+        }
     }
 }

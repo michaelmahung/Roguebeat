@@ -1,16 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class HorizontalWave : TileAttack
+﻿public class HorizontalWave : WaveAttack
 {
     public override void Attack(TileController.OnAttackFinished listener, BossTiles[,] tiles)
     {
-        throw new System.NotImplementedException();
+        allTiles = tiles;
+        _listener = listener;
+        tileGridSize = tiles.GetLength(0);
+        SetValues();
+        currentState = TileAttackStates.Active;
     }
 
     protected override void SetValues()
     {
-        throw new System.NotImplementedException();
+        base.SetValues();
+
+        if (incrementingDirection)
+        {
+            currentIndex = 0;
+            return;
+        }
+
+        currentIndex = tileGridSize - 1;
+    }
+
+    protected override void WaveAttackLogic(int index)
+    {
+        if (index > tileGridSize - 1 || index < 0)
+        {
+            currentState = TileAttackStates.Buffer;
+            return;
+        }
+
+        int i = 0;
+
+        while (i < tileGridSize)
+        {
+            ActivateTile(allTiles, i, index);
+            i++;
+        }
+
+        if (incrementingDirection)
+        {
+            currentIndex++;
+            return;
+        }
+
+        currentIndex--;
+        return;
     }
 }

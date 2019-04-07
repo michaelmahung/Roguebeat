@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpiralAttack : TileAttack
 {
@@ -30,7 +28,7 @@ public class SpiralAttack : TileAttack
         spiralFireTime = spiralAttackTime / 3;
     }
 
-    protected override void Update()
+    void Update()
     {
         switch (currentState)
         {

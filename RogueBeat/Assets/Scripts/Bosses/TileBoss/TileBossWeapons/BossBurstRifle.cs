@@ -10,6 +10,12 @@ public class BossBurstRifle : TileBossWeapon
 
     int burstCount;
 
+    public override void ResetWeapon()
+    {
+        base.ResetWeapon();
+        burstCount = 0;
+    }
+
     public override void Fire(float speed)
     {
         fireSpeed = speed;
