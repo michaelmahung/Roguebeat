@@ -23,23 +23,23 @@ public class TileBossWeaponController : MonoBehaviour
         previousWeapon = null;
     }
 
-    public void Attack(BossStates state, float attackSpeed)
+    public void Attack(BossPhases state, float attackSpeed)
     {
         switch (state)
         {
-            case BossStates.Phase1:
+            case BossPhases.Phase1:
                 SelectNewWeapon(Phase1Weapons);
                 FireWeapon(attackSpeed);
                 break;
-            case BossStates.Phase2:
+            case BossPhases.Phase2:
                 SelectNewWeapon(Phase2Weapons);
                 FireWeapon(attackSpeed);
                 break;
-            case BossStates.Phase3:
+            case BossPhases.Phase3:
                 SelectNewWeapon(Phase3Weapons);
                 FireWeapon(attackSpeed);
                 break;
-            case BossStates.Default:
+            case BossPhases.Default:
                 break;
             default:
                 break;

@@ -1,7 +1,6 @@
 ﻿public class GridAttack : TileAttack
 {
     bool gridSwitch;
-    bool even;
     int totalLoops;
 
     public override void Attack(TileController.OnAttackFinished listener, BossTiles[,] tiles)
@@ -12,19 +11,12 @@
         SetValues();
         currentState = TileAttackStates.Active;
 
-        if (even)
-        {
-            GridAttackLogic(0);
-            return;
-        }
-
-        GridAttackLogic(1);
+        GridAttackLogic(0);
     }
 
     protected override void SetValues()
     {
         totalLoops = 0;
-        even = !even;
     }
 
     void GridAttackLogic(int index)

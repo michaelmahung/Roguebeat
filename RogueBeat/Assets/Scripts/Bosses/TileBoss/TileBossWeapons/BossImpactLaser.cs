@@ -68,6 +68,7 @@ public class BossImpactLaser : TileBossWeapon
 
     protected override void BeginFiring()
     {
+        lr.SetPosition(1, playerTempLocation);
         lr.enabled = true;
 
         if (!charging)
@@ -96,6 +97,7 @@ public class BossImpactLaser : TileBossWeapon
 
     protected override void FireWeapon(Transform location)
     {
+        lr.SetPosition(1, playerTempLocation);
         location.LookAt(playerTempLocation);
         currentState = FireStates.Firing;
 
@@ -130,8 +132,6 @@ public class BossImpactLaser : TileBossWeapon
 
     void ChargeLaser()
     {
-        lr.SetPosition(1, playerTempLocation);
-
         delayTimer += Time.deltaTime;
 
         if (delayTimer < shotDelayTime)

@@ -31,23 +31,23 @@ public class TileController : MonoBehaviour
         previousAttack = null;
     }
 
-    public void ActivateTiles(BossStates state)
+    public void ActivateTiles(BossPhases state)
     {
         if (currentAttackState == FireStates.Firing)
             return;
 
         switch (state)
         {
-            case BossStates.Phase1:
+            case BossPhases.Phase1:
                 SelectPhaseAttack(Phase1Attacks);
                 break;
-            case BossStates.Phase2:
+            case BossPhases.Phase2:
                 SelectPhaseAttack(Phase2Attacks);
                 break;
-            case BossStates.Phase3:
+            case BossPhases.Phase3:
                 SelectPhaseAttack(Phase3Attacks);
                 break;
-            case BossStates.Default:
+            case BossPhases.Default:
                 Debug.Log("Boss is not in a valid state");
                 break;
             default:

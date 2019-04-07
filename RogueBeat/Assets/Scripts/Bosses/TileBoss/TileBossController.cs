@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BossStates
+public enum BossPhases
 {
     Phase1,
     Phase2,
@@ -12,7 +12,6 @@ public enum BossStates
 
 public class TileBossController : BossController, IBossController
 {
-    public BossStates CurrentState;
     public float TileAttackDelay = 5;
     public float WeaponAttackDelay = 5;
     TileBossHealth bossHealth;
@@ -57,12 +56,15 @@ public class TileBossController : BossController, IBossController
 
         active = true;
 
-        CurrentState = BossStates.Phase1;
+        bossHealth.SliderObject.SetActive(true);
+
+        currentPhase = BossPhases.Phase1;
     }
 
     public override void PlayerExitedRoom()
     {
         active = false;
+        bossHealth.SliderObject.SetActive(false);
     }
 
     void Update()
@@ -75,13 +77,13 @@ public class TileBossController : BossController, IBossController
             if (tileDelayTimer >= TileAttackDelay)
             {
                 tileDelayTimer = 0;
-                tileController.ActivateTiles(CurrentState);
+                tileController.ActivateTiles(currentPhase);
             }
 
             if (weaponAttackTimer >= WeaponAttackDelay)
             {
                 weaponAttackTimer = 0;
-                weapon.Attack(CurrentState, WeaponAttackDelay);
+                weapon.Attack(currentPhase, WeaponAttackDelay);
             }
         }
     }

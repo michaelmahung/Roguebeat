@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062e6a4a02807f4697b6fd8d869f655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0.25
-  timeToStayActive: 1.5
+  Damage: 0.35
+  timeToStayActive: 1.25
   glowColorBrightness: 1.25
   startMat: {fileID: 2100000, guid: 2f4b07296a756d540be192c3a7eb9f1a, type: 2}
   endMat: {fileID: 2100000, guid: e6cbc7e7145d4e14cab55f6c8b4d5b35, type: 2}
