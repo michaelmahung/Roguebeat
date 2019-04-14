@@ -1250,22 +1250,6 @@ Transform:
   m_Father: {fileID: 1535376502448664333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8725335854708733431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8725335854708733430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a34365932ecea449469cb0cc4d9421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myTiles: []
-  timeToHeat: 1.25
-  delayTime: 0.5
-  tilesNeeded: 15
 --- !u!1 &5775478500012355528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1682,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.999999, y: 5, z: 9.999999}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &8725335854708733431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725335854708733430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a34365932ecea449469cb0cc4d9421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTiles: []
+  timeToHeat: 1.25
+  delayTime: 0.5
+  tilesNeeded: 15
 --- !u!1 &9067390556924967370
 GameObject:
   m_ObjectHideFlags: 0

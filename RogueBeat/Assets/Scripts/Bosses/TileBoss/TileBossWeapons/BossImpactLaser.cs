@@ -16,8 +16,9 @@ public class BossImpactLaser : TileBossWeapon
     RaycastHit hit;
     bool charging;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         playerDamage = GameManager.Instance.PlayerHealthRef.GetComponent<IDamageable<float>>();
         lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, fireLocations[0].transform.position);
@@ -118,6 +119,7 @@ public class BossImpactLaser : TileBossWeapon
             }
         }
 
+        audioSource.Play();
         shotsTaken++;
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class RoomSetter : MonoBehaviour
 {
 
@@ -16,8 +17,11 @@ public class RoomSetter : MonoBehaviour
     public RoomSpawnPoint[] MyOpenWalls;
     [SerializeField] private Transform camPlacement;
     [SerializeField] private GameObject cam;
+    [SerializeField] AudioClip doorOpenClip;
+    [SerializeField] AudioClip doorCloseClip;
 
     public IRoomBehaviour RoomBehaviour { get; private set; }
+    AudioSource audioSource;
     private CameraController2 camController;
     private RoomLight myLight;
     TagManager Tags;
@@ -27,6 +31,7 @@ public class RoomSetter : MonoBehaviour
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         RoomBehaviour = GetComponent<IRoomBehaviour>();
 
         if (string.IsNullOrEmpty(RoomName))
@@ -73,6 +78,9 @@ public class RoomSetter : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //Debug.Log("Closing Doors");
 
+        audioSource.clip = doorCloseClip;
+        audioSource.Play();
+
         foreach (BaseDoor door in MyDoors)
         {
             if (door != null)
@@ -86,6 +94,7 @@ public class RoomSetter : MonoBehaviour
 
     private void OpenClearedDoors()
     {
+
         foreach (BaseDoor door in MyDoors)
         {
             if (door != null && door.DoorMovedOnce)
@@ -93,6 +102,9 @@ public class RoomSetter : MonoBehaviour
                 door.OpenDoor();
             }
         }
+
+        audioSource.clip = doorOpenClip;
+        audioSource.Play();
     }
 
     private void OpenDoors()
@@ -108,6 +120,9 @@ public class RoomSetter : MonoBehaviour
                 }
             }
         }
+
+        audioSource.clip = doorOpenClip;
+        audioSource.Play();
     }
 
     private void OnTriggerEnter(Collider other)
