@@ -16,6 +16,7 @@ public enum FireStates
 
 public abstract class TileBossWeapon : MonoBehaviour
 {
+    [SerializeField] protected AudioClip fireClip;
     [SerializeField] protected PooledObject myProjectile;
     [SerializeField] protected Transform[] fireLocations;
     [SerializeField] protected TileBossWeaponController controller;
@@ -24,6 +25,14 @@ public abstract class TileBossWeapon : MonoBehaviour
     protected float fireSpeed;
 
     protected float fireTimer;
+
+    protected AudioSource audioSource;
+
+    protected virtual void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = fireClip;
+    }
 
     public virtual void ResetWeapon()
     {
@@ -40,6 +49,7 @@ public abstract class TileBossWeapon : MonoBehaviour
 
     protected virtual void FireWeapon(Transform location)
     {
+        audioSource.Play();
         GameObject go = GenericPooler.Instance.GrabPrefab(myProjectile);
         location.LookAt(GameManager.Instance.PlayerObject.transform.position);
         go.transform.position = location.transform.position;

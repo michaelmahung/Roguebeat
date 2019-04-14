@@ -18,8 +18,9 @@ public class BossLaserRifle : TileBossWeapon
     RaycastHit hit;
     IDamageable<float> playerDamage;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         playerDamage = GameManager.Instance.PlayerHealthRef.GetComponent<IDamageable<float>>();
         lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, fireLocations[0].transform.position);
@@ -68,6 +69,7 @@ public class BossLaserRifle : TileBossWeapon
 
     protected override void Reload()
     {
+        audioSource.Stop();
         lr.enabled = false;
         currentState = FireStates.Reloading;
         fireTimer = 0;
@@ -81,6 +83,8 @@ public class BossLaserRifle : TileBossWeapon
         trackLoc += (Time.deltaTime * laserTrackSpeed) / fireSpeed;
   
         location.LookAt(Vector3.Slerp(laserStartPosition, GameManager.Instance.PlayerObject.transform.position, (trackLoc + laserLead)));
+
+        audioSource.Play();
 
         if (Physics.Raycast(location.transform.position, location.transform.forward, out hit))
         {
