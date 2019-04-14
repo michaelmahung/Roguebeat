@@ -9168,11 +9168,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 243702244, guid: 92d13d8050912e94499a3c791f2e25eb, type: 3}
-      propertyPath: ObjectPool.Array.data[16].Prefab
-      value: 
-      objectReference: {fileID: 2131867913492292359, guid: 8cb6f4a921c8a4040a1c899d3c16b781,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d13d8050912e94499a3c791f2e25eb, type: 3}
 --- !u!43 &2085694523
